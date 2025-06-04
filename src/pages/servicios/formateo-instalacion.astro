@@ -1,0 +1,173 @@
+---
+import Navbar from "../../Components/Navbar.astro";
+import Hero from "../../Components/Hero.astro";
+import "../../styles/global.css";
+import LlamadaAction from "../../Components/LlamadaAction.astro";
+import PreguntasFrecuentes from '../../Components/PreguntasFrecuentes.astro';
+import Footer from "../../Components/Footer.astro";
+import WhatsAppButton from "../../Components/WhatsAppButton.astro";
+
+const preguntasFormateo = [
+  {
+    titulo: '¿Pierdo mis archivos al formatear?',
+    respuesta:
+      'Antes de formatear, realizamos una copia de seguridad de tus archivos importantes si así lo solicitas. También podemos ayudarte a recuperar información si tu sistema aún es accesible.',
+  },
+  {
+    titulo: '¿Qué programas incluyen en la instalación?',
+    respuesta:
+      'Incluimos programas esenciales como navegador web, suite de ofimática, antivirus, reproductores multimedia, y más. Podemos adaptarnos a tus necesidades.',
+  },
+  {
+    titulo: '¿Cuánto tiempo tarda el servicio?',
+    respuesta:
+      'El tiempo puede variar según el equipo, pero generalmente el servicio se completa entre 1 y 2 horas. Ofrecemos atención a domicilio o en nuestras oficinas.',
+  },
+  {
+    titulo: '¿Pueden instalar Windows con licencia?',
+    respuesta:
+      'Sí, ofrecemos instalación con licencias válidas y también podemos orientarte sobre la activación legal de tu sistema operativo.',
+  },
+];
+---
+
+¡<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formateo e Instalación de Sistemas y Programas</title>
+</head>
+<body>
+    <Navbar/>
+    <Hero  
+  title="Formateo e Instalación de Sistemas y Programas" 
+  subtitle="Devuelve la velocidad y estabilidad a tus equipos. Instalamos sistemas operativos y programas esenciales con configuración personalizada para hogares y empresas." 
+  imageUrl="/TecnicoFormateoEsva.jpg" 
+  buttonText="Solicita tu Servicio" 
+  buttonLink="Escríbenos por WhatsApp"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20formateo%20e%20instalación%20de%20ESVA.%20¿Me%20pueden%20dar%20más%20información?" 
+/>
+
+
+<section class="bg-white py-16 px-6 md:px-20 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Recupera la agilidad de tu computadora</h2>
+    <p class="text-lg text-gray-700">
+      ¿Tu equipo está lento, lleno de errores o programas innecesarios? Nuestro servicio de <strong class="text-blue-700">formateo e instalación</strong> es la solución. 
+      Reinstalamos tu sistema operativo desde cero, eliminamos virus y configuramos los programas esenciales 
+      para que vuelvas a trabajar con total fluidez.
+    </p>
+  </div>
+</section>
+
+
+<section class="bg-blue-50 py-16 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">¿Qué incluye nuestro servicio?</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Tarjeta 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+        <div class="text-blue-800 mb-4">
+          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Formateo completo del equipo</h3>
+        <p class="text-gray-600">Eliminamos virus, archivos innecesarios y todo lo que frene el rendimiento.</p>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+        <div class="text-blue-800 mb-4">
+          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 12h6M12 9v6"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Instalación de sistema operativo</h3>
+        <p class="text-gray-600">Windows, Linux u otro sistema. Siempre con licencias válidas o versiones legales.</p>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+        <div class="text-blue-800 mb-4">
+          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15 12H9m12-4.5v9a2.5 2.5 0 01-2.5 2.5h-15A2.5 2.5 0 011 16.5v-9A2.5 2.5 0 013.5 5h15A2.5 2.5 0 0121 7.5z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Programas esenciales</h3>
+        <p class="text-gray-600">Instalamos navegadores, ofimática, antivirus, reproductores y más.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<LlamadaAction  
+  title="¿Tu computadora necesita un nuevo comienzo?"  
+  subtitle="No esperes a que el sistema falle por completo. Con nuestro servicio de formateo e instalación, tendrás tu equipo funcionando como nuevo, rápido y sin complicaciones."  
+  buttonTextContato="Contáctanos"  
+  buttonLinkLlamada="Llámanos Ahora"  
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20formateo%20e%20instalación%20de%20sistema%20operativo%20con%20ESVA."  
+  textobotonwhatsapp="WhatsApp"
+/>
+
+
+
+<section class="bg-blue-50 py-20 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">¿Por qué elegir nuestro servicio de formateo?</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+      
+      <!-- Beneficio 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Instalación limpia y optimizada</h3>
+        <p class="text-gray-700">Te entregamos un sistema operativo limpio, sin archivos basura ni programas innecesarios, para un rendimiento superior desde el primer día.</p>
+      </div>
+
+      <!-- Beneficio 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Configuración personalizada</h3>
+        <p class="text-gray-700">Adaptamos el sistema a tus necesidades específicas: idioma, programas, cuentas y accesibilidad.</p>
+      </div>
+
+      <!-- Beneficio 3 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Protección desde el inicio</h3>
+        <p class="text-gray-700">Instalamos antivirus actualizado y configuramos medidas de seguridad para proteger tus datos desde el primer momento.</p>
+      </div>
+
+      <!-- Beneficio 4 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Respaldo de información</h3>
+        <p class="text-gray-700">Si lo necesitas, realizamos un respaldo seguro de tus archivos antes del formateo y los restauramos tras la instalación.</p>
+      </div>
+
+      <!-- Beneficio 5 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Atención rápida y garantizada</h3>
+        <p class="text-gray-700">Realizamos el servicio en menos de 2 horas, con garantía y soporte técnico post-instalación.</p>
+      </div>
+
+      <!-- Beneficio 6 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Soporte profesional en todo momento</h3>
+        <p class="text-gray-700">Te acompañamos antes, durante y después del servicio. ¿Tienes dudas? Siempre estamos disponibles por WhatsApp o llamada directa.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<PreguntasFrecuentes preguntas={preguntasFormateo} />
+
+<Footer/>
+<WhatsAppButton/>
+</body>
+</html>

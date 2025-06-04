@@ -1,0 +1,18 @@
+---
+// WhatsAppButton.astro
+const mensaje = encodeURIComponent("Hola 👋, estoy interesado en sus servicios de mantenimiento y reparación. ¿Podrían brindarme más información?");
+const numero = "51985834886"; // Tu número de WhatsApp con código de país
+const enlace = `https://wa.me/${numero}?text=${mensaje}`;
+---
+
+<a 
+  href={enlace}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chatea con nosotros por WhatsApp"
+  class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition duration-300 ease-in-out flex items-center justify-center"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.89 11.89 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.98L0 24l6.27-1.65A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zM12 22c-1.87 0-3.7-.49-5.3-1.42l-.38-.22-3.72.98.99-3.62-.24-.38A9.97 9.97 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.3-7.7c-.29-.15-1.71-.84-1.98-.94s-.46-.15-.65.15-.75.94-.92 1.13-.34.23-.63.08a8.06 8.06 0 01-2.36-1.46 8.96 8.96 0 01-1.67-2.08c-.17-.29-.02-.45.13-.6.13-.13.3-.34.46-.51.15-.17.2-.29.3-.48.1-.19.05-.36-.02-.51s-.65-1.58-.89-2.16c-.23-.55-.47-.47-.65-.48l-.55-.01a1.07 1.07 0 00-.77.36 3.13 3.13 0 00-.98 2.34c0 1.37.98 2.7 1.12 2.88.15.19 1.93 2.94 4.69 4.13.66.29 1.17.46 1.56.59.65.21 1.24.18 1.7.11.52-.08 1.71-.7 1.95-1.38.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.56-.34z"/>
+  </svg>
+</a>

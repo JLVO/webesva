@@ -1,0 +1,295 @@
+---
+import Navbar from "../../Components/Navbar.astro";
+import Hero from "../../Components/Hero.astro";
+import "../../styles/global.css";
+import LlamadaAction from "../../Components/LlamadaAction.astro";
+import {
+  Wrench,
+  Laptop2,
+  ShieldCheck,
+  HardDrive,
+  RefreshCcw,
+  Cloud,
+  UserCheck,
+  Clock,
+  Smile,
+  BadgeCheck,
+  Network,
+  Camera,
+  KeyRound,
+  AlarmCheck,
+  Settings2,
+  Timer,
+  ThumbsUp,
+  Home,
+  Zap,
+  Handshake,
+  Search,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
+import Footer from "../../Components/Footer.astro";
+import WhatsAppButton from "../../Components/WhatsAppButton.astro";
+---
+
+¡<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento y Reparación de Equipos informáticos</title>
+</head>
+<body>
+    <Navbar/>
+    <Hero  
+  title="Mantenimiento y Reparación de Equipos Informáticos" 
+  subtitle="Optimiza el rendimiento de tus computadoras y redes con nuestro servicio técnico especializado para hogares y empresas. ¡Confía en ESVA para mantener tu tecnología en perfecto estado!" 
+  imageUrl="/TecnicoESVA1.svg" 
+  buttonText="Solicita tu Servicio"
+  buttonLink="../../contactanos"
+  buttonLink="Escríbenos por WhatsApp"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20servicio%20de%20mantenimiento%20o%20reparación%20de%20equipos%20con%20ESVA." 
+/>
+
+<section class="bg-blue-50 py-12 px-6 md:px-20 text-gray-800">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-blue-900">Mantenimiento y Reparación de Equipos Informáticos</h2>
+    <p class="text-lg md:text-xl leading-relaxed">
+      ¿Tu computadora va lenta, se sobrecalienta o simplemente dejó de encender? Nuestro servicio de <strong>mantenimiento y reparación</strong> está diseñado para devolverte un equipo funcional, rápido y protegido.
+      Nos encargamos de todo, desde la limpieza interna hasta la reparación de hardware y recuperación de datos. <strong>¡Soluciones rápidas y confiables para hogares y empresas!</strong>
+    </p>
+  </div>
+</section>
+
+
+<section class="bg-white py-16 px-6 md:px-20 text-gray-800">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-blue-900">¿Qué incluye el servicio?</h2>
+
+    <div class="grid gap-8 md:grid-cols-3">
+
+      <!-- Card 1 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-center">
+        <Wrench className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Reparación de hardware" />
+        <h3 class="text-xl font-semibold mb-2">Reparación de Hardware</h3>
+        <p class="text-gray-700">
+          Diagnóstico y reemplazo de componentes dañados: fuente, disco duro, RAM, placas, entre otros.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-center">
+        <Laptop2 className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Formateo y limpieza del sistema" />
+        <h3 class="text-xl font-semibold mb-2">Formateo y Optimización</h3>
+        <p class="text-gray-700">
+          Formateo completo, instalación de sistema operativo y software esencial. Mejora del rendimiento general.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-center">
+        <ShieldCheck className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Eliminación de virus y malware" />
+        <h3 class="text-xl font-semibold mb-2">Eliminación de Virus</h3>
+        <p class="text-gray-700">
+          Análisis profundo, limpieza de malware, spyware y protección futura con antivirus confiables.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-center">
+        <HardDrive className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Limpieza interna física" />
+        <h3 class="text-xl font-semibold mb-2">Limpieza Interna</h3>
+        <p class="text-gray-700">
+          Eliminamos polvo, residuos y suciedad del interior del equipo para evitar sobrecalentamientos y daños.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-center">
+        <RefreshCcw className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Mantenimiento preventivo programado" />
+        <h3 class="text-xl font-semibold mb-2">Mantenimiento Preventivo</h3>
+        <p class="text-gray-700">
+          Evaluación periódica del estado del equipo para detectar problemas antes de que ocurran.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-center">
+        <Cloud className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Respaldo de información" />
+        <h3 class="text-xl font-semibold mb-2">Respaldo de Información</h3>
+        <p class="text-gray-700">
+          Copia segura de tus documentos, fotos, videos y programas antes de cualquier procedimiento técnico.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<LlamadaAction 
+  title="¿Listo para proteger lo que más importa?"
+  subtitle="En ESVA, combinamos tecnología, experiencia y atención personalizada para darte soluciones seguras, confiables y a tu alcance."
+  buttonTextContato="Contáctanos"
+  buttonLinkLlamada="LLámanos Ahora"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola%20ESVA%2C%20necesito%20informaci%C3%B3n%20sobre%20mantenimiento%20y%20reparaci%C3%B3n%20inform%C3%A1tica.%20%C2%BFPodr%C3%ADan%20ayudarme%3F"
+  textobotonwhatsapp="WhatsApp"/>
+
+
+<section class="bg-blue-50 py-16 px-6 md:px-20 text-gray-800">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-10">¿Por qué elegirnos?</h2>
+
+    <div class="grid gap-8 md:grid-cols-3 text-left">
+
+      <!-- Ventaja 1 -->
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <UserCheck className="w-10 h-10 text-blue-900 mb-4" aria-label="Técnicos certificados" />
+        <h3 class="text-xl font-semibold mb-2">Técnicos Certificados</h3>
+        <p>
+          Nuestro equipo cuenta con certificaciones y experiencia en hardware, software y redes. Servicio garantizado.
+        </p>
+      </div>
+
+      <!-- Ventaja 2 -->
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <Clock className="w-10 h-10 text-blue-900 mb-4" aria-label="Atención rápida" />
+        <h3 class="text-xl font-semibold mb-2">Atención Rápida</h3>
+        <p>
+          Respondemos en menos de 24 horas. Sabemos que tu equipo no puede esperar y actuamos con agilidad.
+        </p>
+      </div>
+
+      <!-- Ventaja 3 -->
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <Home className="w-10 h-10 text-blue-900 mb-4" aria-label="Soporte a domicilio" />
+        <h3 class="text-xl font-semibold mb-2">Soporte a Domicilio</h3>
+        <p>
+          Vamos hasta tu hogar u oficina sin costos ocultos. Ideal para quienes no pueden trasladar sus equipos.
+        </p>
+      </div>
+
+      <!-- Ventaja 4 -->
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <ShieldCheck className="w-10 h-10 text-blue-900 mb-4" aria-label="Seguridad garantizada" />
+        <h3 class="text-xl font-semibold mb-2">Seguridad y Confianza</h3>
+        <p>
+          Tratamos tus datos con total confidencialidad. Contamos con protocolos seguros de respaldo y recuperación.
+        </p>
+      </div>
+
+      <!-- Ventaja 5 -->
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <Smile className="w-10 h-10 text-blue-900 mb-4" aria-label="Clientes satisfechos" />
+        <h3 class="text-xl font-semibold mb-2">Clientes Felices</h3>
+        <p>
+          Más del 95% de nuestros clientes nos recomiendan por nuestro trato cercano y resultados confiables.
+        </p>
+      </div>
+
+      <!-- Ventaja 6 -->
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <BadgeCheck className="w-10 h-10 text-blue-900 mb-4" aria-label="Garantía post-servicio" />
+        <h3 class="text-xl font-semibold mb-2">Garantía de Servicio</h3>
+        <p>
+          Si algo falla, volvemos sin costo adicional. Nos comprometemos a soluciones duraderas y efectivas.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white py-20 px-6 md:px-20 text-gray-800">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">Lo que dicen nuestros clientes</h2>
+
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+
+      <!-- Testimonio 1 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <p class="italic mb-4">"Mi laptop no encendía y pensé que tendría que comprar una nueva. El equipo de ESVA la revivió en menos de un día. ¡Gracias totales!"</p>
+        <div class="font-semibold text-blue-900">María González</div>
+        <div class="text-sm text-gray-500">Castilla - Piura</div>
+      </div>
+
+      <!-- Testimonio 2 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <p class="italic mb-4">"Llevaron a cabo el mantenimiento de nuestras PCs en la oficina. Todo rápido, limpio y funcionando al 100%. Profesionales y muy amables."</p>
+        <div class="font-semibold text-blue-900">Luis Rojas</div>
+        <div class="text-sm text-gray-500">Administración - Veintiseis de Octbre</div>
+      </div>
+
+      <!-- Testimonio 3 -->
+      <div class="bg-blue-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+        <p class="italic mb-4">"Nos ayudaron a recuperar información valiosa luego de un fallo en el disco duro. Servicio confiable y precios justos. Totalmente recomendados."</p>
+        <div class="font-semibold text-blue-900">Andrea Paredes</div>
+        <div class="text-sm text-gray-500">Diseñadora Freelance - Piura</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<LlamadaAction 
+  title="¿Tu equipo necesita atención profesional?"
+  subtitle="No dejes que un problema pequeño se convierta en una falla mayor. Nuestro equipo está listo para ayudarte con diagnósticos rápidos y soluciones efectivas."
+  buttonTextContato="Contáctanos"
+  buttonLinkLlamada="LLámanos Ahora"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola%20ESVA%2C%20necesito%20informaci%C3%B3n%20sobre%20mantenimiento%20y%20reparaci%C3%B3n%20inform%C3%A1tica.%20%C2%BFPodr%C3%ADan%20ayudarme%3F"
+  textobotonwhatsapp="WhatsApp"/>
+
+
+<section class="bg-blue-50 text-black py-20 px-6 md:px-20">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">
+      Preguntas Frecuentes
+    </h2>
+
+    <div class="space-y-4">
+      <!-- Pregunta 1 -->
+      <details class="bg-white p-4 rounded shadow-md group">
+        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
+          ¿Cada cuánto tiempo debo realizar mantenimiento a mi PC o laptop?
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Recomendamos un mantenimiento preventivo cada 6 meses para asegurar el buen funcionamiento, especialmente si usas tu equipo a diario.
+        </p>
+      </details>
+
+      <!-- Pregunta 2 -->
+      <details class="bg-white p-4 rounded shadow-md group">
+        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
+          ¿El servicio incluye formateo o respaldo de información?
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Solo si lo necesitas. Antes de cualquier acción, evaluamos el estado del equipo y te asesoramos para que no pierdas información valiosa.
+        </p>
+      </details>
+
+      <!-- Pregunta 3 -->
+      <details class="bg-white p-4 rounded shadow-md group">
+        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
+          ¿Cuánto demora una reparación o mantenimiento?
+        </summary>
+        <p class="mt-2 text-gray-700">
+          En promedio, un mantenimiento básico toma entre 1 a 2 horas. Si se detecta una falla mayor, te indicamos el tiempo estimado de forma transparente.
+        </p>
+      </details>
+
+      <!-- Pregunta 4 -->
+      <details class="bg-white p-4 rounded shadow-md group">
+        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
+          ¿Atienden a domicilio o solo en taller?
+        </summary>
+        <p class="mt-2 text-gray-700">
+          Ambos. Puedes traernos tu equipo o programar una visita técnica en tu domicilio u oficina, según tu comodidad.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+<Footer/>
+<WhatsAppButton/>
+</body>
+</html>

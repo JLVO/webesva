@@ -1,0 +1,107 @@
+---
+// Footer.astro (o Footer.jsx si usas React)
+import {
+  Facebook,
+  Instagram,
+  Mail,
+  Phone,
+  Linkedin,
+  Youtube,
+  MessageCircle
+} from 'lucide-react';
+---
+
+<footer class="bg-gray-900 text-white py-10 px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+
+    <!-- Columna 1: Logo + Descripción -->
+    <div>
+      <img src="/LogoESVA.svg" alt="Logo ESVA" class="w-32 mb-4" />
+      <p class="text-gray-300">
+        Seguridad y Protección a tu alcance. Soluciones en soporte técnico, biometría y videovigilancia para empresas y hogares.
+      </p>
+    </div>
+
+    <!-- Columna 2: Enlaces rápidos -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Enlaces rápidos</h3>
+      <ul class="space-y-2 text-gray-300">
+        <li><a href="/" class="hover:text-white">Inicio</a></li>
+        <li><a href="nosotros" class="hover:text-white">Nosotros</a></li>
+        <li><a href="/servicios" class="hover:text-white">Servicios</a></li>
+        <li><a href="#faq" class="hover:text-white">Preguntas Frecuentes</a></li>
+        <li><a href="contactanos" class="hover:text-white">Contáctanos</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Información de contacto -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Contáctanos</h3>
+      <p class="text-gray-300 mb-2">📍 Piura, Perú</p>
+      <p class="text-gray-300 mb-2">📞 <a href="tel:+51985834886" class="hover:text-white">985 834 886</a></p>
+      <p class="text-gray-300">✉️ contacto@esva.pe</p>
+    </div>
+
+    <!-- Columna 4: Redes sociales -->
+    {/* Columna 4: Redes sociales */}
+<div>
+  <h3 class="text-lg font-semibold mb-4">Síguenos en redes</h3>
+  <p class="text-gray-300 mb-4">Conéctate con nosotros y entérate de nuestras novedades y servicios.</p>
+  <div class="flex gap-4 text-2xl">
+    <a
+      href="https://wa.me/51985834886"
+      target="_blank"
+      class="text-gray-400 hover:text-green-500 transition"
+      aria-label="WhatsApp"
+    >
+      <MessageCircle className="w-6 h-6" />
+    </a>
+    <a
+      href="https://www.facebook.com/esva2022"
+      target="_blank"
+      class="text-gray-400 hover:text-blue-500 transition"
+      aria-label="Facebook"
+    >
+      <Facebook className="w-6 h-6" />
+    </a>
+    <a
+      href="https://www.instagram.com/"
+      target="_blank"
+      class="text-gray-400 hover:text-pink-500 transition"
+      aria-label="Instagram"
+    >
+      <Instagram className="w-6 h-6" />
+    </a>
+    <a
+      href="mailto:contacto@esva.pe"
+      class="text-gray-400 hover:text-yellow-400 transition"
+      aria-label="Correo"
+    >
+      <Mail className="w-6 h-6" />
+    </a>
+    <a
+      href="https://www.linkedin.com/company/94254191/admin/dashboard/"
+      target="_blank"
+      class="text-gray-400 hover:text-sky-500 transition"
+      aria-label="LinkedIn"
+    >
+      <Linkedin className="w-6 h-6" />
+    </a>
+    <a
+      href="https://www.youtube.com/@esvasoluciones"
+      target="_blank"
+      class="text-gray-400 hover:text-red-500 transition"
+      aria-label="YouTube"
+    >
+      <Youtube className="w-6 h-6" />
+    </a>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="text-center text-sm text-gray-400 mt-10 border-t border-gray-700 pt-4">
+    © 2025 ESVA Seguridad. Todos los derechos reservados.
+  </div>
+</footer>

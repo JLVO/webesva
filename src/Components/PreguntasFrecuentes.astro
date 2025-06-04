@@ -1,0 +1,29 @@
+---
+interface Pregunta {
+  titulo: string;
+  respuesta: string;
+}
+
+const { preguntas=[] }: { preguntas?: Pregunta[] } = Astro.props;
+---
+
+<section class="bg-white py-16 px-6 md:px-20">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 text-center mb-10">
+      Preguntas Frecuentes
+    </h2>
+
+    <div class="space-y-4">
+      {preguntas.map((pregunta: Pregunta, index: number) => {
+        return (
+          <details class="bg-blue-50 p-6 rounded-lg shadow-sm group open:shadow-md">
+            <summary class="font-semibold text-blue-900 cursor-pointer text-lg">
+              {pregunta.titulo}
+            </summary>
+            <p class="mt-4 text-gray-700">{pregunta.respuesta}</p>
+          </details>
+        );
+      })}
+    </div>
+  </div>
+</section>

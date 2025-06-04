@@ -1,0 +1,53 @@
+<nav class="bg-white text-black shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-24 items-center">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/">
+          <img src="/LogoESVAnegro.svg" alt="Logo ESVA" class="h-20 w-auto" />
+        </a>
+      </div>
+
+      <!-- Menú de navegación (escritorio) -->
+      <div class="hidden md:flex space-x-8 font-semibold text-base items-center">
+        <a href="/" class="hover:text-blue-600 transition duration-300">Inicio</a>
+        <a href="/nosotros" class="hover:text-blue-600 transition duration-300">Nosotros</a>
+
+        <!-- Dropdown Servicios -->
+        <!-- Dropdown Servicios -->
+<div class="relative group">
+  <a href="/servicios" class="inline-block hover:text-blue-600 transition duration-300">
+    Servicios
+  </a>
+
+  <div class="absolute left-0 mt-2 w-56 bg-white border rounded shadow-lg z-50
+              invisible opacity-0 group-hover:visible group-hover:opacity-100 
+              group-hover:translate-y-0 transition-all duration-300 flex flex-col">
+    
+    <a href="/servicios/mantenimiento-reparacion-informatica" class="block px-4 py-2 hover:bg-blue-100">Mantenimiento y Reparación</a>
+    <a href="/servicios/formateo-instalacion" class="block px-4 py-2 hover:bg-blue-100">Formateo e Instalación</a>
+    <a href="/servicios/recuperacion-datos" class="block px-4 py-2 hover:bg-blue-100">Recuperación de Datos</a>
+    <a href="/servicios/redes-conectividad" class="block px-4 py-2 hover:bg-blue-100">Redes y Conectividad</a>
+    <a href="/servicios/mantenimiento-preventivo" class="block px-4 py-2 hover:bg-blue-100">Mantenimiento Preventivo</a>
+  </div>
+</div>
+
+
+
+        <a href="/contactanos" class="hover:text-blue-600 transition duration-300">Contacto</a>
+      </div>
+
+      <!-- Botón móvil (hamburguesa) -->
+      <div class="md:hidden">
+        <button aria-label="Abrir menú" class="hover:text-hover transition">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

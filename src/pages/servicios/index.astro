@@ -1,0 +1,225 @@
+---
+import Navbar from "../../Components/Navbar.astro";
+import Hero from "../../Components/Hero.astro";
+import "../../styles/global.css";
+import LlamadaAction from "../../Components/LlamadaAction.astro";
+import {
+  Wrench,
+  Laptop2,
+  ShieldCheck,
+  Network,
+  Camera,
+  KeyRound,
+  AlarmCheck,
+  Settings2,
+  Timer,
+  ThumbsUp,
+  Home,
+  Zap,
+  Handshake,
+  Search,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
+import Footer from "../../Components/Footer.astro";
+import WhatsAppButton from "../../Components/WhatsAppButton.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Soporte Técnico Informático</title>
+</head>
+<body>
+    <Navbar/>
+    <Hero 
+    title="Nuestros Servicios de Soporte Técnico Informático" 
+    subtitle="Soluciones confiables en instalación, mantenimiento y reparación de equipos informáticos para empresas y hogares." 
+    imageUrl="/TecnicoEsvaNuevo3.svg" 
+    buttonText="Contáctanos" 
+    buttonLink="Escríbenos por WhatsApp"
+    linkwhatsapp="https://wa.me/51985834886?text=Hola,%20deseo%20más%20información%20sobre%20los%20servicios%20de%20ESVA"/>
+
+
+  <section class="py-16 bg-white text-black">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4">Nuestros Servicios Especializados</h2>
+    <p class="text-lg mb-12 text-gray-700">
+      Soluciones integrales en mantenimiento, reparación, redes y seguridad informática.
+    </p>
+
+    <div class="grid gap-10 md:grid-cols-2 text-left">
+      
+      {/* Servicio 1: Mantenimiento de Equipos */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <a href="../servicios/mantenimiento-reparacion-informatica">
+        <Wrench className="w-12 h-12 text-primary mb-4" aria-label="Mantenimiento de Equipos" />
+        <h3 class="text-xl font-semibold mb-2">Mantenimiento de Equipos</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Limpieza física y formateo</li>
+          <li>Instalación de programas esenciales</li>
+          <li>Revisión y diagnóstico de fallas</li>
+        </ul>
+        </a>
+      </div>
+
+      {/* Servicio 2: Redes e Internet */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <a href="../servicios/redes-conectividad">
+        <Network className="w-12 h-12 text-primary mb-4" aria-label="Redes e Internet" />
+        <h3 class="text-xl font-semibold mb-2">Redes e Internet</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Configuración de routers y redes</li>
+          <li>Solución de problemas de conectividad</li>
+          <li>Instalación de puntos de acceso Wi-Fi</li>
+        </ul>
+        </a>
+      </div>
+
+      {/* Servicio 3: Reparación de Hardware */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <a href="../servicios/mantenimiento-reparacion-informatica">
+        <Laptop2 className="w-12 h-12 text-primary mb-4" aria-label="Reparación de Hardware" />
+        <h3 class="text-xl font-semibold mb-2">Reparación de Hardware</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Reemplazo de discos, RAM, cargadores</li>
+          <li>Reparación de pantallas o conectores</li>
+        </ul>
+      </a>
+      </div>
+
+      {/* Servicio 4: Seguridad y Software */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <a href="../servicios/formateo-instalacion">
+        <ShieldCheck className="w-12 h-12 text-primary mb-4" aria-label="Seguridad y Software" />
+        <h3 class="text-xl font-semibold mb-2">Seguridad y Software</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Instalación de antivirus</li>
+          <li>Configuración de sistemas</li>
+          <li>Backup y recuperación de datos</li>
+        </ul>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<LlamadaAction 
+  title="¿Listo para proteger lo que más importa?"
+  subtitle="En ESVA, combinamos tecnología, experiencia y atención personalizada para darte soluciones seguras, confiables y a tu alcance."
+  buttonTextContato="Contáctanos"
+  buttonLinkLlamada="LLámanos Ahora"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad.%20%C2%BFPodr%C3%ADan%20darme%20m%C3%A1s%20detalles%3F"
+  textobotonwhatsapp="WhatsApp"/>
+
+
+<section class="py-16 bg-[#e6f7f1] text-black">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4">Sistemas de Seguridad Electrónica</h2>
+    <p class="text-lg mb-12 text-gray-700">
+      Protege lo que más valoras con nuestras soluciones de vigilancia, alarmas y control de acceso profesional.
+    </p>
+
+    <div class="grid gap-10 md:grid-cols-2 text-left">
+      
+      {/* Servicio 1: Cámaras de Seguridad */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <Camera className="w-12 h-12 text-primary mb-4" aria-label="Cámaras de Seguridad" />
+        <h3 class="text-xl font-semibold mb-2">Cámaras de Seguridad</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Venta e instalación de CCTV IP y analógico</li>
+          <li>Visualización remota desde celular o PC</li>
+          <li>Grabación 24/7 con discos de alta capacidad</li>
+        </ul>
+      </div>
+
+      {/* Servicio 2: Alarmas y Sensores */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <AlarmCheck className="w-12 h-12 text-primary mb-4" aria-label="Alarmas y Sensores" />
+        <h3 class="text-xl font-semibold mb-2">Alarmas y Sensores</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Alarmas antirrobo para casas y negocios</li>
+          <li>Sensores de movimiento, humo y puertas</li>
+          <li>Notificaciones inmediatas al celular</li>
+        </ul>
+      </div>
+
+      {/* Servicio 3: Control de Acceso */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <KeyRound className="w-12 h-12 text-primary mb-4" aria-label="Control de Acceso" />
+        <h3 class="text-xl font-semibold mb-2">Control de Acceso</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Lectores biométricos y tarjetas RFID</li>
+          <li>Registro de entrada/salida de personal</li>
+          <li>Soluciones ideales para empresas y oficinas</li>
+        </ul>
+      </div>
+
+      {/* Servicio 4: Soporte Técnico y Configuración */}
+      <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+        <Settings2 className="w-12 h-12 text-primary mb-4" aria-label="Soporte y Configuración" />
+        <h3 class="text-xl font-semibold mb-2">Soporte y Configuración</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-1">
+          <li>Configuración remota o presencial</li>
+          <li>Soporte post-instalación y mantenimiento</li>
+          <li>Atención personalizada según tu necesidad</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-slate-50 py-16">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-4 text-gray-800">¿Por qué elegir a ESVA?</h2>
+    <p class="text-lg text-gray-700 mb-12">
+      En ESVA no solo reparamos computadoras, te acompañamos con soluciones técnicas cercanas, profesionales y orientadas a tu tranquilidad digital.
+    </p>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 text-left">
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <Zap className="w-12 h-12 text-primary mb-4" aria-label="Atención Rápida" />
+        <h3 class="text-xl font-semibold mb-2">Atención Rápida</h3>
+        <p class="text-gray-600">Respondemos el mismo día para que no pierdas tiempo ni productividad.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <Handshake className="w-12 h-12 text-primary mb-4" aria-label="Confianza y Cercanía" />
+        <h3 class="text-xl font-semibold mb-2">Confianza y Cercanía</h3>
+        <p class="text-gray-600">Nos preocupamos por ti y tu equipo como si fuera el nuestro. Siempre con atención personalizada.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <Search className="w-12 h-12 text-primary mb-4" aria-label="Diagnóstico Profesional" />
+        <h3 class="text-xl font-semibold mb-2">Diagnóstico Profesional</h3>
+        <p class="text-gray-600">Evaluamos tus equipos con herramientas actualizadas para darte una solución precisa.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+        <MapPin className="w-12 h-12 text-primary mb-4" aria-label="Diagnóstico Profesional" />
+        <h3 class="text-xl font-semibold mb-2">Cobertura Local</h3>
+        <p class="text-gray-600">Estamos donde nos necesitas, ya sea en tu casa, oficina o a distancia. También brindamos soporte remoto.</p>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20soporte%20t%C3%A9cnico." 
+      target="_blank" 
+      class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full shadow-lg text-lg font-semibold transition duration-300"
+      aria-label="Escríbenos por WhatsApp">
+       
+      <MessageCircle className="w-6 h-6" />
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<Footer/>
+<WhatsAppButton/>
+</body>
+</html>

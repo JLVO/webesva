@@ -1,0 +1,42 @@
+---
+// Hero.astro
+const { title, subtitle, imageUrl, buttonText, buttonLink,linkwhatsapp } = Astro.props;
+---
+
+<section 
+  class="relative text-white overflow-hidden"
+  style="background-image: url('/bg-nosotros.jpg'); background-position: right; background-repeat: no-repeat; background-size: cover;"
+>
+  <!-- Capa azul semitransparente -->
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-800/80 to-blue-600/80 z-0"></div>
+
+  <!-- Contenido principal -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Texto -->
+    <div class="animate-fade-in-left">
+      <h1 class="text-4xl font-extrabold mb-4 leading-tight drop-shadow-lg">
+        {title}
+      </h1>
+      <p class="text-lg mb-8 drop-shadow">
+        {subtitle}
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/contactanos" class="bg-hover text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition">
+          {buttonText}
+        </a>
+        <a href={linkwhatsapp} target="_blank"
+           class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-600 transition">
+          {buttonLink}
+        </a>
+      </div>
+    </div>
+
+    <!-- Imagen -->
+    <div class="animate-fade-in-right flex justify-center">
+      <img src={imageUrl} alt="Soporte técnico y seguridad" class="w-full max-w-md" loading="lazy" />
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,244 @@
+---
+import Navbar from "../../Components/Navbar.astro";
+import Hero from "../../Components/Hero.astro";
+import "../../styles/global.css";
+import LlamadaAction from "../../Components/LlamadaAction.astro";
+import {
+  Wifi,
+  Cable,
+  Router,
+  Wrench,
+  Signal,
+  ShieldCheck,
+  SearchCheck, Hammer, Headset, Receipt
+} from "lucide-react";
+import Footer from "../../Components/Footer.astro";
+import WhatsAppButton from "../../Components/WhatsAppButton.astro";
+
+import PreguntasFrecuentes from '../../Components/PreguntasFrecuentes.astro';
+
+const preguntasRedes = [
+  {
+    titulo: '¿Ofrecen servicio a domicilio para instalación de redes?',
+    respuesta:
+      'Sí, nuestro equipo puede desplazarse a tu hogar o empresa para realizar diagnósticos, instalaciones o mantenimiento de redes con todas las herramientas necesarias.',
+  },
+  {
+    titulo: '¿Qué tipo de cableado utilizan?',
+    respuesta:
+      'Trabajamos con cableado estructurado de categoría 6 o superior, asegurando alta velocidad y estabilidad en la conexión. Usamos materiales certificados y de calidad.',
+  },
+  {
+    titulo: '¿Pueden solucionar problemas de internet lento?',
+    respuesta:
+      'Sí. Analizamos la infraestructura de red, revisamos interferencias y te proponemos mejoras, como reubicación de equipos, ampliación de red o cambios de hardware.',
+  },
+  {
+    titulo: '¿Realizan configuración de routers, switches o puntos de acceso?',
+    respuesta:
+      'Sí, configuramos todo tipo de dispositivos de red para asegurar una conexión estable, segura y rápida. También ofrecemos soporte técnico post-instalación.',
+  },
+];
+
+
+---
+
+¡<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes y Conectividad Profesional</title>
+</head>
+<body>
+    <Navbar/>
+   <Hero
+  title="Redes y Conectividad Profesional"
+  subtitle="Conecta tu hogar o empresa con soluciones de red seguras, rápidas y personalizadas. ESVA te garantiza estabilidad, cobertura y soporte técnico confiable."
+  imageUrl="/TecnicoESVA-RedesConectividad.jpg"
+  buttonText="Cotiza tu instalación"
+  buttonLink="Cotiza tu instalación"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20estoy%20interesado%20en%20el%20servicio%20de%20redes%20y%20conectividad%20con%20ESVA."
+/>
+
+<section class="bg-white py-20">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+      ¿Qué soluciones en redes ofrecemos?
+    </h2>
+    <p class="text-gray-600 mb-12 text-lg">
+      Nos especializamos en brindarte conectividad estable, rápida y personalizada para cada necesidad.
+    </p>
+
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+      <!-- Card 1 -->
+      <div class="bg-gray-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+        
+        <Wifi className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Instalación de redes Wi-Fi y LAN" />
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Instalación de redes Wi-Fi y LAN</h3>
+        <p class="text-gray-600">
+          Conectamos tu hogar o empresa con redes rápidas, seguras y adaptadas a tu espacio.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-gray-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+        <Cable className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Cableado estructurado" />
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Cableado estructurado</h3>
+        <p class="text-gray-600">
+          Organiza tu infraestructura de red con materiales de calidad y señal estable.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-gray-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+        <Router className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Configuración de routers y switches" />
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Configuración de routers y switches</h3>
+        <p class="text-gray-600">
+          Optimizamos tus equipos de red para mejorar la velocidad, seguridad y control.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-gray-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+        <Wrench className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Diagnóstico y reparación de red" />
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Diagnóstico y reparación de red</h3>
+        <p class="text-gray-600">
+          Solucionamos fallas de conexión, interferencias y lentitud en tu red cableada o Wi-Fi.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-gray-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+        <Signal className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Ampliación de cobertura" />
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Ampliación de cobertura</h3>
+        <p class="text-gray-600">
+          Eliminamos zonas muertas con repetidores o mallas Wi-Fi. Internet en cada rincón.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-gray-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+        <ShieldCheck className="w-12 h-12 text-blue-900 mx-auto mb-4" aria-label="Seguridad de red y acceso" />
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Seguridad de red y acceso</h3>
+        <p class="text-gray-600">
+          Protegemos tu red con configuraciones seguras, firewalls y control de acceso para usuarios.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-blue-50 py-20">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+      ¿Por qué elegir <span class="text-blue-600">ESVA</span> para tu red?
+    </h2>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <!-- Bullet 1 -->
+      <div class="flex items-start gap-4 text-left">
+        <div class="p-3 bg-blue-100 rounded-full">
+          <SearchCheck className="w-6 h-6 text-blue-700" />
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-1">Diagnóstico sin compromiso</h3>
+          <p class="text-gray-600">
+            Identificamos problemas y te ofrecemos una solución clara y directa.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bullet 2 -->
+      <div class="flex items-start gap-4 text-left">
+        <div class="p-3 bg-blue-100 rounded-full">
+          <Hammer className="w-6 h-6 text-blue-700" />
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-1">Instalación profesional</h3>
+          <p class="text-gray-600">
+            Usamos herramientas certificadas y materiales de calidad.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bullet 3 -->
+      <div class="flex items-start gap-4 text-left">
+        <div class="p-3 bg-blue-100 rounded-full">
+          <Headset className="w-6 h-6 text-blue-700" />
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-1">Soporte técnico experto</h3>
+          <p class="text-gray-600">
+            Te ayudamos a resolver cualquier duda o incidente post-instalación.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bullet 4 -->
+      <div class="flex items-start gap-4 text-left">
+        <div class="p-3 bg-blue-100 rounded-full">
+          <Receipt className="w-6 h-6 text-blue-700" />
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-1">Precios justos y sin letras pequeñas</h3>
+          <p class="text-gray-600">
+            Lo que te ofrecemos es lo que obtienes, sin sorpresas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<LlamadaAction 
+  title="¿Problemas con tu red o conexión?"
+  subtitle="Nuestro equipo puede ayudarte a instalar, reparar o mejorar tu infraestructura de red. ¡Comunícate ahora!"
+  buttonTextContato="Contáctanos"
+  buttonLinkLlamada="LLámanos Ahora"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20redes%20y%20conectividad%20con%20ESVA."
+  textobotonwhatsapp="WhatsApp"/>
+
+<!-- Sección de Testimonios -->
+<section class="bg-blue-50 py-16 px-4 md:px-8 lg:px-24 text-center">
+  <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
+    Lo que dicen nuestros clientes
+  </h2>
+  <p class="text-lg text-gray-600 mb-12">
+    Estas son algunas experiencias reales de personas que confiaron en ESVA para optimizar sus redes.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Testimonio 1 -->
+    <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+      <p class="text-gray-700 text-base mb-4 italic">
+        “Mi conexión a internet en casa siempre fallaba. Con ESVA todo cambió: ahora funciona perfecto en cada rincón. El técnico fue muy claro, rápido y profesional.”
+      </p>
+      <div class="text-blue-900 font-semibold mt-4">María L. – Madre de familia</div>
+    </div>
+
+    <!-- Testimonio 2 -->
+    <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+      <p class="text-gray-700 text-base mb-4 italic">
+        “Montaron toda la red de mi oficina. Fue rápido, limpio y me explicaron todo paso a paso. Desde entonces, cero problemas con la conexión.”
+      </p>
+      <div class="text-blue-900 font-semibold mt-4">Carlos G. – Contador independiente</div>
+    </div>
+
+    <!-- Testimonio 3 -->
+    <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+      <p class="text-gray-700 text-base mb-4 italic">
+        “Me preocupaba el precio, pero el servicio fue justo y sin sorpresas. Además, me resolvieron dudas incluso después de la instalación. Muy recomendables.”
+      </p>
+      <div class="text-blue-900 font-semibold mt-4">Sandra P. – Emprendedora</div>
+    </div>
+  </div>
+</section>
+
+<PreguntasFrecuentes preguntas={preguntasRedes} />
+
+<Footer/>
+<WhatsAppButton/>
+</body>
+</html>

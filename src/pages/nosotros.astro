@@ -1,0 +1,191 @@
+---
+import "../styles/global.css";
+import Navbar from "../Components/Navbar.astro";
+import Hero from "../Components/Hero.astro";
+import Footer from "../Components/Footer.astro";
+import LlamadaAction from "../Components/LlamadaAction.astro";
+import {
+  Wrench,
+  Laptop2,
+  ShieldCheck,
+  Network,
+  Home,
+  Zap,
+  Handshake,
+  Search,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
+import WhatsAppButton from "../Components/WhatsAppButton.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sobre Nosotros | ESVA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body >
+    <main>
+    <Navbar />
+    <Hero 
+    title="Conoce a ESVA: Seguridad y Tecnología a tu Alcance" 
+    subtitle="Líderes en soporte técnico, videovigilancia y control de acceso con atención personalizada para hogares y empresas." 
+    imageUrl="/NosotrosEquipoEsva.svg" 
+    buttonText="Contáctanos" 
+    buttonLink="Escríbenos por WhatsApp"
+    linkwhatsapp="https://wa.me/51985834886?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20servicios"/>
+
+
+    <section class="py-16 bg-white text-gray-800 px-4 md:px-8 lg:px-20">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Nuestra Historia</h2>
+    <p class="text-lg leading-relaxed text-gray-600">
+      ESVA nació en el año <strong>2020</strong> con una misión clara: brindar <strong>soluciones confiables en soporte técnico</strong> y <strong>seguridad electrónica</strong> para hogares y empresas peruanas. Empezamos como un pequeño emprendimiento familiar, motivados por la necesidad de ofrecer un servicio cercano, accesible y eficiente en un sector cada vez más digitalizado.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-600 mt-4">
+      A lo largo de los años, hemos evolucionado incorporando nuevas tecnologías como <strong>lectores biométricos, videovigilancia inteligente y redes personalizadas</strong>. Hoy, combinamos experiencia técnica con atención humana, y seguimos creciendo gracias a la confianza de nuestros clientes, quienes valoran nuestro compromiso, puntualidad y soporte continuo.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-600 mt-4">
+      En ESVA creemos que la tecnología debe estar al servicio de las personas. Por eso, cada proyecto lo tomamos como una oportunidad de ayudar, proteger y construir relaciones duraderas con nuestros clientes.
+    </p>
+  </div>
+</section>
+
+
+<section class="py-16 bg-gray-50 text-gray-800 px-4 md:px-8 lg:px-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-10">Nuestros Valores y Compromisos</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">Confianza</h3>
+        <p class="text-gray-600">
+          Construimos relaciones sólidas con nuestros clientes basadas en la honestidad, la transparencia y la responsabilidad en cada servicio que brindamos.
+        </p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">Innovación</h3>
+        <p class="text-gray-600">
+          Apostamos por soluciones modernas en soporte técnico y seguridad, integrando tecnologías como lectores biométricos, cámaras IP, y redes eficientes.
+        </p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">Compromiso</h3>
+        <p class="text-gray-600">
+          Cada instalación, mantenimiento o asesoría es ejecutada con profesionalismo y dedicación. Estamos contigo antes, durante y después del servicio.
+        </p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">Accesibilidad</h3>
+        <p class="text-gray-600">
+          Creemos que la tecnología debe estar al alcance de todos. Por eso ofrecemos precios justos y atención personalizada para hogares, negocios y entidades.
+        </p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">Calidad Técnica</h3>
+        <p class="text-gray-600">
+          Nuestro equipo técnico está capacitado constantemente para garantizar soluciones duraderas, seguras y efectivas en cada intervención.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-3">Soporte Continuo</h3>
+        <p class="text-gray-600">
+          Más allá de la instalación, estamos disponibles para acompañarte. Brindamos asistencia técnica confiable cuando más lo necesitas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<LlamadaAction 
+  title="¿Listo para llevar la seguridad de tu empresa al siguiente nivel?"
+  subtitle="Contáctanos hoy mismo y descubre cómo podemos ayudarte a proteger tu entorno con tecnología confiable y soporte personalizado."
+  buttonTextContato="Contáctanos"
+  buttonLinkLlamada="LLámanos Ahora"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20mejorar%20la%20seguridad%20de%20mi%20empresa.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%3F"
+  textobotonwhatsapp="Escríbenos por WhatsApp"/>
+
+<section class="py-16 px-4 md:px-8 lg:px-20 text-gray-800">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Tecnologías y Servicios Especializados</h2>
+    <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+      En ESVA, combinamos tecnología de vanguardia con atención personalizada para brindarte soluciones confiables en seguridad y soporte técnico.
+    </p>
+
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
+      <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+        <div class="text-blue-600 mb-4">
+          <i class="fas fa-tools text-4xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Soporte Técnico Integral</h3>
+        <p class="text-gray-600 text-sm">
+          Mantenimiento, reparación, formateo e instalación de software en equipos informáticos.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+        <div class="text-blue-600 mb-4">
+          <i class="fas fa-video text-4xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Cámaras de Seguridad</h3>
+        <p class="text-gray-600 text-sm">
+          Instalación y configuración de sistemas de videovigilancia con monitoreo remoto.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+        <div class="text-blue-600 mb-4">
+          <i class="fas fa-fingerprint text-4xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Control Biométrico</h3>
+        <p class="text-gray-600 text-sm">
+          Lectores de huella, rostro y tarjeta para control de asistencia y acceso seguro.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+        <div class="text-blue-600 mb-4">
+          <i class="fas fa-network-wired text-4xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Redes y Conectividad</h3>
+        <p class="text-gray-600 text-sm">
+          Instalación de redes LAN/WiFi, configuración de routers y cableado estructurado.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+        <div class="text-blue-600 mb-4">
+          <i class="fas fa-bell text-4xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Alarmas y Sensores</h3>
+        <p class="text-gray-600 text-sm">
+          Sistemas de alarma para hogares y negocios, con sensores de movimiento y notificaciones.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+        <div class="text-blue-600 mb-4">
+          <i class="fas fa-chalkboard-teacher text-4xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Capacitación y Asesoría</h3>
+        <p class="text-gray-600 text-sm">
+          Asesoramiento técnico y capacitaciones para clientes sobre el uso de sus sistemas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<Footer/>
+<WhatsAppButton/>
+
+    </main>
+  </body>
+</html>
