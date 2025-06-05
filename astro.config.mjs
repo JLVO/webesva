@@ -4,7 +4,6 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  integrations: [tailwind(), react()],
+  integrations: [tailwind(), react(),sitemap()],
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
-  integrations: [sitemap()],
 });
