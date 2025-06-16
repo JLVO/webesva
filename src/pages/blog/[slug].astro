@@ -1,58 +1,77 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry} from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro'; // Asegúrate que la ruta a tu layout base sea correcta
-import TableOfContents from '../../components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
+import TableOfContents from '../../Components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   
   // Log para depuración (puedes quitarlo una vez que todo funcione)
   console.log('--- Blog Entries for [slug].astro ---');
-  console.log(JSON.stringify(blogEntries.map(e => ({ id: e.id, slug: e.slug, dataTitle: e.data.title })), null, 2));
+  console.log(JSON.stringify(blogEntries.map((e: CollectionEntry<'blog'>) => ({ id: e.id, slug: e.slug, dataTitle: e.data.title })), null, 2));
 
   const paths = blogEntries.map(entry => ({
     params: { slug: entry.slug },
     props: { entry },
+  
   }));
 
   // Log para depuración (puedes quitarlo una vez que todo funcione)
   console.log('--- Generated paths for [slug].astro ---');
-  console.log(JSON.stringify(paths.map(p => p.params.slug), null, 2));
+  console.log(JSON.stringify(paths.map((p: { params: { slug: string } }) => p.params.slug), null, 2));
 
   return paths;
 }
 
-const { entry } = Astro.props;
+//const { entry } = Astro.props;
+const { entry }: { entry: CollectionEntry<'blog'> } = Astro.props;
 const { Content, headings } = await entry.render(); // Extraer headings para la Tabla de Contenidos
 
 // --- Lógica para Posts Relacionados ---
 const MAX_RELATED_POSTS = 3;
 const allPosts = await getCollection('blog');
 
-let relatedPosts = allPosts
+// Define un tipo para los posts con la propiedad commonTags
+// `CollectionEntry<'blog'>` es el tipo base de un post de Astro, y le añadimos `commonTags`
+type PostWithCommonTags = CollectionEntry<'blog'> & { commonTags: number };
+
+// Calcula los commonTags y ordena todos los posts (excepto el actual)
+const postsWithCalculatedTags: PostWithCommonTags[] = allPosts
   .filter(p => p.slug !== entry.slug) // Excluir el post actual
   .map(p => {
-    const commonTags = p.data.tags && entry.data.tags 
-      ? p.data.tags.filter(tag => entry.data.tags.includes(tag)).length
-      : 0;
-    return { ...p, commonTags };
+    // Aseguramos que 'tags' es un array, incluso si es undefined en el frontmatter
+    const postTags = p.data.tags || [];
+    const currentEntryTags = entry.data.tags || [];
+
+    const commonTags = postTags.filter(tag => currentEntryTags.includes(tag)).length;
+    return { ...p, commonTags } as PostWithCommonTags; // Casteamos explícitamente a PostWithCommonTags
   })
   .sort((a, b) => {
     // Priorizar por número de tags en común, luego por fecha de publicación
     if (b.commonTags !== a.commonTags) {
       return b.commonTags - a.commonTags;
     }
-    return new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf();
-  })
-  .slice(0, MAX_RELATED_POSTS);
+    const dateA = new Date(a.data.pubDate).valueOf();
+    const dateB = new Date(b.data.pubDate).valueOf();
+    return dateB - dateA;
+  });
 
-// Si después de filtrar por tags no tenemos suficientes, 
+// Ahora, 'relatedPosts' se declara con 'let' y se le asigna el slice inicial
+// Su tipo ya es PostWithCommonTags[]
+let relatedPosts: PostWithCommonTags[] = postsWithCalculatedTags.slice(0, MAX_RELATED_POSTS);
+
+// Si después de filtrar por tags no tenemos suficientes,
 // y queremos rellenar con los más recientes (opcional, pero buena idea)
 if (relatedPosts.length < MAX_RELATED_POSTS) {
-  const recentPosts = allPosts
-    .filter(p => p.slug !== entry.slug && !relatedPosts.find(rp => rp.slug === p.slug)) // Excluir actual y ya seleccionados
+  // Filtramos los recientes que no estén ya en relatedPosts
+  const recentPostsToAdd = allPosts
+    .filter(p => p.slug !== entry.slug && !relatedPosts.some(rp => rp.slug === p.slug))
     .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
-  relatedPosts = [...relatedPosts, ...recentPosts.slice(0, MAX_RELATED_POSTS - relatedPosts.length)];
+
+  // Tomamos solo los posts necesarios para alcanzar MAX_RELATED_POSTS
+  const numToFetch = MAX_RELATED_POSTS - relatedPosts.length;
+  relatedPosts = [...relatedPosts, ...recentPostsToAdd.slice(0, numToFetch).map(p => ({ ...p, commonTags: 0 }) as PostWithCommonTags)];
+  // Añadimos commonTags: 0 a los posts recientes que se agregan, para que coincidan con el tipo
 }
 ---
 <BaseLayout pageTitle={entry.data.title} metaDescription={entry.data.description}>
@@ -60,7 +79,7 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{entry.data.title}</h1>
       {entry.data.image?.url && (
-        <img src={entry.data.image.url} alt={entry.data.image.alt || entry.data.title} class="w-full h-auto object-cover rounded-lg shadow-lg mb-8 max-h-96" />
+        <img src={entry.data.image.url.src} alt={entry.data.image.alt || entry.data.title} class="w-full h-auto object-cover rounded-lg shadow-lg mb-8 max-h-96" />
       )}
       
       <p class="text-gray-600 text-md">
@@ -102,12 +121,7 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
             <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               {post.data.image?.url && (
                 <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
-                  <img 
-                    src={post.data.image.url} 
-                    alt={post.data.image.alt || post.data.title} 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  <img src={post.data.image.url.src} alt={post.data.image.alt || post.data.title} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
                 </a>
               )}
               <div class="p-6 flex flex-col flex-grow">
