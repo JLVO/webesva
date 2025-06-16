@@ -1,0 +1,55 @@
+---
+// src/components/CallToAction.astro
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  message?: string;
+  buttonText?: string;
+  whatsappLink?: string;
+  footerText?: string;
+}
+
+const {
+  title = "¡Tu Productividad No Puede Esperar!", // Valor por defecto
+  subtitle = "¿Cansado de que tu PC te deje en visto en el peor momento? No pierdas horas valiosas ni arriesgues tus datos.", // Valor por defecto
+  message = "En <strong class='font-semibold text-yellow-300'>ESVA Seguridad y Protección a tu Alcance</strong>, somos los expertos en <strong class='font-semibold text-yellow-300'>Soporte Técnico en Piura</strong> y estamos listos para solucionar cualquier problema con tu PC o infraestructura tecnológica. ¡Recupera la tranquilidad y la eficiencia ahora mismo!", // Valor por defecto
+  buttonText = "Contacta a ESVA por WhatsApp", // Valor por defecto
+  whatsappLink = "https://wa.me/51985834886?text=Hola%20ESVA,%20estoy%20interesado%20en%20sus%20servicios%20de%20mantenimiento%20preventivo%20para%20empresas%20y%20soporte%20t%C3%A9cnico.%20%C2%BFPodemos%20conversar?", // Valor por defecto
+  footerText = "Haz clic para una solución rápida y profesional en Piura.", // Valor por defecto
+} = Astro.props;
+---
+
+<section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-8 md:py-10 rounded-xl shadow-lg mx-auto max-w-4xl mt-8 mb-8 p-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-3 leading-tight" set:html={title} />
+    <h3 class="text-lg md:text-xl font-light mb-6 opacity-90" set:html={subtitle} />
+    <p class="text-base md:text-lg mb-6 max-w-2xl mx-auto text-black" set:html={message} />
+
+    <a href={whatsappLink}
+       class="inline-flex 
+            items-center 
+            bg-green-500 
+            hover:bg-green-600 
+            text-white 
+            font-bold 
+            py-0.1
+            px-3 
+            rounded-full 
+            shadow-lg 
+            transform 
+            transition 
+            duration-300 
+            ease-in-out 
+            hover:scale-105 
+            text-base 
+            md:text-lg 
+            focus:outline-none 
+            focus:ring-4 
+            focus:ring-green-400 
+            focus:ring-opacity-75"
+       target="_blank" rel="noopener noreferrer">
+        <img src="https://img.icons8.com/color/36/ffffff/whatsapp--v1.png" alt="Icono de WhatsApp" class="w-5 h-5 mr-2"/>
+        {buttonText}
+    </a>
+    <p class="mt-3 text-sm opacity-80" set:html={footerText} />
+</section>

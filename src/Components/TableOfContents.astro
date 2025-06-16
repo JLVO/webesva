@@ -1,0 +1,73 @@
+---
+// src/components/TableOfContents.astro
+
+export interface Props {
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[];
+}
+
+const { headings } = Astro.props;
+
+// Filtra qué niveles de encabezado quieres incluir, asegurándote de que headings exista y sea un array.
+const filteredHeadings = Array.isArray(headings)
+  ? headings.filter(
+      (heading) => heading.depth >= 2 && heading.depth <= 3 // Por ejemplo, H2 y H3
+    )
+  : [];
+---
+
+<nav aria-labelledby="on-this-page-title" class="table-of-contents">
+  <h2 id="on-this-page-title">En este artículo:</h2>
+  <ul>
+    {filteredHeadings.map((heading) => (
+      <li>
+        <a href={`#${heading.slug}`} class={`depth-${heading.depth}`}>
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .table-of-contents {
+    background-color: #f9f9f9;
+    border-left: 3px solid #007bff;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    font-size: 0.95em;
+  }
+  .table-of-contents h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  .table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .table-of-contents li {
+    margin-bottom: 8px;
+  }
+  .table-of-contents a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.2s ease;
+  }
+  .table-of-contents a:hover {
+    color: #0056b3;
+  }
+  .table-of-contents .depth-2 {
+    font-weight: bold;
+    margin-left: 0;
+  }
+  .table-of-contents .depth-3 {
+    margin-left: 15px; /* Indentación para subsecciones */
+    color: #555;
+  }
+  /* Puedes añadir más estilos para profundidades mayores si las incluyes */
+</style>

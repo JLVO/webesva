@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro'; // Asegúrate que la ruta a tu layout base sea correcta
+import TableOfContents from '../../components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  
+  // Log para depuración (puedes quitarlo una vez que todo funcione)
+  console.log('--- Blog Entries for [slug].astro ---');
+  console.log(JSON.stringify(blogEntries.map(e => ({ id: e.id, slug: e.slug, dataTitle: e.data.title })), null, 2));
+
+  const paths = blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+
+  // Log para depuración (puedes quitarlo una vez que todo funcione)
+  console.log('--- Generated paths for [slug].astro ---');
+  console.log(JSON.stringify(paths.map(p => p.params.slug), null, 2));
+
+  return paths;
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render(); // Extraer headings para la Tabla de Contenidos
+
+// --- Lógica para Posts Relacionados ---
+const MAX_RELATED_POSTS = 3;
+const allPosts = await getCollection('blog');
+
+let relatedPosts = allPosts
+  .filter(p => p.slug !== entry.slug) // Excluir el post actual
+  .map(p => {
+    const commonTags = p.data.tags && entry.data.tags 
+      ? p.data.tags.filter(tag => entry.data.tags.includes(tag)).length
+      : 0;
+    return { ...p, commonTags };
+  })
+  .sort((a, b) => {
+    // Priorizar por número de tags en común, luego por fecha de publicación
+    if (b.commonTags !== a.commonTags) {
+      return b.commonTags - a.commonTags;
+    }
+    return new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf();
+  })
+  .slice(0, MAX_RELATED_POSTS);
+
+// Si después de filtrar por tags no tenemos suficientes, 
+// y queremos rellenar con los más recientes (opcional, pero buena idea)
+if (relatedPosts.length < MAX_RELATED_POSTS) {
+  const recentPosts = allPosts
+    .filter(p => p.slug !== entry.slug && !relatedPosts.find(rp => rp.slug === p.slug)) // Excluir actual y ya seleccionados
+    .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
+  relatedPosts = [...relatedPosts, ...recentPosts.slice(0, MAX_RELATED_POSTS - relatedPosts.length)];
+}
+---
+<BaseLayout pageTitle={entry.data.title} metaDescription={entry.data.description}>
+  <article class="container mx-auto pt-12 pb-8 px-6 max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{entry.data.title}</h1>
+      {entry.data.image?.url && (
+        <img src={entry.data.image.url} alt={entry.data.image.alt || entry.data.title} class="w-full h-auto object-cover rounded-lg shadow-lg mb-8 max-h-96" />
+      )}
+      
+      <p class="text-gray-600 text-md">
+        Publicado el: {entry.data.pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {entry.data.author && ` por ${entry.data.author}`}
+      </p>
+    </header>
+    
+    {/* Renderizar la Tabla de Contenidos si hay encabezados y tiene elementos */}
+    {headings && headings.length > 0 && (
+      <aside class="mb-8 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg shadow">
+        <TableOfContents headings={headings} />
+      </aside>
+    )}
+    <div class="prose prose-lg max-w-none"> {/* 'prose' es útil si usas Tailwind Typography */}
+      <Content />
+    </div>
+
+    {entry.data.tags && entry.data.tags.length > 0 && (
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <p class="font-semibold text-lg mb-3">Etiquetas:</p>
+        <div class="flex flex-wrap gap-3">
+          {entry.data.tags.map(tag => (
+            // Considera crear una página de etiquetas en el futuro: /tags/[tag].astro
+            <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm">{tag}</span>
+          ))}
+        </div>
+      </footer>
+    )}
+    <div class="mt-12">
+      <a href="/blog" class="text-blue-600 hover:underline text-lg">&larr; Volver al Blog</a>
+    </div>
+
+    {relatedPosts.length > 0 && (
+      <section class="mt-16 pt-8 border-t border-gray-200">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900">Posts Relacionados</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {relatedPosts.map(post => (
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+              {post.data.image?.url && (
+                <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                  <img 
+                    src={post.data.image.url} 
+                    alt={post.data.image.alt || post.data.title} 
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </a>
+              )}
+              <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                  <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
+                    {post.data.title}
+                  </a>
+                </h3>
+                {post.data.description && (
+                  <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}</p>
+                )}
+                <p class="text-xs text-gray-500 mb-4">
+                  {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </p>
+                <div class="mt-auto pt-2">
+                  <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
+                    Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

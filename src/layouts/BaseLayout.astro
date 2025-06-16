@@ -1,0 +1,57 @@
+---
+// import BaseLayout from '../../layouts/BaseLayout.astro'; // Eliminada importación circular
+import Navbar from '../Components/Navbar.astro'; // Asegúrate que la ruta sea correcta
+import Footer from '../Components/Footer.astro';   // Asegúrate que la ruta sea correcta
+import WhatsAppButton from '../Components/WhatsAppButton.astro'; // Asegúrate que la ruta sea correcta
+import '../styles/global.css'; // Importa tus estilos globales
+// import TableOfContents from '../Components/TableOfContents.astro'; // Comentado temporalmente
+// const { frontmatter } = Astro.props; // Comentado, frontmatter no se pasa explícitamente aquí desde [slug].astro
+// Esto es crucial: Astro pasa los encabezados de tu MD/MDX a través de Astro.props.
+// Accedemos a ellos usando Astro.props.headings
+// const headings = Astro.props.headings; // Comentado temporalmente
+
+export interface Props {
+  pageTitle: string;
+  metaDescription?: string; // Para descripciones meta en cada página
+}
+const { pageTitle, metaDescription } = Astro.props;
+const siteTitle = "ESVA";
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{pageTitle} | {siteTitle}</title>
+  <link rel="icon" type="image/svg+xml" href="/FaviconESVA.svg"/>
+  {metaDescription && <meta name="description" content={metaDescription} />}
+
+  <!-- Scripts de Analytics/GTM (como en contactanos.astro) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-365MN03V4H');
+  </script>
+  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <Navbar />
+  <main class="pt-8 md:pt-12"> <!-- Ajusta el padding-top si tu Navbar es fixed y tiene altura variable -->
+    <slot /> <!-- El contenido específico de cada página se insertará aquí -->
+  </main>
+  <Footer />
+  <WhatsAppButton />
+</body>
+</html>

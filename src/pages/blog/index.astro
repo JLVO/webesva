@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+  // Puedes añadir filtros aquí, por ejemplo, para no mostrar borradores:
+  // return data.draft !== true;
+  return true; // Por ahora, mostrar todos los posts
+});
+
+// Ordenar posts por fecha de publicación, los más recientes primero
+allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
+
+// 1. Extraer todas las categorías únicas de los tags de los posts
+const allCategories = [...new Set(allPosts.flatMap(post => post.data.tags || []))].sort();
+
+// 2. Obtener la categoría seleccionada de los parámetros de la URL
+const selectedCategory = Astro.url.searchParams.get('categoria');
+
+// 3. Filtrar los posts si se ha seleccionado una categoría
+let filteredPosts = allPosts;
+if (selectedCategory) {
+  filteredPosts = allPosts.filter(post => 
+    post.data.tags && post.data.tags.includes(selectedCategory)
+  );
+}
+
+const pageTitle = selectedCategory ? `Blog - ${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}` : "Blog";
+const metaDescription = selectedCategory 
+  ? `Artículos y noticias sobre ${selectedCategory} en el blog de ESVA.`
+  : "Lee nuestras últimas noticias y artículos sobre seguridad y soporte técnico.";
+---
+
+<BaseLayout pageTitle={pageTitle} metaDescription={metaDescription}>
+  <div class="container mx-auto pt-1 pb-8 px-6">
+    
+    <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+      <!-- Sidebar de Categorías -->
+      <aside class="w-full md:w-1/4 lg:w-1/5 md:sticky md:top-28 self-start"> {/* md:top-28 para compensar altura del navbar + padding */}
+        <h2 class="text-xl font-semibold mb-4 text-gray-800 border-b pb-2">Categorías</h2>
+        <ul class="space-y-2">
+          <li>
+            <a 
+              href="/blog" 
+              class:list={[
+                "block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors",
+                !selectedCategory ? "bg-blue-600 text-white" : "text-gray-700"
+              ]}
+            >
+              Todas las Categorías
+            </a>
+          </li>
+          {allCategories.map(category => (
+            <li>
+              <a 
+                href={`/blog?categoria=${encodeURIComponent(category)}`}
+                class:list={[
+                  "block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors",
+                  selectedCategory === category ? "bg-blue-600 text-white" : "text-gray-700"
+                ]}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      <!-- Listado de Posts -->
+      <main class="w-full md:w-3/4 lg:w-4/5">
+        <header class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Nuestro Blog</h1>
+          <p class="text-lg text-gray-600 mt-2">
+            {selectedCategory 
+              ? `Mostrando artículos de la categoría: ${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}`
+              : "Noticias, consejos y actualizaciones de ESVA."}
+          </p>
+        </header>
+        {filteredPosts.length === 0 ? (
+          <p class="text-center text-gray-600 text-xl py-10">
+            {selectedCategory 
+              ? `No hay publicaciones en la categoría "${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}".` 
+              : "Aún no hay publicaciones en el blog. ¡Vuelve pronto!"}
+          </p>
+        ) : (
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8"> {/* Ajustado para mejor responsividad con sidebar */}
+            {filteredPosts.map(post => (
+              <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                {post.data.image?.url && (
+                  <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                    <img 
+                      src={post.data.image.url} 
+                      alt={post.data.image.alt || post.data.title} 
+                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+                <div class="p-6 flex flex-col flex-grow">
+                  <h2 class="text-xl font-semibold mb-3 text-gray-800">
+                    <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  {post.data.description && (
+                    <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description}</p>
+                  )}
+                  <p class="text-xs text-gray-500 mb-4">
+                    {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </p>
+                  <div class="mt-auto pt-2">
+                    <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
+                      Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </main>
+    </div>
+  </div>
+</BaseLayout>
