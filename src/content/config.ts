@@ -11,7 +11,7 @@ const blogCollection = defineCollection({
     author: z.string().optional(),
     tags: z.array(z.string()).optional(), // Un array de strings para las etiquetas
     image: z.object({ // Definición para la imagen principal del frontmatter
-      url: image().optional(), // Usa image() para validar la imagen, puede ser opcional
+      url: z.string().optional(), // Usa image() para validar la imagen, puede ser opcional
       alt: z.string().optional(),
     }).optional(),
   }),

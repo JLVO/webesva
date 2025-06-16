@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry} from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro'; // Asegúrate que la ruta a tu layout base sea correcta
-import TableOfContents from '../../Components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
+import TableOfContents from '../../components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
