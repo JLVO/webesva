@@ -89,7 +89,7 @@ const metaDescription = selectedCategory
                 {post.data.image?.url && (
                   <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
                     <img
-  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url.src}
+  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url}
   alt={post.data.image.alt || post.data.title}
   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
   loading="lazy"
