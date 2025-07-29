@@ -1,50 +1,84 @@
 ---
-const { title, subtitle, buttonTextContato, buttonLinkLlamada,linkwhatsapp,textobotonwhatsapp } = Astro.props;
-import {
-  MessageCircle,
-  Phone,
-  Mail,
-} from "lucide-react";
+const { title, subtitle, buttonTextContato, buttonLinkLlamada, linkwhatsapp, textobotonwhatsapp } = Astro.props;
+import { MessageCircle, Phone, Mail } from "lucide-react";
 ---
-<section class="bg-blue-950 py-16 px-6 text-center text-white">
-  <div class="max-w-4xl mx-auto">
-    
-    <h2 class="text-2xl md:text-4xl font-bold mb-4">
-     {title}
-    </h2>
-    <p class="text-lg md:text-xl mb-10">
-      {subtitle}
-    </p>
 
-    <div class="flex flex-col md:flex-row justify-center gap-6">
-      {/* Botón WhatsApp 1 */}
+<section class="bg-gradient-to-r from-blue-900 to-blue-700 py-16 px-6 text-center text-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="max-w-3xl mx-auto mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+        {title}
+      </h2>
+      <p class="text-xl md:text-xl opacity-90">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-8">
+      <!-- WhatsApp Button -->
       <a
         href={linkwhatsapp}
         target="_blank"
-        class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-medium transition duration-300"
+        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
       >
-        <MessageCircle className="w-5 h-5" />
-        {textobotonwhatsapp}
+        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+            <MessageCircle className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-xl font-bold mb-2">{textobotonwhatsapp}</h3>
+          <p class="text-sm opacity-80">Respuesta inmediata</p>
+        </div>
       </a>
 
-      {/* Botón Llamada*/}
+      <!-- Phone Button -->
       <a
         href="tel:+51985834886"
-        target="_blank"
-        class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-medium transition duration-300"
+        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
       >
-        <Phone className="w-5 h-5" />
-        {buttonLinkLlamada}
+        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+            <Phone className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-xl font-bold mb-2">{buttonLinkLlamada}</h3>
+          <p class="text-sm opacity-80">Llamada directa</p>
+        </div>
       </a>
 
-      {/* Botón de contacto */}
+      <!-- Contact Button -->
       <a
         href="../contactanos"
-        class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-700 px-6 py-3 rounded-full text-lg font-medium transition duration-300"
+        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
       >
-        <Mail className="w-5 h-5"/>
-        {buttonTextContato}
+        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+            <Mail className="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-xl font-bold mb-2">{buttonTextContato}</h3>
+          <p class="text-sm opacity-80">Formulario de contacto</p>
+        </div>
       </a>
+    </div>
+
+    <div class="mt-12 text-sm opacity-80 max-w-2xl mx-auto">
+      <p>¿Prefieres otro método? Contáctanos por correo: <a href="mailto:contacto@esva.pe" class="underline hover:opacity-90">contacto@esva.pe</a></p>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  section {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  a {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+</style>

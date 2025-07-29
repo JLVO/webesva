@@ -11,7 +11,7 @@ const { title, subtitle, imageUrl, buttonText, buttonLink,linkwhatsapp } = Astro
   <div class="absolute inset-0 bg-gradient-to-r from-blue-800/80 to-blue-600/80 z-0"></div>
 
   <!-- Contenido principal -->
-  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+  <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
     
     <!-- Texto -->
     <div class="animate-fade-in-left">
@@ -34,7 +34,7 @@ const { title, subtitle, imageUrl, buttonText, buttonLink,linkwhatsapp } = Astro
     </div>
 
     <!-- Imagen -->
-    <div class="animate-fade-in-right flex justify-center">
+    <div class="animate-fade-in-right flex justify-center md:pt-12">
       <img src={imageUrl} alt="Soporte técnico y seguridad" class="w-full max-w-md" loading="lazy" />
     </div>
 
