@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import { getCollection, type CollectionEntry } from 'astro:content';
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import Footer from "../components/Footer.astro";
@@ -18,13 +17,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import LlamadaAction from "../components/LlamadaAction.astro";
-
-// Lógica para obtener los posts del blog
-const MAX_RECENT_POSTS = 3;
-const allPosts = await getCollection('blog');
-const recentPosts = allPosts
-  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .slice(0, MAX_RECENT_POSTS);
+import Blog from "../components/Blog.astro";
 
 ---
 
@@ -463,49 +456,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-<!-- <section class="bg-slate-50 py-16">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-4xl font-bold mb-4 text-gray-800">¿Por qué elegir a ESVA?</h2>
-    <p class="text-lg text-gray-700 mb-12">
-      En ESVA no solo reparamos computadoras, te acompañamos con soluciones técnicas cercanas, profesionales y orientadas a tu tranquilidad digital.
-    </p>
-
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 text-left">
-      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-        <Zap className="w-12 h-12 text-primary mb-4" aria-label="Atención Rápida" />
-        <h3 class="text-xl font-semibold mb-2">Atención Rápida</h3>
-        <p class="text-gray-600">Respondemos el mismo día para que no pierdas tiempo ni productividad.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-        <Handshake className="w-12 h-12 text-primary mb-4" aria-label="Confianza y Cercanía" />
-        <h3 class="text-xl font-semibold mb-2">Confianza y Cercanía</h3>
-        <p class="text-gray-600">Nos preocupamos por ti y tu equipo como si fuera el nuestro. Siempre con atención personalizada.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-        <Search className="w-12 h-12 text-primary mb-4" aria-label="Diagnóstico Profesional" />
-        <h3 class="text-xl font-semibold mb-2">Diagnóstico Profesional</h3>
-        <p class="text-gray-600">Evaluamos tus equipos con herramientas actualizadas para darte una solución precisa.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
-        <MapPin className="w-12 h-12 text-primary mb-4" aria-label="Diagnóstico Profesional" />
-        <h3 class="text-xl font-semibold mb-2">Cobertura Local</h3>
-        <p class="text-gray-600">Estamos donde nos necesitas, ya sea en tu casa, oficina o a distancia. También brindamos soporte remoto.</p>
-      </div>
-    </div>
-
-    <div class="mt-12">
-      <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20soporte%20t%C3%A9cnico." 
-      target="_blank" 
-      class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full shadow-lg text-lg font-semibold transition duration-300"
-      aria-label="Escríbenos por WhatsApp">
-       
-      <MessageCircle className="w-6 h-6" />
-        Escríbenos por WhatsApp
-      </a>
-    </div>
-  </div>
-</section> -->
-
 <section class="py-16 bg-slate-200">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 class="text-4xl font-bold mb-4 text-gray-800">¿Por qué elegir a ESVA?</h2>
@@ -629,7 +579,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.animate-fade-in');
+    const cards = document.querySelectorAll<HTMLElement>('.animate-fade-in');
     cards.forEach((card, index) => {
       card.style.animationDelay = `${index * 0.1}s`;
     });
@@ -644,59 +594,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   linkwhatsapp="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad%20y%20protecci%C3%B3n.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%3F"
   textobotonwhatsapp="WhatsApp"/>
 
-
-<!-- <section class="bg-blue-100 py-16">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Así Trabajamos con Tecnología de Confianza</h2>
-    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-      Nuestro proceso es ágil, transparente y está respaldado por marcas líderes del mercado para garantizar resultados profesionales en cada servicio.
-    </p>
-
-    -- Proceso de trabajo --
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center mb-16">
-      <div>
-        <div class="text-green-600 text-4xl mb-2">1️⃣</div>
-        <h3 class="font-semibold text-lg">Diagnóstico rápido</h3>
-        <p class="text-sm text-gray-600">Identificamos el problema y evaluamos las mejores soluciones.</p>
-      </div>
-      <div>
-        <div class="text-green-600 text-4xl mb-2">2️⃣</div>
-        <h3 class="font-semibold text-lg">Propuesta clara</h3>
-        <p class="text-sm text-gray-600">Enviamos una cotización detallada y sin compromiso.</p>
-      </div>
-      <div>
-        <div class="text-green-600 text-4xl mb-2">3️⃣</div>
-        <h3 class="font-semibold text-lg">Solución profesional</h3>
-        <p class="text-sm text-gray-600">Aplicamos soluciones efectivas con herramientas y repuestos originales.</p>
-      </div>
-      <div>
-        <div class="text-green-600 text-4xl mb-2">4️⃣</div>
-        <h3 class="font-semibold text-lg">Soporte garantizado</h3>
-        <p class="text-sm text-gray-600">Brindamos garantía, seguimiento y soporte técnico post-servicio.</p>
-      </div>
-    </div>
-
-    -- Marcas tecnológicas --
-    <h3 class="text-xl font-bold text-center text-gray-800 mb-6">Confiamos en marcas líderes</h3>
-    <div class="flex flex-wrap justify-center items-center gap-6">
-      <img src="/LogoZKTecoNuevo.svg" alt="ZKTeco" class="h-12">
-      <img src="/LogoHikvision.svg" alt="Hikvision" class="h-12">
-      <img src="/LogoWindows.svg" alt="Windows" class="h-12">
-      <img src="/LogoLinux.svg" alt="Linux" class="h-12">
-      <img src="/LogoMikrotik.svg" alt="Mikrotik" class="h-12">
-      <img src="/LogoUbiquiti.svg" alt="Ubiquiti" class="h-12">
-    </div>
-
-    !-- CTA --
-    <div class="text-center mt-12">
-      <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20quiero%20saber%20más%20sobre%20su%20proceso%20de%20trabajo." 
-         target="_blank"
-         class="inline-block bg-green-600 text-white px-8 py-4 rounded-full shadow-lg text-lg font-semibold hover:bg-green-700 transition duration-300">
-        Escríbenos y te contamos cómo trabajamos
-      </a>
-    </div>
-  </div>
-</section> -->
 
 <section class="py-16 bg-gradient-to-br from-blue-50 to-blue-100">
   <div class="max-w-6xl mx-auto px-4">
@@ -849,166 +746,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<style>
-  .brand-logo {
-    transition: all 0.3s ease;
-  }
-  
-  .brand-logo:hover {
-    transform: translateY(-5px);
-  }
-  
-  section {
-    background-image: radial-gradient(circle at 10% 20%, rgba(191, 219, 254, 0.2) 0%, rgba(191, 219, 254, 0) 90%);
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .grid > div {
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 0;
-  }
-  
-  .grid > div:nth-child(1) { animation-delay: 0.1s; }
-  .grid > div:nth-child(2) { animation-delay: 0.2s; }
-  .grid > div:nth-child(3) { animation-delay: 0.3s; }
-  .grid > div:nth-child(4) { animation-delay: 0.4s; }
-</style>
-
-
-<!-- Sección del Blog -->
- {recentPosts.length > 0 && (
-  <section class="bg-slate-100 py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Descubre Nuestro Blog Técnico</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Mantente actualizado con los últimos consejos, tendencias tecnológicas y soluciones para tu negocio o hogar.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recentPosts.map(post => (
-          <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-            {post.data.image?.url && (
-              <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
-                <img 
-                  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url} 
-                  alt={post.data.image.alt || post.data.title} 
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-                  loading="lazy" 
-                />
-              </a>
-            )}
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-semibold mb-3 text-gray-800">
-                <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
-                  {post.data.title}
-                </a>
-              </h3>
-              {post.data.description && (
-                <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}</p>
-              )}
-              <p class="text-xs text-gray-500 mb-4">
-                {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </p>
-              <div class="mt-auto pt-2">
-                <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
-                  Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-      {allPosts.length > MAX_RECENT_POSTS && (
-        <div class="text-center mt-16">
-          <a href="/blog" 
-             class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full shadow-lg text-lg font-semibold transition duration-300 transform hover:scale-105">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-            Explorar todos nuestros artículos
-          </a>
-          
-          <p class="mt-6 text-gray-600 max-w-md mx-auto">
-            Más de {allPosts.length} artículos técnicos esperándote en nuestro blog
-          </p>
-        </div>
-      )}
-    </div>
-  </section>
-)} 
-
-
-
-<!-- <section class="bg-white py-16 px-4">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
-      ¿Tienes dudas o necesitas ayuda?
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      
-      - Preguntas Frecuentes --
-      <div>
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Preguntas Frecuentes</h3>
-        <div class="space-y-4">
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="cursor-pointer text-gray-800 font-semibold">¿Qué servicios brindan exactamente?</summary>
-            <p class="mt-2 text-gray-600">Ofrecemos soporte técnico, mantenimiento preventivo, instalación de redes, cámaras de seguridad, lectores biométricos y más.</p>
-          </details>
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="cursor-pointer text-gray-800 font-semibold">¿Atienden a empresas o también a personas?</summary>
-            <p class="mt-2 text-gray-600">Atendemos a ambos: empresas, instituciones y clientes individuales.</p>
-          </details>
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="cursor-pointer text-gray-800 font-semibold">¿En qué zonas brindan servicio?</summary>
-            <p class="mt-2 text-gray-600">Atendemos Piura y algunas otras provincias, dependiendo del servicio requerido.</p>
-          </details>
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="cursor-pointer text-gray-800 font-semibold">¿Cuánto tiempo toman en responder?</summary>
-            <p class="mt-2 text-gray-600">Generalmente respondemos en menos de 30 minutos por WhatsApp o correo electrónico.</p>
-          </details>
-        </div>
-      </div>
-
-      -- Formulario de Contacto --
-      <div>
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Contáctanos</h3>
-        <form class="space-y-4">
-          <input type="text" placeholder="Tu nombre" required
-            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <input type="email" placeholder="Correo electrónico" required
-            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <textarea placeholder="Cuéntanos tu necesidad..." required rows="4"
-            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-
-          <div class="flex flex-col sm:flex-row sm:gap-4">
-            <button type="submit"
-              class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition w-full sm:w-auto">
-              Enviar mensaje
-            </button>
-            <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20necesito%20más%20información%20sobre%20sus%20servicios%20de%20soporte%20técnico"
-              target="_blank"
-              class="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition mt-3 sm:mt-0 w-full sm:w-auto text-center">
-              Escríbenos por WhatsApp
-            </a>
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section> -->
-
+<Blog/>
 
 <section class="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
   <div class="max-w-6xl mx-auto">
@@ -1279,27 +1017,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const faqQuestions = document.querySelectorAll('.faq-question');
     
     faqQuestions.forEach(question => {
-      question.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const icon = this.querySelector('svg');
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('svg');
         
         // Cerrar otras respuestas
         document.querySelectorAll('.faq-answer').forEach(ans => {
           if (ans !== answer) {
             ans.classList.add('hidden');
-            ans.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+            const prevQuestion = ans.previousElementSibling;
+            if (prevQuestion) {
+              const prevIcon = prevQuestion.querySelector('svg');
+              if (prevIcon) {
+                prevIcon.classList.remove('rotate-180');
+              }
+            }
           }
         });
         
         // Alternar respuesta actual
-        answer.classList.toggle('hidden');
-        icon.classList.toggle('rotate-180');
-        
-        // Animación suave
-        if (!answer.classList.contains('hidden')) {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        } else {
-          answer.style.maxHeight = '0';
+        if (answer && icon) {
+          answer.classList.toggle('hidden');
+          icon.classList.toggle('rotate-180');
+          
+          // Animación suave
+          if (!answer.classList.contains('hidden')) {
+            (answer as HTMLElement).style.maxHeight = answer.scrollHeight + 'px';
+          } else {
+            (answer as HTMLElement).style.maxHeight = '0';
+          }
         }
       });
     });
@@ -1350,7 +1096,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const contents = document.querySelectorAll('.category-content');
             
             tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function(this: HTMLElement) {
                     const category = this.getAttribute('data-category');
                     
                     // Actualizar pestañas activas
@@ -1359,12 +1105,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     // Actualizar contenido visible
                     contents.forEach(content => content.classList.add('hidden'));
-                    document.getElementById(`${category}-content`).classList.remove('hidden');
+                    const contentToShow = document.getElementById(`${category}-content`);
+                    if (contentToShow) {
+                        contentToShow.classList.remove('hidden');
+                    }
                 });
             });
             
             // Animación para las tarjetas
-            const cards = document.querySelectorAll('.animate-fade-in');
+            const cards = document.querySelectorAll<HTMLElement>('.animate-fade-in');
             cards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
             });
