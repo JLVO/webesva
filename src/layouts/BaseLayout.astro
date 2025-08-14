@@ -1,16 +1,25 @@
 ---
-// import BaseLayout from '../../layouts/BaseLayout.astro'; // Eliminada importación circular
-import Navbar from '../components/Navbar.astro'; // Asegúrate que la ruta sea correcta
-import Footer from '../components/Footer.astro';   // Asegúrate que la ruta sea correcta
-import WhatsAppButton from '../components/WhatsAppButton.astro'; // Asegúrate que la ruta sea correcta
-import '../styles/global.css'; // Importa tus estilos globales
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
 
 export interface Props {
   pageTitle: string;
-  metaDescription?: string; // Para descripciones meta en cada página
+  metaDescription?: string;
+  ogImage?: string; // URL relativa de la imagen para Open Graph
+  canonicalUrl?: URL | string;
 }
-const { pageTitle, metaDescription } = Astro.props;
+
+const { pageTitle, metaDescription, ogImage, canonicalUrl } = Astro.props;
 const siteTitle = "ESVA";
+const fullTitle = `${pageTitle} | ${siteTitle}`;
+
+// Construye la URL absoluta para la imagen de Open Graph
+const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site).href : new URL('/LogoESVA.png', Astro.site).href;
+
+// Determina la URL canónica
+const finalCanonicalUrl = canonicalUrl ? new URL(canonicalUrl.toString(), Astro.site).href : Astro.url.href;
 
 const schema = {
   "@context": "https://schema.org",
@@ -46,11 +55,28 @@ const schema = {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{pageTitle} | {siteTitle}</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>{fullTitle}</title>
+  <meta name="description" content={metaDescription || schema.description} />
   <link rel="icon" type="image/svg+xml" href="/faviconESVANUEVO.svg"/>
-  {metaDescription && <meta name="description" content={metaDescription} />}
+  <link rel="canonical" href={finalCanonicalUrl} />
 
-  <!-- Scripts de Analytics/GTM (como en contactanos.astro) -->
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={metaDescription || schema.description} />
+  <meta property="og:url" content={finalCanonicalUrl} />
+  <meta property="og:image" content={absoluteOgImage} />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content={siteTitle} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={metaDescription || schema.description} />
+  <meta name="twitter:image" content={absoluteOgImage} />
+
+  <!-- Scripts de Analytics/GTM -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
@@ -64,7 +90,7 @@ const schema = {
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
 
-  <!-- Datos Estructurados (JSON-LD) para SEO Local -->
+  <!-- Datos Estructurados (JSON-LD) -->
   <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 
 </head>
@@ -72,11 +98,10 @@ const schema = {
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <Navbar />
-  <main class="pt-8 md:pt-12"> <!-- Ajusta el padding-top si tu Navbar es fixed y tiene altura variable -->
-    <slot /> <!-- El contenido específico de cada página se insertará aquí -->
+  <main class="pt-8 md:pt-12">
+    <slot />
   </main>
   <Footer />
   <WhatsAppButton />

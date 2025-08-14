@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry} from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro'; // Asegúrate que la ruta a tu layout base sea correcta
 import TableOfContents from '../../components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
+import SocialShare from '../../components/SocialShare.astro'; // Importar el componente para compartir
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -76,7 +77,12 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
   // Añadimos commonTags: 0 a los posts recientes que se agregan, para que coincidan con el tipo
 }
 ---
-<BaseLayout pageTitle={entry.data.title} metaDescription={entry.data.description}>
+<BaseLayout 
+  pageTitle={entry.data.title} 
+  metaDescription={entry.data.description}
+  ogImage={entry.data.image?.url}
+  canonicalUrl={Astro.url.href}
+>
   <article class="container mx-auto pt-12 pb-8 px-6 max-w-4xl">
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{entry.data.title}</h1>
@@ -95,17 +101,26 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
     </header>
     
     {/* Renderizar la Tabla de Contenidos si hay encabezados y tiene elementos */}
-    {headings && headings.length > 0 && (
+        {headings && headings.length > 0 && (
       <aside class="mb-8 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg shadow">
         <TableOfContents headings={headings} />
       </aside>
     )}
+
+    <div class="mb-8">
+      <SocialShare url={Astro.url.href} title={entry.data.title} />
+    </div>
+
     <div class="prose prose-lg max-w-none"> {/* 'prose' es útil si usas Tailwind Typography */}
       <Content />
     </div>
 
+    <div class="mt-12 pt-8 border-t border-gray-200">
+        <SocialShare url={Astro.url.href} title={entry.data.title} />
+    </div>
+
     {entry.data.tags && entry.data.tags.length > 0 && (
-      <footer class="mt-12 pt-8 border-t border-gray-200">
+      <footer class="mt-8 pt-4">
         <p class="font-semibold text-lg mb-3">Etiquetas:</p>
         <div class="flex flex-wrap gap-3">
           {entry.data.tags.map(tag => (
