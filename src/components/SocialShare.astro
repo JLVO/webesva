@@ -1,13 +1,13 @@
 ---
 // src/components/SocialShare.astro
-const { url, title } = Astro.props;
+const { url, title, description } = Astro.props;
 ---
 
 <div class="flex items-center gap-4">
   <p class="font-semibold text-lg text-gray-800">Compartir:</p>
   <div class="flex gap-2">
     <a
-      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
+      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(description)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Compartir en Facebook"
