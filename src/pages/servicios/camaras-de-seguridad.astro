@@ -1,0 +1,253 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/Hero.astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+import "../../styles/global.css";
+import LlamadaAction from "../../components/LlamadaAction.astro";
+import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
+import Footer from "../../components/Footer.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+
+// Lógica para obtener los posts del blog
+const MAX_RECENT_POSTS = 3;
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, MAX_RECENT_POSTS);
+
+const preguntasCamaras = [
+  {
+    titulo: '¿Qué tipo de cámaras de seguridad necesito?',
+    respuesta:
+      'La elección depende de tus necesidades. Ofrecemos cámaras domo, bala, PTZ, con visión nocturna, para interior y exterior. Te asesoramos para que elijas la mejor opción.',
+  },
+  {
+    titulo: '¿Puedo ver las cámaras desde mi celular?',
+    respuesta:
+      'Sí, configuramos el sistema para que puedas monitorear tus cámaras en tiempo real desde tu smartphone, tablet o computadora, estés donde estés.',
+  },
+  {
+    titulo: '¿Cuánto tiempo se guardan las grabaciones?',
+    respuesta:
+      'El tiempo de almacenamiento depende del disco duro del grabador (DVR/NVR) y la configuración de grabación. Podemos calcular el almacenamiento necesario para guardar los días que necesites.',
+  },
+  {
+    titulo: '¿Ofrecen garantía por la instalación?',
+    respuesta:
+      'Sí, todas nuestras instalaciones tienen garantía. Además, ofrecemos planes de mantenimiento para asegurar el correcto funcionamiento de tu sistema de seguridad a largo plazo.',
+  },
+];
+---
+
+¡<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalación de Cámaras de Seguridad en Piura | ESVA</title>
+    <meta name="description" content="Protege tu hogar o negocio con nuestros sistemas de cámaras de seguridad en Piura. Instalación profesional, configuración y mantenimiento.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
+<script is:inline>
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-365MN03V4H');
+    </script>
+
+    <!-- Google Tag Manager -->
+<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <Navbar/>
+    <Hero  
+  title="Instalación de Cámaras de Seguridad" 
+  subtitle="Protege lo que más importa con sistemas de videovigilancia profesionales. Soluciones a medida para hogares, empresas y condominios en Piura." 
+  imageUrl="/TecnicoESVACamaras.png" 
+  buttonText="Cotiza tu Proyecto" 
+  buttonLink="Escríbenos por WhatsApp"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20estoy%20interesado%20en%20un%20sistema%20de%20cámaras%20de%20seguridad.%20¿Me%20pueden%20asesorar?" 
+/>
+
+
+<section class="bg-white py-16 px-6 md:px-20 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Tranquilidad para ti y los tuyos</h2>
+    <p class="text-lg text-gray-700">
+      Un sistema de cámaras de seguridad es tu mejor aliado para prevenir robos y supervisar tu propiedad. En ESVA te ofrecemos <strong class="text-blue-700">tecnología de punta y una instalación impecable</strong> para que tengas ojos en todas partes, 24/7.
+    </p>
+  </div>
+</section>
+
+
+<section class="bg-blue-50 py-16 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">Nuestras Soluciones en Videovigilancia</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Tarjeta 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+        <div class="text-blue-800 mb-4">
+          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 9.5A2.5 2.5 0 015.5 7h13A2.5 2.5 0 0121 9.5v5A2.5 2.5 0 0118.5 17h-13A2.5 2.5 0 013 14.5v-5zM5 7V5.5A2.5 2.5 0 017.5 3h9A2.5 2.5 0 0119 5.5V7"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Cámaras de Alta Definición</h3>
+        <p class="text-gray-600">Imágenes nítidas y claras para que no te pierdas ningún detalle, de día o de noche.</p>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+        <div class="text-blue-800 mb-4">
+          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Acceso Remoto</h3>
+        <p class="text-gray-600">Vigila tu propiedad desde cualquier lugar a través de tu smartphone, tablet o PC.</p>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+        <div class="text-blue-800 mb-4">
+          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Grabación Continua y por Eventos</h3>
+        <p class="text-gray-600">Almacenamiento inteligente para que no te pierdas los momentos clave y optimices el espacio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<LlamadaAction  
+  title="¿Listo para proteger tu patrimonio?"  
+  subtitle="No dejes la seguridad al azar. Contáctanos y un especialista te brindará una cotización sin compromiso, adaptada a tus necesidades."  
+  buttonTextContato="Contáctanos"  
+  buttonLinkLlamada="Llámanos Ahora"  
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20quisiera%20cotizar%20un%20sistema%20de%20cámaras%20de%20seguridad."  
+  textobotonwhatsapp="WhatsApp"
+/>
+
+
+
+<section class="bg-blue-50 py-20 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">¿Por qué instalar tus cámaras con ESVA?</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+      
+      <!-- Beneficio 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Asesoría Personalizada</h3>
+        <p class="text-gray-700">Evaluamos tus necesidades y te recomendamos la mejor solución en cámaras y equipos de grabación.</p>
+      </div>
+
+      <!-- Beneficio 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Instalación Profesional</h3>
+        <p class="text-gray-700">Técnicos calificados que cuidan la estética y garantizan una instalación segura y funcional.</p>
+      </div>
+
+      <!-- Beneficio 3 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Configuración y Capacitación</h3>
+        <p class="text-gray-700">Dejamos tu sistema 100% operativo y te enseñamos a usarlo para que le saques el máximo provecho.</p>
+      </div>
+
+      <!-- Beneficio 4 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Marcas de Calidad</h3>
+        <p class="text-gray-700">Trabajamos con las mejores marcas del mercado como Hikvision y Dahua para garantizar durabilidad y confianza.</p>
+      </div>
+
+      <!-- Beneficio 5 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Soporte Post-Venta</h3>
+        <p class="text-gray-700">Ofrecemos soporte técnico y planes de mantenimiento para que tu sistema esté siempre operativo.</p>
+      </div>
+
+      <!-- Beneficio 6 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Garantía Total</h3>
+        <p class="text-gray-700">Todos nuestros productos e instalaciones cuentan con garantía total contra defectos de fábrica y fallas.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Sección del Blog -->
+{recentPosts.length > 0 && (
+  <section class="bg-slate-50 py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+        Últimas Entradas de Nuestro Blog
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {recentPosts.map(post => (
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            {post.data.image?.url && (
+              <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                <img 
+                  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url} 
+                  alt={post.data.image.alt || post.data.title} 
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                  loading="lazy" 
+                />
+              </a>
+            )}
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
+                  {post.data.title}
+                </a>
+              </h3>
+              {post.data.description && (
+                <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}</p>
+              )}
+              <p class="text-xs text-gray-500 mb-4">
+                {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <div class="mt-auto pt-2">
+                <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
+                  Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      {allPosts.length > MAX_RECENT_POSTS && (
+        <div class="text-center mt-12">
+          <a href="/blog" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full shadow-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
+            Ver todos los posts
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<PreguntasFrecuentes preguntas={preguntasCamaras} />
+
+<Footer/>
+<WhatsAppButton/>
+</body>
+</html>
