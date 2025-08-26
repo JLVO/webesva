@@ -34,7 +34,7 @@ const { url, title, description } = Astro.props;
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.98v16h4.98v-8.396c0-2.002.88-3.58 2.985-3.58 2.104 0 2.963 1.579 2.963 3.721v8.255h4.98v-8.53c0-4.138-2.354-5.948-5.15-5.948-2.225 0-3.402 1.236-3.979 2.419h.025v-2.17h-4.98v16z"></path></svg>
     </a>
     <a
-      href={`https://api.whatsapp.com/send?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}`}
+      href={`https://wa.me/?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Compartir en WhatsApp"

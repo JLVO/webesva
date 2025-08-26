@@ -1,9 +1,9 @@
 ---
-const { title, subtitle, buttonTextContato, buttonLinkLlamada, linkwhatsapp, textobotonwhatsapp } = Astro.props;
+const { title, subtitle, buttonText, buttonLink, linkwhatsapp, textobotonwhatsapp, buttonLinkLlamada, buttonTextContato } = Astro.props;
 import { MessageCircle, Phone, Mail } from "lucide-react";
 ---
 
-<section class="bg-gradient-to-r from-blue-900 to-blue-700 py-16 px-6 text-center text-white">
+<section class="bg-gradient-to-r from-vibrant-purple to-vibrant-blue py-16 px-6 text-center text-white rounded-xl shadow-2xl">
   <div class="max-w-5xl mx-auto">
     <div class="max-w-3xl mx-auto mb-12">
       <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
@@ -17,16 +17,17 @@ import { MessageCircle, Phone, Mail } from "lucide-react";
     <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-8">
       <!-- WhatsApp Button -->
       <a
-        href={linkwhatsapp}
+        href={linkwhatsapp || "https://wa.me/51985834886?text=Hola%20ESVA,%20necesito%20ayuda%20con%20mi%20computadora."}
+        }
         target="_blank"
-        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
+        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-white/10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
       >
         <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
         <div class="relative z-10">
           <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
             <MessageCircle className="w-8 h-8 text-white" />
           </div>
-          <h3 class="text-xl font-bold mb-2">{textobotonwhatsapp}</h3>
+          <h3 class="text-xl font-bold mb-2">{textobotonwhatsapp || "WhatsApp"}</h3>
           <p class="text-sm opacity-80">Respuesta inmediata</p>
         </div>
       </a>
@@ -34,14 +35,14 @@ import { MessageCircle, Phone, Mail } from "lucide-react";
       <!-- Phone Button -->
       <a
         href="tel:+51985834886"
-        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
+        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-white/10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
       >
         <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
         <div class="relative z-10">
           <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
             <Phone className="w-8 h-8 text-white" />
           </div>
-          <h3 class="text-xl font-bold mb-2">{buttonLinkLlamada}</h3>
+          <h3 class="text-xl font-bold mb-2">{buttonLinkLlamada || "Llamar"}</h3>
           <p class="text-sm opacity-80">Llamada directa</p>
         </div>
       </a>
@@ -49,14 +50,14 @@ import { MessageCircle, Phone, Mail } from "lucide-react";
       <!-- Contact Button -->
       <a
         href="../contactanos"
-        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
+        class="group relative flex-1 flex flex-col items-center justify-center p-8 bg-white/10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden"
       >
         <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
         <div class="relative z-10">
           <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
             <Mail className="w-8 h-8 text-white" />
           </div>
-          <h3 class="text-xl font-bold mb-2">{buttonTextContato}</h3>
+          <h3 class="text-xl font-bold mb-2">{buttonTextContato || "Email"}</h3>
           <p class="text-sm opacity-80">Formulario de contacto</p>
         </div>
       </a>

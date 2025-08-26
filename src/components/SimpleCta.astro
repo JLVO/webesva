@@ -1,0 +1,25 @@
+---
+const { title, subtitle, buttonText, buttonLink, buttonText2, buttonLink2 } = Astro.props;
+---
+
+<div class="text-center p-8 my-16">
+  <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h2>
+  <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8">{subtitle}</p>
+  <div class="flex justify-center items-center gap-4 flex-wrap">
+    <a
+      href={buttonLink || "https://wa.me/51985834886?text=Hola%20ESVA,%20necesito%20ayuda%20con%20mi%20computadora."}}
+      target="_blank"
+      class="inline-block bg-white text-vibrant-purple font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"
+    >
+      {buttonText}
+    </a>
+    {buttonText2 && buttonLink2 &&
+      <a
+        href={buttonLink2}
+        class="inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 hover:bg-white hover:text-vibrant-purple transform transition-all duration-300"
+      >
+        {buttonText2}
+      </a>
+    }
+  </div>
+</div>
