@@ -56,7 +56,7 @@ import logo from '../assets/LogoEsva.svg';
 
       <!-- Botón móvil (hamburguesa) -->
       <div class="md:hidden">
-        <button aria-label="Abrir menú" class="hover:text-hover transition">
+        <button id="mobile-menu-button" aria-label="Abrir menú" class="hover:text-hover transition">
           <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
                viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -66,4 +66,57 @@ import logo from '../assets/LogoEsva.svg';
       </div>
     </div>
   </div>
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-200">Inicio</a>
+    <a href="/nosotros" class="block py-2 px-4 text-sm hover:bg-gray-200">Nosotros</a>
+    <div>
+      <button id="mobile-services-button" class="w-full text-left block py-2 px-4 text-sm hover:bg-gray-200 flex justify-between items-center">
+        <span>Servicios</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
+      <div id="mobile-submenu" class="hidden pl-4">
+        <a href="/servicios/mantenimiento-reparacion-informatica" class="block py-2 px-4 text-sm hover:bg-gray-200">Mantenimiento y Reparación</a>
+        <a href="/servicios/formateo-instalacion" class="block py-2 px-4 text-sm hover:bg-gray-200">Formateo e Instalación</a>
+        <a href="/servicios/recuperacion-datos" class="block py-2 px-4 text-sm hover:bg-gray-200">Recuperación de Datos</a>
+        <a href="/servicios/redes-conectividad" class="block py-2 px-4 text-sm hover:bg-gray-200">Redes y Conectividad</a>
+        <a href="/servicios/mantenimiento-preventivo" class="block py-2 px-4 text-sm hover:bg-gray-200">Mantenimiento Preventivo</a>
+        <div>
+          <button id="mobile-security-button" class="w-full text-left block py-2 px-4 text-sm hover:bg-gray-200 flex justify-between items-center">
+            <span>Seguridad Electrónica</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="mobile-security-submenu" class="hidden pl-4">
+            <a href="/servicios/camaras-de-seguridad" class="block py-2 px-4 text-sm hover:bg-gray-200">Cámaras de Seguridad</a>
+            <a href="/servicios/lectores-biometricos" class="block py-2 px-4 text-sm hover:bg-gray-200">Lectores Biométricos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/blog" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</a>
+    <a href="/contactanos" class="block py-2 px-4 text-sm hover:bg-gray-200">Contacto</a>
+  </div>
 </nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileServicesButton = document.getElementById('mobile-services-button');
+  const mobileSubmenu = document.getElementById('mobile-submenu');
+  const mobileSecurityButton = document.getElementById('mobile-security-button');
+  const mobileSecuritySubmenu = document.getElementById('mobile-security-submenu');
+
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  mobileServicesButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    mobileSubmenu.classList.toggle('hidden');
+  });
+
+  mobileSecurityButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    mobileSecuritySubmenu.classList.toggle('hidden');
+  });
+</script>
