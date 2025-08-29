@@ -8,7 +8,8 @@ import vercel from '@astrojs/vercel';
 import sharp from 'astro/assets/services/sharp'; // Importación directa del módulo
 export default defineConfig({
   output: 'server',
-  integrations: [tailwind(), react(),sitemap(),mdx(), vercel()],
+  adapter: vercel(),
+  integrations: [tailwind(), react(),sitemap(),mdx()],
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
 
   image: {
