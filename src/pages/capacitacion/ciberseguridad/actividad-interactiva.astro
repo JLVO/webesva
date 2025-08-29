@@ -1,0 +1,23 @@
+---
+import PresentacionLayout from '../../../layouts/PresentacionLayout.astro';
+import QuizPhishing from '../../../components/QuizPhishing.jsx';
+---
+
+<PresentacionLayout
+  pageTitle="Actividad Interactiva"
+  currentPage={6}
+  totalPages={12}
+  prevPage="/capacitacion/ciberseguridad/que-es-spoofing"
+  nextPage="/capacitacion/ciberseguridad/ejercicio-arrastrar-soltar"
+>
+  <div class="text-center">
+    <h1 class="text-4xl font-bold text-gray-800">Actividad: ¿Seguro o Phishing?</h1>
+    <p class="text-lg text-gray-600 mt-2 max-w-3xl mx-auto">
+      Analiza los siguientes correos electrónicos y decide si son seguros o un intento de phishing. ¡Presta atención a los detalles!
+    </p>
+  </div>
+
+  <div class="mt-8 max-w-4xl mx-auto">
+    <QuizPhishing client:load />
+  </div>
+</PresentacionLayout>

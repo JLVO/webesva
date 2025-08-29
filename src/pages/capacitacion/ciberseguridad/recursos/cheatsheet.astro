@@ -1,0 +1,72 @@
+---
+import PrintLayout from '../../../layouts/PrintLayout.astro';
+
+const practices = [
+  {
+    icon: 'fa-user-shield',
+    title: 'Verifica el Remitente',
+    text: 'No confíes solo en el nombre. Revisa la dirección de correo completa. Si parece extraña, desconfía.',
+  },
+  {
+    icon: 'fa-mouse-pointer',
+    title: 'Piensa Antes de Hacer Clic',
+    text: 'Pasa el cursor sobre los enlaces para ver la URL real. Si no coincide o es sospechosa, no hagas clic.',
+  },
+  {
+    icon: 'fa-exclamation-triangle',
+    title: 'Desconfía de la Urgencia',
+    text: 'Los atacantes te presionan para que actúes sin pensar. Tómate un momento para analizar.',
+  },
+  {
+    icon: 'fa-key',
+    title: 'Usa Contraseñas Seguras y 2FA',
+    text: 'Utiliza contraseñas únicas y complejas. Activa la autenticación de dos factores (2FA) siempre que sea posible.',
+  },
+  {
+    icon: 'fa-question-circle',
+    title: 'Si Dudas, Pregunta',
+    text: 'Si un correo te parece sospechoso, repórtalo al departamento de TI o coméntalo con un compañero.',
+  },
+    {
+    icon: 'fa-laptop-code',
+    title: 'Mantén Todo Actualizado',
+    text: 'Asegúrate de que tu sistema operativo, navegador y antivirus estén siempre con las últimas actualizaciones.',
+  },
+];
+---
+<PrintLayout pageTitle="Guía Rápida de Ciberseguridad">
+  <div class="p-8 max-w-4xl mx-auto">
+    <header class="flex items-center justify-between pb-4 border-b-2 border-gray-800">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">Guía Rápida de Ciberseguridad</h1>
+        <p class="text-gray-600">Tus 6 hábitos de defensa contra el phishing y el fraude.</p>
+      </div>
+      <img src="/LogoESVA.png" alt="Logo ESVA" class="h-12"/>
+    </header>
+
+    <main class="mt-8 grid grid-cols-2 gap-x-8 gap-y-6">
+      {practices.map(practice => (
+        <div class="flex items-start">
+          <div class="text-blue-600 mr-4 mt-1">
+            <i class={`fas ${practice.icon} fa-2x w-8 text-center`}></i>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-gray-800">{practice.title}</h2>
+            <p class="text-gray-700">{practice.text}</p>
+          </div>
+        </div>
+      ))}
+    </main>
+
+    <footer class="mt-12 text-center border-t pt-4">
+        <p class="text-sm text-gray-500">Recurso de capacitación interna de ESVA. Mantente alerta, mantente seguro.</p>
+    </footer>
+
+    <div class="no-print fixed bottom-4 right-4">
+        <button onclick="window.print()" class="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+            <i class="fas fa-print"></i>
+            <span>Imprimir o Guardar como PDF</span>
+        </button>
+    </div>
+  </div>
+</PrintLayout>
