@@ -11,6 +11,7 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [tailwind(), react(),sitemap(),mdx()],
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
+  trailingSlash: 'always',
 
   image: {
     service: sharp,
