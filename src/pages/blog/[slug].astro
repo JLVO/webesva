@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry} from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro'; // Asegúrate que la ruta a tu layout base sea correcta
-import TableOfContents from '../../components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
 import SocialShare from '../../components/SocialShare.astro'; // Importar el componente para compartir
 
 export async function getStaticPaths() {
@@ -99,13 +98,6 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
         {entry.data.author && ` por ${entry.data.author}`}
       </p>
     </header>
-    
-    {/* Renderizar la Tabla de Contenidos si hay encabezados y tiene elementos */}
-        {headings && headings.length > 0 && (
-      <aside class="mb-8 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg shadow">
-        <TableOfContents headings={headings} />
-      </aside>
-    )}
 
     <div class="mb-8">
       <SocialShare url={Astro.url.href} title={entry.data.title} description={entry.data.description} />
