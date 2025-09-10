@@ -1,0 +1,226 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/Hero.astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+import "../../styles/global.css";
+import LlamadaAction from "../../components/LlamadaAction.astro";
+import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
+import Footer from "../../components/Footer.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+
+const MAX_RECENT_POSTS = 3;
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, MAX_RECENT_POSTS);
+
+const preguntasLectores = [
+  {
+    titulo: '¿Qué tipo de lector biométrico es mejor para mi negocio?',
+    respuesta:
+      'La elección ideal depende del nivel de seguridad que necesites, el número de empleados y el entorno de trabajo. Los de huella digital son los más comunes y fiables, mientras que el reconocimiento facial ofrece una experiencia sin contacto, ideal para alta higiene o flujo rápido de personal.',
+  },
+  {
+    titulo: '¿Se puede integrar con mi sistema de planillas o contabilidad?',
+    respuesta:
+      'Sí, la mayoría de nuestros sistemas biométricos, especialmente los de ZKTeco, están diseñados para integrarse fácilmente con los principales software de planillas y RRHH. Esto automatiza el cálculo de horas y reduce drásticamente los errores manuales.',
+  },
+  {
+    titulo: '¿Qué tan difícil es para los empleados aprender a usarlo?',
+    respuesta:
+      'Es sumamente fácil. El proceso de registro de un nuevo usuario toma menos de un minuto, y el marcado diario es casi instantáneo. Además, en ESVA nos encargamos de dar una capacitación completa a tu personal administrativo y a los usuarios.',
+  },
+  {
+    titulo: '¿Qué pasa si un lector falla o se va la luz?',
+    respuesta:
+      'Nuestros equipos son de alta fiabilidad. Ofrecemos garantía completa y soporte técnico. Además, muchos modelos cuentan con una batería de respaldo interna que les permite seguir operando por horas durante un corte de energía, sin perder registros.',
+  },
+];
+---
+
+¡<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lectores Biométricos para Empresas en Piura | ESVA</title>
+    <meta name="description" content="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
+<script is:inline>
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-365MN03V4H');
+    </script>
+
+    <!-- Google Tag Manager -->
+<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <Navbar/>
+    <Hero  
+  title="Control de Acceso y Asistencia con Lectores Biométricos" 
+  subtitle="Optimiza la gestión de tu personal y refuerza la seguridad de tus instalaciones con tecnología biométrica de última generación en Piura."
+  imageUrl="/imagenes/blog/integracion-biometricos-camaras-esva.jpg" 
+  buttonText="Solicita una Demostración" 
+  buttonLink="Escríbenos por WhatsApp"
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20estoy%20interesado%20en%20lectores%20biométricos%20para%20mi%20empresa.%20¿Podrían%20ayudarme?" 
+/>
+
+
+<section class="bg-white py-16 px-6 md:px-20 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">La Clave para la Eficiencia y Seguridad de tu Empresa</h2>
+    <p class="text-lg text-gray-700">
+      Dile adiós a los registros manuales, las tardanzas injustificadas y las tarjetas de acceso que se pierden. Con los <strong class="text-blue-700">lectores biométricos de ESVA</strong>, la identidad de tu personal es la llave maestra. Gestiona la asistencia y el acceso a áreas restringidas de forma automática, segura e infalible.
+    </p>
+  </div>
+</section>
+
+<!-- NUEVA SECCIÓN: Tipos de Lectores -->
+<section class="bg-blue-50 py-20 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">Tipos de Lectores Biométricos que Instalamos</h2>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Lector 1: Huella Digital -->
+      <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="text-blue-600 mb-4">
+            <svg class="w-16 h-16 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 12c0 2.42-.944 4.626-2.502 6.243m-1.1-5.943a3.75 3.75 0 10-5.303-5.303 3.75 3.75 0 005.303 5.303zM5.25 12a7.5 7.5 0 0011.25-6.243M5.25 12a7.5 7.5 0 016.243-6.243" /></svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 text-blue-800">Huella Digital</h3>
+        <p class="text-gray-700">La solución más popular y rentable. Alta precisión y rapidez para el control de asistencia y acceso general.</p>
+      </div>
+
+      <!-- Lector 2: Reconocimiento Facial -->
+      <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="text-blue-600 mb-4">
+            <svg class="w-16 h-16 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 text-blue-800">Reconocimiento Facial</h3>
+        <p class="text-gray-700">Máxima seguridad y conveniencia. Identificación sin contacto, ideal para entornos de alta higiene y para una experiencia de usuario superior.</p>
+      </div>
+
+      <!-- Lector 3: Tarjetas de Proximidad -->
+      <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="text-blue-600 mb-4">
+            <svg class="w-16 h-16 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 21z" /></svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 text-blue-800">Tarjetas de Proximidad</h3>
+        <p class="text-gray-700">Una opción versátil y económica. Perfecta para combinar con otros métodos o para gestionar el acceso de visitantes y contratistas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<LlamadaAction  
+  title="¿Quieres modernizar el control en tu empresa?"  
+  subtitle="Descubre cómo nuestros sistemas biométricos pueden ahorrarte tiempo, dinero y mejorar la seguridad. Solicita una asesoría gratuita."
+  buttonTextContato="Contáctanos"  
+  buttonLinkLlamada="Llámanos Ahora"  
+  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20información%20sobre%20los%20lectores%20biométricos%20de%20ESVA."  
+  textobotonwhatsapp="WhatsApp"
+/>
+
+<!-- NUEVA SECCIÓN: Sectores -->
+<section class="bg-white py-20 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Ideal para Diversos Sectores en Piura</h2>
+        <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Nuestras soluciones se adaptan a las necesidades específicas de cada tipo de organización.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Oficinas y Corporativos</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Fábricas y Almacenes</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Colegios y Centros Educativos</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Tiendas y Retail</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Clínicas y Centros de Salud</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Gimnasios y Clubes</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Restaurantes y Hoteles</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Condominios y Residenciales</h3></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NUEVA SECCIÓN: Marcas -->
+<section class="bg-blue-50 py-16">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Trabajamos con ZKTeco: Líder Mundial en Biometría</h2>
+    <p class="text-gray-600 mb-10">Para asegurar la fiabilidad, innovación y el mejor rendimiento, confiamos en el líder indiscutible del sector.</p>
+    <div class="flex justify-center items-center gap-12 md:gap-16 flex-wrap">
+      <img src="/LogoZKTecoNuevo.svg" alt="Logo ZKTeco" class="h-24 opacity-90 hover:opacity-100 transition-opacity"/>
+    </div>
+  </div>
+</section>
+
+
+<!-- Sección del Blog -->
+{recentPosts.length > 0 && (
+  <section class="bg-white py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+        Aprende Más en Nuestro Blog
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {recentPosts.map(post => (
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            {post.data.image?.url && (
+              <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                <img 
+                  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url} 
+                  alt={post.data.image.alt || post.data.title} 
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                  loading="lazy" 
+                />
+              </a>
+            )}
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
+                  {post.data.title}
+                </a>
+              </h3>
+              {post.data.description && (
+                <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}</p>
+              )}
+              <p class="text-xs text-gray-500 mb-4">
+                {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <div class="mt-auto pt-2">
+                <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
+                  Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      {allPosts.length > MAX_RECENT_POSTS && (
+        <div class="text-center mt-12">
+          <a href="/blog" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full shadow-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
+            Ver todos los posts
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<PreguntasFrecuentes preguntas={preguntasLectores} />
+
+<Footer/>
+<WhatsAppButton/>
+</body>
+</html>

@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id              String        @id @default(cuid())
+  tipoDocumento   String
+  numeroDocumento String        @unique
+  nombre          String
+  direccion       String?
+  cotizaciones    Cotizacion[]
+  contactos       Contacto[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Contacto {
+  id           String        @id @default(cuid())
+  clienteId    String
+  cliente      Cliente       @relation(fields: [clienteId], references: [id])
+  dni          String?
+  nombre       String
+  telefono     String?
+  email        String?
+  cargo        String?
+  cotizaciones Cotizacion[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Servicio {
+  id           Int           @id @default(autoincrement())
+  nombre       String        @unique
+  descripcion  String?
+  categoria    String
+  cotizaciones Cotizacion[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Cotizacion {
+  id                 String     @id @default(cuid())
+  clienteId          String
+  cliente            Cliente    @relation(fields: [clienteId], references: [id])
+  contactoId         String?
+  contacto           Contacto?  @relation(fields: [contactoId], references: [id])
+  servicioId         Int
+  servicio           Servicio   @relation(fields: [servicioId], references: [id])
+  descripcionDetallada String?
+  precio             Decimal    @db.Decimal(10, 2)
+  estado             String     @default("Pendiente") // e.g., "Pendiente", "Aceptada", "Rechazada"
+  fechaEmision       DateTime   @default(now())
+  fechaVencimiento   DateTime?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+}

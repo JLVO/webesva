@@ -1,0 +1,88 @@
+import { a as createComponent, e as renderTemplate, m as maybeRenderHead } from './astro/server_CzI7Pzyy.mjs';
+import 'kleur/colors';
+import 'clsx';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$CookieConsent = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate(_a || (_a = __template(["", `<div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 text-sm z-50" style="display: none;"> <div class="container mx-auto flex flex-col md:flex-row justify-between items-center"> <p class="mb-2 md:mb-0 md:mr-4">
+Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia. Al continuar, usted acepta nuestro uso de cookies. Consulte nuestra
+<a href="/politica-de-cookies" class="font-bold underline hover:text-gray-300">Pol\xEDtica de Cookies</a>.
+</p> <button id="accept-cookies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg whitespace-nowrap">
+Aceptar
+</button> </div> </div> <script>
+  // Function to set a cookie
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  // Function to get a cookie
+  function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Set the default consent state
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'personalization_storage': 'denied',
+    'functionality_storage': 'denied',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptButton = document.getElementById('accept-cookies');
+
+    // If consent is already given, hide the banner
+    if (getCookie('cookie_consent')) {
+      if(banner) banner.style.display = 'none';
+      return;
+    } else {
+        if(banner) banner.style.display = 'block';
+    }
+
+    if (banner && acceptButton) {
+      acceptButton.addEventListener('click', () => {
+        // Update consent state
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'granted',
+          'personalization_storage': 'granted',
+          'functionality_storage': 'granted',
+          'security_storage': 'granted'
+        });
+
+        // Set a cookie to remember consent
+        setCookie('cookie_consent', 'true', 365);
+
+        // Hide the banner
+        banner.style.display = 'none';
+      });
+    }
+  });
+<\/script>`])), maybeRenderHead());
+}, "C:/Users/ZERO/Documents/webesva/src/components/CookieConsent.astro", void 0);
+
+export { $$CookieConsent as $ };

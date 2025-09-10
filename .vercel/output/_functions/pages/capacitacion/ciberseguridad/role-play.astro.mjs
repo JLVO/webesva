@@ -1,0 +1,55 @@
+/* empty css                                        */
+import { a as createComponent, f as renderComponent, e as renderTemplate, m as maybeRenderHead } from '../../../chunks/astro/server_CzI7Pzyy.mjs';
+import 'kleur/colors';
+import { $ as $$PresentacionLayout } from '../../../chunks/PresentacionLayout_C6ZT1L6L.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+const $$RolePlay = createComponent(($$result, $$props, $$slots) => {
+  const pageTitle = "Role Play: Simulaci\xF3n de Ataques";
+  const currentPage = 9;
+  const totalPages = 12;
+  const nextPage = "/capacitacion/ciberseguridad/buenas-practicas";
+  const prevPage = "/capacitacion/ciberseguridad/ejercicio-diferencias";
+  return renderTemplate`${renderComponent($$result, "PresentacionLayout", $$PresentacionLayout, { "pageTitle": pageTitle, "currentPage": currentPage, "totalPages": totalPages, "nextPage": nextPage, "prevPage": prevPage }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="p-4"> <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Role Play: Simulación de Ataques y Defensas</h1> <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-8">
+El role play es una herramienta poderosa para entrenar a los equipos en la respuesta a incidentes de ciberseguridad.
+      Permite practicar en un entorno seguro y mejorar la coordinación y toma de decisiones.
+</p> <div class="space-y-10">  <section> <h2 class="text-3xl font-semibold text-gray-800 mb-4">¿Qué es un Role Play en Ciberseguridad?</h2> <p class="text-gray-700 text-lg mb-4">
+Un role play en ciberseguridad es una simulación interactiva donde los participantes asumen roles específicos 
+          (ej. empleado, atacante, equipo de TI, directivo) para responder a un escenario de ciberataque predefinido. 
+          El objetivo es practicar la detección, contención, erradicación y recuperación de un incidente, 
+          así como la comunicación y coordinación entre los diferentes actores.
+</p> <h3 class="text-xl font-bold text-gray-800 mb-2">Beneficios Clave:</h3> <ul class="list-disc list-inside space-y-2 text-gray-700"> <li>Mejora la toma de decisiones bajo presión.</li> <li>Fortalece la comunicación y coordinación del equipo.</li> <li>Identifica brechas en los planes de respuesta a incidentes.</li> <li>Aumenta la concienciación sobre las amenazas y sus impactos.</li> <li>Permite practicar sin consecuencias reales.</li> </ul> </section>  <section> <h2 class="text-3xl font-semibold text-gray-800 mb-4">Importancia en el Contexto Peruano</h2> <p class="text-gray-700 text-lg mb-4">
+Perú ha experimentado un aumento significativo en ciberataques, incluyendo phishing, malware y ransomware. 
+          Las simulaciones y ejercicios de ciberseguridad, como los coordinados por el Centro Nacional de Seguridad Digital (CNSD), 
+          son vitales para preparar a las organizaciones peruanas. Estos ejercicios replican condiciones de ataques reales 
+          para entrenar a los equipos de respuesta y mejorar su capacidad de mitigación.
+</p> <p class="text-gray-700 text-lg">
+La práctica constante a través de role plays ayuda a las empresas a fortalecer sus defensas y a 
+          responder de manera más efectiva ante las amenazas específicas que enfrenta el país.
+</p> </section>  <section> <h2 class="text-3xl font-semibold text-gray-800 mb-4">Escenarios de Role Play (Ejemplos)</h2> <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> <div class="bg-yellow-50 p-6 rounded-lg shadow-md"> <h3 class="text-xl font-bold text-yellow-700 mb-2">Escenario 1: Ataque de Phishing Dirigido (Spear Phishing)</h3> <p class="text-gray-700">
+Un empleado recibe un correo electrónico que parece ser de la gerencia, solicitando urgentemente 
+              la transferencia de fondos a una nueva cuenta bancaria de un proveedor. El correo contiene pequeños 
+              errores gramaticales y el dominio del remitente es ligeramente diferente al oficial.
+</p> <h4 class="font-semibold text-gray-800 mt-3">Roles:</h4> <ul class="list-disc list-inside text-gray-700"> <li>Empleado (víctima potencial)</li> <li>Gerente (suplantado)</li> <li>Equipo de TI/Ciberseguridad</li> <li>Atacante (no visible, pero sus acciones impulsan el escenario)</li> </ul> </div> <div class="bg-yellow-50 p-6 rounded-lg shadow-md"> <h3 class="text-xl font-bold text-yellow-700 mb-2">Escenario 2: Incidente de Ransomware</h3> <p class="text-gray-700">
+Varios archivos en la red de la empresa aparecen encriptados y una nota de rescate exige un pago 
+              en criptomonedas. El equipo de TI detecta actividad inusual en los servidores.
+</p> <h4 class="font-semibold text-gray-800 mt-3">Roles:</h4> <ul class="list-disc list-inside text-gray-700"> <li>Equipo de TI/Ciberseguridad</li> <li>Directivos de la empresa</li> <li>Departamento Legal/Comunicaciones</li> <li>Empleado (que pudo haber activado el ransomware)</li> </ul> </div> <div class="bg-yellow-50 p-6 rounded-lg shadow-md"> <h3 class="text-xl font-bold text-yellow-700 mb-2">Escenario 3: Suplantación de Identidad (CEO Fraud)</h3> <p class="text-gray-700">
+El departamento de finanzas recibe una llamada o correo electrónico urgente, supuestamente del CEO, 
+              solicitando información confidencial de empleados o clientes, o una transferencia bancaria inmediata 
+              para una "adquisición secreta".
+</p> <h4 class="font-semibold text-gray-800 mt-3">Roles:</h4> <ul class="list-disc list-inside text-gray-700"> <li>Empleado de Finanzas (víctima potencial)</li> <li>CEO (suplantado)</li> <li>Equipo de TI/Ciberseguridad</li> <li>Atacante (ingeniero social)</li> </ul> </div> </div> </section> </div> </div> ` })} `;
+}, "C:/Users/ZERO/Documents/webesva/src/pages/capacitacion/ciberseguridad/role-play.astro", void 0);
+
+const $$file = "C:/Users/ZERO/Documents/webesva/src/pages/capacitacion/ciberseguridad/role-play.astro";
+const $$url = "/capacitacion/ciberseguridad/role-play/";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$RolePlay,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };
