@@ -3,14 +3,16 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      colors: {
+            colors: {
   primary: '#1E3A8A',
   secondary: '#1D4ED8',
   hover: '#2563EB',     // Este es el que se usa en hover
   background: '#F8FAFC',
   text: '#1F2937',
   white: '#FFFFFF',
-  black: '#000000'
+  black: '#000000',
+  'accent-green': '#10B981', // New accent green
+  'accent-gold': '#F59E0B'   // New accent gold
 },
     },
   },

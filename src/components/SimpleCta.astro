@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  whatsappLink: string; // New prop
+  buttonText2: string;
+  buttonLink2: string;
+}
+
+const { title, subtitle, buttonText, whatsappLink, buttonText2, buttonLink2 } = Astro.props; // Destructure new prop
+---
+
+<section class="my-16">
+  <div class="text-center">
+    <h2 class="text-4xl font-bold text-white mb-4">{title}</h2>
+    <p class="text-lg text-white/80 mb-8">{subtitle}</p>
+    <div class="flex justify-center gap-4">
+      <a href={whatsappLink} // Use new prop here
+         target="_blank"
+         class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+        {buttonText}
+      </a>
+      <a href={buttonLink2}
+         class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+        {buttonText2}
+      </a>
+    </div>
+  </div>
+</section>

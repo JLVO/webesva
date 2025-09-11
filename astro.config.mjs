@@ -8,6 +8,7 @@ import sharp from 'astro/assets/services/sharp'; // Importación directa del mó
 export default defineConfig({
   integrations: [tailwind(), react(),sitemap(),mdx()],
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
+  trailingSlash: 'always', // Agrega esta línea
 
   image: {
     service: sharp,

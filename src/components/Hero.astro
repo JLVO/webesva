@@ -8,7 +8,7 @@ const { title, subtitle, imageUrl, buttonText, buttonLink,linkwhatsapp } = Astro
   style="background-image: url('/bg-nosotros.avif'); background-position: right; background-repeat: no-repeat; background-size: cover;"
 >
   <!-- Capa azul semitransparente -->
-  <div class="absolute inset-0 bg-gradient-to-r from-blue-800/80 to-blue-600/80 z-0"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 z-0"></div>
 
   <!-- Contenido principal -->
   <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
@@ -23,11 +23,11 @@ const { title, subtitle, imageUrl, buttonText, buttonLink,linkwhatsapp } = Astro
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <a href="/contactanos" class="bg-hover text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition">
+        <a href="/contactanos/" class="bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-secondary transition">
           {buttonText}
         </a>
         <a href={linkwhatsapp} target="_blank"
-           class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-600 transition">
+           class="bg-accent-green text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-accent-green/80 transition">
           {buttonLink}
         </a>
       </div>

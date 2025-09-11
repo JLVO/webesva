@@ -1,0 +1,181 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import SimpleCta from '../../components/SimpleCta.astro';
+
+const pageTitle = "Formateo de PC y Laptops a Domicilio | Garantía de Activación | ESVA";
+const description = "Servicio profesional de formateo e instalación para PC y laptops a domicilio. Dejamos tu equipo más rápido que nunca con activación garantizada. ¡Contáctanos!";
+---
+
+<LandingLayout title={pageTitle} description={description} showNavbar={false} showFooter={false} mainPadding={false}>
+
+  <div class="text-center pt-20 pb-12 px-4 text-white">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">¿Tu Computadora Va Lenta? ¡La Dejamos Como Nueva!</h1>
+    <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+      Servicio completo de formateo e instalación a domicilio. Recupera la velocidad y seguridad de tu equipo sin moverte de casa y con <strong class="font-bold">Garantía de Activación</strong>.
+    </p>
+  </div>
+
+  <!-- 5 Star Rating -->
+  <div class="flex justify-center items-center gap-2 my-8">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-yellow-400">
+      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007z" clip-rule="evenodd" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-yellow-400">
+      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007z" clip-rule="evenodd" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-yellow-400">
+      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007z" clip-rule="evenodd" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-yellow-400">
+      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007z" clip-rule="evenodd" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-yellow-400">
+      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007z" clip-rule="evenodd" />
+    </svg>
+    <p class="text-white text-xl font-bold ml-4">Servicio 5 Estrellas</p>
+  </div>
+
+  <div class="container mx-auto px-4 pb-12">
+    <SimpleCta 
+      title="Servicio a Domicilio por Solo S/ 150"
+      subtitle="¡Haz clic aquí para agendar por WhatsApp y tener tu PC funcionando perfectamente hoy mismo!"
+      buttonText="Agendar por WhatsApp"
+      buttonText2="Llamar Ahora"
+      buttonLink2="tel:985834886"
+    />
+
+    <!-- Qué Incluye -->
+    <section class="my-16">
+      <h2 class="text-4xl font-bold text-center text-white mb-12">Nuestro Servicio Profesional Incluye:</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Cards... -->
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/20">
+          <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white mb-6">
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V8.25a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 8.25v10.5A2.25 2.25 0 0 0 6.75 21m-9-1.5h10.5" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-2xl mb-3 text-white">Formateo Completo</h3>
+          <p class="text-white/80">Eliminamos virus, errores y todo lo que ralentiza tu equipo, empezando desde cero para un rendimiento óptimo.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/20">
+          <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white mb-6">
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-1.621-1.621A3 3 0 0 1 14.25 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25A2.25 2.25 0 0 1 5.25 3h9.75a2.25 2.25 0 0 1 2.25 2.25Z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-2xl mb-3 text-white">Instalación de S.O.</h3>
+          <p class="text-white/80">Instalamos la última versión de Windows (10 u 11) compatible con tu PC o laptop.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/20">
+          <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white mb-6">
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-2xl mb-3 text-white">Activación Garantizada</h3>
+          <p class="text-white/80">Dejamos tu sistema operativo y Office activados de forma permanente. Sin preocupaciones.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/20">
+          <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white mb-6">
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-2xl mb-3 text-white">Instalación de Drivers</h3>
+          <p class="text-white/80">Configuramos todos los componentes de tu equipo (video, sonido, WiFi) para que funcionen a la perfección.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/20">
+          <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white mb-6">
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-2xl mb-3 text-white">Programas Esenciales</h3>
+          <p class="text-white/80">Instalamos el software que necesitas: Lector PDF, navegador, WinRAR y una suite de ofimática.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/20">
+          <div class="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white mb-6">
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-2xl mb-3 text-white">Respaldo de Datos</h3>
+          <p class="text-white/80">Hacemos una copia de tus archivos importantes antes de formatear (costo adicional).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Antes y Después Section -->
+    <section class="my-16">
+      <h2 class="text-4xl font-bold text-center text-white mb-12">Mira la Diferencia</h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="text-center">
+          <video src="/imagenes/blog/PC-Laptop-lenta.mp4" autoplay loop muted playsinline poster="/imagenes/blog/laptop-lenta-esva.jpg" class="rounded-lg shadow-2xl mb-4 w-full h-auto object-cover"></video>
+          <h3 class="text-2xl font-bold text-white">Antes</h3>
+          <p class="text-white/80">Un sistema lento y desorganizado.</p>
+        </div>
+        <div class="text-center">
+          <video src="/imagenes/blog/pc-Laptop-Como-nueva-formateada.mp4" autoplay loop muted playsinline poster="/imagenes/blog/laptop-lenta-esva.jpg" class="rounded-lg shadow-2xl mb-4 w-full h-auto object-cover"></video> 
+          <h3 class="text-2xl font-bold text-white">Después</h3>
+          <p class="text-white/80">Un equipo rápido, limpio y como nuevo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="my-16 max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold text-center text-white mb-12">Preguntas Frecuentes</h2>
+        <div class="space-y-4">
+            <details class="p-6 bg-white/10 backdrop-blur-sm border-l-4 border-blue-500 rounded-r-lg shadow-md" open>
+                <summary class="font-bold text-lg cursor-pointer text-white">¿Perderé mis archivos importantes?</summary>
+                <p class="mt-2 text-white/80">El formateo borra todo el disco. Ofrecemos un servicio adicional de respaldo de datos para guardar tus fotos, documentos y archivos importantes antes del proceso. ¡Solo tienes que solicitarlo!</p>
+            </details>
+            <details class="p-6 bg-white/10 backdrop-blur-sm border-l-4 border-blue-500 rounded-r-lg shadow-md">
+                <summary class="font-bold text-lg cursor-pointer text-white">¿Cuánto tiempo tarda el servicio?</summary>
+                <p class="mt-2 text-white/80">El servicio a domicilio suele tardar entre 1.5 a 2.5 horas, dependiendo de la velocidad del equipo y si se requiere respaldo de información.</p>
+            </details>
+            <details class="p-6 bg-white/10 backdrop-blur-sm border-l-4 border-blue-500 rounded-r-lg shadow-md">
+                <summary class="font-bold text-lg cursor-pointer text-white">¿Tengo que hacer algo para prepararme?</summary>
+                <p class="mt-2 text-white/80">Solo asegúrate de que el equipo esté en un lugar con espacio para trabajar y conectado a la corriente. Si tienes una lista de programas específicos que necesitas, tenla a la mano.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="my-16 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-center text-white mb-12">Solicita tu Servicio Ahora</h2>
+      <form name="formateo-landing" method="POST" data-netlify="true" class="bg-white/10 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/20">
+        <input type="hidden" name="form-name" value="formateo-landing" />
+        <div class="mb-6">
+          <label for="name" class="block text-white font-bold mb-2">Nombre</label>
+          <input type="text" id="name" name="name" required class="w-full p-3 rounded bg-white/20 text-white border border-white/30 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+        <div class="mb-6">
+          <label for="contact" class="block text-white font-bold mb-2">Email o Teléfono</label>
+          <input type="text" id="contact" name="contact" required class="w-full p-3 rounded bg-white/20 text-white border border-white/30 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+        <div class="mb-6">
+          <label for="message" class="block text-white font-bold mb-2">Mensaje (Opcional)</label>
+          <textarea id="message" name="message" rows="4" class="w-full p-3 rounded bg-white/20 text-white border border-white/30 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300">
+            Enviar Solicitud
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <SimpleCta 
+      title="¿Prefieres Agendar Directamente?"
+      subtitle="Haz clic aquí para hablar con nosotros por WhatsApp y coordinar tu servicio de inmediato."
+      buttonText="Contactar por WhatsApp"
+      buttonText2="Llamar Ahora"
+      buttonLink2="tel:985834886"
+    />
+  </div>
+
+</LandingLayout>
