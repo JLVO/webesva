@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/capacitacion/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
