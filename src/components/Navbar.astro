@@ -49,7 +49,7 @@ import logo from '../assets/LogoEsva.svg';
 
       <!-- Botón móvil (hamburguesa) -->
       <div class="md:hidden">
-        <button aria-label="Abrir menú" class="hover:text-hover transition">
+        <button id="mobile-menu-button" aria-label="Abrir menú" class="hover:text-hover transition">
           <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
                viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -59,4 +59,26 @@ import logo from '../assets/LogoEsva.svg';
       </div>
     </div>
   </div>
+
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Inicio</a>
+      <a href="/nosotros/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Nosotros</a>
+      <a href="/servicios/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Servicios</a>
+      <a href="/blog/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Blog</a>
+      <a href="/contactanos/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Contacto</a>
+    </div>
+  </div>
 </nav>
+
+<script>
+  document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+    } else {
+      menu.classList.add('hidden');
+    }
+  });
+</script>
