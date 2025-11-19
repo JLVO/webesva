@@ -12,6 +12,7 @@ export interface Props {
   showNavbar?: boolean;
   showFooter?: boolean;
   mainPadding?: boolean;
+  ogType?: string;
 }
 
 const { 
@@ -21,7 +22,8 @@ const {
   canonicalUrl, 
   showNavbar = true, 
   showFooter = true,
-  mainPadding = true
+  mainPadding = true,
+  ogType = 'website'
 } = Astro.props;
 
 const siteTitle = "ESVA";
@@ -74,7 +76,7 @@ const schema = {
   <meta property="og:description" content={metaDescription || schema.description} />
   <meta property="og:url" content={finalCanonicalUrl} />
   <meta property="og:image" content={absoluteOgImage} />
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content={siteTitle} />
 
   <meta name="twitter:card" content="summary_large_image" />
@@ -96,6 +98,7 @@ const schema = {
   })(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
 
   <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <slot name="head" />
 
 </head>
 <body>
