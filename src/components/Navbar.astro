@@ -1,7 +1,7 @@
 --- 
 import logo from '../assets/LogoEsva.svg';
 ---
-<nav class="bg-white text-black shadow-md sticky top-0 z-50">
+<nav class="bg-white text-black shadow-none sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-24 items-center">
       
@@ -49,7 +49,7 @@ import logo from '../assets/LogoEsva.svg';
 
       <!-- Botón móvil (hamburguesa) -->
       <div class="md:hidden">
-        <button id="mobile-menu-button" aria-label="Abrir menú" class="hover:text-hover transition">
+        <button id="mobile-menu-button" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false" class="hover:text-hover transition">
           <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
                viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -73,12 +73,16 @@ import logo from '../assets/LogoEsva.svg';
 </nav>
 
 <script>
-  document.getElementById('mobile-menu-button').addEventListener('click', function() {
-    var menu = document.getElementById('mobile-menu');
-    if (menu.classList.contains('hidden')) {
-      menu.classList.remove('hidden');
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', function() {
+    const isHidden = menu?.classList.contains('hidden') ?? true;
+    if (isHidden) {
+      menu?.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
     } else {
-      menu.classList.add('hidden');
+      menu?.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
     }
   });
 </script>

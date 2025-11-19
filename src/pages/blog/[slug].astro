@@ -6,20 +6,12 @@ import SocialShare from '../../components/SocialShare.astro'; // Importar el com
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
-  
-  // Log para depuración (puedes quitarlo una vez que todo funcione)
-  console.log('--- Blog Entries for [slug].astro ---');
-  console.log(JSON.stringify(blogEntries.map((e: CollectionEntry<'blog'>) => ({ id: e.id, slug: e.slug, dataTitle: e.data.title })), null, 2));
 
   const paths = blogEntries.map(entry => ({
     params: { slug: entry.slug },
     props: { entry },
   
   }));
-
-  // Log para depuración (puedes quitarlo una vez que todo funcione)
-  console.log('--- Generated paths for [slug].astro ---');
-  console.log(JSON.stringify(paths.map((p: { params: { slug: string } }) => p.params.slug), null, 2));
 
   return paths;
 }
@@ -28,7 +20,7 @@ export async function getStaticPaths() {
 const { entry }: { entry: CollectionEntry<'blog'> } = Astro.props;
 const { Content, headings } = await entry.render(); // Extraer headings para la Tabla de Contenidos
 
-console.log('Datos de la imagen del post:', entry.data.image); // Añade esta línea para depurar
+ 
 
 // --- Lógica para Posts Relacionados ---
 const MAX_RELATED_POSTS = 3;
@@ -82,6 +74,7 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
   metaDescription={entry.data.description}
   ogImage={entry.data.image?.url}
   canonicalUrl={Astro.url.href}
+  ogType="article"
 >
   <article class="container mx-auto pt-12 pb-8 px-6 max-w-4xl">
     <header class="mb-8">

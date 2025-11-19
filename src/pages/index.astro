@@ -1,99 +1,31 @@
 ---
 import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import Footer from "../components/Footer.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
 import LlamadaAction from "../components/LlamadaAction.astro";
 import Blog from "../components/Blog.astro";
 
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Inicio | ESVA Seguridad y Soporte Técnico de Confianza</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
-<script is:inline>
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-365MN03V4H');
-    </script>
-
-    <!-- Google Tag Manager -->
-<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
-<!-- End Google Tag Manager -->
-
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<BaseLayout pageTitle="Inicio | ESVA Seguridad y Soporte Técnico de Confianza" metaDescription="Seguridad y soporte técnico confiable. Monitoreo inteligente y asistencia profesional en Perú." ogType="website" mainPadding={false}>
+  <Fragment slot="head">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .service-card {
-            transition: all 0.3s ease;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .category-tab {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .category-tab.active {
-            border-bottom: 3px solid #3b82f6;
-            color: #3b82f6;
-        }
-        
-        .category-tab:hover:not(.active) {
-            color: #3b82f6;
-        }
-        
-        .tech-icon {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        }
-        
-        .security-icon {
-            background: linear-gradient(135deg, #10b981, #047857);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
+    <style>
+      body { font-family: 'Poppins', sans-serif; }
+      .service-card { transition: all 0.3s ease; border-radius: 16px; overflow: hidden; }
+      .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+      .category-tab { cursor: pointer; transition: all 0.3s ease; border-bottom: 3px solid transparent; }
+      .category-tab.active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+      .category-tab:hover:not(.active) { color: #3b82f6; }
+      .tech-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+      .security-icon { background: linear-gradient(135deg, #10b981, #047857); }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fade-in { animation: fadeIn 0.6s ease forwards; }
     </style>
-  </head>
-  
-  <body >
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <main>
-    <Navbar />
-    <Hero 
+  </Fragment>
+    
+    <Hero flushTop={true} sectionPadding="py-6 md:py-10"
     title="ESVA Seguridad y Soporte Técnico de Confianza" 
     subtitle="Protegemos tu entorno con tecnología avanzada, monitoreo inteligente y asistencia confiable." 
     imageUrl="/TecnicoEsvaNuevo3.svg" 
@@ -1073,10 +1005,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 
 
-<Footer/>
-<WhatsAppButton/>
-
-    </main>
+ 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Funcionalidad de pestañas
@@ -1107,5 +1036,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
     </script>
-  </body>
-</html>
+</BaseLayout>
