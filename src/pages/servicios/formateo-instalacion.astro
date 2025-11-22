@@ -39,6 +39,11 @@ const preguntasFormateo = [
 ];
 ---
 
+const whatsappTextHero = 'Hola, necesito el servicio de formateo e instalación de ESVA. ¿Me pueden dar más información?';
+const whatsappLinkHero = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappTextHero)}`;
+const whatsappTextCTA = 'Hola, necesito el servicio de formateo e instalación de sistema operativo con ESVA.';
+const whatsappLinkCTA = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappTextCTA)}`;
+
 <BaseLayout pageTitle="Formateo de PC y Laptops en Piura | Instalación de Windows | ESVA" metaDescription="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos." canonicalUrl={Astro.url.href} ogType="website">
     <Hero  
   title="Formateo e Instalación de Sistemas y Programas" 
@@ -46,7 +51,7 @@ const preguntasFormateo = [
   imageUrl="/TecnicoFormateoEsva.jpg" 
   buttonText="Solicita tu Servicio" 
   buttonLink="Escríbenos por WhatsApp"
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20formateo%20e%20instalación%20de%20ESVA.%20¿Me%20pueden%20dar%20más%20información?" 
+  linkwhatsapp={whatsappLinkHero} 
   imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
 />
 
@@ -115,7 +120,7 @@ const preguntasFormateo = [
   subtitle="No esperes a que el sistema falle por completo. Con nuestro servicio de formateo e instalación, tendrás tu equipo funcionando como nuevo, rápido y sin complicaciones."  
   buttonTextContato="Contáctanos"  
   buttonLinkLlamada="Llámanos Ahora"  
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20formateo%20e%20instalación%20de%20sistema%20operativo%20con%20ESVA."  
+  linkwhatsapp={whatsappLinkCTA}  
   textobotonwhatsapp="WhatsApp"
 />
 

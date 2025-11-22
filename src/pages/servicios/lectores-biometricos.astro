@@ -39,13 +39,16 @@ const preguntasLectores = [
 ---
 
 <BaseLayout pageTitle="Lectores Biométricos para Empresas en Piura | ESVA" metaDescription="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA." canonicalUrl={Astro.url.href} ogType="website">
+const whatsappText = 'Hola, estoy interesado en lectores biométricos para mi empresa. ¿Podrían ayudarme?';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
     <Hero  
   title="Control de Acceso y Asistencia con Lectores Biométricos" 
   subtitle="Optimiza la gestión de tu personal y refuerza la seguridad de tus instalaciones con tecnología biométrica de última generación en Piura."
   imageUrl="/imagenes/blog/integracion-biometricos-camaras-esva.jpg" 
   buttonText="Solicita una Demostración" 
   buttonLink="Escríbenos por WhatsApp"
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20estoy%20interesado%20en%20lectores%20biométricos%20para%20mi%20empresa.%20¿Podrían%20ayudarme?" 
+  linkwhatsapp={whatsappLink} 
   imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
 />
 

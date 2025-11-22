@@ -1,3 +1,4 @@
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -5,7 +6,6 @@ import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
 import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
 
-// Lógica para obtener los posts del blog
 const MAX_RECENT_POSTS = 3;
 const allPosts = await getCollection('blog');
 const recentPosts = allPosts
@@ -34,16 +34,20 @@ const preguntasSoporte = [
       'Nuestros precios son competitivos y transparentes. El costo varía según la complejidad del problema. Ofrecemos un diagnóstico inicial para darte un presupuesto claro antes de comenzar cualquier trabajo. Contáctanos para una cotización sin compromiso.',
   },
 ];
+
+const whatsappText = 'Hola, necesito soporte técnico para mi computadora.';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 ---
 
 <BaseLayout pageTitle="Soporte Técnico para PC y Laptops en Piura | ESVA" metaDescription="Soluciones rápidas y efectivas para tus problemas informáticos. Ofrecemos soporte técnico remoto y a domicilio para empresas y hogares en Piura." canonicalUrl={Astro.url.href} ogType="website">
+
 <Hero  
   title="Soporte Técnico Informático" 
   subtitle="Soluciones rápidas y confiables para todos tus problemas tecnológicos. Devolvemos la velocidad y eficiencia a tus equipos." 
   imageUrl="/imagenes/blog/tecnico-esva-soporte-cliente.jpg" 
   buttonText="Obtener Soporte Ahora" 
   buttonLink="Escríbenos por WhatsApp"
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20soporte%20técnico%20para%20mi%20computadora." 
+  linkwhatsapp={whatsappLink} 
   imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
 />
 

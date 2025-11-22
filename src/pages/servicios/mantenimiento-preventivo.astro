@@ -38,6 +38,9 @@ import {
 import Footer from "../../components/Footer.astro";
 ---
 
+const whatsappText = 'Hola, necesito el servicio de mantenimiento preventivo con ESVA.';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
 <BaseLayout pageTitle="Mantenimiento Preventivo de Computadoras | ESVA Seguridad y Tecnología" metaDescription="Evita fallos graves antes de que ocurran. Nuestro servicio de mantenimiento mantiene tus equipos limpios, rápidos y protegidos." canonicalUrl={Astro.url.href} ogType="website">
     <Hero  
   title="Mantenimiento Preventivo de Computadoras y Redes" 
@@ -45,7 +48,7 @@ import Footer from "../../components/Footer.astro";
   imageUrl="/TecnicoEsvaMantenimientoPreventivo.jpg" 
   buttonText="Solicita tu Revisión" 
   buttonLink="Escríbenos por WhatsApp"
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20mantenimiento%20preventivo%20con%20ESVA." 
+  linkwhatsapp={whatsappLink} 
   imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
 />
 
@@ -82,7 +85,7 @@ import Footer from "../../components/Footer.astro";
   subtitle="En ESVA, combinamos tecnología, experiencia y atención personalizada para darte soluciones seguras, confiables y a tu alcance."
   buttonTextContato="Contáctanos"
   buttonLinkLlamada="LLámanos Ahora"
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20el%20servicio%20de%20mantenimiento%20preventivo%20con%20ESVA."
+  linkwhatsapp={whatsappLink}
   textobotonwhatsapp="WhatsApp"/>
 
 

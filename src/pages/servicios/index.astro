@@ -21,13 +21,16 @@ import Blog from "../../components/Blog.astro";
 <BaseLayout pageTitle="Servicios de Soporte Técnico y Seguridad Electrónica en Piura | ESVA" metaDescription="ESVA ofrece soluciones integrales de soporte técnico informático y seguridad electrónica en Piura. Mantenimiento, reparación, redes, recuperación de datos, cámaras y biometría para hogares y empresas." ogType="website" mainPadding={false}>
   <link slot="head" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+const whatsappText = 'Hola, quiero más información sobre sus servicios';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
     <Hero 
     title="Nuestros Servicios de Soporte Técnico Informático y Seguridad Electrónica" 
     subtitle="Soluciones confiables en instalación, mantenimiento y reparación de equipos informáticos para empresas y hogares." 
     imageUrl="/TecnicoESVA1.svg" 
     buttonText="Contáctanos" 
-    buttonLink="Escríbenos por WhatsApp"
-    linkwhatsapp="https://wa.me/51985834886?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20servicios"/>
+    buttonLink="Escríbenos por WhatsApp" 
+    linkwhatsapp={whatsappLink}/>
     
 
 <section class="py-16 bg-white">

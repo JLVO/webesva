@@ -49,13 +49,16 @@ const preguntasFormateo = [
 ---
 
 <BaseLayout pageTitle="Recuperación de Datos en Piura | Discos Duros, USB, SD | ESVA" metaDescription="¿Perdiste archivos importantes? Ofrecemos recuperación de datos de discos duros, USB y SD en Piura. Diagnóstico gratuito, alta confidencialidad y soluciones rápidas. ¡Contáctanos!" canonicalUrl={Astro.url.href} ogType="website">
+const whatsappText = 'Hola, necesito servicio de recuperación de datos con ESVA.';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
     <Hero   
   title="Recuperación de Datos: No Todo Está Perdido" 
   subtitle="¿Tu disco falló o borraste archivos por accidente? En ESVA te ayudamos a recuperar tu información de forma rápida, segura y profesional." 
   imageUrl="/recuperacion-datos-esva.jpg" 
   buttonText="Recupera tu Información" 
   buttonLink="Escríbenos por WhatsApp"
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20servicio%20de%20recuperación%20de%20datos%20con%20ESVA." 
+  linkwhatsapp={whatsappLink} 
   imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
 />
 <section class="bg-gray-50 py-16 px-4 md:px-20 text-gray-800">
