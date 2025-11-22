@@ -38,18 +38,17 @@ const recentPosts = allPosts
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
   .slice(0, MAX_RECENT_POSTS);
 
+const whatsappText = 'Hola, necesito servicio de mantenimiento o reparación de equipos con ESVA.';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 ---
 
 <BaseLayout pageTitle="Reparación de Computadoras y Laptops en Piura | Mantenimiento Informático | ESVA" metaDescription="¿Tu PC o laptop falla? Ofrecemos mantenimiento y reparación de equipos informáticos en Piura. Diagnóstico, hardware, virus, formateo y limpieza. ¡Soluciones rápidas y confiables!" canonicalUrl={Astro.url.href} ogType="website">
-const whatsappText = 'Hola, necesito servicio de mantenimiento o reparación de equipos con ESVA.';
-const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 
     <Hero  
   title="Mantenimiento y Reparación de Equipos Informáticos" 
   subtitle="Optimiza el rendimiento de tus computadoras y redes con nuestro servicio técnico especializado para hogares y empresas. ¡Confía en ESVA para mantener tu tecnología en perfecto estado!" 
   imageUrl="/TecnicoESVA1.svg" 
   buttonText="Solicita tu Servicio"
-  buttonLink="../../contactanos"
   buttonLink="Escríbenos por WhatsApp"
   linkwhatsapp={whatsappLink} 
   imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
