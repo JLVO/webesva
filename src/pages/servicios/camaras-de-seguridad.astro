@@ -1,6 +1,43 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import "../../styles/global.css";
+import LlamadaAction from "../../components/LlamadaAction.astro";
+import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
+import TiposCamaras from "../../components/TiposCamaras.astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Footer from "../../components/Footer.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+
+const MAX_RECENT_POSTS = 3;
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, MAX_RECENT_POSTS);
+
+const preguntasCamaras = [
+  {
+    titulo: '¿Qué tipo de cámaras me conviene instalar?',
+    respuesta:
+      'Depende del entorno y el objetivo. En exteriores suelen recomendarse cámaras bullet por su alcance y resistencia; en interiores las domo son discretas y cubren amplios espacios; las PTZ permiten mover y hacer zoom para supervisión activa; y los sistemas IP ofrecen calidad superior y escalabilidad.',
+  },
+  {
+    titulo: '¿Puedo ver las cámaras desde el celular?',
+    respuesta:
+      'Sí. Configuramos acceso seguro desde tu smartphone y computadora para monitoreo en tiempo real, notificaciones y reproducción de grabaciones sin complicaciones.',
+  },
+  {
+    titulo: '¿Qué diferencia hay entre DVR y NVR?',
+    respuesta:
+      'El DVR gestiona cámaras analógicas (coaxial) y el NVR está pensado para cámaras IP (red). Los NVR con cámaras IP ofrecen mayor definición, mejor gestión y futuras ampliaciones más sencillas.',
+  },
+  {
+    titulo: '¿Ofrecen garantía y mantenimiento?',
+    respuesta:
+      'Sí. Incluimos garantía de instalación y equipos, y planes de mantenimiento preventivo para asegurar rendimiento estable y máxima vida útil del sistema.',
+  },
+];
+
 const text = 'Hola, estoy interesado en un sistema de cámaras de seguridad. ¿Me pueden asesorar?';
 const linkWhatsapp = `https://wa.me/51985834886?text=${encodeURIComponent(text)}`;
 ---
@@ -17,17 +54,94 @@ const linkWhatsapp = `https://wa.me/51985834886?text=${encodeURIComponent(text)}
 
   <section class="bg-white py-16 px-6 md:px-20 text-center">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Tu Tranquilidad es Nuestra Prioridad</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Protección Inteligente para Hogares y Empresas</h2>
       <p class="text-lg text-gray-700">
-        Un sistema de cámaras de seguridad previene robos, disuade intrusos y te permite supervisar tu propiedad 24/7. En ESVA ofrecemos tecnología de punta y una instalación impecable para que tengas control total desde cualquier lugar.
+        Los sistemas de videovigilancia de ESVA disuaden intrusos, previenen pérdidas y te permiten monitorear en tiempo real desde cualquier lugar. Diseñamos soluciones a medida con equipos confiables y una instalación profesional.
       </p>
     </div>
   </section>
 
-  <section class="py-16 px-6 md:px-20 text-center">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold text-blue-900 mb-6">Soluciones en Videovigilancia</h2>
-      <p class="text-lg text-gray-700">Diseñamos sistemas a medida para hogares, negocios y condominios en Piura.</p>
+  <TiposCamaras />
+
+  <LlamadaAction  
+    title="¿Listo para asegurar tus espacios?"  
+    subtitle="Solicita una asesoría gratuita y recibe una propuesta a medida para tu hogar, negocio o condominio."
+    buttonTextContato="Contáctanos"  
+    buttonLinkLlamada="Llámanos Ahora"  
+    linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20c%C3%A1maras%20de%20seguridad%20con%20ESVA."
+    textobotonwhatsapp="WhatsApp"
+  />
+
+  <section class="bg-white py-20 px-6 md:px-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Soluciones para Diversos Sectores</h2>
+        <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Adaptamos cada instalación al entorno y al nivel de seguridad requerido.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Tiendas y Retail</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Condominios y Residenciales</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Oficinas y Corporativos</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Almacenes e Industrias</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Colegios y Centros Educativos</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Hoteles y Restaurantes</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Clínicas y Salud</h3></div>
+        <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md"><h3 class="text-xl font-semibold text-gray-800">Centros Comerciales</h3></div>
+      </div>
     </div>
   </section>
+
+<!-- Sección del Blog -->
+{recentPosts.length > 0 && (
+  <section class="bg-white py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+        Aprende Más en Nuestro Blog
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {recentPosts.map(post => (
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            {post.data.image?.url && (
+              <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                <img 
+                  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url} 
+                  alt={post.data.image.alt || post.data.title} 
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                  loading="lazy" 
+                />
+              </a>
+            )}
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
+                  {post.data.title}
+                </a>
+              </h3>
+              {post.data.description && (
+                <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}</p>
+              )}
+              <p class="text-xs text-gray-500 mb-4">
+                {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <div class="mt-auto pt-2">
+                <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
+                  Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      {allPosts.length > MAX_RECENT_POSTS && (
+        <div class="text-center mt-12">
+          <a href="/blog" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full shadow-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
+            Ver todos los posts
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+  <PreguntasFrecuentes preguntas={preguntasCamaras} />
 </BaseLayout>
