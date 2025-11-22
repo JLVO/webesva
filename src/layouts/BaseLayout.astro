@@ -61,34 +61,38 @@ const schema = {
   }
 };
 ---
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{fullTitle}</title>
-  <meta name="description" content={metaDescription || schema.description} />
-  <link rel="icon" type="image/svg+xml" href="/faviconESVANUEVO.svg"/>
-  <link rel="canonical" href={finalCanonicalUrl} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDescription || schema.description} />
+    <link rel="icon" type="image/svg+xml" href="/faviconESVANUEVO.svg"/>
+    <link rel="canonical" href={finalCanonicalUrl} />
 
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={metaDescription || schema.description} />
-  <meta property="og:url" content={finalCanonicalUrl} />
-  <meta property="og:image" content={absoluteOgImage} />
-  <meta property="og:type" content={ogType} />
-  <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription || schema.description} />
+    <meta property="og:url" content={finalCanonicalUrl} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteTitle} />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={metaDescription || schema.description} />
-  <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription || schema.description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
 
-  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-  <slot name="head" />
-</head>
-
-{showNavbar && <Navbar />}
-<main class={mainPadding ? 'pt-8 md:pt-12' : ''}>
-  <slot />
-</main>
-{showFooter && <Footer />}
-{showFooter && <WhatsAppButton />}
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    <slot name="head" />
+  </head>
+  <body>
+    {showNavbar && <Navbar />}
+    <main class={mainPadding ? 'pt-8 md:pt-12' : ''}>
+      <slot />
+    </main>
+    {showFooter && <Footer />}
+    {showFooter && <WhatsAppButton />}
+  </body>
+</html>
