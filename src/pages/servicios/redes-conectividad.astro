@@ -1,5 +1,5 @@
 ---
-import Navbar from "../../components/Navbar.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 // Lógica para obtener los posts del blog
@@ -50,37 +50,7 @@ const preguntasRedes = [
 
 ---
 
-¡<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalación de Redes y WiFi en Piura | Soluciones de Conectividad | ESVA</title>
-    <meta name="description" content="¿Internet lento o mala señal WiFi? En ESVA ofrecemos instalación de redes, cableado estructurado y configuración de equipos en Piura para empresas y hogares. ¡Cotiza hoy!">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
-<script is:inline>
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-365MN03V4H');
-    </script>
-
-    <!-- Google Tag Manager -->
-<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
-<!-- End Google Tag Manager -->
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <Navbar/>
+<BaseLayout pageTitle="Instalación de Redes y WiFi en Piura | Soluciones de Conectividad | ESVA" metaDescription="¿Internet lento o mala señal WiFi? En ESVA ofrecemos instalación de redes, cableado estructurado y configuración de equipos en Piura para empresas y hogares. ¡Cotiza hoy!" canonicalUrl={Astro.url.href} ogType="website">
    <Hero
   title="Redes y Conectividad Profesional"
   subtitle="Conecta tu hogar o empresa con soluciones de red seguras, rápidas y personalizadas. ESVA te garantiza estabilidad, cobertura y soporte técnico confiable."
@@ -320,7 +290,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <PreguntasFrecuentes preguntas={preguntasRedes} />
 
-<Footer/>
-<WhatsAppButton/>
-</body>
-</html>
+</BaseLayout>

@@ -1,12 +1,10 @@
----
-import Navbar from "../../components/Navbar.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
 import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
-import Footer from "../../components/Footer.astro";
-import WhatsAppButton from "../../components/WhatsAppButton.astro";
+ 
 
 // Lógica para obtener los posts del blog
 const MAX_RECENT_POSTS = 3;
@@ -39,37 +37,7 @@ const preguntasCamaras = [
 ];
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalación de Cámaras de Seguridad en Piura | ESVA</title>
-    <meta name="description" content="Protege tu hogar, negocio o condominio con nuestros sistemas de cámaras de seguridad profesionales en Piura. Instalación, configuración y mantenimiento garantizado.">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
-<script is:inline>
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-365MN03V4H');
-    </script>
-
-    <!-- Google Tag Manager -->
-<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
-<!-- End Google Tag Manager -->
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <Navbar/>
+<BaseLayout pageTitle="Instalación de Cámaras de Seguridad en Piura | ESVA" metaDescription="Protege tu hogar, negocio o condominio con nuestros sistemas de cámaras de seguridad profesionales en Piura. Instalación, configuración y mantenimiento garantizado." canonicalUrl={Astro.url.href} ogType="website">
     <Hero  
   title="Instalación de Cámaras de Seguridad" 
   subtitle="Protege lo que más importa con sistemas de videovigilancia profesionales. Soluciones a medida para hogares, empresas y condominios en Piura." 
@@ -284,7 +252,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <PreguntasFrecuentes preguntas={preguntasCamaras} />
 
-<Footer/>
-<WhatsAppButton/>
-</body>
-</html>
+</BaseLayout>

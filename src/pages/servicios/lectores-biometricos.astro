@@ -1,5 +1,5 @@
 ---
-import Navbar from "../../components/Navbar.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import "../../styles/global.css";
@@ -38,37 +38,7 @@ const preguntasLectores = [
 ];
 ---
 
-¡<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lectores Biométricos para Empresas en Piura | ESVA</title>
-    <meta name="description" content="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA.">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
-<script is:inline>
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-365MN03V4H');
-    </script>
-
-    <!-- Google Tag Manager -->
-<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
-<!-- End Google Tag Manager -->
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <Navbar/>
+<BaseLayout pageTitle="Lectores Biométricos para Empresas en Piura | ESVA" metaDescription="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA." canonicalUrl={Astro.url.href} ogType="website">
     <Hero  
   title="Control de Acceso y Asistencia con Lectores Biométricos" 
   subtitle="Optimiza la gestión de tu personal y refuerza la seguridad de tus instalaciones con tecnología biométrica de última generación en Piura."
@@ -221,7 +191,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <PreguntasFrecuentes preguntas={preguntasLectores} />
 
-<Footer/>
-<WhatsAppButton/>
-</body>
-</html>
+</BaseLayout>

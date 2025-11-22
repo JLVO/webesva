@@ -1,5 +1,5 @@
 ---
-import Navbar from "../../components/Navbar.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import "../../styles/global.css";
@@ -39,37 +39,7 @@ const preguntasFormateo = [
 ];
 ---
 
-¡<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formateo de PC y Laptops en Piura | Instalación de Windows | ESVA</title>
-    <meta name="description" content="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos.">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
-<script is:inline>
-    
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-365MN03V4H');
-    </script>
-
-    <!-- Google Tag Manager -->
-<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7XKNX23');</script>
-<!-- End Google Tag Manager -->
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <Navbar/>
+<BaseLayout pageTitle="Formateo de PC y Laptops en Piura | Instalación de Windows | ESVA" metaDescription="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos." canonicalUrl={Astro.url.href} ogType="website">
     <Hero  
   title="Formateo e Instalación de Sistemas y Programas" 
   subtitle="Devuelve la velocidad y estabilidad a tus equipos. Instalamos sistemas operativos y programas esenciales con configuración personalizada para hogares y empresas." 
@@ -250,7 +220,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <PreguntasFrecuentes preguntas={preguntasFormateo} />
 
-<Footer/>
-<WhatsAppButton/>
-</body>
-</html>
+</BaseLayout>

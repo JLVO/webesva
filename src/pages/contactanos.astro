@@ -1,79 +1,7 @@
----
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Contáctanos | ESVA - Soporte Técnico y Seguridad Electrónica</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Contácta a ESVA para soporte técnico, instalación de redes, seguridad electrónica y mantenimiento de equipos en Piura. Soluciones profesionales para empresas.">
-    
-    <!-- Schema.org markup for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "name": "ESVA - Contacto",
-      "description": "Soporte técnico y soluciones de seguridad electrónica en Piura",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Urb Micaela Bastidas II Etapa Mz E Lt 30, Veintiseis de Octubre",
-        "addressLocality": "Piura",
-        "addressRegion": "Piura",
-        "addressCountry": "PE"
-      },
-      "telephone": "+51985834886",
-      "email": "contacto@esva.pe",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "20:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/ESVASeguridad",
-        "https://www.instagram.com/ESVASeguridad"
-      ]
-    }
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-365MN03V4H"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-365MN03V4H');
-    </script>
-
-    <script is:inline>
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-W7XKNX23');
-    </script>
-  </head>
-  <body class="bg-gray-50">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7XKNX23"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
-    <main>
-      <Navbar/>
+<BaseLayout pageTitle="Contáctanos | ESVA - Soporte Técnico y Seguridad Electrónica" metaDescription="Contácta a ESVA para soporte técnico, instalación de redes, seguridad electrónica y mantenimiento de equipos en Piura. Soluciones profesionales para empresas." canonicalUrl={Astro.url.href} ogType="website">
       
       <!-- Hero Section -->
       <section class="bg-gradient-to-r from-blue-900 to-indigo-900 py-16 md:py-24 px-4 text-center">
@@ -361,8 +289,4 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
         </div>
       </section>
       
-      <Footer/>
-      <WhatsAppButton/>
-    </main>
-  </body>
-</html>
+</BaseLayout>
