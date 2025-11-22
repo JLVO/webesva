@@ -17,12 +17,12 @@ import LlamadaAction from "../../components/LlamadaAction.astro";
 import Blog from "../../components/Blog.astro";
 
 ---
+const whatsappText = 'Hola, quiero más información sobre sus servicios';
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 
 <BaseLayout pageTitle="Servicios de Soporte Técnico y Seguridad Electrónica en Piura | ESVA" metaDescription="ESVA ofrece soluciones integrales de soporte técnico informático y seguridad electrónica en Piura. Mantenimiento, reparación, redes, recuperación de datos, cámaras y biometría para hogares y empresas." ogType="website" mainPadding={false}>
   <link slot="head" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-const whatsappText = 'Hola, quiero más información sobre sus servicios';
-const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 
     <Hero 
     title="Nuestros Servicios de Soporte Técnico Informático y Seguridad Electrónica" 
