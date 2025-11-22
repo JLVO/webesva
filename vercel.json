@@ -4,6 +4,26 @@
       "source": "/capacitacion/:path*",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/capacitacion",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/nosotros",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/contactanos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug/contactanos",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
