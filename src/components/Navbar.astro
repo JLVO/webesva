@@ -1,78 +1,76 @@
---- 
+---
 import logo from '../assets/LogoEsva.svg';
 ---
-<nav class="bg-white text-black shadow-none sticky top-0 z-50">
+<nav class="bg-white text-black shadow-none sticky top-0 z-50 border-b border-gray-100">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-24 items-center">
       
-      <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/">
           <img src={logo.src} alt="Logo ESVA" class="h-20 w-auto" />
         </a>
       </div>
 
-      <!-- Menú de navegación (escritorio) -->
-      <div class="hidden md:flex space-x-8 font-semibold text-base items-center">
+      <div class="hidden md:flex space-x-7 font-semibold text-base items-center">
         <a href="/" class="hover:text-blue-600 transition duration-300">Inicio</a>
         <a href="/nosotros/" class="hover:text-blue-600 transition duration-300">Nosotros</a>
+        <a href="/Brochure_ESVA_2026.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition duration-300">Brochure</a>
 
-         <a href="/Brochure_ESVA_2026.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition duration-300">Brochure</a>
-
-        <!-- Dropdown Servicios -->
         <div class="relative group">
-          <a href="/servicios/" class="inline-block hover:text-blue-600 transition duration-300">
+          <a href="/servicios/" class="inline-flex items-center hover:text-blue-600 transition duration-300 gap-1">
             Servicios
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </a>
         
-          <div class="absolute left-0 mt-2 w-64 bg-white border rounded-lg shadow-lg z-50
+          <div class="absolute left-0 mt-2 w-72 bg-white border rounded-xl shadow-xl z-50
                       invisible opacity-0 group-hover:visible group-hover:opacity-100 
-                      transform group-hover:translate-y-0 transition-all duration-300 flex flex-col">
+                      transform group-hover:translate-y-0 translate-y-2 transition-all duration-300 flex flex-col overflow-hidden">
             
-            <a href="/servicios/soporte-tecnico/" class="block px-5 py-3 hover:bg-gray-100 transition-colors duration-200">Soporte Técnico</a>
-            <a href="/servicios/mantenimiento-reparacion-informatica/" class="block px-5 py-3 hover:bg-gray-100 transition-colors duration-200">Mantenimiento y Reparación</a>
-            <a href="/servicios/formateo-instalacion/" class="block px-5 py-3 hover:bg-gray-100 transition-colors duration-200">Formateo e Instalación</a>
-            <a href="/servicios/recuperacion-datos/" class="block px-5 py-3 hover:bg-gray-100 transition-colors duration-200">Recuperación de Datos</a>
-            <a href="/servicios/redes-conectividad/" class="block px-5 py-3 hover:bg-gray-100 transition-colors duration-200">Redes y Conectividad</a>
-            <a href="/servicios/mantenimiento-preventivo/" class="block px-5 py-3 hover:bg-gray-100 transition-colors duration-200">Mantenimiento Preventivo</a>
+           <div class="bg-blue-50 px-5 py-2 text-xs font-bold text-blue-700 uppercase tracking-widest">Soporte e IT</div>
+            <a href="/servicios/soporte-tecnico/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Soporte Técnico</a>
+            <a href="/servicios/mantenimiento-reparacion-informatica/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Mantenimiento y Reparación</a>
+            <a href="/servicios/formateo-instalacion/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Formateo e Instalación de PC</a>
+            <a href="/servicios/recuperacion-datos/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Recuperación de Datos</a>
+            <a href="/servicios/redes-conectividad/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Redes y Conectividad</a>
+            <a href="/servicios/mantenimiento-preventivo/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Mantenimiento Preventivo</a>
             
-            <!-- Submenú de Seguridad Electrónica -->
-            <div class="border-t border-gray-200 my-1"></div>
-            <span class="px-5 py-2 text-sm font-semibold text-gray-500">Seguridad Electrónica</span>
-            <a href="/servicios/camaras-de-seguridad/" class="block pl-8 pr-5 py-3 hover:bg-gray-100 transition-colors duration-200">Cámaras de Seguridad</a>
-            <a href="/servicios/lectores-biometricos/" class="block pl-8 pr-5 py-3 hover:bg-gray-100 transition-colors duration-200">Lectores Biométricos</a>
+            <div class="border-t border-gray-100 my-1"></div>
+            <div class="bg-blue-50 px-5 py-2 text-xs font-bold text-blue-700 uppercase tracking-widest">Seguridad Electrónica</div>
+            <a href="/servicios/camaras-de-seguridad/" class="block px-5 py-2 hover:bg-gray-100 transition-colors">Cámaras de Seguridad</a>
+            <a href="/servicios/lectores-biometricos/" class="block px-5 py-2 hover:bg-gray-100 transition-colors border-b border-gray-100">Lectores Biométricos</a>
+
+             <div class="bg-blue-50 px-5 py-2 text-xs font-bold text-blue-700 uppercase tracking-widest">Software Original</div>
+            <a href="/servicios/autodesk/" class="block px-5 py-3 hover:bg-blue-600 hover:text-white transition-colors duration-200 flex items-center gap-2">
+              <span class="text-lg">📐</span> Licencias Autodesk
+            </a>
+
+            
+
           </div>
         </div>
 
         <a href="/blog/" class="hover:text-blue-600 transition duration-300">Blog</a>
-
         <a href="/contactanos/" class="hover:text-blue-600 transition duration-300">Contacto</a>
-       
       </div>
 
-      <!-- Botón móvil (hamburguesa) -->
       <div class="md:hidden">
-        <button id="mobile-menu-button" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false" class="hover:text-hover transition">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"/>
+        <button id="mobile-menu-button" aria-label="Abrir menú" class="hover:text-blue-600 transition">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Menú móvil -->
-  <div id="mobile-menu" class="hidden md:hidden">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Inicio</a>
-      <a href="/nosotros/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Nosotros</a>
-      <a href="/Brochure_ESVA_2026.pdf" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Brochure</a>
-      <a href="/servicios/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Servicios</a>
-      <a href="/blog/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Blog</a>
-      <a href="/contactanos/" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100">Contacto</a>
-      
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b shadow-lg">
+    <div class="px-4 pt-2 pb-6 space-y-2">
+      <a href="/" class="block px-3 py-3 font-semibold border-b">Inicio</a>
+      <a href="/nosotros/" class="block px-3 py-3 border-b">Nosotros</a>
+      <a href="/servicios/" class="block px-3 py-3 border-b">Servicios</a>
+      <a href="/blog/" class="block px-3 py-3 border-b">Blog</a>
+      <a href="/servicios/autodesk/" class="block px-3 py-3 font-bold text-blue-600 bg-blue-50 rounded-lg">📐 Licencias Autodesk (Partner)</a>
+      <a href="/contactanos/" class="block px-3 py-3 font-bold text-center bg-gray-900 text-white rounded-lg mt-4">Contacto</a>
     </div>
   </div>
 </nav>
@@ -81,13 +79,6 @@ import logo from '../assets/LogoEsva.svg';
   const btn = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', function() {
-    const isHidden = menu?.classList.contains('hidden') ?? true;
-    if (isHidden) {
-      menu?.classList.remove('hidden');
-      btn.setAttribute('aria-expanded', 'true');
-    } else {
-      menu?.classList.add('hidden');
-      btn.setAttribute('aria-expanded', 'false');
-    }
+    menu?.classList.toggle('hidden');
   });
 </script>

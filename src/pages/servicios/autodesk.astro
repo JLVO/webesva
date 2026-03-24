@@ -1,0 +1,225 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import "../../styles/global.css";
+import LlamadaAction from "../../components/LlamadaAction.astro";
+import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
+import { getCollection } from 'astro:content';
+
+// Filtramos el blog para que solo muestre lo más reciente (o artículos de software si los hay)
+const MAX_RECENT_POSTS = 3;
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, MAX_RECENT_POSTS);
+
+// Contenido especializado en Autodesk - SEO Optimized
+const preguntasAutodesk = [
+  {
+    titulo: '¿Por qué comprar licencias de Autodesk con ESVA en lugar de la web global?',
+    respuesta: 'Al comprar con ESVA, obtienes facturación local (RUC 20), soporte técnico presencial en Piura y asesoría experta para elegir el plan exacto que tu proyecto necesita, evitando cobros internacionales inesperados.',
+  },
+  {
+    titulo: '¿Qué diferencia hay entre AutoCAD y AutoCAD LT?',
+    respuesta: 'AutoCAD LT es la versión económica ideal para dibujo 2D. AutoCAD completo incluye herramientas de modelado 3D, automatización avanzada y acceso a bibliotecas especializadas de arquitectura, mecánica y electricidad.',
+  },
+  {
+    titulo: '¿Cómo recibo mi licencia tras la compra?',
+    respuesta: 'Como Resellers Autorizados, gestionamos la activación directamente en tu cuenta de Autodesk. Recibirás un correo oficial de confirmación y el acceso estará disponible de inmediato en tu portal "Autodesk Account".',
+  },
+  {
+    titulo: '¿Es seguro comprar con ESVA?',
+    respuesta: 'Totalmente. Somos Partner Autorizado vía SONDA. Entregamos certificado de licenciamiento original y factura electrónica válida ante SUNAT, garantizando que tu empresa cumpla con todas las auditorías de software.',
+  },
+];
+
+const waNumber = "51985834886";
+const mainWaText = 'Hola ESVA, deseo información y precios sobre licencias originales de Autodesk para mi empresa.';
+const linkWhatsapp = `https://wa.me/${waNumber}?text=${encodeURIComponent(mainWaText)}`;
+
+const productos = [
+  { 
+    nombre: "AutoCAD / LT", 
+    desc: "El estándar de la industria para dibujo 2D y diseño 3D. Ideal para planos técnicos.",
+    icon: "📐",
+    wa: `https://wa.me/${waNumber}?text=Hola,%20deseo%20cotizar%20AutoCAD/LT%20con%20ESVA`
+  },
+  { 
+    nombre: "Revit (BIM)", 
+    desc: "Modelado de información para edificación. La herramienta clave para proyectos BIM modernos.",
+    icon: "🏢",
+    wa: `https://wa.me/${waNumber}?text=Hola,%20necesito%20info%20sobre%20Revit%20BIM`
+  },
+  { 
+    nombre: "Civil 3D", 
+    desc: "Diseño y documentación para ingeniería civil, carreteras e infraestructura.",
+    icon: "🛣️",
+    wa: `https://wa.me/${waNumber}?text=Hola,%20cotización%20para%20Civil%203D%20en%20Piura`
+  },
+  { 
+    nombre: "AEC Collection", 
+    desc: "El paquete completo: AutoCAD, Revit, Civil 3D y más en una sola suscripción.",
+    icon: "🏗️",
+    wa: `https://wa.me/${waNumber}?text=Deseo%20info%20de%20la%20colección%20AEC%20Autodesk`
+  }
+];
+---
+
+<BaseLayout 
+  pageTitle="Partner Autorizado Autodesk en Piura - Perú | Licencias Originales ESVA" 
+  metaDescription="Distribuidor oficial de licencias AutoCAD, Revit y Civil 3D en Piura y todo el Perú. ESVA ofrece software original, facturación local RUC 20 y soporte técnico." 
+  canonicalUrl={Astro.url.href} 
+  ogType="website"
+  mainPadding={false}
+>
+  
+  <Hero  
+    title="Partner Autorizado Autodesk en Piura y todo el Perú" 
+    subtitle="Adquiere software original con facturación local y soporte técnico especializado. Potencia tus proyectos de ingeniería con el respaldo de ESVA y SONDA." 
+    imageUrl="/imagenes/blog/autodesk-reseller-peru.png" 
+    buttonText="Solicitar Cotización" 
+    buttonLink="Escríbenos por WhatsApp"
+    linkwhatsapp={linkWhatsapp}
+    sectionPadding="py-6 md:py-10"
+    
+  />
+
+  <section class="bg-white py-16 px-6 md:px-20 text-center border-b">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-blue-900 text-sm font-bold tracking-widest uppercase mb-2">Distribuidor Oficial de Software</h1>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Soluciones de Ingeniería y Arquitectura Legal</h2>
+      <p class="text-lg text-gray-700 mb-8">
+        En <strong>ESVA</strong>, somos tus aliados estratégicos. Como <strong>Authorized Reseller de Autodesk</strong> vía SONDA, garantizamos que tu inversión sea segura y cumpla con la normativa legal en el Perú.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="bg-blue-50 text-blue-700 px-5 py-2 rounded-full font-semibold border border-blue-100 shadow-sm">✔ Facturación Local (RUC 20)</span>
+        <span class="bg-blue-50 text-blue-700 px-5 py-2 rounded-full font-semibold border border-blue-100 shadow-sm">✔ Soporte Técnico en Piura</span>
+        <span class="bg-blue-50 text-blue-700 px-5 py-2 rounded-full font-semibold border border-blue-100 shadow-sm">✔ Activación Inmediata</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-950">Software Autodesk Original</h2>
+        <p class="text-gray-600 mt-4 text-lg">Las herramientas líderes con la mejor asesoría comercial del norte peruano.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {productos.map(prod => (
+          <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border-b-4 border-transparent hover:border-blue-600 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform inline-block">{prod.icon}</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">{prod.nombre}</h3>
+            <p class="text-gray-600 text-sm mb-6 leading-relaxed">{prod.desc}</p>
+            <a href={prod.wa} target="_blank" class="text-blue-600 font-bold text-sm flex items-center gap-2 hover:text-blue-800">
+              COTIZAR AHORA <span>→</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LlamadaAction  
+    title="¿Tu suscripción de Autodesk está por vencer?"  
+    subtitle="Evita multas y bloqueos. Renovamos tus licencias actuales con precios preferenciales y soporte local para empresas de Piura, Trujillo y todo el Perú."
+    buttonTextContato="Asesoría de Licenciamiento"  
+    buttonLinkLlamada="tel:+51985834886"  
+    linkwhatsapp={`https://wa.me/${waNumber}?text=Hola%20ESVA,%20necesito%20renovar%20mis%20licencias%20de%20Autodesk%20próximas%20a%20vencer.`}
+    textobotonwhatsapp="Consultar por WhatsApp"
+  />
+
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-blue-900 mb-6">Expertos en Transformación Digital</h2>
+          <p class="text-gray-700 mb-6 text-lg">Entendemos el flujo de trabajo real de la oficina técnica. En ESVA apoyamos a:</p>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3 text-gray-800 font-medium italic">
+              <span class="text-blue-600 font-bold">✓</span> Estudios de Arquitectura y Consultoras
+            </li>
+            <li class="flex items-center gap-3 text-gray-800 font-medium italic">
+              <span class="text-blue-600 font-bold">✓</span> Empresas Constructoras e Inmobiliarias
+            </li>
+            <li class="flex items-center gap-3 text-gray-800 font-medium italic">
+              <span class="text-blue-600 font-bold">✓</span> Departamentos de Ingeniería y Catastro
+            </li>
+            <li class="flex items-center gap-3 text-gray-800 font-medium italic">
+              <span class="text-blue-600 font-bold">✓</span> Alumnos y Academias de Diseño
+            </li>
+          </ul>
+        </div>
+        <div class="bg-blue-900 p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden">
+          <div class="relative z-10">
+            <h3 class="text-2xl font-bold mb-4">El Compromiso ESVA</h3>
+            <p class="mb-6 opacity-90 text-lg leading-relaxed">
+              "Como Partner Autorizado, nuestra misión es garantizar que tu empresa opere con software 100% legal, evitando riesgos técnicos y legales. Somos especialistas que entienden los flujos de ingeniería, asegurando que cada licencia sea una inversión rentable para tu negocio."
+            </p>
+            <div class="border-t border-blue-800 pt-6">
+              <p class="font-bold text-xl">Jose Luis Vargas Ojeda</p>
+              <p class="text-sm opacity-75 uppercase tracking-widest">Gerente General — ESVA</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-800 rounded-full opacity-20"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Proceso de Adquisición Simple</h2>
+        <p class="text-gray-600 mt-2">Transparencia y rapidez en cada paso.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="flex flex-col items-center text-center group">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-blue-700 transition-colors shadow-lg">1</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Cotización</h3>
+          <p class="text-gray-600">Analizamos tus necesidades y te enviamos una propuesta formal con precios competitivos de Partner.</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-blue-700 transition-colors shadow-lg">2</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Pago Local</h3>
+          <p class="text-gray-600">Pagas en cuentas corporativas de ESVA en Soles o Dólares. Emitimos tu factura electrónica de inmediato.</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-blue-700 transition-colors shadow-lg">3</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Activación</h3>
+          <p class="text-gray-600">Activamos las licencias en tu portal de Autodesk. Soporte técnico incluido para la instalación inicial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="bg-white py-20 px-6 border-t">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Novedades y Tecnología</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentPosts.map(post => (
+            <article class="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition-all border border-gray-100">
+              {post.data.image?.url && (
+                <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden">
+                  <img src={post.data.image.url} alt={post.data.title} class="w-full h-full object-cover" loading="lazy" />
+                </a>
+              )}
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-gray-800 hover:text-blue-600">
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </h3>
+                <p class="text-xs text-gray-400 mb-4">{new Date(post.data.pubDate).toLocaleDateString('es-PE')}</p>
+                <a href={`/blog/${post.slug}/`} class="text-blue-600 text-sm font-bold uppercase tracking-wider hover:underline">Leer más</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <PreguntasFrecuentes preguntas={preguntasAutodesk} />
+  
+</BaseLayout>

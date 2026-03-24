@@ -40,7 +40,7 @@ const whatsappText = 'Hola, estoy interesado en lectores biométricos para mi em
 const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 ---
 
-<BaseLayout pageTitle="Lectores Biométricos para Empresas en Piura | ESVA" metaDescription="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA." canonicalUrl={Astro.url.href} ogType="website">
+<BaseLayout pageTitle="Lectores Biométricos para Empresas en Piura | ESVA" metaDescription="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
 
     <Hero  
   title="Control de Acceso y Asistencia con Lectores Biométricos" 
@@ -49,7 +49,7 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
   buttonText="Solicita una Demostración" 
   buttonLink="Escríbenos por WhatsApp"
   linkwhatsapp={whatsappLink} 
-  imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
+  imageMaxWidth="max-w-xl" sectionPadding = 'pt-6 pb-12 md:pt-10 md:pb-24'
 />
 
 

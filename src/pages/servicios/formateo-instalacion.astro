@@ -44,7 +44,7 @@ const whatsappLinkCTA = `https://wa.me/51985834886?text=${encodeURIComponent(wha
 ---
 
 
-<BaseLayout pageTitle="Formateo de PC y Laptops en Piura | Instalación de Windows | ESVA" metaDescription="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos." canonicalUrl={Astro.url.href} ogType="website">
+<BaseLayout pageTitle="Formateo de PC y Laptops en Piura | Instalación de Windows | ESVA" metaDescription="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
     <Hero  
   title="Formateo e Instalación de Sistemas y Programas" 
   subtitle="Devuelve la velocidad y estabilidad a tus equipos. Instalamos sistemas operativos y programas esenciales con configuración personalizada para hogares y empresas." 
@@ -52,7 +52,8 @@ const whatsappLinkCTA = `https://wa.me/51985834886?text=${encodeURIComponent(wha
   buttonText="Solicita tu Servicio" 
   buttonLink="Escríbenos por WhatsApp"
   linkwhatsapp={whatsappLinkHero} 
-  imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
+  imageMaxWidth="max-w-xl"
+  sectionPadding = 'pt-6 pb-12 md:pt-10 md:pb-24'
 />
 
 
