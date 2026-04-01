@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
 import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
@@ -14,193 +14,145 @@ const recentPosts = allPosts
 
 const preguntasSoporte = [
   {
-    titulo: '¿Qué tipo de problemas técnicos solucionan?',
-    respuesta:
-      'Solucionamos una amplia gama de problemas: desde computadoras lentas, virus y fallas de software hasta problemas de hardware, configuración de redes, impresoras y periféricos. Si tienes un problema tecnológico, es muy probable que podamos ayudarte.',
+    titulo: '¿Por qué contratar un plan mensual en lugar de un técnico por visita?',
+    respuesta: 'Un plan mensual garantiza prevención. Mientras un técnico independiente cobra por reparar cuando algo ya falló, ESVA trabaja para que tu empresa nunca se detenga, ahorrándote costos por inactividad y pérdida de datos.',
   },
   {
-    titulo: '¿Ofrecen soporte técnico a domicilio?',
-    respuesta:
-      'Sí, ofrecemos soporte técnico tanto remoto como a domicilio en Piura. Para muchos problemas, podemos conectarnos a tu equipo de forma segura y solucionarlos al instante. Si se requiere una intervención física, uno de nuestros técnicos te visitará.',
+    titulo: '¿Tienen cobertura presencial en Piura y Castilla?',
+    respuesta: 'Sí, contamos con técnicos locales en Piura para visitas presenciales fijas y atención de emergencias. También ofrecemos soporte remoto inmediato para todo el Perú.',
   },
   {
-    titulo: 'Mi computadora no enciende, ¿pueden ayudarme?',
-    respuesta:
-      '¡Claro! Este es un problema común. Realizamos un diagnóstico completo para identificar la causa, que puede ser desde una fuente de poder defectuosa hasta un problema en la placa base. Te ofreceremos la mejor y más económica solución.',
+    titulo: '¿Los planes incluyen mantenimiento de cámaras y biométricos?',
+    respuesta: '¡Sí! A partir del Plan Business, integramos la gestión de tus sistemas de seguridad (CCTV y ZKTeco) dentro del mismo contrato de soporte IT.',
   },
   {
-    titulo: '¿Cuánto cuesta el servicio de soporte técnico?',
-    respuesta:
-      'Nuestros precios son competitivos y transparentes. El costo varía según la complejidad del problema. Ofrecemos un diagnóstico inicial para darte un presupuesto claro antes de comenzar cualquier trabajo. Contáctanos para una cotización sin compromiso.',
+    titulo: '¿Cómo garantizan la seguridad de nuestra información?',
+    respuesta: 'Como empresa formal (ESVA), firmamos acuerdos de confidencialidad y aplicamos protocolos de seguridad en cada intervención, algo que un técnico informal no suele ofrecer.',
   },
 ];
 
-const whatsappText = 'Hola, necesito soporte técnico para mi computadora.';
-const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+const whatsappTextHero = 'Hola ESVA, necesito información sobre el soporte técnico para mi empresa.';
+const whatsappLinkHero = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappTextHero)}`;
 ---
 
-<BaseLayout pageTitle="Soporte Técnico para PC y Laptops en Piura | ESVA" metaDescription="Soluciones rápidas y efectivas para tus problemas informáticos. Ofrecemos soporte técnico remoto y a domicilio para empresas y hogares en Piura." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
+<BaseLayout 
+  pageTitle="Soporte Técnico para Empresas en Piura | Planes Mensuales ESVA" 
+  metaDescription="Terceriza tu soporte técnico IT en Piura. Planes mensuales desde S/ 550 para empresas. Mantenimiento preventivo, redes, cámaras y biométricos con garantía." 
+  canonicalUrl={Astro.url.href} 
+  ogType="website" 
+  mainPadding={false}
+>
 
 <Hero  
-  title="Soporte Técnico Informático" 
-  subtitle="Soluciones rápidas y confiables para todos tus problemas tecnológicos. Devolvemos la velocidad y eficiencia a tus equipos." 
+  title="Outsourcing de Soporte Técnico en Piura" 
+  subtitle="Evita paradas innecesarias y optimiza tu inversión tecnológica. Planes mensuales de gestión IT diseñados para Pymes que buscan crecer sin fallas técnicas." 
   imageUrl="/imagenes/blog/tecnico-esva-soporte-cliente.jpg" 
-  buttonText="Obtener Soporte Ahora" 
-  buttonLink="Escríbenos por WhatsApp"
-  linkwhatsapp={whatsappLink} 
-  imageMaxWidth="max-w-xl" sectionPadding="py-16 md:py-20"
+  buttonText="Ver Planes para Empresas" 
+  buttonLink="#planes-soporte"
+  imageMaxWidth="max-w-xl" 
+  sectionPadding="py-16 md:py-20"
 />
 
-
-<section class="bg-white py-16 px-6 md:px-20 text-center">
+<section class="bg-white py-16 px-6 md:px-20 text-center border-b border-gray-100">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">¿Tu Tecnología te da Dolores de Cabeza?</h2>
-    <p class="text-lg text-gray-700">
-      Una computadora lenta, un virus o una red que falla pueden detener tu productividad y causar frustración. En ESVA, nuestro equipo de expertos está listo para diagnosticar y resolver tus problemas informáticos con <strong class="text-blue-700">rapidez y eficacia</strong>, para que puedas volver a trabajar sin interrupciones.
-    </p>
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">¿Tu empresa se detiene por problemas informáticos?</h2>
+    <p class="text-lg text-gray-700 leading-relaxed">
+  Una red lenta o una computadora malograda no es solo una molestia, es <strong class="text-blue-800">dinero perdido</strong>. En ESVA, no solo reparamos equipos; nos convertimos en tu <strong class="text-blue-800">departamento de TI externo</strong> para que tú te enfoques en vender mientras nosotros aseguramos tu infraestructura.
+</p>
   </div>
 </section>
 
+<section id="planes-soporte" class="py-20 bg-[#f9f9f9]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-blue-800 mb-4">Planes de Soporte Técnico Mensual</h2>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto">Soluciones de tercerización con contratos flexibles (mínimo 3 meses) y facturación electrónica vía Nubefact.</p>
+    </div>
 
-<section class="bg-blue-50 py-16 px-6 md:px-20">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">Nuestros Servicios de Soporte Técnico</h2>
-    <div class="grid gap-8 md:grid-cols-3">
-      <!-- Tarjeta 1 -->
-      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-        <div class="text-blue-800 mb-4">
-          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 hover:shadow-xl transition-all">
+        <div>
+          <h3 class="text-2xl font-bold text-blue-700 mb-2">Soporte Inicial</h3>
+          <p class="text-gray-600 mb-4 text-sm">Ideal para oficinas pequeñas o estudios contables.</p>
+          <p class="text-2xl font-bold text-gray-900">S/ 550 <span class="text-sm font-normal text-gray-500">/ mes + IGV</span></p>
+          <ul class="space-y-3 text-gray-700 mt-8 mb-8">
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Hasta 8 computadoras / laptops</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Soporte técnico remoto ilimitado.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> 1 Visita preventiva presencial al mes.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Tiempo de respuesta: &lt; 4 horas.</li>
+          </ul>
         </div>
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Diagnóstico y Reparación de PC/Laptops</h3>
-        <p class="text-gray-600">Solucionamos problemas de hardware y software, desde fallas de arranque hasta reemplazo de componentes y optimización del sistema.</p>
+        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20me%20interesa%20el%20Plan%20Inicial%20para%20mi%20oficina." target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">Cotizar Plan Inicial</a>
       </div>
 
-      <!-- Tarjeta 2 -->
-      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-        <div class="text-blue-800 mb-4">
-          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+      <div class="bg-white rounded-xl shadow-2xl p-6 flex flex-col justify-between border-2 border-orange-500 relative transform lg:scale-105">
+        <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase">Más Popular</span>
+        <div>
+          <h3 class="text-2xl font-bold text-blue-700 mb-2">Gestión Business</h3>
+          <p class="text-gray-600 mb-4 text-sm">La solución completa para Pymes en crecimiento.</p>
+          <p class="text-2xl font-bold text-gray-900">S/ 1,550 <span class="text-sm font-normal text-gray-500">/ mes + IGV</span></p>
+          <ul class="space-y-3 text-gray-700 mt-8 mb-8">
+            <li class="flex items-start font-semibold"><span class="text-green-500 mr-2">✔</span> Hasta 20 computadoras / laptops.</li>
+            <li class="flex items-start">
+  <span class="text-green-500 mr-2">✔</span> 
+  <strong>1 Visita fija semanal (4 al mes).</strong>
+</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Gestión de Cámaras y Biométricos.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Atención prioritaria de emergencias.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Tiempo de respuesta: &lt; 2 horas.</li>
+          </ul>
         </div>
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Eliminación de Virus y Malware</h3>
-        <p class="text-gray-600">Limpiamos tu equipo de virus, spyware y otro software malicioso que compromete tu seguridad y ralentiza tu sistema.</p>
+        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20v%C3%AD%20el%20Plan%20Gesti%C3%B3n%20Business%20en%20la%20web%20y%20quiero%20contratarlo." target="_blank" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition">Contratar Ahora</a>
       </div>
 
-      <!-- Tarjeta 3 -->
-      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-        <div class="text-blue-800 mb-4">
-          <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 9.393a15 15 0 0121.212 0"></path></svg>
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 hover:shadow-xl transition-all">
+        <div>
+          <h3 class="text-2xl font-bold text-blue-700 mb-2">Solución Enterprise</h3>
+          <p class="text-gray-600 mb-4 text-sm">Outsourcing IT total para alta demanda.</p>
+          <p class="text-2xl font-bold text-gray-900 mb-6">Precio a medida</p>
+          <ul class="space-y-3 text-gray-700 mb-8">
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Hasta 40 computadoras + Servidores.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> 2 Visitas fijas semanales + Emergencias.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Gestión de Backups y Ciberseguridad.</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">✔</span> Soporte prioritario 24/7 Críticos.</li>
+          </ul>
         </div>
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Soporte Remoto Inmediato</h3>
-        <p class="text-gray-600">Solucionamos la mayoría de los problemas de software de forma remota, segura y rápida, sin que tengas que moverte de tu sitio.</p>
+        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20requiero%20una%20consultor%C3%ADa%20para%20el%20Plan%20Enterprise." target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">Solicitar Consultoría</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-20 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-blue-900 mb-12 text-center">¿Por qué las empresas en Piura eligen a ESVA?</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="p-6 border-l-4 border-blue-600 bg-gray-50">
+        <h3 class="font-bold text-lg mb-2">Facturación y Formalidad</h3>
+        <p class="text-gray-600 text-sm">
+  Somos empresa constituida (<strong>RUC 20</strong>). Entregamos factura electrónica para que deduzcas tus impuestos sin problemas.
+</p>
+      </div>
+      <div class="p-6 border-l-4 border-blue-600 bg-gray-50">
+        <h3 class="font-bold text-lg mb-2">Prevención Garantizada</h3>
+        <p class="text-gray-600 text-sm">No somos "bomberos". Nuestro enfoque es preventivo para que las fallas no ocurran y tu personal siempre sea productivo.</p>
+      </div>
+      <div class="p-6 border-l-4 border-blue-600 bg-gray-50">
+        <h3 class="font-bold text-lg mb-2">Experiencia Multimarca</h3>
+        <p class="text-gray-600 text-sm">Expertos en Dahua, Hikvision y ZKTeco. Gestionamos tu red, tus cámaras y tus biometría en un solo lugar.</p>
       </div>
     </div>
   </div>
 </section>
 
 <LlamadaAction  
-  title="¿Necesitas ayuda urgente con tu equipo?"  
-  subtitle="No dejes que un problema técnico detenga tu día. Contáctanos y obtén un diagnóstico rápido y una solución efectiva de nuestros expertos."  
-  buttonTextContato="Contáctanos"  
-  buttonLinkLlamada="Llámanos Ahora"  
-  linkwhatsapp="https://wa.me/51985834886?text=Hola,%20necesito%20soporte%20técnico%20urgente."  
+  title="¿Tu soporte actual no te da garantías?"  
+  subtitle="Cámbiate a ESVA. Realizamos una auditoría gratuita de tus equipos al contratar cualquier plan mensual por 6 meses."  
+  buttonTextContato="Cotizar ahora"  
+  buttonLinkLlamada="Llámanos"  
+  linkwhatsapp="https://wa.me/51985834886?text=Hola%20ESVA%2C%20quiero%20la%20auditor%C3%ADa%20gratuita%20de%20mis%20equipos."  
   textobotonwhatsapp="WhatsApp"
 />
-
-<section class="bg-white py-20 px-6 md:px-20">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12">¿Por Qué Confiar tu Soporte Técnico a ESVA?</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-      
-      <!-- Beneficio 1 -->
-      <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Respuesta Rápida</h3>
-        <p class="text-gray-700">Entendemos la urgencia. Ofrecemos asistencia remota inmediata y programamos visitas a domicilio a la brevedad posible.</p>
-      </div>
-
-      <!-- Beneficio 2 -->
-      <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Técnicos Certificados</h3>
-        <p class="text-gray-700">Nuestro equipo está calificado y en constante capacitación para resolver desde los problemas más simples hasta los más complejos.</p>
-      </div>
-
-      <!-- Beneficio 3 -->
-      <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Soluciones a Largo Plazo</h3>
-        <p class="text-gray-700">No solo reparamos el problema actual, sino que también te asesoramos para prevenir futuras fallas y optimizar el rendimiento de tus equipos.</p>
-      </div>
-
-      <!-- Beneficio 4 -->
-      <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <h3 class="text-xl font-semibold text-blue-800 mb-2">Atención Personalizada</h3>
-        <p class="text-gray-700">Escuchamos atentamente tu problema para ofrecerte una solución a medida, explicando cada paso del proceso de forma clara.</p>
-      </div>
-
-      <!-- Beneficio 5 -->
-      <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Garantía de Servicio</h3>
-        <p class="text-gray-700">Respaldamos nuestro trabajo. Si el problema persiste, lo solucionaremos sin costo adicional. Tu satisfacción es nuestra prioridad.</p>
-      </div>
-
-      <!-- Beneficio 6 -->
-      <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <h3 class="text-xl font-semibold text-blue-900 mb-2">Precios Justos y Transparentes</h3>
-        <p class="text-gray-700">Te ofrecemos un presupuesto detallado antes de iniciar cualquier reparación. Sin costos ocultos ni sorpresas.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Sección del Blog -->
-{recentPosts.length > 0 && (
-  <section class="bg-slate-50 py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
-        Consejos en Nuestro Blog
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recentPosts.map(post => (
-          <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-            {post.data.image?.url && (
-              <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
-                <img 
-                  src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url} 
-                  alt={post.data.image.alt || post.data.title} 
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-                  loading="lazy" 
-                />
-              </a>
-            )}
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-semibold mb-3 text-gray-800">
-                <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
-                  {post.data.title}
-                </a>
-              </h3>
-              {post.data.description && (
-                <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100) + (post.data.description.length > 100 ? '...' : '')}</p>
-              )}
-              <p class="text-xs text-gray-500 mb-4">
-                {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </p>
-              <div class="mt-auto pt-2">
-                <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
-                  Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-      {allPosts.length > MAX_RECENT_POSTS && (
-        <div class="text-center mt-12">
-          <a href="/blog" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full shadow-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
-            Ver todos los posts
-          </a>
-        </div>
-      )}
-    </div>
-  </section>
-)}
 
 <PreguntasFrecuentes preguntas={preguntasSoporte} />
 
