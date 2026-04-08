@@ -652,90 +652,130 @@ import Blog from "../components/Blog.astro";
   </div>
 </section>
 
+
 <section class="py-16 bg-[#f9f9f9]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Encabezado de Sección -->
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-extrabold text-blue-800 mb-4">Planes de Soporte Técnico Mensual para Empresas en Piura</h2>
-      <p class="text-lg text-gray-700 max-w-3xl mx-auto">Asegura la continuidad de tu negocio y reduce costos operativos. En ESVA ofrecemos soluciones de tercerización de TI diseñadas para que tu infraestructura tecnológica nunca se detenga.</p>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto">Asegura la continuidad de tu negocio. En ESVA tercerizamos tu departamento de TI para que tu infraestructura tecnológica sea una ventaja, no un problema.</p>
     </div>
 
-    <!-- Cuerpo: Las Tarjetas de Planes -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <div class="bg-blue-50 border border-blue-200 px-4 py-2 rounded-full flex items-center shadow-sm">
+        <span class="text-blue-700 font-bold mr-2">Trimestral:</span> <span class="text-blue-600">-5% dto.</span>
+      </div>
+      <div class="bg-green-50 border border-green-200 px-4 py-2 rounded-full flex items-center shadow-sm">
+        <span class="text-green-700 font-bold mr-2">Semestral:</span> <span class="text-green-600">-10% dto.</span>
+      </div>
+      <div class="bg-yellow-50 border border-yellow-200 px-4 py-2 rounded-full flex items-center shadow-sm">
+        <span class="text-yellow-700 font-bold mr-2">Anual:</span> <span class="text-yellow-600">-15% dto. + 1 Mantenimiento General Gratis</span>
+      </div>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      <!-- Columna 1: Plan Esencial -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+      
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 hover:shadow-xl transition-all duration-300">
         <div>
-          <h3 class="text-2xl font-bold text-blue-700 mb-3">Soporte Esencial</h3>
-          <p class="text-gray-600 mb-4">Ideal para oficinas pequeñas o estudios profesionales.</p>
-          <p class="text-xl font-semibold text-gray-900"><span>Desde S/ 550 / mes</span></p>
-          <p class="text-xs text-gray-500 mt-4 mb-6">* Precios no incluyen IGV.</p>
+          <div class="mb-4">
+            <h3 class="text-2xl font-bold text-blue-700">Plan Esencial</h3>
+            <span class="text-xs font-semibold bg-blue-100 text-blue-600 px-2 py-1 rounded uppercase">Microempresa</span>
+          </div>
+          <p class="text-gray-600 mb-4">Para oficinas de 1 a 5 equipos que necesitan estabilidad inmediata.</p>
+          
+          <div class="mb-6">
+            <p class="text-3xl font-bold text-gray-900">S/ 550 <span class="text-sm font-normal text-gray-500">/ mes</span></p>
+            <p class="text-xs text-gray-400">* Precios + IGV. Sujeto a evaluación técnica.</p>
+          </div>
+
           <ul class="space-y-3 text-gray-700 mb-8">
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Hasta 8 computadoras / laptops</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Soporte técnico remoto ilimitado.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> 1 Visita preventiva al mes.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Limpieza de virus y optimización.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Tiempo de respuesta: &lt; 4 horas.</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Soporte remoto ilimitado</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> 2 Visitas técnicas presenciales al mes</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Mantenimiento preventivo básico</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Gestión de incidencias (Tickets)</li>
           </ul>
         </div>
-        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20el%20Plan%20Inicial%20de%20Soporte%20T%C3%A9cnico%20para%20mi%20oficina.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n." 
-   target="_blank" 
-   class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-   Cotizar Plan Inicial
-</a>
+        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20estoy%20interesado%20en%20el%20Plan%20Esencial%20para%20mi%20negocio.%20Tengo%20entre%201%20a%205%20equipos." 
+           target="_blank" 
+           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all">
+           Empezar con Plan Esencial
+        </a>
       </div>
 
-      <!-- Columna 2: Plan Business (RECOMENDADO) -->
-      <div class="bg-white rounded-xl shadow-xl p-6 flex flex-col justify-between border-2 border-orange-500 relative transform scale-105 transition-all duration-300">
-        <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase shadow-md">Más Popular</span>
+      <div class="bg-white rounded-xl shadow-2xl p-6 flex flex-col justify-between border-2 border-orange-500 relative transform lg:scale-110 z-10">
+        <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase shadow-md tracking-wider">Más Elegido</span>
         <div>
-          <h3 class="text-2xl font-bold text-blue-700 mb-3">Gestión Business</h3>
-          <p class="text-gray-600 mb-4">La solución integral para Pymes que no pueden detenerse.</p>
-          <p class="text-xl font-semibold text-gray-900"><span>Desde S/ 1,550 / mes</span></p>
-          <p class="text-xs text-gray-500 mt-4 mb-6">* Precios no incluyen IGV.</p>
+          <div class="mb-4">
+            <h3 class="text-2xl font-bold text-blue-800">Plan Profesional</h3>
+            <span class="text-xs font-semibold bg-orange-100 text-orange-600 px-2 py-1 rounded uppercase">PYME en Crecimiento</span>
+          </div>
+          <p class="text-gray-600 mb-4">Gestión completa para empresas de 6 a 15 estaciones de trabajo.</p>
+          
+          <div class="mb-6">
+            <p class="text-3xl font-bold text-gray-900">S/ 1550 <span class="text-sm font-normal text-gray-500">/ mes</span></p>
+            <p class="text-xs text-gray-400">* Precios + IGV. Costo variable según cantidad de equipos.</p>
+          </div>
+
           <ul class="space-y-3 text-gray-700 mb-8">
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Hasta 20 computadoras / laptops.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> 1 Visita fija semanal (4 al mes).</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Gestión de Redes, CCTV y Biometría.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Atención prioritaria de emergencias.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Tiempo de respuesta: &lt; 2 horas.</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i> Soporte remoto ilimitado (Prioridad Alta)</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i> 4 Visitas presenciales de mantenimiento</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i> Gestión de redes y conectividad WiFi</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i> Inventario técnico de hardware</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i> Reporte mensual de desempeño TI</li>
           </ul>
         </div>
-        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20v%C3%AD%20el%20Plan%20Gesti%C3%B3n%20Business%20en%20la%20web%20y%20me%20gustar%C3%ADa%20contratarlo%20para%20mi%20empresa.%20%C2%BFCu%C3%A1les%20son%20los%20siguientes%20pasos%3F" 
-   target="_blank" 
-   class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-   Contratar Ahora
-</a>
+        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20requiero%20el%20Plan%20Profesional.%20Necesitamos%20un%20soporte%20m%C3%A1s%20robusto%20para%20nuestros%20equipos%20y%20red." 
+           target="_blank" 
+           class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg">
+           Contratar Plan Profesional
+        </a>
       </div>
 
-      <!-- Columna 3: Plan Enterprise -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between border border-gray-200 hover:shadow-xl transition-all duration-300">
         <div>
-          <h3 class="text-2xl font-bold text-blue-700 mb-3">Solución Enterprise</h3>
-          <p class="text-gray-600 mb-4">Outsourcing total para empresas con infraestructura crítica.</p>
-          <p class="text-xl font-semibold text-gray-900 mb-6"><span>Precio a medida</span></p>
+          <div class="mb-4">
+            <h3 class="text-2xl font-bold text-blue-700">Plan Empresarial</h3>
+            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded uppercase">Outsourcing Total</span>
+          </div>
+          <p class="text-gray-600 mb-4">Para empresas con más de 15 equipos e infraestructura crítica.</p>
+          
+          <div class="mb-6">
+            <p class="text-3xl font-bold text-gray-900">S/ 2500+ <span class="text-sm font-normal text-gray-500">/ mes</span></p>
+            <p class="text-xs text-gray-400">* Escala según servidores y sistemas complejos.</p>
+          </div>
+
           <ul class="space-y-3 text-gray-700 mb-8">
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Hasta 40 computadoras + Servidores.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> 2 Visitas fijas semanales + Emergencias.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Gestión de Backups y Ciberseguridad.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Reportes de rendimiento mensuales.</li>
-            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Soporte prioritario 24/7 (Críticos).</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Soporte 24/7 para incidencias críticas</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Visitas técnicas según necesidad</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Gestión de Servidores y Backups Cloud</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Soporte a Cámaras CCTV y Biometría</li>
+            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i> Consultoría para Proyectos de Expansión</li>
           </ul>
         </div>
-        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20requiero%20una%20reuni%C3%B3n%20para%20una%20Soluci%C3%B3n%20Enterprise%20a%20medida.%20Tenemos%20varios%20equipos%20e%20infraestructura%20que%20necesitamos%20gestionar." 
-   target="_blank" 
-   class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-   Solicitar Consultoría
-</a>
+        <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20buscamos%20un%20Outsourcing%20Total.%20Tenemos%20servidores%20y%20una%20infraestructura%20grande%20que%20gestionar." 
+           target="_blank" 
+           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all">
+           Solicitar Auditoría TI
+        </a>
       </div>
     </div>
 
-    <!-- Pie de la Sección -->
-    <div class="text-center text-gray-600 text-sm">
-      <p class="mb-2">Contratos flexibles con un mínimo de 3 meses para garantizar resultados.</p>
-      <a href="blog/outsourcing-soporte-tecnico-informatico-precios/" class="text-blue-600 hover:underline font-medium">¿Por qué tercerizar tu soporte técnico? Lee nuestra guía aquí</a>
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
+      <p class="text-gray-700 font-medium mb-4">¿Tu empresa tiene necesidades únicas o más de 30 equipos?</p>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+        <a href="https://wa.me/51985834886?text=Hola%20equipo%20de%20ESVA%2C%20quisiera%20cotizar%20el%20Soporte%20Esencial%20para%20mi%20negocio.%20Manejamos%20menos%20de%205%20computadoras%20y%20buscamos%20tranquilidad%20mensual." class="text-blue-600 hover:underline font-bold text-lg">
+          <i class="fab fa-whatsapp"></i> Solicita un presupuesto a medida
+        </a>
+        <span class="hidden md:block text-gray-300">|</span>
+        <p class="text-gray-500 text-sm italic">Incluimos un diagnóstico inicial preventivo sin costo al contratar cualquier plan.</p>
+      </div>
     </div>
   </div>
 </section>
+
+
+
+
+
 <Blog/>
 
 <section class="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
