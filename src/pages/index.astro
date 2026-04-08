@@ -786,6 +786,87 @@ import Blog from "../components/Blog.astro";
   </div>
 </section>
 
+
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+
+    <h2 class="text-3xl font-extrabold text-blue-800 mb-4">
+      Calcula tu Plan en segundos
+    </h2>
+    <p class="text-gray-600 mb-8">
+      Ingresa la cantidad de equipos y obtén una recomendación inmediata.
+    </p>
+
+    <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+
+      <input 
+        type="number" 
+        id="equipos" 
+        placeholder="Cantidad de equipos"
+        class="w-full md:w-1/2 p-3 border rounded-lg mb-4 text-center"
+      />
+
+      <br>
+
+      <button 
+        onclick="calcularPlan()" 
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+        Calcular Plan
+      </button>
+
+      <!-- Resultado -->
+      <div id="resultado" class="mt-8 hidden">
+        <h3 id="planNombre" class="text-2xl font-bold text-blue-700"></h3>
+        <p id="precio" class="text-3xl font-bold text-gray-900 mt-2"></p>
+        <p id="descripcion" class="text-gray-600 mt-2"></p>
+
+        <a id="whatsappBtn" target="_blank"
+          class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg">
+          Solicitar este plan
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+window.calcularPlan = function () {
+  const input = document.getElementById("equipos");
+  if (!input) return;
+
+  const equipos = parseInt(input.value);
+  if (!equipos) return;
+
+  let precio = 200 + (equipos * 35);
+
+  let plan = "";
+  let precioFinal = 0;
+
+  if (equipos <= 5) {
+    plan = "Plan Esencial";
+    precioFinal = Math.max(precio, 550);
+  } else if (equipos <= 15) {
+    plan = "Plan Profesional";
+    precioFinal = Math.max(precio, 1550);
+  } else {
+    plan = "Plan Empresarial";
+    precioFinal = Math.max(precio, 2500);
+  }
+
+  const resultado = document.getElementById("resultado");
+  const planNombre = document.getElementById("planNombre");
+  const precioTexto = document.getElementById("precio");
+
+  if (resultado && planNombre && precioTexto) {
+    resultado.classList.remove("hidden");
+    planNombre.innerText = plan;
+    precioTexto.innerText = "S/ " + precioFinal + " / mes";
+  }
+};
+</script>
+
+
 <Blog/>
 
 <section class="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
