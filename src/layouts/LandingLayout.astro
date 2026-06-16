@@ -1,13 +1,24 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
-const { pageTitle, metaDescription, ogImage, canonicalUrl, showNavbar, showFooter, mainPadding } = Astro.props;
+const { 
+  pageTitle, 
+  title,
+  metaDescription, 
+  description,
+  ogImage, 
+  canonicalUrl, 
+  canonical,
+  showNavbar, 
+  showFooter, 
+  mainPadding 
+} = Astro.props;
 ---
 <BaseLayout 
-  pageTitle={pageTitle} 
-  metaDescription={metaDescription}
+  pageTitle={pageTitle || title} 
+  metaDescription={metaDescription || description}
   ogImage={ogImage}
-  canonicalUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl || canonical}
   showNavbar={showNavbar}
   showFooter={showFooter}
   mainPadding={mainPadding}
