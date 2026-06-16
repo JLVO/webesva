@@ -7,17 +7,17 @@
       "permanent": true
     },
     {
-      "source": "/servicios/nosotros/?",
+      "source": "/servicios/nosotros/",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/servicios/contactanos/?",
+      "source": "/servicios/contactanos/",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/blog/(.*)/contactanos/?",
+      "source": "/blog/(.*)/contactanos/",
       "destination": "/",
       "permanent": true
     }
