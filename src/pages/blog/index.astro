@@ -137,7 +137,7 @@ const metaDescription = selectedCategory
                 {subCats.map(subCat => (
                   <li>
                     <a 
-                      href={`/blog?categoria=${encodeURIComponent(subCat)}`}
+                      href={`/blog/?categoria=${encodeURIComponent(subCat)}`}
                       class:list={[
                         "block px-3 py-1.5 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors",
                         selectedCategory === subCat ? "bg-blue-600 text-white" : "text-gray-700"
