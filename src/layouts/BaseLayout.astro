@@ -27,7 +27,9 @@ const {
 } = Astro.props;
 
 const siteTitle = "ESVA";
-const fullTitle = `${pageTitle} | ${siteTitle}`;
+const fullTitle = pageTitle.includes(siteTitle) || (pageTitle.length + 8) > 60
+  ? pageTitle
+  : `${pageTitle} | ${siteTitle}`;
 
 const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site).href : new URL('/LogoESVA.png', Astro.site).href;
 const finalCanonicalUrl = canonicalUrl ? new URL(canonicalUrl.toString(), Astro.site).href : Astro.url.href;
