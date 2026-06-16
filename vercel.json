@@ -2,27 +2,22 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/capacitacion/:path*",
+      "source": "/capacitacion/(.*)",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/capacitacion",
+      "source": "/servicios/nosotros/?",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/servicios/nosotros",
+      "source": "/servicios/contactanos/?",
       "destination": "/",
       "permanent": true
     },
     {
-      "source": "/servicios/contactanos",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:slug/contactanos",
+      "source": "/blog/(.*)/contactanos/?",
       "destination": "/",
       "permanent": true
     }
