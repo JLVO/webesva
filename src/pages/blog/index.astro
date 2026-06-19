@@ -103,16 +103,13 @@ const metaDescription = selectedCategory
     
     <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
       <!-- Sidebar de Categorías con Jerarquía -->
-      <aside class="w-full md:w-1/4 lg:w-1/5 md:sticky md:top-28 self-start bg-white p-4 rounded-lg shadow-sm">
+      <aside class="w-full md:w-1/4 lg:w-1/5 md:sticky md:top-28 self-start bg-white p-4 rounded-lg shadow-sm md:max-h-[calc(100vh-9rem)] md:overflow-y-auto">
         <h2 class="text-xl font-semibold mb-4 text-gray-800 border-b pb-2">Categorías</h2>
         <ul class="space-y-2">
           <li>
             <a 
               href="/blog/" 
-              class:list={[
-                "block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors",
-                !selectedCategory ? "bg-blue-600 text-white" : "text-gray-700"
-              ]}
+              class="category-link block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors bg-blue-600 text-white"
             >
               Todas las Categorías
               <span class="float-right text-xs bg-white/20 px-1.5 py-0.5 rounded">
@@ -124,12 +121,10 @@ const metaDescription = selectedCategory
           <!-- Categorías principales con subcategorías -->
           {Object.entries(categoriesHierarchy).map(([mainCat, subCats]) => (
             <li class="mt-3">
-              <div class:list={[
-                "px-3 py-2 rounded-md text-sm font-medium",
-                selectedMainCategory === mainCat 
-                  ? "bg-blue-50 text-blue-800 border-l-4 border-blue-500" 
-                  : "text-gray-700"
-              ]}>
+              <div 
+                class="main-category-container px-3 py-2 rounded-md text-sm font-medium text-gray-700 transition-all duration-300"
+                data-subcategories={JSON.stringify(subCats)}
+              >
                 <span class="font-semibold">{mainCat}</span>
               </div>
               
@@ -138,10 +133,8 @@ const metaDescription = selectedCategory
                   <li>
                     <a 
                       href={`/blog/?categoria=${encodeURIComponent(subCat)}`}
-                      class:list={[
-                        "block px-3 py-1.5 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors",
-                        selectedCategory === subCat ? "bg-blue-600 text-white" : "text-gray-700"
-                      ]}
+                      class="category-link block px-3 py-1.5 rounded-md text-sm font-medium hover:bg-blue-100 hover:text-blue-700 transition-colors text-gray-700"
+                      data-category={subCat}
                     >
                       {subCat}
                       <span class="float-right text-xs bg-white/20 px-1.5 py-0.5 rounded">
@@ -160,65 +153,230 @@ const metaDescription = selectedCategory
       <main class="w-full md:w-3/4 lg:w-4/5">
         <header class="text-center mb-12">
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Nuestro Blog</h1>
-          <p class="text-lg text-gray-600 mt-2">
-            {selectedCategory 
-              ? `Mostrando artículos de la categoría: ${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}`
-              : "Noticias, consejos y actualizaciones de ESVA."}
+          <p id="blog-header-text" class="text-lg text-gray-600 mt-2">
+            Noticias, consejos y actualizaciones de ESVA.
           </p>
         </header>
-        {filteredPosts.length === 0 ? (
+
+        {allPosts.length === 0 ? (
           <p class="text-center text-gray-600 text-xl py-10">
-            {selectedCategory 
-              ? `No hay publicaciones en la categoría "${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}".` 
-              : "Aún no hay publicaciones en el blog. ¡Vuelve pronto!"}
+            Aún no hay publicaciones en el blog. ¡Vuelve pronto!
           </p>
         ) : (
-          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-            {filteredPosts.map(post => (
-              <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                {post.data.image?.url && (
-                  <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
-                    <img
-                      src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url}
-                      alt={post.data.image.alt || post.data.title}
-                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-                <div class="p-6 flex flex-col flex-grow">
-                  <h2 class="text-xl font-semibold mb-3 text-gray-800">
-                    <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
-                      {post.data.title}
+          <>
+            <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+              {postsWithMainCategory.map(post => (
+                <article 
+                  class="post-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 opacity-100 scale-100"
+                  data-tags={JSON.stringify(post.data.tags || [])}
+                >
+                  {post.data.image?.url && (
+                    <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                      <img
+                        src={typeof post.data.image.url === 'string' ? post.data.image.url : post.data.image.url}
+                        alt={post.data.image.alt || post.data.title}
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
                     </a>
-                  </h2>
-                  {post.data.description && (
-                    <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description}</p>
                   )}
-                  
-                  <!-- Mostrar categoría principal -->
-                  {post.mainCategory && (
-                    <div class="mb-3">
-                      <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                        {post.mainCategory}
-                      </span>
+                  <div class="p-6 flex flex-col flex-grow">
+                    <h2 class="text-xl font-semibold mb-3 text-gray-800">
+                      <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">
+                        {post.data.title}
+                      </a>
+                    </h2>
+                    {post.data.description && (
+                      <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description}</p>
+                    )}
+                    
+                    <!-- Mostrar categoría principal -->
+                    {post.mainCategory && (
+                      <div class="mb-3">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                          {post.mainCategory}
+                        </span>
+                      </div>
+                    )}
+                    
+                    <p class="text-xs text-gray-500 mb-4">
+                      {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </p>
+                    <div class="mt-auto pt-2">
+                      <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
+                        Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
+                      </a>
                     </div>
-                  )}
-                  
-                  <p class="text-xs text-gray-500 mb-4">
-                    {new Date(post.data.pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </p>
-                  <div class="mt-auto pt-2">
-                    <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">
-                      Leer más <span aria-hidden="true" class="ml-1">&rarr;</span>
-                    </a>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
+            
+            <p id="no-posts-message" class="text-center text-gray-600 text-xl py-10" style="display: none;">
+              No hay publicaciones en la categoría "<span class="selected-category-name"></span>".
+            </p>
+          </>
         )}
       </main>
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  /* Personalización de la barra de desplazamiento del menú lateral */
+  aside {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+  aside::-webkit-scrollbar {
+    width: 6px;
+  }
+  aside::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  aside::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+  }
+  aside::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+  }
+
+  /* Animación premium de filtrado */
+  .post-card {
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+
+<script>
+  function initFilter() {
+    const postsGrid = document.getElementById('posts-grid');
+    const noPostsMessage = document.getElementById('no-posts-message');
+    const blogHeaderParent = document.getElementById('blog-header-text');
+    const categoryLinks = document.querySelectorAll('.category-link');
+    const mainCategoryContainers = document.querySelectorAll('.main-category-container');
+    const postCards = document.querySelectorAll('.post-card');
+
+    function applyFilter(selectedCategory) {
+      let visibleCount = 0;
+      const normalizedSelected = selectedCategory ? selectedCategory.toLowerCase().trim() : null;
+
+      postCards.forEach(card => {
+        let tags = [];
+        try {
+          tags = JSON.parse(card.getAttribute('data-tags') || '[]');
+        } catch(e) {
+          tags = [];
+        }
+        
+        const matches = !normalizedSelected || tags.some(tag => tag.toLowerCase().trim() === normalizedSelected);
+        
+        if (matches) {
+          card.style.display = 'flex';
+          // Se usa un leve retraso para gatillar la animación de entrada
+          setTimeout(() => {
+            card.classList.remove('opacity-0', 'scale-95');
+            card.classList.add('opacity-100', 'scale-100');
+          }, 10);
+          visibleCount++;
+        } else {
+          card.classList.remove('opacity-100', 'scale-100');
+          card.classList.add('opacity-0', 'scale-95');
+          // Esperar a que la transición termine antes de ocultar físicamente
+          setTimeout(() => {
+            if (card.classList.contains('opacity-0')) {
+              card.style.display = 'none';
+            }
+          }, 350);
+        }
+      });
+
+      // Actualizar contenedor / mensaje vacío
+      if (visibleCount === 0) {
+        if (postsGrid) postsGrid.style.display = 'none';
+        if (noPostsMessage) {
+          noPostsMessage.style.display = 'block';
+          const span = noPostsMessage.querySelector('.selected-category-name');
+          if (span) span.textContent = selectedCategory;
+        }
+      } else {
+        if (postsGrid) postsGrid.style.display = 'grid';
+        if (noPostsMessage) noPostsMessage.style.display = 'none';
+      }
+
+      // Actualizar descripción del encabezado
+      if (blogHeaderParent) {
+        blogHeaderParent.textContent = selectedCategory 
+          ? `Mostrando artículos de la categoría: ${selectedCategory}`
+          : "Noticias, consejos y actualizaciones de ESVA.";
+      }
+
+      // Actualizar estilos activos de los enlaces laterales
+      categoryLinks.forEach(link => {
+        const catAttr = link.getAttribute('data-category');
+        if (!selectedCategory && !catAttr) {
+          link.classList.add('bg-blue-600', 'text-white');
+          link.classList.remove('text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
+        } else if (selectedCategory && catAttr && catAttr.toLowerCase().trim() === normalizedSelected) {
+          link.classList.add('bg-blue-600', 'text-white');
+          link.classList.remove('text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
+        } else {
+          link.classList.remove('bg-blue-600', 'text-white');
+          link.classList.add('text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
+        }
+      });
+
+      // Actualizar estilos activos de categorías principales
+      mainCategoryContainers.forEach(container => {
+        let subcategories = [];
+        try {
+          subcategories = JSON.parse(container.getAttribute('data-subcategories') || '[]');
+        } catch(e) {
+          subcategories = [];
+        }
+        const isChildSelected = normalizedSelected && subcategories.some(sub => sub.toLowerCase().trim() === normalizedSelected);
+        if (isChildSelected) {
+          container.classList.add('bg-blue-50', 'text-blue-800', 'border-l-4', 'border-blue-500');
+          container.classList.remove('text-gray-700');
+        } else {
+          container.classList.remove('bg-blue-50', 'text-blue-800', 'border-l-4', 'border-blue-500');
+          container.classList.add('text-gray-700');
+        }
+      });
+    }
+
+    const getCategoryFromUrl = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('categoria');
+    };
+
+    // Aplicar filtro inicial
+    applyFilter(getCategoryFromUrl());
+
+    // Interceptar clics en categorías
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('.category-link');
+      if (link) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        const url = new URL(href, window.location.origin);
+        const category = url.searchParams.get('categoria');
+        
+        window.history.pushState({}, '', href);
+        applyFilter(category);
+      }
+    });
+
+    // Escuchar el botón de atrás/adelante del navegador
+    window.addEventListener('popstate', () => {
+      applyFilter(getCategoryFromUrl());
+    });
+  }
+
+  // Inicializar filtro en la carga de la página
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilter);
+  } else {
+    initFilter();
+  }
+</script>
