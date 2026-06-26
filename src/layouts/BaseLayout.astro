@@ -86,8 +86,36 @@ const schema = {
     <meta name="twitter:image" content={absoluteOgImage} />
     <meta name="google-adsense-account" content="ca-pub-6742068980795422">
 
+    <!-- Preconnect to external assets to speed up DNS/TLS negotiation -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6742068980795422" crossorigin="anonymous"></script>
+
+    <!-- Deferred Google AdSense Loading to optimize PageSpeed performance -->
+    <script is:inline>
+      (function() {
+        var adsenseLoaded = false;
+        function loadAdSense() {
+          if (adsenseLoaded) return;
+          adsenseLoaded = true;
+          var script = document.createElement('script');
+          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6742068980795422";
+          script.crossOrigin = "anonymous";
+          script.async = true;
+          document.head.appendChild(script);
+          
+          window.removeEventListener('scroll', loadAdSense);
+          window.removeEventListener('mousemove', loadAdSense);
+          window.removeEventListener('touchstart', loadAdSense);
+        }
+        window.addEventListener('scroll', loadAdSense, { passive: true });
+        window.addEventListener('mousemove', loadAdSense, { passive: true });
+        window.addEventListener('touchstart', loadAdSense, { passive: true });
+      })();
+    </script>
+
     <slot name="head" />
   </head>
   <body>

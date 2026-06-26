@@ -21,7 +21,13 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 ---
 
 <BaseLayout pageTitle="Servicios de Soporte Técnico y Seguridad Electrónica en Piura | ESVA" metaDescription="ESVA ofrece soluciones integrales de soporte técnico informático y seguridad electrónica en Piura. Mantenimiento, reparación, redes, recuperación de datos, cámaras y biometría para hogares y empresas." ogType="website" mainPadding={false}>
-  <link slot="head" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Preload the services LCP image -->
+  <link slot="head" rel="preload" href="/TecnicoESVA1.svg" as="image" type="image/svg+xml">
+
+  <!-- Optimized non-render-blocking FontAwesome loading -->
+  <link slot="head" rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript slot="head"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <Hero 
@@ -518,22 +524,22 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
       
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center">
         <div class="brand-logo flex items-center justify-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
-          <img src="/LogoZKTecoNuevo.svg" alt="ZKTeco" class="h-10 opacity-80 hover:opacity-100 transition">
+          <img src="/LogoZKTecoNuevo.svg" alt="ZKTeco" class="h-10 opacity-80 hover:opacity-100 transition" width="120" height="40" loading="lazy">
         </div>
         <div class="brand-logo flex items-center justify-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
-          <img src="/LogoHikvision.svg" alt="Hikvision" class="h-10 opacity-80 hover:opacity-100 transition">
+          <img src="/LogoHikvision.svg" alt="Hikvision" class="h-10 opacity-80 hover:opacity-100 transition" width="120" height="40" loading="lazy">
         </div>
         <div class="brand-logo flex items-center justify-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
-          <img src="/LogoWindows.svg" alt="Windows" class="h-8 opacity-80 hover:opacity-100 transition">
+          <img src="/LogoWindows.svg" alt="Windows" class="h-8 opacity-80 hover:opacity-100 transition" width="96" height="32" loading="lazy">
         </div>
         <div class="brand-logo flex items-center justify-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
-          <img src="/LogoLinux.svg" alt="Linux" class="h-8 opacity-80 hover:opacity-100 transition">
+          <img src="/LogoLinux.svg" alt="Linux" class="h-8 opacity-80 hover:opacity-100 transition" width="96" height="32" loading="lazy">
         </div>
         <div class="brand-logo flex items-center justify-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
-          <img src="/LogoMikrotik.svg" alt="Mikrotik" class="h-8 opacity-80 hover:opacity-100 transition">
+          <img src="/LogoMikrotik.svg" alt="Mikrotik" class="h-8 opacity-80 hover:opacity-100 transition" width="96" height="32" loading="lazy">
         </div>
         <div class="brand-logo flex items-center justify-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
-          <img src="/LogoUbiquiti.svg" alt="Ubiquiti" class="h-8 opacity-80 hover:opacity-100 transition">
+          <img src="/LogoUbiquiti.svg" alt="Ubiquiti" class="h-8 opacity-80 hover:opacity-100 transition" width="96" height="32" loading="lazy">
         </div>
       </div>
     </div>
