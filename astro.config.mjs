@@ -5,20 +5,13 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 
-import sharp from 'astro/assets/services/sharp'; // Importación directa del módulo
 export default defineConfig({
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+    excludeFiles: ['public/**/*', 'dist/**/*'],
+  }),
   integrations: [tailwind(), react(),sitemap(),mdx()],
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
   trailingSlash: 'always', // Agrega esta línea
-
-  image: {
-    service: sharp,
-    //service: 'astro/assets/services/sharp', // o 'astro/assets/services/squoosh'
-    // domains: ['example.com'], // Si usas imágenes externas
-  },
-  vite: {
-    assetsInclude: ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.webp', '**/*.gif'],
-  },
   // base: '/mi-subruta/', // Si tu sitio está en una subruta
 });
