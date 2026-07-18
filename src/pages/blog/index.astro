@@ -169,11 +169,40 @@ const metaDescription = selectedCategory
           </p>
         ) : (
           <>
+            <!-- Barra de Búsqueda Sensitiva -->
+            <div class="mb-8 max-w-xl mx-auto">
+              <div class="relative group">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                  <svg class="w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </span>
+                <input 
+                  type="text" 
+                  id="search-input" 
+                  placeholder="Buscar por título, descripción o etiqueta..." 
+                  class="w-full pl-11 pr-11 py-3.5 bg-white border border-gray-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 text-sm transition-all duration-300 placeholder-gray-400 text-gray-800"
+                />
+                <button 
+                  id="clear-search" 
+                  type="button" 
+                  class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-gray-600 transition-colors hidden"
+                  aria-label="Limpiar búsqueda"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
             <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
               {postsWithMainCategory.map(post => (
                 <article 
                   class="post-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 opacity-100 scale-100"
                   data-tags={JSON.stringify(post.data.tags || [])}
+                  data-title={post.data.title}
+                  data-description={post.data.description || ''}
                 >
                   {post.data.image?.url && (
                     <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
@@ -217,9 +246,21 @@ const metaDescription = selectedCategory
               ))}
             </div>
             
-            <p id="no-posts-message" class="text-center text-gray-600 text-xl py-10" style="display: none;">
-              No hay publicaciones en la categoría "<span class="selected-category-name"></span>".
-            </p>
+            <div id="no-posts-message" class="text-center py-16 px-4 bg-gray-50/50 rounded-2xl border border-dashed border-gray-200 hidden">
+              <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">No se encontraron artículos</h3>
+              <p class="text-gray-600 max-w-md mx-auto text-sm" id="no-posts-text">
+                No pudimos encontrar publicaciones que coincidan con tu búsqueda.
+              </p>
+              <button 
+                id="reset-filters" 
+                class="mt-5 inline-flex items-center px-4 py-2 text-sm font-medium rounded-xl shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 active:scale-95"
+              >
+                Restablecer filtros
+              </button>
+            </div>
           </>
         )}
       </main>
@@ -261,24 +302,71 @@ const metaDescription = selectedCategory
     const categoryLinks = document.querySelectorAll('.category-link');
     const mainCategoryContainers = document.querySelectorAll('.main-category-container');
     const postCards = document.querySelectorAll('.post-card');
+    
+    // Inputs del Buscador
+    const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+    const clearSearchBtn = document.getElementById('clear-search');
+    const resetFiltersBtn = document.getElementById('reset-filters');
 
-    function applyFilter(selectedCategory) {
+    const getCategoryFromUrl = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('categoria');
+    };
+
+    // Estado interno
+    let currentCategory = getCategoryFromUrl();
+    let searchQuery = '';
+
+    // Normalizar cadenas para búsquedas en español (quitar acentos, diacríticos y pasar a minúsculas)
+    function normalizeString(str: string): string {
+      return str
+        ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim()
+        : "";
+    }
+
+    function applyFilters() {
       let visibleCount = 0;
-      const normalizedSelected = selectedCategory ? selectedCategory.toLowerCase().trim() : null;
+      const normalizedCategory = currentCategory ? currentCategory.toLowerCase().trim() : null;
+      const normalizedSearch = normalizeString(searchQuery);
+      const searchTerms = normalizedSearch.split(/\s+/).filter(Boolean);
+
+      // Mostrar/ocultar botón de limpiar búsqueda
+      if (clearSearchBtn) {
+        if (searchQuery.length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+        }
+      }
 
       postCards.forEach(card => {
+        // 1. Filtrado por Categoría
         let tags = [];
         try {
           tags = JSON.parse(card.getAttribute('data-tags') || '[]');
         } catch(e) {
           tags = [];
         }
-        
-        const matches = !normalizedSelected || tags.some(tag => tag.toLowerCase().trim() === normalizedSelected);
-        
+        const matchesCategory = !normalizedCategory || tags.some(tag => tag.toLowerCase().trim() === normalizedCategory);
+
+        // 2. Filtrado por Búsqueda (título, descripción, tags)
+        let matchesSearch = true;
+        if (searchTerms.length > 0) {
+          const title = normalizeString(card.getAttribute('data-title') || '');
+          const description = normalizeString(card.getAttribute('data-description') || '');
+          const normalizedTags = tags.map(tag => normalizeString(tag));
+
+          matchesSearch = searchTerms.every(term => 
+            title.includes(term) || 
+            description.includes(term) || 
+            normalizedTags.some(tag => tag.includes(term))
+          );
+        }
+
+        const matches = matchesCategory && matchesSearch;
+
         if (matches) {
-          card.style.display = 'flex';
-          // Se usa un leve retraso para gatillar la animación de entrada
+          (card as HTMLElement).style.display = 'flex';
           setTimeout(() => {
             card.classList.remove('opacity-0', 'scale-95');
             card.classList.add('opacity-100', 'scale-100');
@@ -287,10 +375,9 @@ const metaDescription = selectedCategory
         } else {
           card.classList.remove('opacity-100', 'scale-100');
           card.classList.add('opacity-0', 'scale-95');
-          // Esperar a que la transición termine antes de ocultar físicamente
           setTimeout(() => {
             if (card.classList.contains('opacity-0')) {
-              card.style.display = 'none';
+              (card as HTMLElement).style.display = 'none';
             }
           }, 350);
         }
@@ -300,29 +387,48 @@ const metaDescription = selectedCategory
       if (visibleCount === 0) {
         if (postsGrid) postsGrid.style.display = 'none';
         if (noPostsMessage) {
-          noPostsMessage.style.display = 'block';
-          const span = noPostsMessage.querySelector('.selected-category-name');
-          if (span) span.textContent = selectedCategory;
+          noPostsMessage.classList.remove('hidden');
+          noPostsMessage.classList.add('block');
+          
+          const textEl = document.getElementById('no-posts-text');
+          if (textEl) {
+            if (searchQuery && currentCategory) {
+              textEl.textContent = `No se encontraron artículos que coincidan con "${searchQuery}" en la categoría "${currentCategory}".`;
+            } else if (searchQuery) {
+              textEl.textContent = `No se encontraron artículos que coincidan con "${searchQuery}".`;
+            } else {
+              textEl.textContent = `No hay publicaciones en la categoría "${currentCategory}".`;
+            }
+          }
         }
       } else {
         if (postsGrid) postsGrid.style.display = 'grid';
-        if (noPostsMessage) noPostsMessage.style.display = 'none';
+        if (noPostsMessage) {
+          noPostsMessage.classList.remove('block');
+          noPostsMessage.classList.add('hidden');
+        }
       }
 
       // Actualizar descripción del encabezado
       if (blogHeaderParent) {
-        blogHeaderParent.textContent = selectedCategory 
-          ? `Mostrando artículos de la categoría: ${selectedCategory}`
-          : "Noticias, consejos y actualizaciones de ESVA.";
+        if (currentCategory && searchQuery) {
+          blogHeaderParent.textContent = `Mostrando resultados para "${searchQuery}" en la categoría "${currentCategory}".`;
+        } else if (currentCategory) {
+          blogHeaderParent.textContent = `Mostrando artículos de la categoría: ${currentCategory}`;
+        } else if (searchQuery) {
+          blogHeaderParent.textContent = `Mostrando resultados para "${searchQuery}".`;
+        } else {
+          blogHeaderParent.textContent = "Noticias, consejos y actualizaciones de ESVA.";
+        }
       }
 
       // Actualizar estilos activos de los enlaces laterales
       categoryLinks.forEach(link => {
         const catAttr = link.getAttribute('data-category');
-        if (!selectedCategory && !catAttr) {
+        if (!currentCategory && !catAttr) {
           link.classList.add('bg-blue-600', 'text-white');
           link.classList.remove('text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
-        } else if (selectedCategory && catAttr && catAttr.toLowerCase().trim() === normalizedSelected) {
+        } else if (currentCategory && catAttr && catAttr.toLowerCase().trim() === normalizedCategory) {
           link.classList.add('bg-blue-600', 'text-white');
           link.classList.remove('text-gray-700', 'hover:bg-blue-100', 'hover:text-blue-700');
         } else {
@@ -339,7 +445,7 @@ const metaDescription = selectedCategory
         } catch(e) {
           subcategories = [];
         }
-        const isChildSelected = normalizedSelected && subcategories.some(sub => sub.toLowerCase().trim() === normalizedSelected);
+        const isChildSelected = normalizedCategory && subcategories.some(sub => sub.toLowerCase().trim() === normalizedCategory);
         if (isChildSelected) {
           container.classList.add('bg-blue-50', 'text-blue-800', 'border-l-4', 'border-blue-500');
           container.classList.remove('text-gray-700');
@@ -350,31 +456,60 @@ const metaDescription = selectedCategory
       });
     }
 
-    const getCategoryFromUrl = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('categoria');
-    };
+    // Aplicar filtros iniciales
+    applyFilters();
 
-    // Aplicar filtro inicial
-    applyFilter(getCategoryFromUrl());
+    // Eventos de teclado en la barra de búsqueda
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = (e.target as HTMLInputElement).value;
+        applyFilters();
+      });
+    }
 
-    // Interceptar clics en categorías
+    // Botón de limpiar búsqueda
+    if (clearSearchBtn) {
+      clearSearchBtn.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          searchQuery = '';
+          applyFilters();
+          searchInput.focus();
+        }
+      });
+    }
+
+    // Botón de restablecer filtros en estado vacío
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        searchQuery = '';
+        currentCategory = null;
+        window.history.pushState({}, '', '/blog/');
+        applyFilters();
+      });
+    }
+
+    // Interceptar clics en categorías del menú lateral
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('.category-link');
+      const link = (e.target as HTMLElement).closest('.category-link');
       if (link) {
         e.preventDefault();
         const href = link.getAttribute('href');
-        const url = new URL(href, window.location.origin);
-        const category = url.searchParams.get('categoria');
-        
-        window.history.pushState({}, '', href);
-        applyFilter(category);
+        if (href) {
+          const url = new URL(href, window.location.origin);
+          currentCategory = url.searchParams.get('categoria');
+          
+          window.history.pushState({}, '', href);
+          applyFilters();
+        }
       }
     });
 
     // Escuchar el botón de atrás/adelante del navegador
     window.addEventListener('popstate', () => {
-      applyFilter(getCategoryFromUrl());
+      currentCategory = getCategoryFromUrl();
+      applyFilters();
     });
   }
 
