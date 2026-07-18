@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import { getCollection } from 'astro:content';
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
@@ -42,6 +44,16 @@ const whatsappLinkHero = `https://wa.me/51985834886?text=${encodeURIComponent(wh
   ogType="website" 
   mainPadding={false}
 >
+  <ServiceSchema
+    name="Soporte Técnico para Empresas"
+    description="Terceriza tu soporte técnico IT en Piura. Planes mensuales desde S/ 550 para empresas. Mantenimiento preventivo, redes, cámaras y biométricos con garantía."
+    url="https://esva.pe/servicios/soporte-tecnico/"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Soporte Técnico Empresas", url: "https://esva.pe/servicios/soporte-tecnico/" }
+  ]} />
 
 <Hero  
   title="Outsourcing de Soporte Técnico en Piura" 

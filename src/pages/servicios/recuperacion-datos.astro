@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 // Lógica para obtener los posts del blog
 const MAX_RECENT_POSTS = 3;
@@ -49,8 +51,19 @@ const preguntasFormateo = [
 ---
 
 <BaseLayout pageTitle="Recuperación de Datos en Piura | Discos Duros, USB, SD | ESVA" metaDescription="¿Perdiste archivos importantes? Ofrecemos recuperación de datos de discos duros, USB y SD en Piura. Diagnóstico gratuito, alta confidencialidad y soluciones rápidas. ¡Contáctanos!" canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
+  <ServiceSchema
+    name="Recuperación de Datos"
+    description="¿Perdiste archivos importantes? Ofrecemos recuperación de datos de discos duros, USB y SD en Piura. Diagnóstico gratuito y alta confidencialidad."
+    url="https://esva.pe/servicios/recuperacion-datos/"
+    image="https://esva.pe/recuperacion-datos-esva.jpg"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Recuperación de Datos", url: "https://esva.pe/servicios/recuperacion-datos/" }
+  ]} />
 
-    <Hero   
+    <Hero
   title="Recuperación de Datos: No Todo Está Perdido" 
   subtitle="¿Tu disco falló o borraste archivos por accidente? En ESVA te ayudamos a recuperar tu información de forma rápida, segura y profesional." 
   imageUrl="/recuperacion-datos-esva.jpg" 

@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry} from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro'; // Asegúrate que la ruta a tu layout base sea correcta
 import TableOfContents from '../../components/TableOfContents.astro'; // Importar el componente de Tabla de Contenidos
 import SocialShare from '../../components/SocialShare.astro'; // Importar el componente para compartir
+import BreadcrumbSchema from '../../components/BreadcrumbSchema.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -68,14 +69,52 @@ if (relatedPosts.length < MAX_RELATED_POSTS) {
   relatedPosts = [...relatedPosts, ...recentPostsToAdd.slice(0, numToFetch).map(p => ({ ...p, commonTags: 0 }) as PostWithCommonTags)];
   // Añadimos commonTags: 0 a los posts recientes que se agregan, para que coincidan con el tipo
 }
+
+const postUrl = `https://esva.pe/blog/${entry.slug}/`;
+const absoluteImageUrl = entry.data.image?.url
+  ? new URL(entry.data.image.url, 'https://esva.pe').href
+  : undefined;
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": entry.data.title,
+  "description": entry.data.description,
+  "datePublished": entry.data.pubDate.toISOString(),
+  ...(entry.data.updatedDate ? { "dateModified": entry.data.updatedDate.toISOString() } : {}),
+  "author": {
+    "@type": "Person",
+    "name": entry.data.author || "ESVA"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ESVA Servicios Generales EIRL",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://esva.pe/LogoESVA.png"
+    }
+  },
+  "url": postUrl,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
+  },
+  ...(absoluteImageUrl ? { "image": absoluteImageUrl } : {})
+};
 ---
-<BaseLayout 
-  pageTitle={entry.data.title} 
+<BaseLayout
+  pageTitle={entry.data.title}
   metaDescription={entry.data.description}
   ogImage={entry.data.image?.url}
   canonicalUrl={Astro.url.href}
   ogType="article"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)}></script>
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Blog", url: "https://esva.pe/blog/" },
+    { name: entry.data.title, url: postUrl }
+  ]} />
   <article class="container mx-auto pt-12 pb-8 px-6 max-w-4xl">
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{entry.data.title}</h1>

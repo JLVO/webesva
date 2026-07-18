@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
 import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
@@ -72,7 +74,17 @@ const productos = [
   ogType="website"
   mainPadding={false}
 >
-  
+  <ServiceSchema
+    name="Licencias Autodesk (AutoCAD, Revit, Civil 3D)"
+    description="Distribuidor oficial de licencias AutoCAD, Revit y Civil 3D en Piura y todo el Perú. ESVA ofrece software original, facturación local RUC 20 y soporte técnico."
+    url="https://esva.pe/servicios/autodesk/"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Partner Autodesk", url: "https://esva.pe/servicios/autodesk/" }
+  ]} />
+
   <Hero  
     title="Partner Autorizado Autodesk en Piura y todo el Perú" 
     subtitle="Adquiere software original con facturación local y soporte técnico especializado. Potencia tus proyectos de ingeniería con el respaldo de ESVA y SONDA." 

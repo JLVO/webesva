@@ -1,6 +1,7 @@
 ---
 import LandingLayout from '../../layouts/LandingLayout.astro';
 import SimpleCta from '../../components/SimpleCta.astro';
+import ServiceSchema from '../../components/ServiceSchema.astro';
 
 const pageTitle = "Formateo de PC y Laptops a Domicilio | ESVA";
 const description = "Servicio profesional de formateo e instalación para PC y laptops a domicilio en Piura. Dejamos tu equipo más rápido que nunca con activación garantizada. ¡Contáctanos!";
@@ -26,6 +27,11 @@ const videoSchema = {
 ---
 
 <LandingLayout title={pageTitle} description={description} canonical="https://esva.pe/servicios/formateo-instalacion/" showNavbar={false} showFooter={false} mainPadding={false}>
+  <ServiceSchema
+    name="Formateo de PC y Laptops a Domicilio"
+    description={description}
+    url="https://esva.pe/servicios/formateo-instalacion/"
+  />
 
   <div class="text-center pt-20 pb-12 px-4 text-white">
     <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">Formateo de PC y Laptops a Domicilio</h1>

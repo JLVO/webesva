@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
@@ -41,8 +43,19 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 ---
 
 <BaseLayout pageTitle="Lectores Biométricos para Empresas en Piura | ESVA" metaDescription="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
+  <ServiceSchema
+    name="Lectores Biométricos y Control de Acceso"
+    description="Moderniza el control de asistencia y acceso en tu empresa con lectores biométricos de huella digital y reconocimiento facial en Piura. Instalación y configuración profesional con ESVA."
+    url="https://esva.pe/servicios/lectores-biometricos/"
+    image="https://esva.pe/imagenes/blog/integracion-biometricos-camaras-esva.jpg"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Lectores Biométricos", url: "https://esva.pe/servicios/lectores-biometricos/" }
+  ]} />
 
-    <Hero  
+    <Hero
   title="Control de Acceso y Asistencia con Lectores Biométricos" 
   subtitle="Optimiza la gestión de tu personal y refuerza la seguridad de tus instalaciones con tecnología biométrica de última generación en Piura."
   imageUrl="/imagenes/blog/integracion-biometricos-camaras-esva.jpg" 

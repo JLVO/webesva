@@ -4,9 +4,48 @@ import Hero from "../components/Hero.astro";
 import LlamadaAction from "../components/LlamadaAction.astro";
 import Blog from "../components/Blog.astro";
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué servicios brindan exactamente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ofrecemos servicios completos de soporte técnico informático y seguridad electrónica: mantenimiento y reparación de equipos, instalación de redes y sistemas, cámaras de seguridad y lectores biométricos, y soporte técnico remoto y a domicilio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Atienden a empresas o también a personas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Atendemos a empresas de todos los tamaños, instituciones educativas y gubernamentales, y también a clientes residenciales. Ofrecemos planes personalizados según las necesidades específicas de cada cliente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué zonas brindan servicio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nuestro servicio cubre principalmente Piura ciudad y provincia, además de Sullana, Paita y Talara. Para otras provincias, contáctanos para coordinar disponibilidad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo toman en responder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por WhatsApp respondemos en menos de 15 minutos (de 8am a 8pm), por correo electrónico dentro de 2 horas hábiles, y las llamadas telefónicas se atienden de forma inmediata en horario de atención."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout pageTitle="Inicio | ESVA Seguridad y Soporte Técnico de Confianza" metaDescription="Seguridad y soporte técnico confiable. Monitoreo inteligente y asistencia profesional en Perú." ogType="website" mainPadding={false}>
+<BaseLayout pageTitle="ESVA Piura | Soporte Técnico y Seguridad Electrónica de Confianza" metaDescription="Seguridad electrónica y soporte técnico confiable en Piura. Monitoreo inteligente y asistencia profesional para hogares y empresas." ogType="website" mainPadding={false}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
   <!-- Preload the hero background image for faster LCP -->
   <link slot="head" rel="preload" href="/bg-nosotros.avif" as="image" type="image/avif">
   
@@ -1128,7 +1167,7 @@ window.calcularPlan = function () {
               </div>
               <div>
                 <p class="text-sm text-gray-600">Envíanos un email</p>
-                <a href="mailto:contacto@esva.com" class="font-medium text-gray-900 hover:text-blue-600">contacto@esva.pe</a>
+                <a href="mailto:contacto@esva.pe" class="font-medium text-gray-900 hover:text-blue-600">contacto@esva.pe</a>
               </div>
             </div>
           </div>

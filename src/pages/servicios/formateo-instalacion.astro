@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
@@ -45,7 +47,17 @@ const whatsappLinkCTA = `https://wa.me/51985834886?text=${encodeURIComponent(wha
 
 
 <BaseLayout pageTitle="Formateo de PC y Laptops en Piura | Instalación de Windows | ESVA" metaDescription="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
-    <Hero  
+  <ServiceSchema
+    name="Formateo e Instalación de PC y Laptops"
+    description="¿Tu PC o laptop está muy lenta? Con nuestro servicio de formateo en Piura, la dejamos como nueva. Instalación limpia de Windows, programas esenciales y respaldo de archivos."
+    url="https://esva.pe/servicios/formateo-instalacion/"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Formateo e Instalación", url: "https://esva.pe/servicios/formateo-instalacion/" }
+  ]} />
+    <Hero
   title="Formateo e Instalación de Sistemas y Programas" 
   subtitle="Devuelve la velocidad y estabilidad a tus equipos. Instalamos sistemas operativos y programas esenciales con configuración personalizada para hogares y empresas." 
   imageUrl="/TecnicoFormateoEsva.jpg" 

@@ -15,12 +15,17 @@ import {
 } from "lucide-react";
 import LlamadaAction from "../../components/LlamadaAction.astro";
 import Blog from "../../components/Blog.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 
 const whatsappText = 'Hola, quiero más información sobre sus servicios';
 const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
 ---
 
 <BaseLayout pageTitle="Servicios de Soporte Técnico y Seguridad Electrónica en Piura | ESVA" metaDescription="ESVA ofrece soluciones integrales de soporte técnico informático y seguridad electrónica en Piura. Mantenimiento, reparación, redes, recuperación de datos, cámaras y biometría para hogares y empresas." ogType="website" mainPadding={false}>
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" }
+  ]} />
   <!-- Preload the services LCP image -->
   <link slot="head" rel="preload" href="/TecnicoESVA1.svg" as="image" type="image/svg+xml">
 
@@ -817,7 +822,7 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
               </div>
               <div>
                 <p class="text-sm text-gray-600">Envíanos un email</p>
-                <a href="mailto:contacto@esva.com" class="font-medium text-gray-900 hover:text-blue-600">contacto@esva.pe</a>
+                <a href="mailto:contacto@esva.pe" class="font-medium text-gray-900 hover:text-blue-600">contacto@esva.pe</a>
               </div>
             </div>
           </div>

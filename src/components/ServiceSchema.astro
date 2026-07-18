@@ -1,0 +1,33 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  image?: string;
+}
+
+const { name, description, url, image } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": name,
+  "name": name,
+  "description": description,
+  "url": url,
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://esva.pe/#negocio",
+    "name": "ESVA Servicios Generales EIRL"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Piura" },
+    { "@type": "City", "name": "Sullana" },
+    { "@type": "City", "name": "Paita" },
+    { "@type": "City", "name": "Talara" }
+  ],
+  ...(image ? { image } : {})
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
