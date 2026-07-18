@@ -31,16 +31,19 @@ const fullTitle = pageTitle.includes(siteTitle) || (pageTitle.length + 8) > 60
   ? pageTitle
   : `${pageTitle} | ${siteTitle}`;
 
-const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site).href : new URL('/LogoESVA.png', Astro.site).href;
+const absoluteOgImage = ogImage ? new URL(ogImage, Astro.site).href : new URL('/TecnicoEsvaMantenimientoPreventivo.jpg', Astro.site).href;
 const finalCanonicalUrl = canonicalUrl ? new URL(canonicalUrl.toString(), Astro.site).href : Astro.url.href;
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "ProfessionalService",
+  "@id": "https://esva.pe/#negocio",
   "name": "ESVA Servicios Generales EIRL",
   "image": "https://esva.pe/LogoESVA.png",
   "url": "https://esva.pe",
   "telephone": "+51985834886",
+  "email": "contacto@esva.pe",
+  "priceRange": "S/ 550 - S/ 2500+",
   "description": "Ofrecemos soluciones confiables en soporte técnico, seguridad electrónica, redes, conectividad y recuperación de datos para hogares y empresas en Piura.",
   "address": {
     "@type": "PostalAddress",
@@ -49,6 +52,28 @@ const schema = {
     "addressRegion": "Piura",
     "addressCountry": "PE"
   },
+  "areaServed": [
+    { "@type": "City", "name": "Piura" },
+    { "@type": "City", "name": "Sullana" },
+    { "@type": "City", "name": "Paita" },
+    { "@type": "City", "name": "Talara" }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+51985834886",
+      "contactType": "customer service",
+      "areaServed": "PE",
+      "availableLanguage": "Spanish"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+51935173103",
+      "contactType": "customer service",
+      "areaServed": "PE",
+      "availableLanguage": "Spanish"
+    }
+  ],
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": [
@@ -58,12 +83,18 @@ const schema = {
       "Thursday",
       "Friday"
     ],
-    "opens": "09:00",
-    "closes": "20:00"
-  }
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/esva2022",
+    "https://www.instagram.com/esva.soluciones/",
+    "https://www.linkedin.com/company/94254191/",
+    "https://www.youtube.com/@esvasoluciones"
+  ]
 };
 ---
-<html lang="es">
+<html lang="es-PE">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

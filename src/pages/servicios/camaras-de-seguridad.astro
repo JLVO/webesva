@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
 import PreguntasFrecuentes from '../../components/PreguntasFrecuentes.astro';
@@ -42,7 +44,18 @@ const text = 'Hola, estoy interesado en un sistema de cámaras de seguridad. ¿M
 const linkWhatsapp = `https://wa.me/51985834886?text=${encodeURIComponent(text)}`;
 ---
 <BaseLayout pageTitle="Instalación de Cámaras de Seguridad en Piura | ESVA" metaDescription="Protege tu hogar, negocio o condominio con sistemas de cámaras de seguridad profesionales en Piura. Instalación, configuración y mantenimiento garantizado." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
-  <Hero  
+  <ServiceSchema
+    name="Instalación de Cámaras de Seguridad"
+    description="Protege tu hogar, negocio o condominio con sistemas de cámaras de seguridad profesionales en Piura. Instalación, configuración y mantenimiento garantizado."
+    url="https://esva.pe/servicios/camaras-de-seguridad/"
+    image="https://esva.pe/imagenes/blog/tecnico-de-ESVA-instalando-camaras.jpg"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Cámaras de Seguridad", url: "https://esva.pe/servicios/camaras-de-seguridad/" }
+  ]} />
+  <Hero
     title="Instalación de Cámaras de Seguridad" 
     subtitle="Protege lo que más importa con sistemas de videovigilancia profesionales. Soluciones a medida para hogares, empresas y condominios en Piura." 
     imageUrl="/imagenes/blog/tecnico-de-ESVA-instalando-camaras.jpg" 

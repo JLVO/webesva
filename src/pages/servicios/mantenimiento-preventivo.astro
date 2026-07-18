@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import "../../styles/global.css";
 import LlamadaAction from "../../components/LlamadaAction.astro";
@@ -41,7 +43,18 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 ---
 
 <BaseLayout pageTitle="Mantenimiento Preventivo de Computadoras | ESVA Seguridad y Tecnología" metaDescription="Evita fallos graves antes de que ocurran. Nuestro servicio de mantenimiento mantiene tus equipos limpios, rápidos y protegidos." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
-    <Hero  
+  <ServiceSchema
+    name="Mantenimiento Preventivo de Computadoras"
+    description="Evita fallos graves antes de que ocurran. Nuestro servicio de mantenimiento mantiene tus equipos limpios, rápidos y protegidos."
+    url="https://esva.pe/servicios/mantenimiento-preventivo/"
+    image="https://esva.pe/TecnicoEsvaMantenimientoPreventivo.jpg"
+  />
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Servicios", url: "https://esva.pe/servicios/" },
+    { name: "Mantenimiento Preventivo", url: "https://esva.pe/servicios/mantenimiento-preventivo/" }
+  ]} />
+    <Hero
   title="Mantenimiento Preventivo de Computadoras y Redes" 
   subtitle="Evita fallos graves antes de que ocurran. Nuestro servicio de mantenimiento mantiene tus equipos limpios, rápidos y protegidos. ¡Solicita tu revisión con ESVA!" 
   imageUrl="/TecnicoEsvaMantenimientoPreventivo.jpg" 

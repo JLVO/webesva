@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema.astro';
 
 const allPosts = await getCollection('blog', ({ data }) => {
   return true; // Mostrar todos los posts
@@ -99,6 +100,10 @@ const metaDescription = selectedCategory
 ---
 
 <BaseLayout pageTitle={pageTitle} metaDescription={metaDescription} canonicalUrl="https://esva.pe/blog/">
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Blog", url: "https://esva.pe/blog/" }
+  ]} />
   <div class="container mx-auto pt-1 pb-8 px-6">
     
     <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
