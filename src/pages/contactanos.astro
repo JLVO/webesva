@@ -339,7 +339,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           body: JSON.stringify(data),
         });
 
-        const result = await response.json();
+        let result;
+        try {
+          result = await response.json();
+        } catch (jsonErr) {
+          throw new Error(`Error del servidor (${response.status}). Por favor, verifica la configuración del servidor.`);
+        }
 
         if (response.ok && result.success) {
           successAlert?.classList.remove('hidden');
@@ -352,9 +357,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           }
         }
       } catch (err) {
-        console.error('Error de red:', err);
+        console.error('Error al enviar formulario:', err);
         if (errorAlert) {
-          errorAlert.textContent = 'Error de red. Asegúrate de tener conexión a Internet e inténtalo de nuevo.';
+          const errMsg = err instanceof Error ? err.message : 'Error de red. Asegúrate de tener conexión a Internet e inténtalo de nuevo.';
+          errorAlert.textContent = errMsg;
           errorAlert.classList.remove('hidden');
         }
       } finally {
