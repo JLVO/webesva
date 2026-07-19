@@ -8,7 +8,6 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   adapter: vercel({
     imageService: true,
-    excludeFiles: ['public/**/*', 'dist/**/*'],
   }),
   integrations: [tailwind(), react(),sitemap(),mdx()],
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
