@@ -741,51 +741,78 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
           <h3 class="text-2xl font-bold text-gray-800">Contáctanos</h3>
         </div>
         
-        <form class="space-y-6">
+        <form id="servicios-form" class="space-y-6">
           <div>
             <label class="block text-gray-700 font-medium mb-2" for="name">Tu nombre</label>
-            <input type="text" id="name" placeholder="Ej: Juan Pérez" required
+            <input type="text" id="name" name="nombre" placeholder="Ej: Juan Pérez" required
               class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
           </div>
           
           <div>
             <label class="block text-gray-700 font-medium mb-2" for="email">Correo electrónico</label>
-            <input type="email" id="email" placeholder="ejemplo@correo.com" required
+            <input type="email" id="email" name="correo" placeholder="ejemplo@correo.com" required
               class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
           </div>
           
           <div>
             <label class="block text-gray-700 font-medium mb-2" for="phone">Teléfono (opcional)</label>
-            <input type="tel" id="phone" placeholder="+51 XXX XXX XXX"
+            <input type="tel" id="phone" name="telefono" placeholder="+51 XXX XXX XXX"
               class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
           </div>
           
           <div>
             <label class="block text-gray-700 font-medium mb-2" for="service">Servicio de interés</label>
-            <select id="service"
+            <select id="service" name="servicio"
               class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
               <option value="">Selecciona un servicio</option>
-              <option value="soporte">Soporte Técnico</option>
-              <option value="redes">Instalación de Redes</option>
-              <option value="camaras">Cámaras de Seguridad</option>
-              <option value="biometricos">Lectores Biométricos</option>
-              <option value="otro">Otro</option>
+              
+              <optgroup label="Soporte e IT">
+                <option value="soporte-tecnico">Soporte Técnico</option>
+                <option value="mantenimiento-reparacion">Mantenimiento y Reparación</option>
+                <option value="formateo-pc">Formateo e Instalación de PC</option>
+                <option value="recuperacion-datos">Recuperación de Datos</option>
+              </optgroup>
+              
+              <optgroup label="Redes y Conectividad">
+                <option value="redes-conectividad">Redes y Conectividad</option>
+                <option value="mantenimiento-preventivo">Mantenimiento Preventivo</option>
+              </optgroup>
+              
+              <optgroup label="Seguridad Electrónica">
+                <option value="seguridad-electronica">Seguridad Electrónica</option>
+                <option value="camaras-seguridad">Cámaras de Seguridad</option>
+                <option value="lectores-biometricos">Lectores Biométricos</option>
+              </optgroup>
+              
+              <optgroup label="Software Original">
+                <option value="software-original">Software Original</option>
+                <option value="licencias-autodesk">Licencias Autodesk</option>
+              </optgroup>
             </select>
           </div>
           
           <div>
             <label class="block text-gray-700 font-medium mb-2" for="message">Cuéntanos tu necesidad</label>
-            <textarea id="message" placeholder="Describe cómo podemos ayudarte..." required rows="5"
+            <textarea id="message" name="mensaje" placeholder="Describe cómo podemos ayudarte..." required rows="5"
               class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"></textarea>
+          </div>
+
+          <!-- Alert Containers -->
+          <div id="form-success" class="hidden p-4 rounded-xl bg-green-50 text-green-700 border border-green-200 text-sm font-medium">
+            ¡Tu mensaje ha sido enviado con éxito! Nos pondremos en contacto contigo pronto.
+          </div>
+          <div id="form-error" class="hidden p-4 rounded-xl bg-red-50 text-red-700 border border-red-200 text-sm font-medium">
+            Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo.
           </div>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <button type="submit"
+            <button type="submit" id="submit-btn"
               class="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-4 rounded-xl text-lg font-semibold shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              Enviar mensaje
+              <span>Enviar mensaje</span>
+              <span id="loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
             </button>
             
             <a href="https://wa.me/51985834886?text=Hola%20ESVA%2C%20necesito%20más%20información%20sobre%20sus%20servicios"
@@ -935,6 +962,78 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
                     card.style.animationDelay = `${index * 0.1}s`;
                 }
             });
+    </script>
+
+    <script>
+      const form = document.getElementById('servicios-form') as HTMLFormElement | null;
+      const btn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+      const spinner = document.getElementById('loading-spinner');
+      const successAlert = document.getElementById('form-success');
+      const errorAlert = document.getElementById('form-error');
+
+      if (form && btn) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Reset status alerts
+          successAlert?.classList.add('hidden');
+          errorAlert?.classList.add('hidden');
+
+          // Set loading state
+          btn.disabled = true;
+          spinner?.classList.remove('hidden');
+          const btnText = btn.querySelector('span');
+          if (btnText) btnText.textContent = 'Enviando...';
+
+          const formData = new FormData(form);
+          const data = {
+            nombre: formData.get('nombre'),
+            correo: formData.get('correo'),
+            telefono: formData.get('telefono'),
+            servicio: formData.get('servicio'),
+            mensaje: formData.get('mensaje'),
+          };
+
+          try {
+            const response = await fetch('/api/enviar-correo', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+
+            let result;
+            try {
+              result = await response.json();
+            } catch (jsonErr) {
+              throw new Error(`Error del servidor (${response.status}). Por favor, verifica la configuración del servidor.`);
+            }
+
+            if (response.ok && result.success) {
+              successAlert?.classList.remove('hidden');
+              form.reset();
+            } else {
+              console.error(result.message || 'Error al enviar');
+              if (errorAlert) {
+                errorAlert.textContent = result.message || 'Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo.';
+                errorAlert.classList.remove('hidden');
+              }
+            }
+          } catch (err) {
+            console.error('Error al enviar formulario:', err);
+            if (errorAlert) {
+              const errMsg = err instanceof Error ? err.message : 'Error de red. Asegúrate de tener conexión a Internet e inténtalo de nuevo.';
+              errorAlert.textContent = errMsg;
+              errorAlert.classList.remove('hidden');
+            }
+          } finally {
+            // Reset loading state
+            btn.disabled = false;
+            spinner?.classList.add('hidden');
+            if (btnText) btnText.textContent = 'Enviar mensaje';
+          }
         });
+      }
     </script>
 </BaseLayout>
