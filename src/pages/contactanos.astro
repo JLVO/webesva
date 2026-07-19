@@ -72,12 +72,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 <label for="servicio" class="block text-sm font-medium text-gray-700 mb-2">Servicio de interés</label>
                 <select id="servicio" name="servicio" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                   <option value="">Selecciona un servicio</option>
-                  <option value="soporte">Soporte Técnico</option>
-                  <option value="redes">Instalación de Redes</option>
-                  <option value="seguridad">Seguridad Electrónica</option>
-                  <option value="mantenimiento">Mantenimiento Preventivo</option>
-                  <option value="recuperacion">Recuperación de Datos</option>
-                  <option value="domicilio">Servicio a Domicilio</option>
+                  
+                  <optgroup label="Soporte e IT">
+                    <option value="soporte-tecnico">Soporte Técnico</option>
+                    <option value="mantenimiento-reparacion">Mantenimiento y Reparación</option>
+                    <option value="formateo-pc">Formateo e Instalación de PC</option>
+                    <option value="recuperacion-datos">Recuperación de Datos</option>
+                  </optgroup>
+                  
+                  <optgroup label="Redes y Conectividad">
+                    <option value="redes-conectividad">Redes y Conectividad</option>
+                    <option value="mantenimiento-preventivo">Mantenimiento Preventivo</option>
+                  </optgroup>
+                  
+                  <optgroup label="Seguridad Electrónica">
+                    <option value="seguridad-electronica">Seguridad Electrónica</option>
+                    <option value="camaras-seguridad">Cámaras de Seguridad</option>
+                    <option value="lectores-biometricos">Lectores Biométricos</option>
+                  </optgroup>
+                  
+                  <optgroup label="Software Original">
+                    <option value="software-original">Software Original</option>
+                    <option value="licencias-autodesk">Licencias Autodesk</option>
+                  </optgroup>
                 </select>
               </div>
               

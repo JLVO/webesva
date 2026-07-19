@@ -36,6 +36,26 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Traducir identificadores de servicios a nombres amigables
     const serviciosMap: Record<string, string> = {
+      // Soporte e IT
+      'soporte-tecnico': 'Soporte Técnico',
+      'mantenimiento-reparacion': 'Mantenimiento y Reparación',
+      'formateo-pc': 'Formateo e Instalación de PC',
+      'recuperacion-datos': 'Recuperación de Datos',
+      
+      // Redes y Conectividad
+      'redes-conectividad': 'Redes y Conectividad',
+      'mantenimiento-preventivo': 'Mantenimiento Preventivo',
+      
+      // Seguridad Electrónica
+      'seguridad-electronica': 'Seguridad Electrónica',
+      'camaras-seguridad': 'Cámaras de Seguridad',
+      'lectores-biometricos': 'Lectores Biométricos',
+      
+      // Software Original
+      'software-original': 'Software Original',
+      'licencias-autodesk': 'Licencias Autodesk',
+
+      // Fallbacks (por compatibilidad)
       soporte: 'Soporte Técnico',
       redes: 'Instalación de Redes',
       seguridad: 'Seguridad Electrónica',
