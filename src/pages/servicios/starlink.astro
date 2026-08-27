@@ -1,0 +1,348 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import ServiceSchema from "../../components/ServiceSchema.astro";
+import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
+import LlamadaAction from "../../components/LlamadaAction.astro";
+import PreguntasFrecuentes from "../../components/PreguntasFrecuentes.astro";
+import { getCollection } from "astro:content";
+import {
+  Satellite,
+  Truck,
+  Ship,
+  BatteryCharging,
+  Wifi,
+  ShieldCheck,
+  Wrench,
+  Headset,
+  MapPin,
+  CheckCircle2,
+  XCircle,
+  Zap,
+  Home,
+  Building2,
+} from "lucide-react";
+
+const MAX_RECENT_POSTS = 3;
+const allPosts = await getCollection("blog");
+const starlinkPosts = allPosts
+  .filter((p) => p.data.title.toLowerCase().includes("starlink") || p.data.tags?.some((t) => t.toLowerCase().includes("starlink")))
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, MAX_RECENT_POSTS);
+
+const whatsappText = "Hola ESVA, quiero información sobre la instalación de Starlink (antena fija o Mini para vehículo/embarcación).";
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
+const preguntasStarlink = [
+  {
+    titulo: "¿Cuál es la diferencia entre Starlink Standard y Starlink Mini?",
+    respuesta:
+      "La antena Standard ofrece mayor velocidad y estabilidad, ideal para uso fijo en casa, oficina o negocio. La Mini es compacta, portátil y funciona con menos energía, pensada para vehículos, embarcaciones y ubicaciones temporales, aunque con menor alcance de velocidad que la Standard.",
+  },
+  {
+    titulo: "¿Puedo instalar Starlink Mini en mi camioneta, bote u otro vehículo?",
+    respuesta:
+      "Sí. Diseñamos e instalamos soportes fijos o desmontables según tu vehículo o embarcación, con cableado protegido y el adaptador de energía adecuado (batería del vehículo, cigarrera de 12V, o batería portátil), asegurando que la señal no se pierda con el movimiento.",
+  },
+  {
+    titulo: "¿ESVA vende el equipo o solo instala uno que ya compré?",
+    respuesta:
+      "Nosotros te vendemos la antena Starlink (Standard o Mini) junto con los accesorios necesarios, y nos encargamos de la instalación profesional. Si ya tienes tu propio equipo, también podemos instalarlo y configurarlo por ti.",
+  },
+  {
+    titulo: "¿Cómo pago el plan de internet de Starlink?",
+    respuesta:
+      "El plan de datos se contrata y se paga directamente en la aplicación oficial de Starlink, a nombre tuyo. ESVA no gestiona ese cobro: nosotros nos encargamos del equipo, los accesorios, la instalación física y el soporte técnico.",
+  },
+  {
+    titulo: "¿Qué necesito para alimentar el equipo en un vehículo?",
+    respuesta:
+      "Lo más común es un adaptador de corriente que se conecta a la batería del vehículo o al conector de 12V (cigarrera). Para uso más exigente o prolongado, recomendamos una batería auxiliar o power station para no depender del motor encendido.",
+  },
+  {
+    titulo: "¿Qué garantía y soporte ofrecen después de la instalación?",
+    respuesta:
+      "Brindamos garantía sobre nuestro trabajo de instalación y accesorios, además de soporte técnico si necesitas reubicar el equipo, revisar el cableado o resolver cualquier incidencia física con la antena o el montaje.",
+  },
+];
+---
+
+<BaseLayout
+  pageTitle="Instalación de Starlink en Piura: Antena Standard y Mini para Vehículos | ESVA"
+  metaDescription="Compra e instalación profesional de Starlink en Piura: antena Standard para casa u oficina, y Starlink Mini para camionetas, botes y uso móvil. Accesorios, soporte y garantía con ESVA."
+  canonicalUrl={Astro.url.href}
+  ogType="website"
+  ogImage="/StarlinkESVA-InstalacionEstandar.jpg"
+  mainPadding={false}
+>
+  <ServiceSchema
+    name="Instalación de Starlink (Standard y Mini)"
+    description="Venta e instalación profesional de antenas Starlink Standard y Mini en Piura, incluyendo instalación fija para hogares y negocios, e instalación móvil en camionetas, botes y otros vehículos."
+    url="https://esva.pe/servicios/starlink/"
+    image="https://esva.pe/StarlinkESVA-InstalacionEstandar.jpg"
+  />
+  <BreadcrumbSchema
+    items={[
+      { name: "Inicio", url: "https://esva.pe/" },
+      { name: "Servicios", url: "https://esva.pe/servicios/" },
+      { name: "Starlink", url: "https://esva.pe/servicios/starlink/" },
+    ]}
+  />
+
+  <Hero
+    title="Internet Starlink en Piura: Fijo o Móvil, Donde lo Necesites"
+    subtitle="Vendemos e instalamos antenas Starlink Standard y Mini en Piura. Conecta tu hogar, negocio, camioneta o embarcación con internet satelital de alta velocidad, con instalación profesional y soporte técnico de ESVA."
+    imageUrl="/StarlinkESVA-InstalacionEstandar.jpg"
+    buttonText="Cotiza tu instalación"
+    buttonLink="Escríbenos por WhatsApp"
+    linkwhatsapp={whatsappLink}
+    imageMaxWidth="max-w-lg"
+    sectionPadding="pt-6 pb-12 md:pt-10 md:pb-24"
+  />
+
+  <!-- Intro -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        Internet satelital de alta velocidad, sin depender de cables ni torres locales
+      </h2>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        Starlink lleva internet de banda ancha a zonas donde la fibra óptica y el cable tradicional no llegan o no son confiables: fundos, zonas rurales de Piura, Sullana, Paita, Talara, y también a vehículos y embarcaciones en movimiento.
+        En ESVA te vendemos el equipo, lo instalamos de forma profesional y te damos soporte técnico continuo — tú solo administras tu plan de datos directamente en la app oficial de Starlink.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comparativa Standard vs Mini -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Starlink Standard vs. Starlink Mini</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Cada modelo está pensado para un uso distinto. Te ayudamos a elegir el correcto según dónde y cómo lo vas a usar.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Standard -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-blue-100 rounded-full">
+              <Home className="w-7 h-7 text-blue-700" />
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Starlink Standard</h3>
+          </div>
+          <p class="text-gray-600 mb-6">Ideal para instalación fija en casas, oficinas, negocios y fundos.</p>
+
+          <p class="font-semibold text-gray-800 mb-2">Ventajas</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2 text-gray-700"><CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> Mayor velocidad y estabilidad de conexión</li>
+            <li class="flex items-start gap-2 text-gray-700"><CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> Mejor rendimiento para varios usuarios y equipos a la vez</li>
+            <li class="flex items-start gap-2 text-gray-700"><CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> Recomendada para trabajo remoto, cámaras IP y videollamadas exigentes</li>
+          </ul>
+
+          <p class="font-semibold text-gray-800 mb-2">Consideraciones</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-700"><XCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" /> Antena más grande, requiere montaje fijo (techo, pared o mástil)</li>
+            <li class="flex items-start gap-2 text-gray-700"><XCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" /> Consume más energía, no pensada para moverse constantemente</li>
+          </ul>
+        </div>
+
+        <!-- Mini -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 border-2 border-blue-500 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase">Ideal para movilidad</span>
+          <div class="flex items-center gap-3 mb-4 mt-2">
+            <div class="p-3 bg-blue-100 rounded-full">
+              <Truck className="w-7 h-7 text-blue-700" />
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Starlink Mini</h3>
+          </div>
+          <p class="text-gray-600 mb-6">Compacta y portátil. Perfecta para camionetas, botes, campamentos y ubicaciones temporales.</p>
+
+          <p class="font-semibold text-gray-800 mb-2">Ventajas</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2 text-gray-700"><CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> Tamaño reducido, fácil de transportar y montar</li>
+            <li class="flex items-start gap-2 text-gray-700"><CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> Bajo consumo: funciona con batería de vehículo o power station</li>
+            <li class="flex items-start gap-2 text-gray-700"><CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> Ideal para trabajo de campo, turismo, pesca y emergencias</li>
+          </ul>
+
+          <p class="font-semibold text-gray-800 mb-2">Consideraciones</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-gray-700"><XCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" /> Velocidad máxima menor que la Standard</li>
+            <li class="flex items-start gap-2 text-gray-700"><XCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" /> Rinde mejor con pocos dispositivos conectados a la vez</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instalacion fija -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <Building2 className="w-8 h-8 text-blue-700" />
+            <h2 class="text-3xl font-bold text-gray-900">Instalación fija en casa, oficina o negocio</h2>
+          </div>
+          <p class="text-gray-600 mb-6">
+            Evaluamos el mejor punto de tu techo o terreno para que la antena tenga vista despejada al cielo, sin obstrucciones que corten la señal.
+            Nos encargamos del montaje del mástil o soporte, el cableado protegido hasta el router, y la integración con tu red Wi-Fi actual.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" /><span class="text-gray-700">Evaluación de línea de vista y ubicación óptima</span></li>
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" /><span class="text-gray-700">Montaje seguro en techo, pared o mástil elevado</span></li>
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" /><span class="text-gray-700">Cableado ordenado y protegido de la intemperie</span></li>
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" /><span class="text-gray-700">Integración con tu red Wi-Fi, cámaras y otros equipos</span></li>
+          </ul>
+        </div>
+        <div class="flex justify-center">
+          <img src="/StarlinkESVA-InstalacionEstandar.jpg" alt="Técnico de ESVA instalando una antena satelital Starlink en el techo de una vivienda en Piura" class="rounded-2xl shadow-xl w-full max-w-md" width="600" height="600" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instalacion movil: destacada -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 py-16 text-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 flex justify-center">
+          <img src="/StarlinkMiniVehiculo-ESVA.jpg" alt="Antena Starlink Mini instalada sobre la baranda de una camioneta para conectividad móvil en Piura" class="rounded-2xl shadow-2xl w-full max-w-md" width="600" height="600" loading="lazy" />
+        </div>
+        <div class="order-1 md:order-2">
+          <div class="flex items-center gap-3 mb-4">
+            <Truck className="w-8 h-8 text-yellow-400" />
+            <Ship className="w-8 h-8 text-yellow-400" />
+            <h2 class="text-3xl font-bold">Internet móvil: camionetas, botes y más</h2>
+          </div>
+          <p class="text-blue-100 mb-6 text-lg">
+            Nos especializamos en instalar Starlink Mini en lugares donde otros no se animan: vehículos de trabajo, embarcaciones de pesca, unidades de campo agrícola o minero, casas rodantes, y prácticamente cualquier lugar que te puedas imaginar donde necesites internet en movimiento.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Camionetas y unidades de trabajo de campo</span></li>
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Botes y embarcaciones de pesca o transporte</span></li>
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Campamentos, casas rodantes y turismo remoto</span></li>
+            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Brigadas de emergencia y operaciones temporales</span></li>
+          </ul>
+          <div class="mt-8">
+            <a href={whatsappLink} target="_blank" class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-yellow-300 transition">
+              Cuéntanos tu caso por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accesorios -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Accesorios para instalación móvil</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Todo lo que necesitas para que tu Starlink Mini funcione de forma segura y estable en movimiento.</p>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+          <BatteryCharging className="w-12 h-12 text-blue-900 mb-4" aria-label="Adaptador de corriente para vehículo" />
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Adaptador de 12V (cigarrera)</h3>
+          <p class="text-gray-600">Conecta el equipo directo al conector de 12V de tu vehículo, la salida donde antes iba el encendedor de cigarrillos.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+          <Zap className="w-12 h-12 text-blue-900 mb-4" aria-label="Batería auxiliar o power station" />
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Batería auxiliar / power station</h3>
+          <p class="text-gray-600">Para usar el equipo con el motor apagado, sin descargar la batería principal del vehículo o embarcación.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+          <Wrench className="w-12 h-12 text-blue-900 mb-4" aria-label="Soportes de montaje" />
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Soportes de montaje fijos o desmontables</h3>
+          <p class="text-gray-600">Bases y brazos adaptados a la carrocería de tu vehículo, baranda de tu bote, o techo de tu campamento.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+          <ShieldCheck className="w-12 h-12 text-blue-900 mb-4" aria-label="Protección contra la intemperie" />
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Protección contra la intemperie</h3>
+          <p class="text-gray-600">Cableado sellado y fijaciones resistentes a la vibración, el polvo, la humedad y el agua salada.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+          <Wifi className="w-12 h-12 text-blue-900 mb-4" aria-label="Router y distribución Wi-Fi" />
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Distribución Wi-Fi interior</h3>
+          <p class="text-gray-600">Configuramos el router para que la señal llegue bien dentro de la cabina, camarote o carpa.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition">
+          <Headset className="w-12 h-12 text-blue-900 mb-4" aria-label="Soporte técnico" />
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Soporte post-instalación</h3>
+          <p class="text-gray-600">Te ayudamos si necesitas reubicar el equipo, revisar el cableado o resolver cualquier incidencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¿Cómo funciona el proceso con ESVA?</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-slate-50 p-6 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">1</div>
+          <h3 class="font-semibold text-gray-800 mb-2">Diagnóstico</h3>
+          <p class="text-sm text-gray-600">Evaluamos tu ubicación (fija o móvil) y te recomendamos Standard o Mini.</p>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">2</div>
+          <h3 class="font-semibold text-gray-800 mb-2">Compra del equipo</h3>
+          <p class="text-sm text-gray-600">Te vendemos la antena y los accesorios que necesites.</p>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">3</div>
+          <h3 class="font-semibold text-gray-800 mb-2">Instalación profesional</h3>
+          <p class="text-sm text-gray-600">Montamos, cableamos y configuramos todo el sistema.</p>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">4</div>
+          <h3 class="font-semibold text-gray-800 mb-2">Activas tu plan</h3>
+          <p class="text-sm text-gray-600">Contratas tu plan de datos directo en la app oficial de Starlink.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <LlamadaAction
+    title="¿Listo para tener internet donde nadie más llega?"
+    subtitle="Sea en tu casa, tu negocio, tu camioneta o tu bote, en ESVA te ayudamos a elegir, instalar y mantener tu equipo Starlink."
+    buttonTextContato="Contáctanos"
+    buttonLinkLlamada="Llámanos Ahora"
+    linkwhatsapp={whatsappLink}
+    textobotonwhatsapp="WhatsApp"
+  />
+
+  {starlinkPosts.length > 0 && (
+    <section class="bg-slate-50 py-16 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Más sobre conectividad satelital en nuestro blog</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {starlinkPosts.map((post) => (
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+              {post.data.image?.url && (
+                <a href={`/blog/${post.slug}/`} class="block aspect-video overflow-hidden group">
+                  <img src={post.data.image.url} alt={post.data.image.alt || post.data.title} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                </a>
+              )}
+              <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                  <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition duration-300">{post.data.title}</a>
+                </h3>
+                {post.data.description && <p class="text-gray-600 text-sm mb-4 flex-grow">{post.data.description.slice(0, 100)}...</p>}
+                <div class="mt-auto pt-2">
+                  <a href={`/blog/${post.slug}/`} class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-300">Leer más <span aria-hidden="true" class="ml-1">&rarr;</span></a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <PreguntasFrecuentes preguntas={preguntasStarlink} />
+</BaseLayout>
