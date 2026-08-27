@@ -204,30 +204,45 @@ const preguntasStarlink = [
   <!-- Instalacion movil: destacada -->
   <section class="bg-gradient-to-br from-blue-900 to-blue-700 py-16 text-white">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="order-2 md:order-1 flex justify-center">
-          <img src="/StarlinkMiniVehiculo-ESVA.jpg" alt="Antena Starlink Mini instalada sobre la baranda de una camioneta para conectividad móvil en Piura" class="rounded-2xl shadow-2xl w-full max-w-md" width="600" height="600" loading="lazy" />
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <Truck className="w-8 h-8 text-yellow-400" />
+          <Ship className="w-8 h-8 text-yellow-400" />
+          <h2 class="text-3xl font-bold">Internet móvil: camionetas, botes y más</h2>
         </div>
-        <div class="order-1 md:order-2">
-          <div class="flex items-center gap-3 mb-4">
-            <Truck className="w-8 h-8 text-yellow-400" />
-            <Ship className="w-8 h-8 text-yellow-400" />
-            <h2 class="text-3xl font-bold">Internet móvil: camionetas, botes y más</h2>
-          </div>
-          <p class="text-blue-100 mb-6 text-lg">
-            Nos especializamos en instalar Starlink Mini en lugares donde otros no se animan: vehículos de trabajo, embarcaciones de pesca, unidades de campo agrícola o minero, casas rodantes, y prácticamente cualquier lugar que te puedas imaginar donde necesites internet en movimiento.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Camionetas y unidades de trabajo de campo</span></li>
-            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Botes y embarcaciones de pesca o transporte</span></li>
-            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Campamentos, casas rodantes y turismo remoto</span></li>
-            <li class="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" /><span>Brigadas de emergencia y operaciones temporales</span></li>
-          </ul>
-          <div class="mt-8">
-            <a href={whatsappLink} target="_blank" class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-yellow-300 transition">
-              Cuéntanos tu caso por WhatsApp
-            </a>
-          </div>
+        <p class="text-blue-100 text-lg mb-6">
+          Nos especializamos en instalar Starlink Mini en lugares donde otros no se animan: vehículos de trabajo, embarcaciones de pesca, unidades de campo agrícola o minero, casas rodantes, y prácticamente cualquier lugar que te puedas imaginar donde necesites internet en movimiento.
+        </p>
+        <ul class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-blue-100">
+          <li class="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0" /><span>Vehículos de trabajo de campo</span></li>
+          <li class="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0" /><span>Botes y embarcaciones de pesca</span></li>
+          <li class="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0" /><span>Campamentos y turismo remoto</span></li>
+          <li class="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0" /><span>Brigadas de emergencia</span></li>
+        </ul>
+        <div class="mt-8">
+          <a href={whatsappLink} target="_blank" class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-yellow-300 transition">
+            Cuéntanos tu caso por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Galeria camionetas -->
+      <div class="mb-12">
+        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2"><Truck className="w-6 h-6 text-yellow-400" /> Starlink Mini en camionetas y vehículos de trabajo</h3>
+        <div class="grid sm:grid-cols-3 gap-6">
+          <img src="/instalacion-starlink-mini-camioneta-techo-piura-esva.jpg" alt="Instalación de antena Starlink Mini sobre el techo de una camioneta en Piura" class="rounded-xl shadow-xl w-full aspect-square object-cover" loading="lazy" />
+          <img src="/starlink-mini-portatil-vehiculo-trabajo-piura-esva.jpg" alt="Antena Starlink Mini portátil montada en vehículo de trabajo para internet móvil" class="rounded-xl shadow-xl w-full aspect-square object-cover" loading="lazy" />
+          <img src="/antena-starlink-mini-camioneta-campo-piura-esva.jpg" alt="Antena Starlink Mini instalada en camioneta para trabajo de campo en Piura" class="rounded-xl shadow-xl w-full aspect-square object-cover" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Galeria botes -->
+      <div>
+        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2"><Ship className="w-6 h-6 text-yellow-400" /> Starlink en botes y embarcaciones</h3>
+        <div class="grid sm:grid-cols-3 gap-6">
+          <img src="/instalacion-starlink-embarcacion-bote-piura-esva.webp" alt="Antena Starlink instalada en la baranda de una embarcación" class="rounded-xl shadow-xl w-full aspect-square object-cover" loading="lazy" />
+          <img src="/starlink-maritimo-bote-pesca-industrial-piura-esva.webp" alt="Antena Starlink marítimo instalada en un bote de pesca industrial" class="rounded-xl shadow-xl w-full aspect-square object-cover" loading="lazy" />
+          <img src="/antena-starlink-velero-navegacion-piura-esva.jpg" alt="Antena Starlink instalada en el mástil de un velero para navegación con internet" class="rounded-xl shadow-xl w-full aspect-square object-cover" loading="lazy" />
         </div>
       </div>
     </div>
