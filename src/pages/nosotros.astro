@@ -1,8 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
 ---
-<BaseLayout pageTitle="Nosotros - ESVA Seguridad y Soporte Técnico de Confianza" metaDescription="Conoce la historia, misión y valores de ESVA Seguridad y Soporte Técnico. Ofrecemos soluciones tecnológicas confiables para hogares y empresas en Piura, Perú." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
-  
+<BaseLayout pageTitle="Nosotros | ESVA Seguridad y Soporte Técnico en Piura" metaDescription="Conoce la historia, misión y valores de ESVA Seguridad y Soporte Técnico. Ofrecemos soluciones tecnológicas confiables para hogares y empresas en Piura, Perú." canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Nosotros", url: "https://esva.pe/nosotros/" }
+  ]} />
+
       
       <section class="hero-bg text-white py-24 px-4 text-center">
         <div class="max-w-4xl mx-auto">
@@ -60,35 +65,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                   Implementamos soluciones IoT y monitoreo remoto, ofreciendo seguridad 24/7 con acceso desde cualquier dispositivo.
                 </p>
               </div>
-              
+
+              <div class="timeline-item">
+                <h3 class="text-xl font-bold mb-2">2026 - Conectividad Satelital Starlink</h3>
+                <p class="text-gray-600">
+                  Sumamos la venta e instalación de Starlink Standard y Mini, llevando internet de alta velocidad a hogares, negocios, camionetas y embarcaciones en Piura.
+                </p>
+              </div>
+
             </div>
             
             <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg">
               <!-- Imagen representativa de la historia de ESVA -->
               <img src="/NosotrosEquipoEsva.svg" alt="El equipo de ESVA en una reunión de planificación estratégica" class="w-full h-full object-cover" width="1056" height="576" loading="lazy">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
-        <div class="max-w-6xl mx-auto px-4">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="stats-item">
-              <p class="text-4xl md:text-5xl font-bold mb-2">4+</p>
-              <p class="text-blue-100">Años de Experiencia</p>
-            </div>
-            <div class="stats-item">
-              <p class="text-4xl md:text-5xl font-bold mb-2">100+</p>
-              <p class="text-blue-100">Clientes Satisfechos</p>
-            </div>
-            <div class="stats-item">
-              <p class="text-4xl md:text-5xl font-bold mb-2">200+</p>
-              <p class="text-blue-100">Proyectos Completados</p>
-            </div>
-            <div class="stats-item">
-              <p class="text-4xl md:text-5xl font-bold mb-2">15+</p>
-              <p class="text-blue-100">Técnicos Especializados</p>
             </div>
           </div>
         </div>
