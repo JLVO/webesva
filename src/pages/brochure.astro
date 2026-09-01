@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import LlamadaAction from "../components/LlamadaAction.astro";
+import {
+  Camera,
+  Fingerprint,
+  Network,
+  Wrench,
+  Download,
+  CheckCircle2,
+  Building2,
+} from "lucide-react";
+
+const whatsappText = "Hola ESVA, revisé el brochure y quiero más información sobre sus servicios.";
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
+const clientes = [
+  "Mallplaza", "Cineplanet", "MACH Marketplace", "Colibrí", "Crepier",
+  "QF Farmacia", "Choice Humanitarian", "Grupo Techo", "Manos a Chambear",
+  "Concreta Grupo Inmobiliario", "Antares Desarrollo Inmobiliario",
+  "Simbilá Verde Residencial", "Zavaleta & Zavaleta", "Triana Consulting",
+];
+---
+
+<BaseLayout
+  pageTitle="Brochure ESVA 2026 | Soluciones de Seguridad y TI en Piura"
+  metaDescription="Descarga el brochure de ESVA: videovigilancia, control biométrico, redes empresariales y soporte técnico informático para empresas en Piura, Perú."
+  canonicalUrl={Astro.url.href}
+  ogType="website"
+  mainPadding={false}
+>
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Brochure", url: "https://esva.pe/brochure/" }
+  ]} />
+
+  <Hero
+    title="Brochure ESVA 2026"
+    subtitle="Tecnología y seguridad para empresas en Piura. Videovigilancia, control biométrico, redes empresariales y soporte técnico, todo en un solo documento."
+    imageUrl="/StarlinkESVA-TecnicoInstalacion.jpg"
+    buttonText="Contáctanos"
+    buttonLink="Escríbenos por WhatsApp"
+    linkwhatsapp={whatsappLink}
+    imageMaxWidth="max-w-lg"
+    sectionPadding="pt-6 pb-12 md:pt-10 md:pb-24"
+  />
+
+  <!-- Que encontraras -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¿Qué encontrarás en el brochure?</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Un resumen de nuestras 4 líneas de servicio, pensadas para la continuidad y seguridad de tu empresa en Piura.</p>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-lg transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Camera className="w-7 h-7 text-blue-700" />
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Videovigilancia</h3>
+          <p class="text-sm text-gray-600">Instalación de cámaras y monitoreo remoto en tiempo real desde tu celular.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-lg transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Fingerprint className="w-7 h-7 text-blue-700" />
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Control Biométrico</h3>
+          <p class="text-sm text-gray-600">Control de asistencia y accesos con huella digital y reconocimiento facial.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-lg transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Network className="w-7 h-7 text-blue-700" />
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Redes Empresariales</h3>
+          <p class="text-sm text-gray-600">Cableado estructurado, configuración de routers y WiFi para oficinas.</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-lg transition">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Wrench className="w-7 h-7 text-blue-700" />
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Soporte Técnico</h3>
+          <p class="text-sm text-gray-600">Mantenimiento preventivo y correctivo para tus equipos informáticos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Empresas que confian -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <Building2 className="w-8 h-8 text-blue-700" />
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Empresas que confían en ESVA</h2>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {clientes.map((nombre) => (
+          <span class="bg-white border border-gray-200 rounded-full px-5 py-2 text-gray-700 font-medium shadow-sm">{nombre}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Descarga / visor -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Revisa el brochure completo</h2>
+      <p class="text-gray-600 mb-8">Puedes verlo aquí mismo o descargarlo directamente (PDF, 22 MB).</p>
+
+      <a
+        href="/Brochure_ESVA_2026.pdf"
+        download
+        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition mb-10"
+      >
+        <Download className="w-5 h-5" />
+        Descargar Brochure (PDF)
+      </a>
+
+      <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <iframe
+          src="/Brochure_ESVA_2026.pdf"
+          title="Brochure ESVA 2026"
+          loading="lazy"
+          class="w-full"
+          style="height: 80vh; min-height: 500px;"
+        ></iframe>
+      </div>
+      <p class="text-xs text-gray-400 mt-3">Si el visor no carga en tu dispositivo, usa el botón de descarga de arriba.</p>
+    </div>
+  </section>
+
+  <!-- Por que elegir ESVA -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">¿Por qué elegir ESVA?</h2>
+      <ul class="grid sm:grid-cols-2 gap-4">
+        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /><span class="text-gray-700">Experiencia en soluciones tecnológicas empresariales</span></li>
+        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /><span class="text-gray-700">Instalaciones profesionales y seguras</span></li>
+        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /><span class="text-gray-700">Equipos de calidad y tecnología actual</span></li>
+        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /><span class="text-gray-700">Atención personalizada</span></li>
+        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /><span class="text-gray-700">Soporte técnico especializado</span></li>
+        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /><span class="text-gray-700">Garantía y respaldo</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <LlamadaAction
+    title="¿Tienes alguna pregunta sobre nuestros servicios?"
+    subtitle="Cuéntanos qué necesita tu empresa y te ayudamos a encontrar la mejor solución."
+    buttonTextContato="Contáctanos"
+    buttonLinkLlamada="Llámanos Ahora"
+    linkwhatsapp={whatsappLink}
+    textobotonwhatsapp="WhatsApp"
+  />
+</BaseLayout>
