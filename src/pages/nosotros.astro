@@ -7,6 +7,8 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
     { name: "Inicio", url: "https://esva.pe/" },
     { name: "Nosotros", url: "https://esva.pe/nosotros/" }
   ]} />
+  <link slot="head" rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript slot="head"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
       
       <section class="hero-bg text-white py-24 px-4 text-center">
@@ -185,7 +187,7 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
           </div>
 
           <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
-            <div class="tech-card bg-white rounded-xl p-6 shadow">
+            <a href="/servicios/mantenimiento-reparacion-informatica/" class="tech-card block bg-white rounded-xl p-6 shadow">
               <div class="text-primary mb-4">
                 <i class="fas fa-tools text-4xl"></i>
               </div>
@@ -193,9 +195,9 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
               <p class="text-gray-600 text-sm">
                 Mantenimiento, reparación, formateo e instalación de software en equipos informáticos.
               </p>
-            </div>
+            </a>
 
-            <div class="tech-card bg-white rounded-xl p-6 shadow">
+            <a href="/servicios/camaras-de-seguridad/" class="tech-card block bg-white rounded-xl p-6 shadow">
               <div class="text-primary mb-4">
                 <i class="fas fa-video text-4xl"></i>
               </div>
@@ -203,9 +205,9 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
               <p class="text-gray-600 text-sm">
                 Instalación y configuración de sistemas de videovigilancia con monitoreo remoto.
               </p>
-            </div>
+            </a>
 
-            <div class="tech-card bg-white rounded-xl p-6 shadow">
+            <a href="/servicios/lectores-biometricos/" class="tech-card block bg-white rounded-xl p-6 shadow">
               <div class="text-primary mb-4">
                 <i class="fas fa-fingerprint text-4xl"></i>
               </div>
@@ -213,9 +215,9 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
               <p class="text-gray-600 text-sm">
                 Lectores de huella, rostro y tarjeta para control de asistencia y acceso seguro.
               </p>
-            </div>
+            </a>
 
-            <div class="tech-card bg-white rounded-xl p-6 shadow">
+            <a href="/servicios/redes-conectividad/" class="tech-card block bg-white rounded-xl p-6 shadow">
               <div class="text-primary mb-4">
                 <i class="fas fa-network-wired text-4xl"></i>
               </div>
@@ -223,9 +225,9 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
               <p class="text-gray-600 text-sm">
                 Instalación de redes LAN/WiFi, configuración de routers y cableado estructurado.
               </p>
-            </div>
+            </a>
 
-            <div class="tech-card bg-white rounded-xl p-6 shadow">
+            <a href="/servicios/camaras-de-seguridad/" class="tech-card block bg-white rounded-xl p-6 shadow">
               <div class="text-primary mb-4">
                 <i class="fas fa-bell text-4xl"></i>
               </div>
@@ -233,9 +235,9 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
               <p class="text-gray-600 text-sm">
                 Sistemas de alarma para hogares y negocios, con sensores de movimiento y notificaciones.
               </p>
-            </div>
+            </a>
 
-            <div class="tech-card bg-white rounded-xl p-6 shadow">
+            <a href="/contactanos/" class="tech-card block bg-white rounded-xl p-6 shadow">
               <div class="text-primary mb-4">
                 <i class="fas fa-chalkboard-teacher text-4xl"></i>
               </div>
@@ -243,7 +245,7 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
               <p class="text-gray-600 text-sm">
                 Asesoramiento técnico y capacitaciones para clientes sobre el uso de sus sistemas.
               </p>
-            </div>
+            </a>
           </div>
         </div>
       </section> 
