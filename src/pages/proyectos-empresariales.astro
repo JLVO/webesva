@@ -15,6 +15,8 @@ import {
   Layers,
   Wrench,
   Landmark,
+  Satellite,
+  Truck,
 } from "lucide-react";
 
 const whatsappText =
@@ -93,16 +95,16 @@ const preguntasProyectos = [
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Proyectos en marcha</h2>
 
       <div class="grid gap-10 lg:grid-cols-2">
-        <!-- Caso Norandino -->
+        <!-- Caso Solux Group SAC -->
         <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <Camera className="w-6 h-6 text-blue-700" />
+                <Satellite className="w-6 h-6 text-blue-700" />
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900">Norandino</h3>
-                <p class="text-sm text-gray-500">Organización asociativa de agricultores &middot; Planta de café</p>
+                <h3 class="text-xl font-bold text-gray-900">Solux Group SAC</h3>
+                <p class="text-sm text-gray-500">Inspección de infraestructura eléctrica con drones</p>
               </div>
             </div>
             <span class="text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full whitespace-nowrap">Instalado</span>
@@ -112,29 +114,31 @@ const preguntasProyectos = [
             <div>
               <p class="font-semibold text-gray-900">El reto</p>
               <p>
-                Vigilar y controlar el acceso en una planta de procesamiento de café, cubriendo
-                puntos críticos y zonas restringidas bajo criterios de seguridad y trazabilidad
-                alineados a las exigencias de certificación con las que trabaja Norandino.
+                Solux realiza inspecciones termográficas de líneas eléctricas y subestaciones con
+                drones, usando sus camionetas como base de operaciones en campo. Muchas de estas
+                inspecciones ocurren en zonas rurales o alejadas, sin cobertura celular confiable
+                para transmitir datos ni coordinar el trabajo en tiempo real.
               </p>
             </div>
             <div>
               <p class="font-semibold text-gray-900">La solución</p>
               <p>
-                Diseño e instalación de un sistema de videovigilancia IP de aproximadamente 20
-                cámaras, con grabación centralizada, retención de video y acceso remoto para
-                supervisión. El sistema quedó documentado y con posibilidad de extenderse a otras
-                plantas de procesamiento, como la de cacao.
+                Instalamos antenas Starlink Mini en sus camionetas de trabajo, dándoles internet
+                satelital portátil para operar y transmitir información desde cualquier punto de
+                campo, sin depender de la señal celular de la zona.
               </p>
             </div>
           </div>
 
           <div class="flex flex-wrap gap-2 mt-6">
-            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV IP</span>
-            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">NVR</span>
-            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">PoE</span>
-            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Almacenamiento para videovigilancia</span>
-            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de accesos</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Starlink Mini</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Conectividad móvil</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Trabajo de campo</span>
           </div>
+
+          <a href="https://solux.pe" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-blue-600 hover:text-blue-800 mt-4">
+            Conoce más sobre Solux &rarr;
+          </a>
         </div>
 
         <!-- Caso Agronutrición -->
@@ -178,6 +182,89 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Firewall</span>
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Telefonía IP</span>
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV</span>
+          </div>
+        </div>
+
+        <!-- Caso Norandino -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Camera className="w-6 h-6 text-blue-700" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Norandino</h3>
+                <p class="text-sm text-gray-500">Organización asociativa de agricultores &middot; Planta de café</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full whitespace-nowrap">Por iniciar</span>
+          </div>
+
+          <div class="space-y-4 text-gray-700">
+            <div>
+              <p class="font-semibold text-gray-900">El reto</p>
+              <p>
+                Vigilar y controlar el acceso en una planta de procesamiento de café, cubriendo
+                puntos críticos y zonas restringidas bajo criterios de seguridad y trazabilidad
+                alineados a las exigencias de certificación con las que trabaja Norandino.
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">La solución</p>
+              <p>
+                El proyecto contempla el diseño e instalación de un sistema de videovigilancia IP
+                de aproximadamente 20 cámaras, con grabación centralizada, retención de video y
+                acceso remoto para supervisión, con posibilidad de extenderse a otras plantas de
+                procesamiento, como la de cacao.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV IP</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">NVR</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">PoE</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Almacenamiento para videovigilancia</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de accesos</span>
+          </div>
+        </div>
+
+        <!-- Caso J&T Express -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Truck className="w-6 h-6 text-blue-700" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">J&amp;T Express</h3>
+                <p class="text-sm text-gray-500">Logística y courier</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full whitespace-nowrap">Por iniciar</span>
+          </div>
+
+          <div class="space-y-4 text-gray-700">
+            <div>
+              <p class="font-semibold text-gray-900">El reto</p>
+              <p>
+                Reforzar la seguridad de sus instalaciones logísticas con un sistema de
+                videovigilancia que cubra los puntos críticos de su operación.
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">La solución</p>
+              <p>
+                El proyecto contempla la instalación de un sistema de videovigilancia IP con 9
+                cámaras de seguridad, grabación centralizada y acceso remoto para supervisión.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">9 cámaras IP</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">NVR</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Videovigilancia</span>
           </div>
         </div>
       </div>
