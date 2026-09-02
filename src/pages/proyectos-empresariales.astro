@@ -1,0 +1,289 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import LlamadaAction from "../components/LlamadaAction.astro";
+import PreguntasFrecuentes from "../components/PreguntasFrecuentes.astro";
+import {
+  Building2,
+  Camera,
+  Network,
+  Server,
+  ShieldCheck,
+  Phone,
+  FileCheck2,
+  Layers,
+  Wrench,
+  Landmark,
+} from "lucide-react";
+
+const whatsappText =
+  "Hola ESVA, tengo un proyecto empresarial (redes, servidores, cámaras u otro) y quisiera una asesoría.";
+const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
+const preguntasProyectos = [
+  {
+    titulo: "¿Trabajan proyectos fuera de Piura?",
+    respuesta:
+      "Sí, tenemos proyección a clientes empresariales del norte del país. Coordinamos visita técnica, cronograma y logística según la ubicación de la planta u oficina.",
+  },
+  {
+    titulo: "¿Entregan documentación técnica del proyecto?",
+    respuesta:
+      "Sí. Para proyectos empresariales elaboramos memoria descriptiva, especificaciones técnicas, matriz de cobertura (en CCTV) y documentación de instalación y operación, útil para tus propios procesos internos o de auditoría.",
+  },
+  {
+    titulo: "¿Pueden integrar redes, servidores, cámaras y telefonía en un solo proyecto?",
+    respuesta:
+      "Sí, es justamente nuestro enfoque: diseñamos la infraestructura tecnológica de forma integral en vez de contratar cada área por separado con proveedores distintos.",
+  },
+  {
+    titulo: "¿Qué marcas manejan en proyectos empresariales?",
+    respuesta:
+      "Trabajamos con equipos de nivel empresarial como Cisco y Mikrotik en redes, Hikvision/Dahua/Uniview en videovigilancia, y otras marcas según el requerimiento técnico y presupuesto del proyecto.",
+  },
+];
+---
+
+<BaseLayout
+  pageTitle="Proyectos Empresariales | Infraestructura TI y Seguridad Electrónica | ESVA"
+  metaDescription="ESVA diseña e implementa infraestructura tecnológica empresarial en Piura: redes, servidores, firewall, videovigilancia y telefonía IP. Conoce nuestros proyectos con Norandino y Agronutrición."
+  canonicalUrl={Astro.url.href}
+  ogType="website"
+  mainPadding={false}
+>
+  <BreadcrumbSchema items={[
+    { name: "Inicio", url: "https://esva.pe/" },
+    { name: "Proyectos Empresariales", url: "https://esva.pe/proyectos-empresariales/" }
+  ]} />
+
+  <Hero
+    title="Proyectos Empresariales"
+    subtitle="Diseñamos e implementamos infraestructura tecnológica completa para empresas: redes, servidores, seguridad electrónica y telefonía, integrados en un solo proyecto."
+    imageUrl="/TecnicoESVA-RedesConectividad.jpg"
+    buttonText="Conversemos tu proyecto"
+    buttonLink="Escríbenos por WhatsApp"
+    linkwhatsapp={whatsappLink}
+    imageMaxWidth="max-w-xl"
+    sectionPadding="pt-6 pb-12 md:pt-10 md:pb-24"
+  />
+
+  <!-- Intro: de soporte puntual a infraestructura integral -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <Building2 className="w-8 h-8 text-blue-700" />
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Más que instalaciones puntuales</h2>
+      </div>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Además de soporte técnico y servicios individuales, en ESVA diseñamos e implementamos
+        proyectos de infraestructura tecnológica completa para empresas e instituciones: redes
+        corporativas, servidores, seguridad perimetral, videovigilancia y telefonía IP,
+        trabajados como un solo sistema en vez de contrataciones separadas. Para proyectos que
+        lo requieren, entregamos también documentación técnica (memoria descriptiva,
+        especificaciones, matriz de cobertura) pensada para tus propios procesos de auditoría o
+        certificación.
+      </p>
+    </div>
+  </section>
+
+  <!-- Casos de proyectos -->
+  <section class="bg-slate-50 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Proyectos en marcha</h2>
+
+      <div class="grid gap-10 lg:grid-cols-2">
+        <!-- Caso Norandino -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Camera className="w-6 h-6 text-blue-700" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Norandino</h3>
+                <p class="text-sm text-gray-500">Organización asociativa de agricultores &middot; Planta de café</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full whitespace-nowrap">Instalado</span>
+          </div>
+
+          <div class="space-y-4 text-gray-700">
+            <div>
+              <p class="font-semibold text-gray-900">El reto</p>
+              <p>
+                Vigilar y controlar el acceso en una planta de procesamiento de café, cubriendo
+                puntos críticos y zonas restringidas bajo criterios de seguridad y trazabilidad
+                alineados a las exigencias de certificación con las que trabaja Norandino.
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">La solución</p>
+              <p>
+                Diseño e instalación de un sistema de videovigilancia IP de aproximadamente 20
+                cámaras, con grabación centralizada, retención de video y acceso remoto para
+                supervisión. El sistema quedó documentado y con posibilidad de extenderse a otras
+                plantas de procesamiento, como la de cacao.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV IP</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">NVR</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">PoE</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Almacenamiento para videovigilancia</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de accesos</span>
+          </div>
+        </div>
+
+        <!-- Caso Agronutrición -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Network className="w-6 h-6 text-blue-700" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Agronutrición</h3>
+                <p class="text-sm text-gray-500">Infraestructura tecnológica corporativa integral</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full whitespace-nowrap">En desarrollo</span>
+          </div>
+
+          <div class="space-y-4 text-gray-700">
+            <div>
+              <p class="font-semibold text-gray-900">El reto</p>
+              <p>
+                Construir desde cero toda la infraestructura tecnológica de la empresa: sin red
+                corporativa, sin servidores propios y sin seguridad electrónica instalada.
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">La solución</p>
+              <p>
+                Implementación integral en curso: red corporativa e internet, WiFi empresarial,
+                servidores, firewall perimetral, cámaras de seguridad, instalación y configuración
+                de computadoras, y centralita telefónica IP — todo diseñado como un solo sistema
+                para escalar junto con la empresa.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Cisco</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Mikrotik</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Servidores</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Firewall</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Telefonía IP</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué incluye un proyecto empresarial -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Áreas que integramos en un proyecto empresarial
+      </h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-blue-100 rounded-full"><Network className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">Redes corporativas</h3>
+            <p class="text-sm text-gray-600">Cableado estructurado, WiFi empresarial, switches administrables, VLAN y QoS.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-blue-100 rounded-full"><Server className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">Servidores e infraestructura</h3>
+            <p class="text-sm text-gray-600">Instalación, virtualización y administración de servidores Linux/Windows.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-blue-100 rounded-full"><ShieldCheck className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">Firewall y seguridad de red</h3>
+            <p class="text-sm text-gray-600">Configuración de perímetro, control de acceso a la red y buenas prácticas de ciberseguridad.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-blue-100 rounded-full"><Camera className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">Videovigilancia empresarial</h3>
+            <p class="text-sm text-gray-600">Diseño de cobertura, cámaras IP, NVR, retención de grabaciones y acceso remoto.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-blue-100 rounded-full"><Phone className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">Telefonía IP</h3>
+            <p class="text-sm text-gray-600">Centralita telefónica y comunicaciones internas integradas a la red corporativa.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-blue-100 rounded-full"><FileCheck2 className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">Documentación técnica</h3>
+            <p class="text-sm text-gray-600">Memoria descriptiva, especificaciones y matriz de cobertura cuando el proyecto lo requiere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué elegir ESVA para proyectos empresariales -->
+  <section class="bg-blue-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
+        ¿Por qué llevar tu proyecto empresarial con <span class="text-blue-600">ESVA</span>?
+      </h2>
+      <div class="grid gap-8 md:grid-cols-2 text-left">
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded-full shadow-sm"><Layers className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Un solo proveedor, todas las áreas</h3>
+            <p class="text-gray-600">Redes, servidores, seguridad y telefonía diseñados como un sistema integrado, no como contratos separados.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded-full shadow-sm"><Wrench className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Equipos de nivel empresarial</h3>
+            <p class="text-gray-600">Trabajamos con marcas como Cisco, Mikrotik y equipos de videovigilancia profesional, según lo que exija cada proyecto.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded-full shadow-sm"><Landmark className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Experiencia con organizaciones reales</h3>
+            <p class="text-gray-600">Plantas de procesamiento, empresas agroindustriales y proyectos corporativos construidos desde cero.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded-full shadow-sm"><FileCheck2 className="w-6 h-6 text-blue-700" /></div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Soporte y documentación post-proyecto</h3>
+            <p class="text-gray-600">Acompañamiento posterior a la implementación y documentación que facilita auditorías o certificaciones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <LlamadaAction
+    title="¿Tienes un proyecto empresarial en mente?"
+    subtitle="Cuéntanos qué necesita tu empresa — redes, servidores, seguridad electrónica o telefonía — y te ayudamos a diseñar la solución."
+    buttonTextContato="Contáctanos"
+    buttonLinkLlamada="Llámanos Ahora"
+    linkwhatsapp={whatsappLink}
+    textobotonwhatsapp="WhatsApp"
+  />
+
+  <PreguntasFrecuentes preguntas={preguntasProyectos} />
+</BaseLayout>
