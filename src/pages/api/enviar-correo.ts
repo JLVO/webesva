@@ -6,6 +6,21 @@ export const prerender = false;
 // Inicializamos Resend utilizando la clave de API desde las variables de entorno
 const resend = new Resend(import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY);
 
+// Este endpoint solo acepta POST. Sin un handler explícito para el resto de
+// métodos, Astro/Vercel no devuelve un 405 controlado sino que la función
+// serverless termina en error (500 FUNCTION_INVOCATION_FAILED) — esto es lo
+// que Google Search Console reportaba como "Error de servidor (5xx)" al
+// rastrear esta URL con GET.
+export const ALL: APIRoute = async ({ request }) => {
+  return new Response(
+    JSON.stringify({
+      success: false,
+      message: 'Método no permitido. Este endpoint solo acepta solicitudes POST.',
+    }),
+    { status: 405, headers: { 'Content-Type': 'application/json', Allow: 'POST' } }
+  );
+};
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
