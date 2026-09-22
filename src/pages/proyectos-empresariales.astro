@@ -15,11 +15,30 @@ import {
   Layers,
   Wrench,
   Landmark,
+  Sun,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Expand,
 } from "lucide-react";
 
 const whatsappText =
   "Hola ESVA, tengo un proyecto empresarial (redes, servidores, cámaras u otro) y quisiera una asesoría.";
 const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
+// Fotos reales de cada proyecto. Se completan a medida que Luis las envía —
+// nunca poner aquí imágenes genéricas/de stock que no sean del proyecto real.
+const galeriaSolux: string[] = [];
+const galeriaAgronutricion: string[] = [];
+const galeriaJtExpress: string[] = [];
+const galeriaChiflesOlaechea: string[] = [];
+
+const galleriesData = {
+  solux: galeriaSolux,
+  agronutricion: galeriaAgronutricion,
+  jtexpress: galeriaJtExpress,
+  chifles: galeriaChiflesOlaechea,
+};
 
 const preguntasProyectos = [
   {
@@ -137,6 +156,25 @@ const preguntasProyectos = [
           <a href="https://solux.pe" target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-medium text-blue-600 hover:text-blue-800 mt-4">
             Conoce más sobre Solux &rarr;
           </a>
+
+          {galeriaSolux.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaSolux.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="solux"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} de la instalación en Solux Group SAC`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la instalación de Starlink Mini en camionetas de Solux Group SAC`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Caso Agronutrición -->
@@ -181,6 +219,25 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Telefonía IP</span>
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV</span>
           </div>
+
+          {galeriaAgronutricion.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaAgronutricion.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="agronutricion"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} del proyecto en Agronutrición`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la implementación de infraestructura tecnológica en Agronutrición`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Caso Norandino -->
@@ -239,7 +296,7 @@ const preguntasProyectos = [
                 <p class="text-sm text-gray-500">Logística y courier</p>
               </div>
             </div>
-            <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full whitespace-nowrap">Por iniciar</span>
+            <span class="text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full whitespace-nowrap">Instalado</span>
           </div>
 
           <div class="space-y-4 text-gray-700">
@@ -253,8 +310,8 @@ const preguntasProyectos = [
             <div>
               <p class="font-semibold text-gray-900">La solución</p>
               <p>
-                El proyecto contempla la instalación de un sistema de videovigilancia IP con 9
-                cámaras de seguridad, grabación centralizada y acceso remoto para supervisión.
+                Instalación de un sistema de videovigilancia IP con 9 cámaras de seguridad,
+                grabación centralizada y acceso remoto para supervisión.
               </p>
             </div>
           </div>
@@ -264,10 +321,177 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">NVR</span>
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Videovigilancia</span>
           </div>
+
+          {galeriaJtExpress.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaJtExpress.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="jtexpress"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} de la instalación en J&T Express`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la instalación de cámaras de seguridad en J&T Express`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Caso Chifles Olaechea -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Sun className="w-6 h-6 text-blue-700" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Chifles Olaechea</h3>
+                <p class="text-sm text-gray-500">Videovigilancia con energía solar + internet satelital</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full whitespace-nowrap">Instalado</span>
+          </div>
+
+          <div class="space-y-4 text-gray-700">
+            <div>
+              <p class="font-semibold text-gray-900">El reto</p>
+              <p>
+                Dos problemas distintos: un fluido eléctrico muy inestable que ponía en riesgo la
+                continuidad de las cámaras de seguridad, y una conexión a internet demasiado lenta
+                para las necesidades del negocio.
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">La solución</p>
+              <p>
+                Instalación de cámaras de seguridad EZVIZ alimentadas con panel solar, para que la
+                videovigilancia siga funcionando sin depender de la inestabilidad eléctrica de la
+                zona. En paralelo, instalamos una antena Starlink Standard para reemplazar su
+                internet anterior por una conexión satelital de alta velocidad.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Cámaras EZVIZ</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Panel solar</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Starlink Standard</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Videovigilancia</span>
+          </div>
+
+          {galeriaChiflesOlaechea.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaChiflesOlaechea.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="chifles"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} de la instalación en Chifles Olaechea`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la instalación de cámaras EZVIZ con panel solar y Starlink en Chifles Olaechea`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Lightbox / carrusel de fotos de proyectos -->
+  <div
+    id="project-lightbox"
+    class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/90 p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Galería de fotos del proyecto"
+  >
+    <button id="lightbox-close" type="button" aria-label="Cerrar galería" class="absolute top-4 right-4 text-white/80 hover:text-white p-2">
+      <X className="w-8 h-8" />
+    </button>
+    <button id="lightbox-prev" type="button" aria-label="Foto anterior" class="absolute left-2 md:left-6 text-white/80 hover:text-white p-2">
+      <ChevronLeft className="w-10 h-10" />
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-[92vw] object-contain rounded-lg shadow-2xl" />
+    <button id="lightbox-next" type="button" aria-label="Foto siguiente" class="absolute right-2 md:right-6 text-white/80 hover:text-white p-2">
+      <ChevronRight className="w-10 h-10" />
+    </button>
+    <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium"></div>
+  </div>
+
+  <script define:vars={{ galleriesData }}>
+    const lightbox = document.getElementById("project-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxCounter = document.getElementById("lightbox-counter");
+    let currentGallery = null;
+    let currentIndex = 0;
+
+    function updateLightboxImage() {
+      const photos = galleriesData[currentGallery] || [];
+      if (!photos.length) return;
+      lightboxImg.src = photos[currentIndex];
+      lightboxCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
+    }
+
+    function openLightbox(galleryName, index) {
+      currentGallery = galleryName;
+      currentIndex = index;
+      updateLightboxImage();
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+
+    function showNext() {
+      const photos = galleriesData[currentGallery] || [];
+      if (!photos.length) return;
+      currentIndex = (currentIndex + 1) % photos.length;
+      updateLightboxImage();
+    }
+
+    function showPrev() {
+      const photos = galleriesData[currentGallery] || [];
+      if (!photos.length) return;
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      updateLightboxImage();
+    }
+
+    document.querySelectorAll(".lightbox-trigger").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openLightbox(btn.dataset.gallery, parseInt(btn.dataset.index, 10));
+      });
+    });
+
+    document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+    document.getElementById("lightbox-next").addEventListener("click", showNext);
+    document.getElementById("lightbox-prev").addEventListener("click", showPrev);
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.classList.contains("hidden")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    });
+  </script>
 
   <!-- Qué incluye un proyecto empresarial -->
   <section class="bg-white py-16">
