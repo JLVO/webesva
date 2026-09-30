@@ -32,12 +32,14 @@ const galeriaSolux: string[] = [];
 const galeriaAgronutricion: string[] = [];
 const galeriaJtExpress: string[] = [];
 const galeriaChiflesOlaechea: string[] = [];
+const galeriaEconogas: string[] = [];
 
 const galleriesData = {
   solux: galeriaSolux,
   agronutricion: galeriaAgronutricion,
   jtexpress: galeriaJtExpress,
   chifles: galeriaChiflesOlaechea,
+  econogas: galeriaEconogas,
 };
 
 const preguntasProyectos = [
@@ -252,7 +254,7 @@ const preguntasProyectos = [
                 <p class="text-sm text-gray-500">Organización asociativa de agricultores &middot; Planta de café</p>
               </div>
             </div>
-            <span class="text-xs font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full whitespace-nowrap">Por iniciar</span>
+            <span class="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full whitespace-nowrap">En ejecución</span>
           </div>
 
           <div class="space-y-4 text-gray-700">
@@ -267,8 +269,8 @@ const preguntasProyectos = [
             <div>
               <p class="font-semibold text-gray-900">La solución</p>
               <p>
-                El proyecto contempla el diseño e instalación de un sistema de videovigilancia IP
-                de aproximadamente 20 cámaras, con grabación centralizada, retención de video y
+                Diseño e instalación en curso de un sistema de videovigilancia IP de
+                aproximadamente 20 cámaras, con grabación centralizada, retención de video y
                 acceso remoto para supervisión, con posibilidad de extenderse a otras plantas de
                 procesamiento, como la de cacao.
               </p>
@@ -395,6 +397,67 @@ const preguntasProyectos = [
                   aria-label={`Ver foto ${i + 1} de la instalación en Chifles Olaechea`}
                 >
                   <img src={src} alt={`Foto ${i + 1} de la instalación de cámaras EZVIZ con panel solar y Starlink en Chifles Olaechea`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Caso Econogas -->
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center p-1.5">
+                <img src="/LogoEconogas.jpg" alt="Logo de Econogas" class="w-full h-full object-contain rounded-full" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Econogas</h3>
+                <p class="text-sm text-gray-500">Sucursal Piura &middot; Control de asistencia biométrico</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full whitespace-nowrap">En ejecución</span>
+          </div>
+
+          <div class="space-y-4 text-gray-700">
+            <div>
+              <p class="font-semibold text-gray-900">El reto</p>
+              <p>
+                Su lector biométrico anterior había sido manipulado por terceros, comprometiendo
+                el registro de asistencia del personal. Buscaban una solución más segura para que
+                sus colaboradores marquen ingreso, salida y refrigerios usando únicamente
+                reconocimiento facial.
+              </p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">La solución</p>
+              <p>
+                Instalación de un nuevo lector biométrico facial ZKTeco SenseFace A3, en
+                reemplazo del equipo comprometido, para el registro de ingresos, salidas y
+                refrigerios del personal solo con reconocimiento facial.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">ZKTeco SenseFace A3</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Reconocimiento facial</span>
+            <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de asistencia</span>
+          </div>
+
+          {galeriaEconogas.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaEconogas.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="econogas"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} de la instalación en Econogas`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la instalación del lector biométrico ZKTeco SenseFace A3 en Econogas`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
                   <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
                     <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
                   </span>
