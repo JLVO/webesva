@@ -1,14 +1,17 @@
 ---
 import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
 
-export interface Props {
-  fotos: string[];
-  galeria: string;
-  ariaLabelSufijo: string;
-  altSufijo: string;
+export interface Foto {
+  src: string;
+  alt: string;
 }
 
-const { fotos, galeria, ariaLabelSufijo, altSufijo } = Astro.props;
+export interface Props {
+  fotos: Foto[];
+  galeria: string;
+}
+
+const { fotos, galeria } = Astro.props;
 ---
 
 {fotos.length > 0 && (
@@ -28,17 +31,17 @@ const { fotos, galeria, ariaLabelSufijo, altSufijo } = Astro.props;
       class="carousel-track flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
       data-carousel-track={galeria}
     >
-      {fotos.map((src, i) => (
+      {fotos.map((foto, i) => (
         <button
           type="button"
           class="lightbox-trigger group relative shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg overflow-hidden snap-start"
           data-gallery={galeria}
           data-index={i}
-          aria-label={`Ver foto ${i + 1} ${ariaLabelSufijo}`}
+          aria-label={`Ver en grande: ${foto.alt}`}
         >
           <img
-            src={src.replace(/\.webp$/, "-thumb.webp")}
-            alt={`Foto ${i + 1} ${altSufijo}`}
+            src={foto.src.replace(/\.webp$/, "-thumb.webp")}
+            alt={foto.alt}
             class="w-full h-full object-cover group-hover:scale-105 transition"
             loading="lazy"
           />
