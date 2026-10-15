@@ -28,11 +28,64 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 
 // Fotos reales de cada proyecto. Se completan a medida que Luis las envía —
 // nunca poner aquí imágenes genéricas/de stock que no sean del proyecto real.
-const galeriaSolux: string[] = [];
-const galeriaAgronutricion: string[] = [];
-const galeriaJtExpress: string[] = [];
-const galeriaChiflesOlaechea: string[] = [];
+const galeriaSolux: string[] = [
+  "/imagenes/proyectos/solux/solux-01.webp",
+  "/imagenes/proyectos/solux/solux-02.webp",
+  "/imagenes/proyectos/solux/solux-03.webp",
+  "/imagenes/proyectos/solux/solux-04.webp",
+  "/imagenes/proyectos/solux/solux-05.webp",
+  "/imagenes/proyectos/solux/solux-06.webp",
+  "/imagenes/proyectos/solux/solux-07.webp",
+  "/imagenes/proyectos/solux/solux-08.webp",
+  "/imagenes/proyectos/solux/solux-09.webp",
+];
+const galeriaAgronutricion: string[] = [
+  "/imagenes/proyectos/agronutricion/agronutricion-01.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-02.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-03.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-04.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-05.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-06.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-07.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-08.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-09.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-10.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-11.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-12.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-13.webp",
+  "/imagenes/proyectos/agronutricion/agronutricion-14.webp",
+];
+const galeriaJtExpress: string[] = [
+  "/imagenes/proyectos/jtexpress/jtexpress-01.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-02.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-03.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-04.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-05.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-06.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-07.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-08.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-09.webp",
+  "/imagenes/proyectos/jtexpress/jtexpress-10.webp",
+];
+const galeriaChiflesOlaechea: string[] = [
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-01.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-02.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-03.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-04.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-05.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-06.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-07.webp",
+  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-08.webp",
+];
 const galeriaEconogas: string[] = [];
+const galeriaNorandino: string[] = [
+  "/imagenes/proyectos/norandino/norandino-01.webp",
+  "/imagenes/proyectos/norandino/norandino-02.webp",
+  "/imagenes/proyectos/norandino/norandino-03.webp",
+  "/imagenes/proyectos/norandino/norandino-04.webp",
+  "/imagenes/proyectos/norandino/norandino-05.webp",
+  "/imagenes/proyectos/norandino/norandino-06.webp",
+];
 
 const galleriesData = {
   solux: galeriaSolux,
@@ -40,6 +93,7 @@ const galleriesData = {
   jtexpress: galeriaJtExpress,
   chifles: galeriaChiflesOlaechea,
   econogas: galeriaEconogas,
+  norandino: galeriaNorandino,
 };
 
 const preguntasProyectos = [
@@ -284,6 +338,25 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Almacenamiento para videovigilancia</span>
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de accesos</span>
           </div>
+
+          {galeriaNorandino.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaNorandino.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="norandino"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} de la instalación en Norandino`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la instalación de videovigilancia IP en Norandino`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Caso J&T Express -->
