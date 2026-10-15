@@ -78,6 +78,14 @@ const galeriaChiflesOlaechea: string[] = [
   "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-08.webp",
 ];
 const galeriaEconogas: string[] = [];
+const galeriaNorandino: string[] = [
+  "/imagenes/proyectos/norandino/norandino-01.webp",
+  "/imagenes/proyectos/norandino/norandino-02.webp",
+  "/imagenes/proyectos/norandino/norandino-03.webp",
+  "/imagenes/proyectos/norandino/norandino-04.webp",
+  "/imagenes/proyectos/norandino/norandino-05.webp",
+  "/imagenes/proyectos/norandino/norandino-06.webp",
+];
 
 const galleriesData = {
   solux: galeriaSolux,
@@ -85,6 +93,7 @@ const galleriesData = {
   jtexpress: galeriaJtExpress,
   chifles: galeriaChiflesOlaechea,
   econogas: galeriaEconogas,
+  norandino: galeriaNorandino,
 };
 
 const preguntasProyectos = [
@@ -329,6 +338,25 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Almacenamiento para videovigilancia</span>
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de accesos</span>
           </div>
+
+          {galeriaNorandino.length > 0 && (
+            <div class="grid grid-cols-3 gap-2 mt-6">
+              {galeriaNorandino.map((src, i) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
+                  data-gallery="norandino"
+                  data-index={i}
+                  aria-label={`Ver foto ${i + 1} de la instalación en Norandino`}
+                >
+                  <img src={src} alt={`Foto ${i + 1} de la instalación de videovigilancia IP en Norandino`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Caso J&T Express -->
