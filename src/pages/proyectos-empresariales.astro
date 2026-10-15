@@ -165,11 +165,26 @@ const preguntasProyectos = [
   <!-- Casos de proyectos -->
   <section class="bg-slate-50 py-16">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Proyectos en marcha</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Proyectos en marcha</h2>
 
-      <div class="grid gap-10 lg:grid-cols-2">
+      <div class="flex flex-wrap justify-center gap-2 mb-12">
+        <button type="button" class="estado-filter px-4 py-2 rounded-full text-sm font-semibold border transition bg-blue-700 text-white border-blue-700" data-estado-filter="todos">
+          Todos
+        </button>
+        <button type="button" class="estado-filter px-4 py-2 rounded-full text-sm font-semibold border transition bg-white text-gray-700 border-gray-300 hover:border-blue-400" data-estado-filter="instalado">
+          Instalado
+        </button>
+        <button type="button" class="estado-filter px-4 py-2 rounded-full text-sm font-semibold border transition bg-white text-gray-700 border-gray-300 hover:border-blue-400" data-estado-filter="en-desarrollo">
+          En desarrollo
+        </button>
+        <button type="button" class="estado-filter px-4 py-2 rounded-full text-sm font-semibold border transition bg-white text-gray-700 border-gray-300 hover:border-blue-400" data-estado-filter="en-ejecucion">
+          En ejecución
+        </button>
+      </div>
+
+      <div id="proyectos-grid" class="grid gap-10 lg:grid-cols-2">
         <!-- Caso Solux Group SAC -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col" data-estado="instalado">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 rounded-full flex items-center justify-center p-2" style="background-color:#0247B6;">
@@ -222,7 +237,7 @@ const preguntasProyectos = [
         </div>
 
         <!-- Caso Agronutrición -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col" data-estado="en-desarrollo">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -273,7 +288,7 @@ const preguntasProyectos = [
         </div>
 
         <!-- Caso Norandino -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col" data-estado="en-ejecucion">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -324,7 +339,7 @@ const preguntasProyectos = [
         </div>
 
         <!-- Caso J&T Express -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col" data-estado="instalado">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center p-1.5">
@@ -370,7 +385,7 @@ const preguntasProyectos = [
         </div>
 
         <!-- Caso Chifles Olaechea -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col" data-estado="instalado">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -420,7 +435,7 @@ const preguntasProyectos = [
         </div>
 
         <!-- Caso Econogas -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col" data-estado="en-ejecucion">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center p-1.5">
@@ -566,6 +581,27 @@ const preguntasProyectos = [
         track.scrollBy({
           left: btn.classList.contains("carousel-prev") ? -amount : amount,
           behavior: "smooth",
+        });
+      });
+    });
+
+    const proyectoCards = document.querySelectorAll("#proyectos-grid > [data-estado]");
+    const filtroBotones = document.querySelectorAll(".estado-filter");
+
+    filtroBotones.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const estado = btn.dataset.estadoFilter;
+
+        filtroBotones.forEach((b) => {
+          b.classList.remove("bg-blue-700", "text-white", "border-blue-700");
+          b.classList.add("bg-white", "text-gray-700", "border-gray-300");
+        });
+        btn.classList.remove("bg-white", "text-gray-700", "border-gray-300");
+        btn.classList.add("bg-blue-700", "text-white", "border-blue-700");
+
+        proyectoCards.forEach((card) => {
+          const coincide = estado === "todos" || card.dataset.estado === estado;
+          card.classList.toggle("hidden", !coincide);
         });
       });
     });

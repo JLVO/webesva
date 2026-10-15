@@ -12,7 +12,7 @@ const { fotos, galeria, ariaLabelSufijo, altSufijo } = Astro.props;
 ---
 
 {fotos.length > 0 && (
-  <div class="relative mt-6">
+  <div class="relative mt-auto pt-6">
     {fotos.length > 1 && (
       <button
         type="button"
@@ -37,7 +37,7 @@ const { fotos, galeria, ariaLabelSufijo, altSufijo } = Astro.props;
           aria-label={`Ver foto ${i + 1} ${ariaLabelSufijo}`}
         >
           <img
-            src={src}
+            src={src.replace(/\.webp$/, "-thumb.webp")}
             alt={`Foto ${i + 1} ${altSufijo}`}
             class="w-full h-full object-cover group-hover:scale-105 transition"
             loading="lazy"
