@@ -1,0 +1,63 @@
+---
+import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
+
+export interface Props {
+  fotos: string[];
+  galeria: string;
+  ariaLabelSufijo: string;
+  altSufijo: string;
+}
+
+const { fotos, galeria, ariaLabelSufijo, altSufijo } = Astro.props;
+---
+
+{fotos.length > 0 && (
+  <div class="relative mt-6">
+    {fotos.length > 1 && (
+      <button
+        type="button"
+        class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/3 z-10 bg-white text-gray-700 hover:text-blue-700 shadow-md rounded-full p-1.5 border border-gray-200"
+        data-carousel-target={galeria}
+        aria-label="Ver fotos anteriores"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+    )}
+
+    <div
+      class="carousel-track flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+      data-carousel-track={galeria}
+    >
+      {fotos.map((src, i) => (
+        <button
+          type="button"
+          class="lightbox-trigger group relative shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg overflow-hidden snap-start"
+          data-gallery={galeria}
+          data-index={i}
+          aria-label={`Ver foto ${i + 1} ${ariaLabelSufijo}`}
+        >
+          <img
+            src={src}
+            alt={`Foto ${i + 1} ${altSufijo}`}
+            class="w-full h-full object-cover group-hover:scale-105 transition"
+            loading="lazy"
+          />
+          <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+            <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
+          </span>
+        </button>
+      ))}
+    </div>
+
+    {fotos.length > 1 && (
+      <button
+        type="button"
+        class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/3 z-10 bg-white text-gray-700 hover:text-blue-700 shadow-md rounded-full p-1.5 border border-gray-200"
+        data-carousel-target={galeria}
+        aria-label="Ver más fotos"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+    )}
+  </div>
+)}
