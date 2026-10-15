@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
 import LlamadaAction from "../components/LlamadaAction.astro";
 import PreguntasFrecuentes from "../components/PreguntasFrecuentes.astro";
+import GaleriaCarrusel from "../components/GaleriaCarrusel.astro";
 import {
   Building2,
   Camera,
@@ -19,7 +20,6 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Expand,
 } from "lucide-react";
 
 const whatsappText =
@@ -213,24 +213,12 @@ const preguntasProyectos = [
             Conoce más sobre Solux &rarr;
           </a>
 
-          {galeriaSolux.length > 0 && (
-            <div class="grid grid-cols-3 gap-2 mt-6">
-              {galeriaSolux.map((src, i) => (
-                <button
-                  type="button"
-                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
-                  data-gallery="solux"
-                  data-index={i}
-                  aria-label={`Ver foto ${i + 1} de la instalación en Solux Group SAC`}
-                >
-                  <img src={src} alt={`Foto ${i + 1} de la instalación de Starlink Mini en camionetas de Solux Group SAC`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          <GaleriaCarrusel
+            fotos={galeriaSolux}
+            galeria="solux"
+            ariaLabelSufijo="de la instalación en Solux Group SAC"
+            altSufijo="de la instalación de Starlink Mini en camionetas de Solux Group SAC"
+          />
         </div>
 
         <!-- Caso Agronutrición -->
@@ -276,24 +264,12 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">CCTV</span>
           </div>
 
-          {galeriaAgronutricion.length > 0 && (
-            <div class="grid grid-cols-3 gap-2 mt-6">
-              {galeriaAgronutricion.map((src, i) => (
-                <button
-                  type="button"
-                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
-                  data-gallery="agronutricion"
-                  data-index={i}
-                  aria-label={`Ver foto ${i + 1} del proyecto en Agronutrición`}
-                >
-                  <img src={src} alt={`Foto ${i + 1} de la implementación de infraestructura tecnológica en Agronutrición`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          <GaleriaCarrusel
+            fotos={galeriaAgronutricion}
+            galeria="agronutricion"
+            ariaLabelSufijo="del proyecto en Agronutrición"
+            altSufijo="de la implementación de infraestructura tecnológica en Agronutrición"
+          />
         </div>
 
         <!-- Caso Norandino -->
@@ -339,24 +315,12 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de accesos</span>
           </div>
 
-          {galeriaNorandino.length > 0 && (
-            <div class="grid grid-cols-3 gap-2 mt-6">
-              {galeriaNorandino.map((src, i) => (
-                <button
-                  type="button"
-                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
-                  data-gallery="norandino"
-                  data-index={i}
-                  aria-label={`Ver foto ${i + 1} de la instalación en Norandino`}
-                >
-                  <img src={src} alt={`Foto ${i + 1} de la instalación de videovigilancia IP en Norandino`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          <GaleriaCarrusel
+            fotos={galeriaNorandino}
+            galeria="norandino"
+            ariaLabelSufijo="de la instalación en Norandino"
+            altSufijo="de la instalación de videovigilancia IP en Norandino"
+          />
         </div>
 
         <!-- Caso J&T Express -->
@@ -397,24 +361,12 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Videovigilancia</span>
           </div>
 
-          {galeriaJtExpress.length > 0 && (
-            <div class="grid grid-cols-3 gap-2 mt-6">
-              {galeriaJtExpress.map((src, i) => (
-                <button
-                  type="button"
-                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
-                  data-gallery="jtexpress"
-                  data-index={i}
-                  aria-label={`Ver foto ${i + 1} de la instalación en J&T Express`}
-                >
-                  <img src={src} alt={`Foto ${i + 1} de la instalación de cámaras de seguridad en J&T Express`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          <GaleriaCarrusel
+            fotos={galeriaJtExpress}
+            galeria="jtexpress"
+            ariaLabelSufijo="de la instalación en J&T Express"
+            altSufijo="de la instalación de cámaras de seguridad en J&T Express"
+          />
         </div>
 
         <!-- Caso Chifles Olaechea -->
@@ -459,24 +411,12 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Videovigilancia</span>
           </div>
 
-          {galeriaChiflesOlaechea.length > 0 && (
-            <div class="grid grid-cols-3 gap-2 mt-6">
-              {galeriaChiflesOlaechea.map((src, i) => (
-                <button
-                  type="button"
-                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
-                  data-gallery="chifles"
-                  data-index={i}
-                  aria-label={`Ver foto ${i + 1} de la instalación en Chifles Olaechea`}
-                >
-                  <img src={src} alt={`Foto ${i + 1} de la instalación de cámaras EZVIZ con panel solar y Starlink en Chifles Olaechea`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          <GaleriaCarrusel
+            fotos={galeriaChiflesOlaechea}
+            galeria="chifles"
+            ariaLabelSufijo="de la instalación en Chifles Olaechea"
+            altSufijo="de la instalación de cámaras EZVIZ con panel solar y Starlink en Chifles Olaechea"
+          />
         </div>
 
         <!-- Caso Econogas -->
@@ -520,24 +460,12 @@ const preguntasProyectos = [
             <span class="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Control de asistencia</span>
           </div>
 
-          {galeriaEconogas.length > 0 && (
-            <div class="grid grid-cols-3 gap-2 mt-6">
-              {galeriaEconogas.map((src, i) => (
-                <button
-                  type="button"
-                  class="lightbox-trigger group relative rounded-lg overflow-hidden aspect-square"
-                  data-gallery="econogas"
-                  data-index={i}
-                  aria-label={`Ver foto ${i + 1} de la instalación en Econogas`}
-                >
-                  <img src={src} alt={`Foto ${i + 1} de la instalación del lector biométrico ZKTeco SenseFace A3 en Econogas`} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
-                  <span class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                    <Expand className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition" />
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
+          <GaleriaCarrusel
+            fotos={galeriaEconogas}
+            galeria="econogas"
+            ariaLabelSufijo="de la instalación en Econogas"
+            altSufijo="de la instalación del lector biométrico ZKTeco SenseFace A3 en Econogas"
+          />
         </div>
       </div>
     </div>
@@ -626,6 +554,20 @@ const preguntasProyectos = [
       if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowRight") showNext();
       if (e.key === "ArrowLeft") showPrev();
+    });
+
+    document.querySelectorAll(".carousel-prev, .carousel-next").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const track = document.querySelector(
+          `[data-carousel-track="${btn.dataset.carouselTarget}"]`,
+        );
+        if (!track) return;
+        const amount = track.clientWidth * 0.8;
+        track.scrollBy({
+          left: btn.classList.contains("carousel-prev") ? -amount : amount,
+          behavior: "smooth",
+        });
+      });
     });
   </script>
 
