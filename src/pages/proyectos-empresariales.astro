@@ -5,6 +5,7 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
 import LlamadaAction from "../components/LlamadaAction.astro";
 import PreguntasFrecuentes from "../components/PreguntasFrecuentes.astro";
 import GaleriaCarrusel from "../components/GaleriaCarrusel.astro";
+import type { Foto } from "../components/GaleriaCarrusel.astro";
 import {
   Building2,
   Camera,
@@ -28,63 +29,64 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 
 // Fotos reales de cada proyecto. Se completan a medida que Luis las envía —
 // nunca poner aquí imágenes genéricas/de stock que no sean del proyecto real.
-const galeriaSolux: string[] = [
-  "/imagenes/proyectos/solux/solux-01.webp",
-  "/imagenes/proyectos/solux/solux-02.webp",
-  "/imagenes/proyectos/solux/solux-03.webp",
-  "/imagenes/proyectos/solux/solux-04.webp",
-  "/imagenes/proyectos/solux/solux-05.webp",
-  "/imagenes/proyectos/solux/solux-06.webp",
-  "/imagenes/proyectos/solux/solux-07.webp",
-  "/imagenes/proyectos/solux/solux-08.webp",
-  "/imagenes/proyectos/solux/solux-09.webp",
+// Nombres de archivo y alt descriptivos por foto (SEO).
+const galeriaSolux: Foto[] = [
+  { src: "/imagenes/proyectos/solux/soporte-starlink-mini-techo-camioneta-piura-esva.webp", alt: "Soporte de montaje para antena Starlink Mini sobre el techo de una camioneta de Solux Group SAC en Piura" },
+  { src: "/imagenes/proyectos/solux/ensamblaje-base-starlink-mini-soporte-vehicular-piura-esva.webp", alt: "Ensamblaje de la base de la antena Starlink Mini en el soporte vehicular, proyecto Solux Group SAC" },
+  { src: "/imagenes/proyectos/solux/antena-starlink-mini-montada-soporte-caja-piura-esva.webp", alt: "Antena Starlink Mini montada sobre su soporte, junto a la caja original, instalación Solux Group SAC" },
+  { src: "/imagenes/proyectos/solux/antena-starlink-mini-lista-instalar-camioneta-piura-esva.webp", alt: "Antena Starlink Mini ensamblada y lista para instalar en camioneta de trabajo, Solux Group SAC" },
+  { src: "/imagenes/proyectos/solux/antena-starlink-mini-instalada-techo-camioneta-piura-esva.webp", alt: "Antena Starlink Mini instalada en el techo de una camioneta de Solux Group SAC en Piura" },
+  { src: "/imagenes/proyectos/solux/antena-starlink-mini-camioneta-patio-operaciones-piura-esva.webp", alt: "Camioneta de Solux Group SAC con antena Starlink Mini instalada en el patio de operaciones" },
+  { src: "/imagenes/proyectos/solux/camioneta-antena-starlink-mini-exterior-oficina-piura-esva.webp", alt: "Camioneta con antena Starlink Mini instalada, estacionada frente a las oficinas de Solux Group SAC" },
+  { src: "/imagenes/proyectos/solux/cableado-antena-starlink-mini-techo-vehiculo-piura-esva.webp", alt: "Cableado de la antena Starlink Mini en el techo del vehículo, instalación Solux Group SAC" },
+  { src: "/imagenes/proyectos/solux/soporte-alternativo-starlink-mini-camioneta-piura-esva.webp", alt: "Soporte alternativo para antena Starlink Mini en camioneta, proyecto Solux Group SAC" },
 ];
-const galeriaAgronutricion: string[] = [
-  "/imagenes/proyectos/agronutricion/agronutricion-01.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-02.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-03.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-04.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-05.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-06.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-07.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-08.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-09.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-10.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-11.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-12.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-13.webp",
-  "/imagenes/proyectos/agronutricion/agronutricion-14.webp",
+const galeriaAgronutricion: Foto[] = [
+  { src: "/imagenes/proyectos/agronutricion/tecnicos-instalando-fibra-optica-rack-agronutricion-piura-esva.webp", alt: "Técnicos de ESVA instalando cableado de fibra óptica en rack de comunicaciones, proyecto Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/instalacion-gabinete-red-pared-obra-agronutricion-piura-esva.webp", alt: "Instalación de gabinete de red en pared durante la obra civil de Agronutrición en Piura" },
+  { src: "/imagenes/proyectos/agronutricion/tecnico-configurando-switch-gabinete-agronutricion-piura-esva.webp", alt: "Técnico configurando switch dentro de gabinete de red en Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/fachada-edificio-agronutricion-piura-esva.webp", alt: "Fachada del edificio corporativo de Agronutrición en Piura" },
+  { src: "/imagenes/proyectos/agronutricion/access-point-wifi-empresarial-techo-agronutricion-piura-esva.webp", alt: "Access point WiFi empresarial instalado en el techo de las oficinas de Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/instalacion-computadora-oficina-agronutricion-piura-esva.webp", alt: "Instalación y configuración de computadora de escritorio en oficina de Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/instalacion-tomacorriente-red-escritorio-agronutricion-piura-esva.webp", alt: "Instalación de tomacorriente y punto de red en escritorio corporativo, Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/camara-seguridad-dahua-bullet-nueva-agronutricion-piura-esva.webp", alt: "Cámara de seguridad Dahua tipo bullet nueva, equipamiento para Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/camara-seguridad-dahua-doble-lente-agronutricion-piura-esva.webp", alt: "Cámara de seguridad Dahua de doble lente panorámica, equipamiento para Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/equipos-camaras-dahua-empaquetados-agronutricion-piura-esva.webp", alt: "Cámaras de seguridad Dahua empaquetadas, equipamiento del proyecto de videovigilancia en Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/nave-industrial-agronutricion-interior-piura-esva.webp", alt: "Vista interior de la nave industrial de Agronutrición durante la implementación de infraestructura" },
+  { src: "/imagenes/proyectos/agronutricion/tecnico-plataforma-elevadora-cableado-techo-agronutricion-piura-esva.webp", alt: "Técnico en plataforma elevadora instalando cableado estructurado en el techo de la planta de Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/rack-servidores-switch-nvr-dahua-agronutricion-piura-esva.webp", alt: "Rack de servidores con switch y grabador NVR Dahua instalado en Agronutrición" },
+  { src: "/imagenes/proyectos/agronutricion/gabinete-red-switch-satra-fibra-agronutricion-piura-esva.webp", alt: "Gabinete de red con switch Satra y fibra óptica organizada, proyecto Agronutrición" },
 ];
-const galeriaJtExpress: string[] = [
-  "/imagenes/proyectos/jtexpress/jtexpress-01.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-02.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-03.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-04.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-05.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-06.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-07.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-08.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-09.webp",
-  "/imagenes/proyectos/jtexpress/jtexpress-10.webp",
+const galeriaJtExpress: Foto[] = [
+  { src: "/imagenes/proyectos/jtexpress/equipos-camaras-hikvision-colorvu-jtexpress-piura-esva.webp", alt: "Cámaras de seguridad Hikvision ColorVu empaquetadas, equipamiento del proyecto J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/nvr-hikvision-discos-duros-jtexpress-piura-esva.webp", alt: "Grabador NVR Hikvision con discos duros de almacenamiento para videovigilancia, J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/instalacion-discos-duros-nvr-jtexpress-piura-esva.webp", alt: "Instalación de discos duros dentro del NVR Hikvision, proyecto J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/camara-domo-interior-instalada-jtexpress-piura-esva.webp", alt: "Cámara de seguridad domo instalada en interior de las instalaciones de J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/camara-seguridad-pared-ladrillo-exterior-jtexpress-piura-esva.webp", alt: "Cámara de seguridad tipo bullet instalada en pared exterior de ladrillo, J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/camara-bullet-pared-exterior-almacen-jtexpress-piura-esva.webp", alt: "Cámara bullet instalada en pared exterior del almacén de J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/camara-seguridad-esquina-pared-jtexpress-piura-esva.webp", alt: "Cámara de seguridad instalada en esquina de pared perimetral, J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/camara-bullet-techo-almacen-exterior-jtexpress-piura-esva.webp", alt: "Cámara bullet instalada junto al techo del almacén exterior de J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/camara-perimetral-cableado-exterior-jtexpress-piura-esva.webp", alt: "Cámara de seguridad perimetral con cableado exterior, instalación J&T Express" },
+  { src: "/imagenes/proyectos/jtexpress/nvr-hikvision-instalado-pared-jtexpress-piura-esva.webp", alt: "Grabador NVR Hikvision instalado en pared, centro de monitoreo de J&T Express" },
 ];
-const galeriaChiflesOlaechea: string[] = [
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-01.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-02.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-03.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-04.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-05.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-06.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-07.webp",
-  "/imagenes/proyectos/chifles-olaechea/chifles-olaechea-08.webp",
+const galeriaChiflesOlaechea: Foto[] = [
+  { src: "/imagenes/proyectos/chifles-olaechea/antena-starlink-standard-techo-chifles-olaechea-piura-esva.webp", alt: "Antena Starlink Standard sobre el techo, previa a su instalación en Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/instalacion-antena-starlink-standard-techo-chifles-olaechea-piura-esva.webp", alt: "Instalación de la antena Starlink Standard en el techo del local de Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/tecnico-sosteniendo-antena-starlink-standard-chifles-olaechea-piura-esva.webp", alt: "Técnico de ESVA sosteniendo la antena Starlink Standard durante la instalación en Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/equipos-camaras-ezviz-herramientas-chifles-olaechea-piura-esva.webp", alt: "Cámaras de seguridad EZVIZ y herramientas de instalación sobre el techo de Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/camara-ezviz-panel-solar-poste-chifles-olaechea-piura-esva.webp", alt: "Cámara de seguridad EZVIZ alimentada con panel solar instalada en poste, Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/calibracion-app-starlink-obstrucciones-chifles-olaechea-piura-esva.webp", alt: "App de Starlink calibrando el mapa de obstrucciones de la antena en Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/velocidad-internet-starlink-resultados-chifles-olaechea-piura-esva.webp", alt: "Resultados de velocidad de internet satelital Starlink en Chifles Olaechea" },
+  { src: "/imagenes/proyectos/chifles-olaechea/app-starlink-calibrando-cobertura-chifles-olaechea-piura-esva.webp", alt: "App de Starlink calibrando la cobertura de la antena instalada en Chifles Olaechea" },
 ];
-const galeriaEconogas: string[] = [];
-const galeriaNorandino: string[] = [
-  "/imagenes/proyectos/norandino/norandino-01.webp",
-  "/imagenes/proyectos/norandino/norandino-02.webp",
-  "/imagenes/proyectos/norandino/norandino-03.webp",
-  "/imagenes/proyectos/norandino/norandino-04.webp",
-  "/imagenes/proyectos/norandino/norandino-05.webp",
-  "/imagenes/proyectos/norandino/norandino-06.webp",
+const galeriaEconogas: Foto[] = [];
+const galeriaNorandino: Foto[] = [
+  { src: "/imagenes/proyectos/norandino/equipos-camaras-hikvision-nvr-norandino-piura-esva.webp", alt: "Cámaras de seguridad Hikvision y grabador NVR, equipamiento del proyecto de videovigilancia en Norandino" },
+  { src: "/imagenes/proyectos/norandino/tecnicos-armando-soporte-camara-planta-norandino-piura-esva.webp", alt: "Técnicos armando el soporte metálico para cámaras en la planta de procesamiento de Norandino" },
+  { src: "/imagenes/proyectos/norandino/tecnico-instalando-camara-altura-planta-norandino-piura-esva.webp", alt: "Técnico instalando cámara de seguridad en altura dentro de la planta de Norandino" },
+  { src: "/imagenes/proyectos/norandino/tecnicos-andamio-cableado-planta-norandino-piura-esva.webp", alt: "Técnicos sobre andamio instalando cableado de videovigilancia en la planta de Norandino" },
+  { src: "/imagenes/proyectos/norandino/andamio-instalacion-camaras-planta-cafe-norandino-piura-esva.webp", alt: "Andamio de trabajo para la instalación de cámaras en la planta de café de Norandino" },
+  { src: "/imagenes/proyectos/norandino/almacen-cafe-pergamino-camaras-seguridad-norandino-piura-esva.webp", alt: "Instalación de cámaras de seguridad en el almacén de café pergamino de Norandino" },
 ];
 
 const galleriesData = {
@@ -231,8 +233,6 @@ const preguntasProyectos = [
           <GaleriaCarrusel
             fotos={galeriaSolux}
             galeria="solux"
-            ariaLabelSufijo="de la instalación en Solux Group SAC"
-            altSufijo="de la instalación de Starlink Mini en camionetas de Solux Group SAC"
           />
         </div>
 
@@ -282,8 +282,6 @@ const preguntasProyectos = [
           <GaleriaCarrusel
             fotos={galeriaAgronutricion}
             galeria="agronutricion"
-            ariaLabelSufijo="del proyecto en Agronutrición"
-            altSufijo="de la implementación de infraestructura tecnológica en Agronutrición"
           />
         </div>
 
@@ -333,8 +331,6 @@ const preguntasProyectos = [
           <GaleriaCarrusel
             fotos={galeriaNorandino}
             galeria="norandino"
-            ariaLabelSufijo="de la instalación en Norandino"
-            altSufijo="de la instalación de videovigilancia IP en Norandino"
           />
         </div>
 
@@ -379,8 +375,6 @@ const preguntasProyectos = [
           <GaleriaCarrusel
             fotos={galeriaJtExpress}
             galeria="jtexpress"
-            ariaLabelSufijo="de la instalación en J&T Express"
-            altSufijo="de la instalación de cámaras de seguridad en J&T Express"
           />
         </div>
 
@@ -429,8 +423,6 @@ const preguntasProyectos = [
           <GaleriaCarrusel
             fotos={galeriaChiflesOlaechea}
             galeria="chifles"
-            ariaLabelSufijo="de la instalación en Chifles Olaechea"
-            altSufijo="de la instalación de cámaras EZVIZ con panel solar y Starlink en Chifles Olaechea"
           />
         </div>
 
@@ -478,8 +470,6 @@ const preguntasProyectos = [
           <GaleriaCarrusel
             fotos={galeriaEconogas}
             galeria="econogas"
-            ariaLabelSufijo="de la instalación en Econogas"
-            altSufijo="de la instalación del lector biométrico ZKTeco SenseFace A3 en Econogas"
           />
         </div>
       </div>
@@ -517,7 +507,8 @@ const preguntasProyectos = [
     function updateLightboxImage() {
       const photos = galleriesData[currentGallery] || [];
       if (!photos.length) return;
-      lightboxImg.src = photos[currentIndex];
+      lightboxImg.src = photos[currentIndex].src;
+      lightboxImg.alt = photos[currentIndex].alt;
       lightboxCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
     }
 
