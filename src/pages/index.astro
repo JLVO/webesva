@@ -731,7 +731,7 @@ const faqSchema = {
           <p class="text-gray-600 mb-4">Para oficinas de 1 a 5 equipos que necesitan estabilidad inmediata.</p>
           
           <div class="mb-6">
-            <p class="text-3xl font-bold text-gray-900"><span class="plan-price" data-base="650">S/ 650</span> <span class="text-sm font-normal text-gray-500 plan-period">/ mes</span></p>
+            <p class="text-3xl font-bold text-gray-900"><span class="plan-price" data-base="790">S/ 790</span> <span class="text-sm font-normal text-gray-500 plan-period">/ mes</span></p>
             <p class="text-xs text-gray-400">* Precios + IGV. Sujeto a evaluación técnica.</p>
           </div>
 
@@ -762,8 +762,8 @@ const faqSchema = {
           <p class="text-gray-600 mb-4">Gestión completa para empresas de 6 a 15 estaciones de trabajo.</p>
 
           <div class="mb-6">
-            <p class="text-3xl font-bold text-gray-900">Desde <span class="plan-price" data-base="990">S/ 990</span> <span class="text-sm font-normal text-gray-500 plan-period">/ mes</span></p>
-            <p class="text-xs text-gray-400">* Precios + IGV. Escala hasta S/1550 según cantidad de equipos.</p>
+            <p class="text-3xl font-bold text-gray-900">Desde <span class="plan-price" data-base="1290">S/ 1290</span> <span class="text-sm font-normal text-gray-500 plan-period">/ mes</span></p>
+            <p class="text-xs text-gray-400">* Precios + IGV. Escala hasta S/2100 según cantidad de equipos. Sujeto a evaluación técnica.</p>
           </div>
 
           <ul class="space-y-3 text-gray-700 mb-8">
@@ -795,8 +795,8 @@ const faqSchema = {
           <p class="text-gray-600 mb-4">Para empresas con más de 15 equipos e infraestructura crítica.</p>
           
           <div class="mb-6">
-            <p class="text-3xl font-bold text-gray-900">Desde <span class="plan-price" data-base="2500">S/ 2500</span>+ <span class="text-sm font-normal text-gray-500 plan-period">/ mes</span></p>
-            <p class="text-xs text-gray-400">* Precios + IGV. Escala según servidores y sistemas complejos.</p>
+            <p class="text-3xl font-bold text-gray-900">Desde <span class="plan-price" data-base="3200">S/ 3200</span>+ <span class="text-sm font-normal text-gray-500 plan-period">/ mes</span></p>
+            <p class="text-xs text-gray-400">* Precios + IGV. Escala según servidores y sistemas complejos. Sujeto a evaluación técnica.</p>
           </div>
 
           <ul class="space-y-3 text-gray-700 mb-8">
@@ -893,18 +893,18 @@ window.calcularPlan = function () {
 
   if (equipos <= 5) {
     plan = "Plan Esencial";
-    precioFinal = 650;
+    precioFinal = 790;
     descripcion = "Tarifa plana para oficinas de 1 a 5 equipos.";
   } else if (equipos <= 15) {
     plan = "Plan Profesional";
-    // Escala de forma lineal entre S/990 (6 equipos) y S/1550 (15 equipos)
-    const paso = (1550 - 990) / (15 - 6);
-    precioFinal = Math.round((990 + (equipos - 6) * paso) / 10) * 10;
+    // Escala de forma lineal entre S/1290 (6 equipos) y S/2100 (15 equipos)
+    const paso = (2100 - 1290) / (15 - 6);
+    precioFinal = Math.round((1290 + (equipos - 6) * paso) / 10) * 10;
     descripcion = "Precio calculado según tus " + equipos + " equipos (rango 6-15).";
   } else {
     plan = "Plan Empresarial";
-    // Desde S/2500, escala según equipos adicionales sobre 15
-    precioFinal = Math.round((2500 + (equipos - 15) * 50) / 10) * 10;
+    // Desde S/3200, escala según equipos adicionales sobre 15
+    precioFinal = Math.round((3200 + (equipos - 15) * 50) / 10) * 10;
     descripcion = "Estimado según tus " + equipos + " equipos. Precio final sujeto a evaluación de servidores e infraestructura.";
   }
 
