@@ -13,4 +13,10 @@ export default defineConfig({
   site: "https://esva.pe", // MUY IMPORTANTE: Usa tu dominio aquí
   trailingSlash: 'always', // Agrega esta línea
   // base: '/mi-subruta/', // Si tu sitio está en una subruta
+  redirects: {
+    "/servicios/formateo-instalacion-programas": {
+      status: 301,
+      destination: "/servicios/formateo-instalacion",
+    },
+  },
 });
