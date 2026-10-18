@@ -6,6 +6,7 @@ import BreadcrumbSchema from "../../components/BreadcrumbSchema.astro";
 import "../../styles/global.css";
 import { getCollection, type CollectionEntry } from 'astro:content';
 import LlamadaAction from "../../components/LlamadaAction.astro";
+import PreguntasFrecuentes from "../../components/PreguntasFrecuentes.astro";
 import {
   Wrench,
   Laptop2,
@@ -42,12 +43,40 @@ const recentPosts = allPosts
 
 const whatsappText = 'Hola, necesito servicio de mantenimiento o reparación de equipos con ESVA.';
 const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsappText)}`;
+
+const preguntasMantenimiento = [
+  {
+    titulo: "¿Tienen técnico cerca de mi zona en Piura?",
+    respuesta:
+      "Sí. Atendemos Piura, Castilla, Veintiséis de Octubre, Catacaos y alrededores, tanto en taller como a domicilio, para que tengas un técnico cerca de ti sin importar en qué parte de la ciudad estés.",
+  },
+  {
+    titulo: "¿Cada cuánto tiempo debo realizar mantenimiento a mi PC o laptop?",
+    respuesta:
+      "Recomendamos un mantenimiento preventivo cada 6 meses para asegurar el buen funcionamiento, especialmente si usas tu equipo a diario.",
+  },
+  {
+    titulo: "¿El servicio incluye formateo o respaldo de información?",
+    respuesta:
+      "Solo si lo necesitas. Antes de cualquier acción, evaluamos el estado del equipo y te asesoramos para que no pierdas información valiosa.",
+  },
+  {
+    titulo: "¿Cuánto demora una reparación o mantenimiento?",
+    respuesta:
+      "En promedio, un mantenimiento básico toma entre 1 a 2 horas. Si se detecta una falla mayor, te indicamos el tiempo estimado de forma transparente.",
+  },
+  {
+    titulo: "¿Atienden a domicilio o solo en taller?",
+    respuesta:
+      "Ambos. Puedes traernos tu equipo o programar una visita técnica en tu domicilio u oficina, según tu comodidad.",
+  },
+];
 ---
 
-<BaseLayout pageTitle="Reparación de Computadoras y Laptops en Piura | Mantenimiento Informático | ESVA" metaDescription="¿Tu PC o laptop falla? Ofrecemos mantenimiento y reparación de equipos informáticos en Piura. Diagnóstico, hardware, virus, formateo y limpieza. ¡Soluciones rápidas y confiables!" canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
+<BaseLayout pageTitle="Técnico de Computadoras y Laptops en Piura | ESVA" metaDescription="¿Tu PC o laptop falla? Técnico de computadoras y laptops en Piura, cerca de ti. Diagnóstico, reparación de hardware, formateo y limpieza, en taller o a domicilio. ¡Soluciones rápidas y confiables!" canonicalUrl={Astro.url.href} ogType="website" mainPadding={false}>
   <ServiceSchema
-    name="Mantenimiento y Reparación de Equipos Informáticos"
-    description="¿Tu PC o laptop falla? Ofrecemos mantenimiento y reparación de equipos informáticos en Piura. Diagnóstico, hardware, virus, formateo y limpieza."
+    name="Técnico de Computadoras y Laptops en Piura"
+    description="¿Tu PC o laptop falla? Técnico de computadoras y laptops en Piura, cerca de ti. Diagnóstico, reparación de hardware, formateo y limpieza."
     url="https://esva.pe/servicios/mantenimiento-reparacion-informatica/"
   />
   <BreadcrumbSchema items={[
@@ -57,8 +86,8 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
   ]} />
 
     <Hero
-  title="Mantenimiento y Reparación de Equipos Informáticos" 
-  subtitle="Optimiza el rendimiento de tus computadoras y redes con nuestro servicio técnico especializado para hogares y empresas. ¡Confía en ESVA para mantener tu tecnología en perfecto estado!" 
+  title="Técnico de Computadoras y Laptops en Piura"
+  subtitle="Diagnóstico, reparación y mantenimiento para hogares y empresas, en taller o a domicilio. Un técnico de computadoras y laptops cerca de ti, en Piura, Castilla y Veintiséis de Octubre."
   imageUrl="/TecnicoESVA1.svg" 
   buttonText="Solicita tu Servicio"
   buttonLink="Escríbenos por WhatsApp"
@@ -70,9 +99,9 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 
 <section class="bg-blue-50 py-12 px-6 md:px-20 text-gray-800">
   <div class="max-w-5xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-blue-900">Mantenimiento y Reparación de Equipos Informáticos</h2>
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-blue-900">Mantenimiento y Reparación de Computadoras y Laptops</h2>
     <p class="text-lg md:text-xl leading-relaxed">
-      ¿Tu computadora va lenta, se sobrecalienta o simplemente dejó de encender? Nuestro servicio de <strong>mantenimiento y reparación</strong> está diseñado para devolverte un equipo funcional, rápido y protegido.
+      ¿Tu computadora o laptop va lenta, se sobrecalienta o simplemente dejó de encender? Como <strong>técnico de computadoras y laptops en Piura</strong>, te devolvemos un equipo funcional, rápido y protegido — en nuestro taller o cerca de ti, a domicilio.
       Nos encargamos de todo, desde la limpieza interna hasta la reparación de hardware y recuperación de datos. <strong>¡Soluciones rápidas y confiables para hogares y empresas!</strong>
     </p>
   </div>
@@ -143,7 +172,17 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
   </div>
 </section>
 
-<LlamadaAction 
+<section class="bg-white pb-16 px-6 md:px-20 text-gray-800">
+  <div class="max-w-5xl mx-auto text-center">
+    <MapPin className="w-10 h-10 text-blue-900 mx-auto mb-4" aria-label="Zonas que atendemos" />
+    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-blue-900">Técnico cerca de ti en Piura</h2>
+    <p class="text-lg leading-relaxed">
+      Atendemos <strong>Piura, Castilla, Veintiséis de Octubre, Catacaos</strong> y alrededores, tanto en nuestro taller como a domicilio. Si buscas un <strong>técnico de computadoras cerca de ti</strong>, coordinamos una visita el mismo día cuando es posible.
+    </p>
+  </div>
+</section>
+
+<LlamadaAction
   title="¿Listo para proteger lo que más importa?"
   subtitle="En ESVA, combinamos tecnología, experiencia y atención personalizada para darte soluciones seguras, confiables y a tu alcance."
   buttonTextContato="Contáctanos"
@@ -310,53 +349,5 @@ const whatsappLink = `https://wa.me/51985834886?text=${encodeURIComponent(whatsa
 
 
 
-<section class="bg-blue-50 text-black py-20 px-6 md:px-20">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">
-      Preguntas Frecuentes
-    </h2>
-
-    <div class="space-y-4">
-      <!-- Pregunta 1 -->
-      <details class="bg-white p-4 rounded shadow-md group">
-        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
-          ¿Cada cuánto tiempo debo realizar mantenimiento a mi PC o laptop?
-        </summary>
-        <p class="mt-2 text-gray-700">
-          Recomendamos un mantenimiento preventivo cada 6 meses para asegurar el buen funcionamiento, especialmente si usas tu equipo a diario.
-        </p>
-      </details>
-
-      <!-- Pregunta 2 -->
-      <details class="bg-white p-4 rounded shadow-md group">
-        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
-          ¿El servicio incluye formateo o respaldo de información?
-        </summary>
-        <p class="mt-2 text-gray-700">
-          Solo si lo necesitas. Antes de cualquier acción, evaluamos el estado del equipo y te asesoramos para que no pierdas información valiosa.
-        </p>
-      </details>
-
-      <!-- Pregunta 3 -->
-      <details class="bg-white p-4 rounded shadow-md group">
-        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
-          ¿Cuánto demora una reparación o mantenimiento?
-        </summary>
-        <p class="mt-2 text-gray-700">
-          En promedio, un mantenimiento básico toma entre 1 a 2 horas. Si se detecta una falla mayor, te indicamos el tiempo estimado de forma transparente.
-        </p>
-      </details>
-
-      <!-- Pregunta 4 -->
-      <details class="bg-white p-4 rounded shadow-md group">
-        <summary class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-900 transition">
-          ¿Atienden a domicilio o solo en taller?
-        </summary>
-        <p class="mt-2 text-gray-700">
-          Ambos. Puedes traernos tu equipo o programar una visita técnica en tu domicilio u oficina, según tu comodidad.
-        </p>
-      </details>
-    </div>
-  </div>
-</section>
+<PreguntasFrecuentes preguntas={preguntasMantenimiento} />
 </BaseLayout>
