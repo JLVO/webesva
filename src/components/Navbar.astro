@@ -66,14 +66,39 @@ import logo from '../assets/LogoEsva.svg';
   </div>
 
   <div id="mobile-menu" class="hidden md:hidden bg-white border-b shadow-lg">
-    <div class="px-4 pt-2 pb-6 space-y-2">
+    <div class="px-4 pt-2 pb-6 space-y-2 max-h-[75vh] overflow-y-auto">
       <a href="/" class="block px-3 py-3 font-semibold border-b">Inicio</a>
       <a href="/nosotros/" class="block px-3 py-3 border-b">Nosotros</a>
       <a href="/proyectos-empresariales/" class="block px-3 py-3 border-b">Proyectos Empresariales</a>
-      <a href="/servicios/" class="block px-3 py-3 border-b">Servicios</a>
-      <a href="/servicios/starlink/" class="block px-3 py-3 border-b">Starlink (Standard / Mini)</a>
+      <a href="/brochure/" class="block px-3 py-3 border-b">Brochure</a>
+
+      <details class="group border-b">
+        <summary class="flex items-center justify-between px-3 py-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+          <span>Servicios</span>
+          <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </summary>
+        <div class="pb-3 pl-2 space-y-1">
+          <div class="px-3 py-1 text-xs font-bold text-blue-700 uppercase tracking-widest">Soporte e IT</div>
+          <a href="/servicios/soporte-tecnico/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Soporte Técnico</a>
+          <a href="/servicios/mantenimiento-reparacion-informatica/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Mantenimiento y Reparación</a>
+          <a href="/servicios/formateo-instalacion/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Formateo e Instalación de PC</a>
+          <a href="/servicios/recuperacion-datos/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Recuperación de Datos</a>
+          <a href="/servicios/redes-conectividad/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Redes y Conectividad</a>
+          <a href="/servicios/mantenimiento-preventivo/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Mantenimiento Preventivo</a>
+          <a href="/servicios/starlink/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Starlink (Standard / Mini)</a>
+
+          <div class="px-3 py-1 mt-2 text-xs font-bold text-blue-700 uppercase tracking-widest">Seguridad Electrónica</div>
+          <a href="/servicios/camaras-de-seguridad/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Cámaras de Seguridad</a>
+          <a href="/servicios/lectores-biometricos/" class="block px-3 py-2 rounded hover:bg-gray-100 transition-colors">Lectores Biométricos</a>
+
+          <div class="px-3 py-1 mt-2 text-xs font-bold text-blue-700 uppercase tracking-widest">Software Original</div>
+          <a href="/servicios/autodesk/" class="flex items-center gap-2 px-3 py-2 rounded font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
+            <span class="text-lg">📐</span> Licencias Autodesk
+          </a>
+        </div>
+      </details>
+
       <a href="/blog/" class="block px-3 py-3 border-b">Blog</a>
-      <a href="/servicios/autodesk/" class="block px-3 py-3 font-bold text-blue-600 bg-blue-50 rounded-lg">📐 Licencias Autodesk (Partner)</a>
       <a href="/contactanos/" class="block px-3 py-3 font-bold text-center bg-gray-900 text-white rounded-lg mt-4">Contacto</a>
     </div>
   </div>
