@@ -348,7 +348,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       };
 
       try {
-        const response = await fetch('/api/enviar-correo', {
+        const response = await fetch('/api/enviar-correo/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -1384,7 +1384,7 @@ window.calcularPlan = function () {
           };
 
           try {
-            const response = await fetch('/api/enviar-correo', {
+            const response = await fetch('/api/enviar-correo/', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
