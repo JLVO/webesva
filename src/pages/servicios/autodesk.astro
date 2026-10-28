@@ -52,17 +52,11 @@ const productos = [
     icon: "🏢",
     wa: `https://wa.me/${waNumber}?text=Hola,%20necesito%20info%20sobre%20Revit%20BIM`
   },
-  { 
-    nombre: "Civil 3D", 
+  {
+    nombre: "Civil 3D",
     desc: "Diseño y documentación para ingeniería civil, carreteras e infraestructura.",
     icon: "🛣️",
     wa: `https://wa.me/${waNumber}?text=Hola,%20cotización%20para%20Civil%203D%20en%20Piura`
-  },
-  { 
-    nombre: "AEC Collection", 
-    desc: "El paquete completo: AutoCAD, Revit, Civil 3D y más en una sola suscripción.",
-    icon: "🏗️",
-    wa: `https://wa.me/${waNumber}?text=Deseo%20info%20de%20la%20colección%20AEC%20Autodesk`
   }
 ];
 ---
@@ -118,7 +112,7 @@ const productos = [
         <h2 class="text-3xl md:text-4xl font-bold text-blue-950">Software Autodesk Original</h2>
         <p class="text-gray-600 mt-4 text-lg">Las herramientas líderes con la mejor asesoría comercial del norte peruano.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {productos.map(prod => (
           <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border-b-4 border-transparent hover:border-blue-600 group">
             <div class="text-4xl mb-4 group-hover:scale-110 transition-transform inline-block">{prod.icon}</div>
