@@ -46,31 +46,31 @@ const productos = [
     icon: "📐",
     wa: `https://wa.me/${waNumber}?text=Hola,%20deseo%20cotizar%20AutoCAD/LT%20con%20ESVA`
   },
-  { 
-    nombre: "Revit (BIM)", 
-    desc: "Modelado de información para edificación. La herramienta clave para proyectos BIM modernos.",
+  {
+    nombre: "AutoCAD Revit LT Suite",
+    desc: "AutoCAD más una versión LT de Revit, en una sola suscripción. Ideal para iniciarte en modelado BIM.",
     icon: "🏢",
-    wa: `https://wa.me/${waNumber}?text=Hola,%20necesito%20info%20sobre%20Revit%20BIM`
+    wa: `https://wa.me/${waNumber}?text=Hola,%20necesito%20info%20sobre%20AutoCAD%20Revit%20LT%20Suite`
   },
   {
-    nombre: "Civil 3D",
-    desc: "Diseño y documentación para ingeniería civil, carreteras e infraestructura.",
-    icon: "🛣️",
-    wa: `https://wa.me/${waNumber}?text=Hola,%20cotización%20para%20Civil%203D%20en%20Piura`
+    nombre: "3ds Max",
+    desc: "Modelado, animación y renderizado 3D para proyectos de diseño, arquitectura y visualización.",
+    icon: "🎬",
+    wa: `https://wa.me/${waNumber}?text=Hola,%20cotización%20para%203ds%20Max%20en%20Piura`
   }
 ];
 ---
 
 <BaseLayout 
   pageTitle="Licencias Autodesk Originales en Piura | ESVA"
-  metaDescription="Distribuidor oficial de licencias AutoCAD, Revit y Civil 3D en Piura y todo el Perú. ESVA ofrece software original, facturación local RUC 20 y soporte técnico." 
-  canonicalUrl={Astro.url.href} 
+  metaDescription="Distribuidor oficial de licencias AutoCAD, AutoCAD LT y AutoCAD Revit LT Suite en Piura y todo el Perú. ESVA ofrece software original, facturación local RUC 20 y soporte técnico."
+  canonicalUrl={Astro.url.href}
   ogType="website"
   mainPadding={false}
 >
   <ServiceSchema
-    name="Licencias Autodesk (AutoCAD, Revit, Civil 3D)"
-    description="Distribuidor oficial de licencias AutoCAD, Revit y Civil 3D en Piura y todo el Perú. ESVA ofrece software original, facturación local RUC 20 y soporte técnico."
+    name="Licencias Autodesk (AutoCAD, AutoCAD LT, Revit LT Suite)"
+    description="Distribuidor oficial de licencias AutoCAD, AutoCAD LT y AutoCAD Revit LT Suite en Piura y todo el Perú. ESVA ofrece software original, facturación local RUC 20 y soporte técnico."
     url="https://esva.pe/servicios/autodesk/"
   />
   <BreadcrumbSchema items={[
@@ -200,6 +200,123 @@ const productos = [
     </div>
   </section>
 
+  <section id="cotizar-autodesk" class="bg-blue-950 py-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Solicita tu Cotización de Autodesk</h2>
+        <p class="text-blue-200 mt-4 text-lg">
+          Cuéntanos qué necesitas y te enviamos una propuesta personalizada. No publicamos precios de lista porque cada licencia se cotiza según tu caso (nueva vs. renovación, cantidad, plazo).
+        </p>
+      </div>
+
+      <form id="autodesk-form" class="bg-white p-8 md:p-10 rounded-2xl shadow-2xl space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="ad-nombre" class="block text-sm font-medium text-gray-700 mb-2">Nombre completo *</label>
+            <input type="text" id="ad-nombre" name="nombre" required
+              class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+          <div>
+            <label for="ad-empresa" class="block text-sm font-medium text-gray-700 mb-2">Empresa / RUC (opcional)</label>
+            <input type="text" id="ad-empresa" name="empresa"
+              class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="ad-correo" class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico *</label>
+            <input type="email" id="ad-correo" name="correo" required
+              class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+          <div>
+            <label for="ad-telefono" class="block text-sm font-medium text-gray-700 mb-2">Teléfono / WhatsApp *</label>
+            <input type="tel" id="ad-telefono" name="telefono" required placeholder="Ej: 935 173 103"
+              class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+        </div>
+
+        <div>
+          <span class="block text-sm font-medium text-gray-700 mb-2">¿Qué tipo de solicitud es? *</span>
+          <div class="flex flex-wrap gap-4">
+            <label class="flex items-center gap-2 bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 cursor-pointer flex-1">
+              <input type="radio" name="tipoSolicitud" value="nueva" checked class="accent-blue-600" />
+              <span>Suscripción nueva</span>
+            </label>
+            <label class="flex items-center gap-2 bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 cursor-pointer flex-1">
+              <input type="radio" name="tipoSolicitud" value="renovacion" class="accent-blue-600" />
+              <span>Renovación de una que ya tengo</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="ad-renovacion-campo" class="hidden">
+          <label for="ad-userid" class="block text-sm font-medium text-gray-700 mb-2">User ID o correo de tu cuenta Autodesk (para verificar tu suscripción) *</label>
+          <input type="text" id="ad-userid" name="userIdAutodesk"
+            class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+        </div>
+
+        <div>
+          <span class="block text-sm font-medium text-gray-700 mb-2">¿Qué producto(s) te interesan? *</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {Object.entries({
+              'autocad': 'AutoCAD (incluye toolsets)',
+              'autocad-lt': 'AutoCAD LT',
+              'autocad-revit-lt-suite': 'AutoCAD Revit LT Suite',
+              'autocad-lt-mac': 'AutoCAD LT para Mac',
+              'autocad-raster-design': 'AutoCAD Raster Design',
+              'autocad-web': 'AutoCAD Web',
+              '3ds-max': '3ds Max',
+              'mudbox': 'Mudbox',
+              'flow-studio': 'Flow Studio',
+              'navpack': 'NavPack (Navisworks)',
+              'otro': 'Otro / no estoy seguro',
+            }).map(([value, label]) => (
+              <label class="flex items-center gap-2 bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 cursor-pointer text-sm">
+                <input type="checkbox" name="productos" value={value} class="accent-blue-600" />
+                <span>{label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="ad-cantidad" class="block text-sm font-medium text-gray-700 mb-2">Cantidad de licencias (opcional)</label>
+            <input type="number" id="ad-cantidad" name="cantidad" min="1" placeholder="Ej: 3"
+              class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+          <div>
+            <label for="ad-plazo" class="block text-sm font-medium text-gray-700 mb-2">Plazo preferido</label>
+            <select id="ad-plazo" name="plazo"
+              class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              <option value="no-se">No estoy seguro, asesórenme</option>
+              <option value="anual">Anual</option>
+              <option value="3-anos">3 años</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="ad-comentarios" class="block text-sm font-medium text-gray-700 mb-2">Comentarios adicionales (opcional)</label>
+          <textarea id="ad-comentarios" name="comentarios" rows="4" placeholder="Cuéntanos más sobre tu proyecto o necesidad..."
+            class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+        </div>
+
+        <div id="ad-form-success" class="hidden p-4 rounded-xl bg-green-50 text-green-700 border border-green-200 text-sm font-medium">
+          ¡Solicitud enviada! Te contactaremos pronto con tu cotización.
+        </div>
+        <div id="ad-form-error" class="hidden p-4 rounded-xl bg-red-50 text-red-700 border border-red-200 text-sm font-medium"></div>
+
+        <button type="submit" id="ad-submit-btn"
+          class="w-full bg-blue-600 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-700 transition font-medium text-lg flex items-center justify-center gap-2">
+          <span>Solicitar Cotización</span>
+          <span id="ad-loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        </button>
+      </form>
+    </div>
+  </section>
+
   {recentPosts.length > 0 && (
     <section class="bg-white py-20 px-6 border-t">
       <div class="max-w-6xl mx-auto">
@@ -227,5 +344,100 @@ const productos = [
   )}
 
   <PreguntasFrecuentes preguntas={preguntasAutodesk} />
-  
+
+  <script>
+    const adForm = document.getElementById('autodesk-form') as HTMLFormElement | null;
+    const adBtn = document.getElementById('ad-submit-btn') as HTMLButtonElement | null;
+    const adSpinner = document.getElementById('ad-loading-spinner');
+    const adSuccess = document.getElementById('ad-form-success');
+    const adError = document.getElementById('ad-form-error');
+    const adRenovacionCampo = document.getElementById('ad-renovacion-campo');
+    const adUserIdInput = document.getElementById('ad-userid') as HTMLInputElement | null;
+
+    // Muestra/oculta el campo de User ID de Autodesk según el tipo de solicitud
+    document.querySelectorAll('input[name="tipoSolicitud"]').forEach((radio) => {
+      radio.addEventListener('change', (e) => {
+        const esRenovacion = (e.target as HTMLInputElement).value === 'renovacion';
+        adRenovacionCampo?.classList.toggle('hidden', !esRenovacion);
+        if (adUserIdInput) adUserIdInput.required = esRenovacion;
+      });
+    });
+
+    if (adForm && adBtn) {
+      adForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        adSuccess?.classList.add('hidden');
+        adError?.classList.add('hidden');
+
+        const productosSeleccionados = Array.from(
+          adForm.querySelectorAll('input[name="productos"]:checked')
+        ).map((el) => (el as HTMLInputElement).value);
+
+        if (productosSeleccionados.length === 0) {
+          if (adError) {
+            adError.textContent = 'Selecciona al menos un producto de tu interés.';
+            adError.classList.remove('hidden');
+          }
+          return;
+        }
+
+        adBtn.disabled = true;
+        adSpinner?.classList.remove('hidden');
+        const adBtnText = adBtn.querySelector('span');
+        if (adBtnText) adBtnText.textContent = 'Enviando...';
+
+        const formData = new FormData(adForm);
+        const data = {
+          nombre: formData.get('nombre'),
+          correo: formData.get('correo'),
+          telefono: formData.get('telefono'),
+          empresa: formData.get('empresa'),
+          tipoSolicitud: formData.get('tipoSolicitud'),
+          userIdAutodesk: formData.get('userIdAutodesk'),
+          productos: productosSeleccionados,
+          cantidad: formData.get('cantidad'),
+          plazo: formData.get('plazo'),
+          comentarios: formData.get('comentarios'),
+        };
+
+        try {
+          const response = await fetch('/api/cotizar-autodesk/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          let result;
+          try {
+            result = await response.json();
+          } catch {
+            throw new Error(`Error del servidor (${response.status}). Inténtalo de nuevo.`);
+          }
+
+          if (response.ok && result.success) {
+            adSuccess?.classList.remove('hidden');
+            adForm.reset();
+            adRenovacionCampo?.classList.add('hidden');
+          } else {
+            if (adError) {
+              adError.textContent = result.message || 'Ocurrió un error al enviar tu solicitud. Inténtalo de nuevo.';
+              adError.classList.remove('hidden');
+            }
+          }
+        } catch (err) {
+          if (adError) {
+            const errMsg = err instanceof Error ? err.message : 'Error de red. Verifica tu conexión e inténtalo de nuevo.';
+            adError.textContent = errMsg;
+            adError.classList.remove('hidden');
+          }
+        } finally {
+          adBtn.disabled = false;
+          adSpinner?.classList.add('hidden');
+          if (adBtnText) adBtnText.textContent = 'Solicitar Cotización';
+        }
+      });
+    }
+  </script>
+
 </BaseLayout>
