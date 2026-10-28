@@ -278,6 +278,7 @@ const productos = [
               </label>
             ))}
           </div>
+          <div id="ad-productos-info" class="hidden mt-3 p-4 rounded-xl bg-amber-50 border border-amber-300 text-sm text-amber-900 space-y-2"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -353,6 +354,45 @@ const productos = [
     const adError = document.getElementById('ad-form-error');
     const adRenovacionCampo = document.getElementById('ad-renovacion-campo');
     const adUserIdInput = document.getElementById('ad-userid') as HTMLInputElement | null;
+    const adProductosInfo = document.getElementById('ad-productos-info');
+
+    // Descripción breve de cada producto, para orientar al cliente al seleccionarlo
+    const descripcionesProductos: Record<string, string> = {
+      'autocad': 'AutoCAD (incluye toolsets): CAD 2D/3D de uso general, con todos los toolsets especializados (arquitectura, mecánico, eléctrico, mapeo, etc.) incluidos sin costo adicional.',
+      'autocad-lt': 'AutoCAD LT: versión solo 2D de AutoCAD, más económica. Ideal para dibujo técnico y planos sin necesidad de modelado 3D.',
+      'autocad-revit-lt-suite': 'AutoCAD Revit LT Suite: AutoCAD más una versión LT de Revit en una sola suscripción. Pensado para iniciarte en modelado BIM.',
+      'autocad-lt-mac': 'AutoCAD LT para Mac: la misma versión 2D de AutoCAD LT, pero nativa para macOS.',
+      'autocad-raster-design': 'AutoCAD Raster Design: permite editar y vectorizar imágenes escaneadas (planos antiguos, mapas) directamente dentro de AutoCAD.',
+      'autocad-web': 'AutoCAD Web: versión en el navegador, sin instalación, para ver y editar tus planos desde cualquier dispositivo.',
+      '3ds-max': '3ds Max: modelado, animación y renderizado 3D, usado en arquitectura, diseño de producto y visualización.',
+      'mudbox': 'Mudbox: esculpido y pintura digital 3D de alto detalle, usado para texturizar modelos.',
+      'flow-studio': 'Flow Studio: herramientas de postproducción y composición de video/efectos visuales (planes Standard / Pro / Enterprise).',
+      'navpack': 'NavPack (Navisworks): revisión y coordinación de modelos BIM de varias disciplinas, con detección de interferencias.',
+      'otro': '¿No estás seguro de qué licencia necesitas? Cuéntanos tu proyecto en los comentarios y te asesoramos sobre la opción correcta.',
+    };
+
+    // Al marcar/desmarcar un producto, muestra sus descripciones en el recuadro amarillo
+    function actualizarInfoProductos() {
+      if (!adProductosInfo) return;
+      const seleccionados = Array.from(
+        document.querySelectorAll('input[name="productos"]:checked')
+      ).map((el) => (el as HTMLInputElement).value);
+
+      if (seleccionados.length === 0) {
+        adProductosInfo.classList.add('hidden');
+        adProductosInfo.innerHTML = '';
+        return;
+      }
+
+      adProductosInfo.innerHTML = seleccionados
+        .map((valor) => `<p>💡 ${descripcionesProductos[valor] || ''}</p>`)
+        .join('');
+      adProductosInfo.classList.remove('hidden');
+    }
+
+    document.querySelectorAll('input[name="productos"]').forEach((checkbox) => {
+      checkbox.addEventListener('change', actualizarInfoProductos);
+    });
 
     // Muestra/oculta el campo de User ID de Autodesk según el tipo de solicitud
     document.querySelectorAll('input[name="tipoSolicitud"]').forEach((radio) => {
