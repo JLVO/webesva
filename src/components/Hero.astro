@@ -1,14 +1,15 @@
 ---
 // Hero.astro
-const { 
-  title, 
-  subtitle, 
-  imageUrl, 
-  buttonText, 
-  buttonLink, 
-  linkwhatsapp, 
+const {
+  title,
+  subtitle,
+  imageUrl,
+  buttonText,
+  buttonLink,
+  buttonHref = '/contactanos/',
+  linkwhatsapp,
   flushTop = true, // Cambiado a true por defecto para evitar espacios
-  imageMaxWidth = 'max-w-xl', 
+  imageMaxWidth = 'max-w-xl',
   sectionPadding = 'pt-4 pb-12 md:pt-8 md:pb-20' // Reducido el padding superior
 } = Astro.props;
 
@@ -33,7 +34,7 @@ const imageClass = `w-full rounded-2xl shadow-2xl ${imageMaxWidth}`; // Añadido
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <a href="/contactanos/" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all hover:-translate-y-1">
+        <a href={buttonHref} class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all hover:-translate-y-1">
           {buttonText}
         </a>
         <a href={linkwhatsapp} target="_blank"
