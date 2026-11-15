@@ -33,7 +33,10 @@ function readPublishedPosts() {
     });
 }
 
-function readClosedDraftPRs() {
+function readAllDraftPRs() {
+  // "all" incluye abiertos (esperando revisión), cerrados sin fusionar
+  // (rechazados) y fusionados — así el modelo no repite un tema que ya
+  // está en revisión, aunque aún no se haya aceptado o rechazado.
   const json = execFileSync(
     "gh",
     [
@@ -42,11 +45,11 @@ function readClosedDraftPRs() {
       "--repo",
       REPO,
       "--state",
-      "closed",
+      "all",
       "--limit",
       "200",
       "--json",
-      "title,headRefName",
+      "title,headRefName,state",
     ],
     { encoding: "utf-8" },
   );
@@ -168,18 +171,19 @@ function run(cmd, args) {
 
 async function main() {
   const posts = readPublishedPosts();
-  const closedPRs = readClosedDraftPRs();
+  const draftPRs = readAllDraftPRs();
 
   const publishedList =
     posts.map((p) => `- "${p.title}" | tags: ${p.tags} | ${p.description}`).join("\n") ||
     "(ninguno)";
-  const rejectedList =
-    closedPRs.map((pr) => `- "${pr.title}" (rama: ${pr.headRefName})`).join("\n") ||
-    "(ninguno)";
+  const draftList =
+    draftPRs
+      .map((pr) => `- "${pr.title}" | estado: ${pr.state} (rama: ${pr.headRefName})`)
+      .join("\n") || "(ninguno)";
 
-  const exclusionContext = `ARTÍCULOS YA PUBLICADOS EN EL BLOG:\n${publishedList}\n\nTEMAS YA PROPUESTOS Y RECHAZADOS (Pull Requests cerrados sin fusionar):\n${rejectedList}`;
+  const exclusionContext = `ARTÍCULOS YA PUBLICADOS EN EL BLOG:\n${publishedList}\n\nTEMAS YA PROPUESTOS (Pull Requests OPEN = esperando revisión, CLOSED = rechazados, MERGED = ya publicados):\n${draftList}`;
 
-  console.log(`Posts publicados: ${posts.length} | PRs rechazados en historial: ${closedPRs.length}`);
+  console.log(`Posts publicados: ${posts.length} | PRs de blog en historial (open/closed/merged): ${draftPRs.length}`);
 
   if (process.argv.includes("--dry-run")) {
     console.log("\n--- Contexto de exclusión que se enviará al modelo ---\n");
