@@ -1,0 +1,8 @@
+{
+  "name": "esva-blog-bot",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0"
+  }
+}
