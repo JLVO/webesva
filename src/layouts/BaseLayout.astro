@@ -13,17 +13,23 @@ export interface Props {
   showFooter?: boolean;
   mainPadding?: boolean;
   ogType?: string;
+  author?: string;
+  keywords?: string;
+  robots?: string;
 }
 
-const { 
-  pageTitle, 
-  metaDescription, 
-  ogImage, 
-  canonicalUrl, 
-  showNavbar = true, 
+const {
+  pageTitle,
+  metaDescription,
+  ogImage,
+  canonicalUrl,
+  showNavbar = true,
   showFooter = true,
   mainPadding = true,
-  ogType = 'website'
+  ogType = 'website',
+  author = 'ESVA Servicios Generales EIRL',
+  keywords = 'soporte técnico, cámaras de seguridad, redes y conectividad, seguridad electrónica, Piura',
+  robots = 'index, follow'
 } = Astro.props;
 
 const siteTitle = "ESVA";
@@ -101,6 +107,10 @@ const schema = {
 
     <title>{fullTitle}</title>
     <meta name="description" content={metaDescription || schema.description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="publisher" content={author} />
+    <meta name="robots" content={robots} />
     <link rel="icon" type="image/svg+xml" href="/faviconESVANUEVO.svg"/>
     <link rel="canonical" href={finalCanonicalUrl} />
 

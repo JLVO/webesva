@@ -108,6 +108,8 @@ const blogPostingSchema = {
   ogImage={entry.data.image?.url}
   canonicalUrl={Astro.url.href}
   ogType="article"
+  author={entry.data.author || 'ESVA Servicios Generales EIRL'}
+  keywords={(entry.data.tags || []).join(', ')}
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)}></script>
   <BreadcrumbSchema items={[
