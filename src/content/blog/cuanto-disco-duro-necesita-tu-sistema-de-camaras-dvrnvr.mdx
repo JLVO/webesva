@@ -1,0 +1,152 @@
+---
+title: "Cuánto Disco Duro Necesita tu Sistema de Cámaras (DVR/NVR)"
+pubDate: "2026-11-15"
+description: "Calcula cuántos TB de disco duro necesita tu DVR o NVR según cámaras, resolución y días de grabación. Guía práctica con soporte ESVA en Piura."
+image:
+  url: "/imagenes/blog/tecnico-esva-soporte-cliente.webp"
+  alt: "Grabador NVR de cámaras de seguridad con disco duro de videovigilancia instalado en un rack de un negocio en Piura"
+tags: ["Cámaras de Seguridad", "Seguridad Electrónica", "Soporte Técnico en Piura", "Mantenimiento preventivo"]
+author: "ESVA Servicios Generales"
+---
+
+<!-- NOTA PARA REVISIÓN: esta imagen es un placeholder genérico. Reemplázala por una miniatura personalizada antes de fusionar este PR. -->
+
+Un caso muy común en Piura: ocurre un robo un viernes por la noche, el dueño del negocio revisa las cámaras el lunes y descubre que el grabador solo guarda tres días de video. La grabación que necesitaba ya se borró.
+
+No fue falla de las cámaras. Fue un error de **dimensionamiento del almacenamiento**. Casi nadie lo calcula al comprar el sistema, y es uno de los puntos que más se subestiman en una instalación de CCTV.
+
+En esta guía te explicamos cómo calcular cuántos terabytes necesita tu DVR o NVR, qué tipo de disco comprar y cómo evitar que el video se pierda justo cuando más lo necesitas.
+
+## De qué depende el espacio que ocupa el video
+
+El espacio de grabación depende de cuatro factores:
+
+1. **Cantidad de cámaras.** Cada cámara graba su propio flujo de video.
+2. **Resolución.** Una cámara de 2 MP (1080p) genera mucho menos datos que una de 4 MP o una 4K de 8 MP.
+3. **Códec de compresión.** H.265 (y sus variantes H.265+) comprime casi el doble que H.264 con una calidad parecida.
+4. **Tipo de grabación.** Continua las 24 horas, por detección de movimiento o por horario.
+
+También influyen los cuadros por segundo (FPS) y la escena. Una cámara que mira un pasillo vacío genera menos datos que una que enfoca una avenida con tráfico constante.
+
+## La fórmula práctica para calcular los TB
+
+Todo se basa en el **bitrate**: los megabits por segundo (Mbps) que cada cámara envía al grabador. Una referencia útil:
+
+> **1 Mbps de grabación continua ≈ 10,8 GB por día.**
+
+Con esa cifra puedes calcular casi cualquier sistema:
+
+**GB por día = bitrate (Mbps) × 10,8 × número de cámaras**
+
+**Espacio total = GB por día × días de retención**
+
+Estos son bitrates aproximados con configuraciones típicas (pueden variar según marca y ajustes):
+
+| Resolución | H.264 | H.265 |
+|---|---|---|
+| 2 MP (1080p) | 2 – 4 Mbps | 1 – 2 Mbps |
+| 4 MP | 4 – 6 Mbps | 2 – 3 Mbps |
+| 8 MP (4K) | 8 – 12 Mbps | 4 – 6 Mbps |
+
+### Ejemplo real: un minimarket con 8 cámaras
+
+Supongamos 8 cámaras de 2 MP en H.264 a 2 Mbps cada una, grabando de forma continua:
+
+- 2 Mbps × 10,8 = 21,6 GB por cámara al día.
+- 21,6 GB × 8 cámaras = **172,8 GB al día**.
+- Para **30 días**: 172,8 × 30 = **5,2 TB**.
+
+Aquí hay una trampa: un disco que se vende como "6 TB" tiene en la práctica unos 5,5 TB utilizables, porque el sistema operativo del grabador y el formato consumen una parte. Ese disco quedaría justo, sin margen. Lo recomendable es agregar un **15 a 20 % de reserva**.
+
+Si ese mismo negocio usa cámaras H.265 a 1 Mbps, el consumo baja a unos 86 GB diarios y los 30 días caben en unos 2,6 TB. Cambiar de códec puede ahorrarte la mitad del disco, o duplicar los días de grabación con el mismo disco.
+
+### Cómo cambia el cálculo con cámaras 4K
+
+Cuando el cliente pide "las mejores cámaras", suele terminar con cámaras de 8 MP. Con 16 cámaras 4K en H.265 a 5 Mbps necesitas unos 864 GB al día, es decir, **cerca de 26 TB para 30 días**. Eso exige un NVR de varias bahías o un sistema con RAID. Por eso conviene definir la resolución según lo que realmente necesitas ver: una caja registradora o una puerta no siempre requieren 4K.
+
+## Cómo ahorrar espacio sin perder seguridad
+
+Si el presupuesto es limitado, hay formas de reducir el consumo sin dejar zonas desprotegidas:
+
+- **Activar H.265 o H.265+.** Es el cambio con mayor impacto. Verifica que tu grabador y tus cámaras lo soporten.
+- **Usar flujo principal y subflujo.** Graba en alta calidad solo donde se necesita (accesos, cajas) y usa menor calidad en zonas de baja criticidad.
+- **Grabar por movimiento en zonas poco transitadas.** Un depósito cerrado por la noche o un patio trasero puede grabar por eventos y reducir el consumo entre 30 y 60 %. En la caja o la entrada, es preferible grabación continua.
+- **Reducir los FPS.** Entre 12 y 15 FPS suelen bastar para vigilancia general. Subir a 25 o 30 FPS solo se justifica en puntos específicos como cobros o control vehicular.
+- **Ajustar el bitrate máximo.** Muchas cámaras vienen configuradas con valores muy altos "de fábrica", que desperdician espacio sin mejorar la imagen de forma notable.
+
+Ojo con la grabación por movimiento: si la sensibilidad está mal ajustada, puede perder los segundos previos a un evento o activarse con cada insecto o cambio de luz. Se configura con pruebas en sitio, no a ojo.
+
+## Qué tipo de disco duro usar (y cuál evitar)
+
+Este es el error más caro. Un disco común de computadora de escritorio está pensado para trabajar unas horas al día. Un grabador escribe datos **las 24 horas, los 7 días de la semana**, a veces con varias cámaras escribiendo en simultáneo.
+
+Para CCTV conviene usar discos de **videovigilancia** (líneas como WD Purple o Seagate SkyHawk), diseñados para:
+
+- Escritura continua sin saturarse ni perder cuadros.
+- Operar muchas horas al año con menor tasa de fallos.
+- Soportar mejor el calor dentro de un rack o gabinete cerrado.
+
+Piura suma otro factor: las temperaturas altas. Un grabador instalado en un cuarto sin ventilación, o dentro de un mueble junto a un router, puede recalentarse y acortar mucho la vida del disco. Garantiza ventilación, evita ponerlo en el piso por el polvo y conéctalo siempre a un **UPS** para que un corte de luz no corrompa el disco en pleno proceso de escritura.
+
+### Uno o varios discos: cuándo conviene RAID
+
+- **Un solo disco:** suficiente para sistemas pequeños, hasta unas 8 cámaras, con riesgo asumido. Si el disco falla, pierdes todo el historial.
+- **Varios discos sin redundancia:** más capacidad, pero cada disco extra aumenta la probabilidad de falla.
+- **RAID 1, 5 o 6:** el grabador sigue funcionando aunque un disco se dañe. Es recomendable en comercios medianos, oficinas con información sensible, almacenes y operaciones donde el video es evidencia importante.
+
+Ten presente que **RAID no reemplaza un respaldo**. Si necesitas conservar un evento puntual (un robo, un accidente laboral), exporta ese clip a un disco externo o a la nube. Es el mismo principio que aplicamos con los datos de la empresa.
+
+## Mantenimiento del almacenamiento: lo que casi nadie revisa
+
+Un sistema bien dimensionado puede fallar igual si nadie lo revisa. Haz estas comprobaciones cada cierto tiempo:
+
+1. **Verifica los días reales de grabación.** Entra al menú de reproducción y confirma que existe video del primer día que esperas conservar. Muchos sistemas "dicen" 30 días pero guardan 12.
+2. **Revisa el estado del disco (S.M.A.R.T.).** Algunos grabadores muestran alertas de sectores dañados antes de que el disco falle del todo.
+3. **Activa las notificaciones por disco lleno, error de disco o pérdida de grabación.**
+4. **Confirma la fecha y hora del grabador.** Un reloj desfasado hace que el video pierda valor como evidencia.
+5. **Planifica el reemplazo.** En uso continuo, conviene renovar los discos cada 3 a 4 años, antes de que fallen.
+
+Si el grabador emite pitidos, muestra "HDD error" o los videos tienen cortes, no esperes al siguiente incidente. Un diagnóstico a tiempo suele evitar la pérdida total de las grabaciones.
+
+## Errores frecuentes al dimensionar el almacenamiento
+
+- Calcular solo con las cámaras actuales y no prever ampliaciones.
+- Comprar el NVR más barato sin revisar cuántos TB soporta por bahía.
+- Usar discos comunes de PC para ahorrar unos soles.
+- Dejar la configuración de fábrica (máxima calidad, 25–30 FPS en todas las cámaras).
+- No considerar el audio, que también ocupa espacio si está activado.
+- No haber definido con anticipación cuántos días de historial necesita realmente el negocio.
+
+Para decidir los días de retención, piensa en tu operación. Un negocio con revisión diaria puede conformarse con 15 días. Una empresa con turnos, personal, inventarios o reclamos de clientes suele necesitar 30 días o más. Si no sabes cuántos días te conviene, lo mejor es evaluarlo con un técnico.
+
+## Preguntas Frecuentes
+
+### ¿Cuántos TB necesito para 4 cámaras durante 30 días?
+
+Con 4 cámaras de 2 MP en H.265 a 1,5 Mbps de grabación continua, el consumo ronda los 65 GB al día, es decir, unos 2 TB para 30 días. Con H.264 a 2 Mbps serían cerca de 2,6 TB. En ambos casos, un disco de 3 o 4 TB deja un margen cómodo.
+
+### ¿Puedo usar un disco duro externo o de laptop en mi DVR?
+
+Técnicamente algunos grabadores lo aceptan, pero no es recomendable. Los discos de laptop o de escritorio no están diseñados para escritura continua y suelen fallar antes. Usa discos de videovigilancia y verifica la compatibilidad con la marca de tu grabador.
+
+### ¿Cuántos TB soporta mi NVR o DVR?
+
+Depende del modelo: cada bahía tiene una capacidad máxima por disco (por ejemplo, 6, 10 o 16 TB), y varía según la marca. Revisa la ficha técnica del equipo antes de comprar el disco.
+
+### ¿Se puede ampliar el almacenamiento más adelante?
+
+Sí, si el grabador tiene bahías libres o admite discos de mayor capacidad. Si no, la alternativa es cambiar el grabador o agregar un NVR adicional. Por eso conviene dimensionar con margen desde el inicio.
+
+### ¿Qué pasa si se corta la luz mientras el grabador escribe?
+
+Puede corromper el sistema de archivos del disco y perder grabaciones o incluso dañar el disco. Un UPS de tamaño adecuado para el grabador, el switch y el router evita este riesgo.
+
+### ¿Qué hago si necesito un video que no aparece en el grabador?
+
+Deja de usar el equipo para no sobrescribir datos y contacta a un técnico. En algunos casos es posible recuperar grabaciones de un disco con fallas, pero cuanto antes se actúe, mejores son las posibilidades.
+
+## ¿Tu sistema de cámaras graba los días que crees?
+
+En **ESVA Servicios Generales** revisamos tu sistema de CCTV en Piura, Sullana y Paita: calculamos el almacenamiento real que necesitas, configuramos códec y bitrate, instalamos discos de videovigilancia y verificamos que tus grabaciones estén disponibles cuando las necesites.
+
+Escríbenos por **WhatsApp** o solicita tu **cotización** en [esva.pe](https://esva.pe) y te ayudamos a dejar tu sistema de cámaras bien dimensionado, antes de que ocurra un incidente.
