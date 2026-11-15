@@ -118,11 +118,11 @@ Antes de elegir el tema, compara tu idea contra la siguiente lista de exclusión
 
 ${exclusionContext}
 
-Ahora elige UN tema específico y útil que no esté en la lista de exclusión, y llama a la herramienta write_blog_post con el artículo completo.`;
+Ahora elige UN tema específico y útil que no esté en la lista de exclusión. Responde ÚNICAMENTE llamando a la herramienta write_blog_post con el artículo completo — no respondas con texto plano.`;
 
   const stream = client.messages.stream({
     model: MODEL,
-    max_tokens: 4096,
+    max_tokens: 8192,
     system: systemPrompt,
     messages: [
       {
@@ -132,7 +132,7 @@ Ahora elige UN tema específico y útil que no esté en la lista de exclusión, 
       },
     ],
     tools: [tool],
-    tool_choice: { type: "tool", name: "write_blog_post" },
+    tool_choice: { type: "auto" },
   });
 
   const final = await stream.finalMessage();
